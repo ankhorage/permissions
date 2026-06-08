@@ -70,9 +70,7 @@ plugins.
 ```ts
 const permissions = createPermissionManager(client);
 const camera = await permissions.getStatus(Permission.Camera);
-const requested = camera.granted
-  ? camera
-  : await permissions.request(Permission.Camera);
+const requested = camera.granted ? camera : await permissions.request(Permission.Camera);
 ```
 
 Module: `src/manager/createPermissionManager.ts`
@@ -134,11 +132,11 @@ Related types: `PermissionsProviderProps`
 <details>
 <summary>Props</summary>
 
-| Prop | Type | Required | Default | Description |
-| --- | --- | --- | --- | --- |
-| children | `ReactNode \| undefined` | no | — |  |
-| client | `PermissionClient \| undefined` | no | — |  |
-| manager | `PermissionManager \| undefined` | no | — |  |
+| Prop     | Type                             | Required | Default | Description |
+| -------- | -------------------------------- | -------- | ------- | ----------- |
+| children | `ReactNode \| undefined`         | no       | —       |             |
+| client   | `PermissionClient \| undefined`  | no       | —       |             |
+| manager  | `PermissionManager \| undefined` | no       | —       |             |
 
 </details>
 
