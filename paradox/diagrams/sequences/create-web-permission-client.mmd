@@ -1,0 +1,5 @@
+sequenceDiagram
+  participant participant_createWebPermissionClient as createWebPermissionClient
+  participant participant_getDefaultGlobal as getDefaultGlobal
+  participant_createWebPermissionClient->>participant_getDefaultGlobal: getDefaultGlobal()
+  participant_getDefaultGlobal-->>participant_createWebPermissionClient: return

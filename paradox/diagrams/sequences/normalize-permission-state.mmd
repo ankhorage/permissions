@@ -1,0 +1,5 @@
+sequenceDiagram
+  participant participant_createPermissionState as createPermissionState
+  participant participant_normalizePermissionState as normalizePermissionState
+  participant_normalizePermissionState->>participant_createPermissionState: createPermissionState()
+  participant_createPermissionState-->>participant_normalizePermissionState: return

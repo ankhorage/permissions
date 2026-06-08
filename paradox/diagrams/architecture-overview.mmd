@@ -2,4 +2,40 @@ graph TD
   package__ankhorage_permissions["PERMISSIONS"]
   entrypoint_src_index_ts["src/index.ts"]
   package__ankhorage_permissions --> entrypoint_src_index_ts
+  entrypoint_src_metadata_index_ts["src/metadata/index.ts"]
+  package__ankhorage_permissions --> entrypoint_src_metadata_index_ts
+  entrypoint_src_react_index_tsx["src/react/index.tsx"]
+  package__ankhorage_permissions --> entrypoint_src_react_index_tsx
+  entrypoint_src_testing_index_ts["src/testing/index.ts"]
+  package__ankhorage_permissions --> entrypoint_src_testing_index_ts
+  entrypoint_src_web_index_ts["src/web/index.ts"]
+  package__ankhorage_permissions --> entrypoint_src_web_index_ts
+  module_src_client_types_ts["src/client/types.ts"]
+  package__ankhorage_permissions -.-> module_src_client_types_ts
+  module_src_client_types_ts --> module_src_registry_permissions_ts
+  module_src_client_types_ts --> module_src_state_permissionState_ts
   module_src_index_ts["src/index.ts"]
+  module_src_manager_createPermissionManager_ts["src/manager/createPermissionManager.ts"]
+  package__ankhorage_permissions -.-> module_src_manager_createPermissionManager_ts
+  module_src_manager_createPermissionManager_ts --> module_src_client_types_ts
+  module_src_manager_createPermissionManager_ts --> module_src_registry_permissions_ts
+  module_src_manager_createPermissionManager_ts --> module_src_state_permissionState_ts
+  module_src_metadata_index_ts["src/metadata/index.ts"]
+  module_src_react_index_tsx["src/react/index.tsx"]
+  module_src_react_index_tsx --> module_src_client_types_ts
+  module_src_react_index_tsx --> module_src_manager_createPermissionManager_ts
+  module_src_react_index_tsx --> module_src_registry_permissions_ts
+  module_src_react_index_tsx --> module_src_state_permissionState_ts
+  module_src_registry_permissions_ts["src/registry/permissions.ts"]
+  package__ankhorage_permissions -.-> module_src_registry_permissions_ts
+  module_src_state_permissionState_ts["src/state/permissionState.ts"]
+  package__ankhorage_permissions -.-> module_src_state_permissionState_ts
+  module_src_state_permissionState_ts --> module_src_registry_permissions_ts
+  module_src_testing_index_ts["src/testing/index.ts"]
+  module_src_testing_index_ts --> module_src_client_types_ts
+  module_src_testing_index_ts --> module_src_registry_permissions_ts
+  module_src_testing_index_ts --> module_src_state_permissionState_ts
+  module_src_web_index_ts["src/web/index.ts"]
+  module_src_web_index_ts --> module_src_client_types_ts
+  module_src_web_index_ts --> module_src_registry_permissions_ts
+  module_src_web_index_ts --> module_src_state_permissionState_ts

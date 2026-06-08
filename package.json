@@ -2,7 +2,7 @@
   "name": "@ankhorage/permissions",
   "type": "module",
   "version": "0.0.0",
-  "description": "Cross-platform permission registry and runtime helpers for TypeScript apps, with unified request/check APIs for camera, media, location, notifications, microphone, and web/native capabilities.",
+  "description": "Cross-platform permission registry and runtime helpers for TypeScript apps, with unified request/check APIs for camera, media, location, notifications, microphone, etc. and web/native capabilities.",
   "homepage": "https://github.com/ankhorage/permissions#readme",
   "bugs": {
     "url": "https://github.com/ankhorage/permissions/issues"
@@ -16,12 +16,27 @@
     "url": "git+https://github.com/ankhorage/permissions.git"
   },
   "keywords": [
+    "permissions",
+    "permission-management",
+    "capabilities",
+    "typescript",
+    "react",
     "react-native",
     "react-native-web",
     "expo",
-    "permissions"
+    "web",
+    "camera",
+    "notifications",
+    "location",
+    "media-library",
+    "microphone",
+    "privacy",
+    "cross-platform"
   ],
   "dependencies": {},
+  "peerDependencies": {
+    "react": ">=18.2.0 || >=19.0.0"
+  },
   "files": [
     "dist",
     "src",
@@ -32,15 +47,35 @@
   ],
   "exports": {
     ".": {
-      "react-native": "./src/index.ts",
-      "browser": "./src/index.ts",
+      "react-native": "./dist/index.js",
+      "browser": "./dist/index.js",
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "default": "./dist/index.js"
     },
+    "./react": {
+      "react-native": "./dist/react/index.js",
+      "browser": "./dist/react/index.js",
+      "types": "./dist/react/index.d.ts",
+      "import": "./dist/react/index.js",
+      "default": "./dist/react/index.js"
+    },
+    "./testing": {
+      "react-native": "./dist/testing/index.js",
+      "browser": "./dist/testing/index.js",
+      "types": "./dist/testing/index.d.ts",
+      "import": "./dist/testing/index.js",
+      "default": "./dist/testing/index.js"
+    },
+    "./web": {
+      "browser": "./dist/web/index.js",
+      "types": "./dist/web/index.d.ts",
+      "import": "./dist/web/index.js",
+      "default": "./dist/web/index.js"
+    },
     "./metadata": {
-      "react-native": "./src/metadata/index.ts",
-      "browser": "./src/metadata/index.ts",
+      "react-native": "./dist/metadata/index.js",
+      "browser": "./dist/metadata/index.js",
       "types": "./dist/metadata/index.d.ts",
       "import": "./dist/metadata/index.js",
       "default": "./dist/metadata/index.js"
@@ -71,6 +106,8 @@
     "@changesets/cli": "^2.31.0",
     "@types/bun": "^1.3.13",
     "@types/node": "^25.6.0",
+    "@types/react": "^19.2.7",
+    "react": "^19.2.1",
     "typescript": "^5.9.3"
   },
   "packageManager": "bun@1.3.13"
