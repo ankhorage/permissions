@@ -59,7 +59,15 @@
     }
   ],
   "usage": null,
-  "readmeUsage": [],
+  "readmeUsage": [
+    {
+      "title": "Basic permissions runtime example.",
+      "description": "Basic permissions runtime example.\n\nCreate a permission client, provide it at the app root, and use\n`usePermission` to read, refresh, and request a normalized permission state.",
+      "language": "tsx",
+      "code": "import {\n  createFakePermissionClient,\n  Permission,\n  PermissionsProvider,\n  usePermission,\n} from '@ankhorage/permissions';\n\nexport default function BasicPermissionsExample() {\n  const client = createFakePermissionClient({\n    initialStates: [{ permission: Permission.Camera, status: 'denied' }],\n    requestStates: [{ permission: Permission.Camera, status: 'granted' }],\n  });\n\n  return (\n    <PermissionsProvider client={client}>\n      <CameraPermissionExample />\n    </PermissionsProvider>\n  );\n}\n\nfunction CameraPermissionExample() {\n  const camera = usePermission(Permission.Camera, { refreshOnMount: true });\n\n  return (\n    <>\n      <p>Camera permission: {camera.status}</p>\n      <button\n        type=\"button\"\n        disabled={camera.granted}\n        onClick={() => {\n          void camera.request();\n        }}\n      >\n        Request camera permission\n      </button>\n    </>\n  );\n}",
+      "sourcePath": "examples/basic/App.tsx"
+    }
+  ],
   "config": null,
   "entrypoints": [
     "src/index.ts",

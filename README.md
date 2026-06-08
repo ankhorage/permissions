@@ -7,6 +7,56 @@
 
 Cross-platform permission registry and runtime helpers for TypeScript apps, with unified request/check APIs for camera, media, location, notifications, microphone, etc. and web/native capabilities.
 
+## Usage
+
+### Basic permissions runtime example.
+
+Create a permission client, provide it at the app root, and use
+`usePermission` to read, refresh, and request a normalized permission state.
+
+Source: `examples/basic/App.tsx`
+
+```tsx
+import {
+  createFakePermissionClient,
+  Permission,
+  PermissionsProvider,
+  usePermission,
+} from '@ankhorage/permissions';
+
+export default function BasicPermissionsExample() {
+  const client = createFakePermissionClient({
+    initialStates: [{ permission: Permission.Camera, status: 'denied' }],
+    requestStates: [{ permission: Permission.Camera, status: 'granted' }],
+  });
+
+  return (
+    <PermissionsProvider client={client}>
+      <CameraPermissionExample />
+    </PermissionsProvider>
+  );
+}
+
+function CameraPermissionExample() {
+  const camera = usePermission(Permission.Camera, { refreshOnMount: true });
+
+  return (
+    <>
+      <p>Camera permission: {camera.status}</p>
+      <button
+        type="button"
+        disabled={camera.granted}
+        onClick={() => {
+          void camera.request();
+        }}
+      >
+        Request camera permission
+      </button>
+    </>
+  );
+}
+```
+
 ## Generated documentation
 
 - [Interactive documentation app](././paradox/index.html)
