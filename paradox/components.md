@@ -11,8 +11,8 @@ import browser, Expo, or React Native permission APIs.
 
 Export paths: `src/index.ts`, `src/react/index.tsx`
 
-| Prop     | Type                             | Required | Default | Description |
-| -------- | -------------------------------- | -------- | ------- | ----------- |
-| children | `ReactNode \| undefined`         | no       | —       |             |
-| client   | `PermissionClient \| undefined`  | no       | —       |             |
-| manager  | `PermissionManager \| undefined` | no       | —       |             |
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| children | `ReactNode \| undefined` | no | — |  |
+| client | `PermissionClient \| undefined` | no | — |  |
+| manager | `PermissionManager \| undefined` | no | — |  |

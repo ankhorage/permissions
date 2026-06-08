@@ -1,7 +1,7 @@
 {
   "packageName": "PERMISSIONS",
   "packageId": "@ankhorage/permissions",
-  "description": "Cross-platform permission registry and runtime helpers for TypeScript apps.",
+  "description": "Cross-platform permission registry and runtime helpers for TypeScript apps, with unified request/check APIs for camera, media, location, notifications, microphone, etc. and web/native capabilities.",
   "badges": [
     {
       "id": "license",
@@ -72,8 +72,13 @@
     {
       "path": "src/client/types.ts",
       "isEntrypoint": false,
-      "dependencies": ["src/registry/permissions.ts", "src/state/permissionState.ts"],
-      "exports": ["PermissionClient"]
+      "dependencies": [
+        "src/registry/permissions.ts",
+        "src/state/permissionState.ts"
+      ],
+      "exports": [
+        "PermissionClient"
+      ]
     },
     {
       "path": "src/index.ts",
@@ -117,13 +122,18 @@
         "src/registry/permissions.ts",
         "src/state/permissionState.ts"
       ],
-      "exports": ["createPermissionManager", "PermissionManager"]
+      "exports": [
+        "createPermissionManager",
+        "PermissionManager"
+      ]
     },
     {
       "path": "src/metadata/index.ts",
       "isEntrypoint": true,
       "dependencies": [],
-      "exports": ["permissionsPackageMetadata"]
+      "exports": [
+        "permissionsPackageMetadata"
+      ]
     },
     {
       "path": "src/react/index.tsx",
@@ -161,7 +171,9 @@
     {
       "path": "src/state/permissionState.ts",
       "isEntrypoint": false,
-      "dependencies": ["src/registry/permissions.ts"],
+      "dependencies": [
+        "src/registry/permissions.ts"
+      ],
       "exports": [
         "createPermissionState",
         "CreatePermissionStateInput",
@@ -195,7 +207,10 @@
         "src/registry/permissions.ts",
         "src/state/permissionState.ts"
       ],
-      "exports": ["createWebPermissionClient", "WebPermissionClientOptions"]
+      "exports": [
+        "createWebPermissionClient",
+        "WebPermissionClientOptions"
+      ]
     }
   ],
   "exports": [
@@ -211,8 +226,12 @@
         "line": 115,
         "column": 1
       },
-      "exportPaths": ["src/index.ts"],
-      "relatedSymbols": ["Permission"],
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [
+        "Permission"
+      ],
       "signatures": [
         {
           "label": "(permission: string) => Permission",
@@ -243,8 +262,14 @@
         "line": 63,
         "column": 1
       },
-      "exportPaths": ["src/index.ts", "src/testing/index.ts"],
-      "relatedSymbols": ["FakePermissionClient", "FakePermissionClientOptions"],
+      "exportPaths": [
+        "src/index.ts",
+        "src/testing/index.ts"
+      ],
+      "relatedSymbols": [
+        "FakePermissionClient",
+        "FakePermissionClientOptions"
+      ],
       "signatures": [
         {
           "label": "(options?: FakePermissionClientOptions) => FakePermissionClient",
@@ -275,8 +300,13 @@
         "line": 32,
         "column": 1
       },
-      "exportPaths": ["src/index.ts"],
-      "relatedSymbols": ["PermissionClient", "PermissionManager"],
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [
+        "PermissionClient",
+        "PermissionManager"
+      ],
       "signatures": [
         {
           "label": "(client: PermissionClient) => PermissionManager",
@@ -307,8 +337,12 @@
         "line": 61,
         "column": 1
       },
-      "exportPaths": ["src/index.ts"],
-      "relatedSymbols": ["PermissionState"],
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [
+        "PermissionState"
+      ],
       "signatures": [
         {
           "label": "(input: CreatePermissionStateInput) => PermissionState",
@@ -339,8 +373,13 @@
         "line": 78,
         "column": 1
       },
-      "exportPaths": ["src/web/index.ts"],
-      "relatedSymbols": ["PermissionClient", "WebPermissionClientOptions"],
+      "exportPaths": [
+        "src/web/index.ts"
+      ],
+      "relatedSymbols": [
+        "PermissionClient",
+        "WebPermissionClientOptions"
+      ],
       "signatures": [
         {
           "label": "(options?: WebPermissionClientOptions) => PermissionClient",
@@ -371,7 +410,10 @@
         "line": 35,
         "column": 1
       },
-      "exportPaths": ["src/index.ts", "src/testing/index.ts"],
+      "exportPaths": [
+        "src/index.ts",
+        "src/testing/index.ts"
+      ],
       "relatedSymbols": [
         "FakePermissionStateSeed",
         "Permission",
@@ -437,8 +479,13 @@
         "line": 25,
         "column": 1
       },
-      "exportPaths": ["src/index.ts", "src/testing/index.ts"],
-      "relatedSymbols": ["FakePermissionStateSeed"],
+      "exportPaths": [
+        "src/index.ts",
+        "src/testing/index.ts"
+      ],
+      "relatedSymbols": [
+        "FakePermissionStateSeed"
+      ],
       "signatures": [],
       "members": [
         {
@@ -484,7 +531,10 @@
         "line": 13,
         "column": 1
       },
-      "exportPaths": ["src/index.ts", "src/testing/index.ts"],
+      "exportPaths": [
+        "src/index.ts",
+        "src/testing/index.ts"
+      ],
       "relatedSymbols": [],
       "signatures": [],
       "members": [],
@@ -502,8 +552,13 @@
         "line": 126,
         "column": 1
       },
-      "exportPaths": ["src/index.ts"],
-      "relatedSymbols": ["Permission", "PermissionDefinition"],
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [
+        "Permission",
+        "PermissionDefinition"
+      ],
       "signatures": [
         {
           "label": "(permission: Permission) => PermissionDefinition",
@@ -534,7 +589,9 @@
         "line": 108,
         "column": 1
       },
-      "exportPaths": ["src/index.ts"],
+      "exportPaths": [
+        "src/index.ts"
+      ],
       "relatedSymbols": [],
       "signatures": [
         {
@@ -566,7 +623,9 @@
         "line": 54,
         "column": 1
       },
-      "exportPaths": ["src/index.ts"],
+      "exportPaths": [
+        "src/index.ts"
+      ],
       "relatedSymbols": [],
       "signatures": [
         {
@@ -598,8 +657,13 @@
         "line": 75,
         "column": 1
       },
-      "exportPaths": ["src/index.ts"],
-      "relatedSymbols": ["Permission", "PermissionState"],
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [
+        "Permission",
+        "PermissionState"
+      ],
       "signatures": [
         {
           "label": "(permission: Permission, state: PermissionState) => PermissionState",
@@ -636,7 +700,9 @@
         "line": 9,
         "column": 1
       },
-      "exportPaths": ["src/index.ts"],
+      "exportPaths": [
+        "src/index.ts"
+      ],
       "relatedSymbols": [],
       "signatures": [],
       "members": [],
@@ -654,7 +720,9 @@
         "line": 54,
         "column": 14
       },
-      "exportPaths": ["src/index.ts"],
+      "exportPaths": [
+        "src/index.ts"
+      ],
       "relatedSymbols": [],
       "signatures": [],
       "members": [],
@@ -672,7 +740,9 @@
         "line": 20,
         "column": 14
       },
-      "exportPaths": ["src/index.ts"],
+      "exportPaths": [
+        "src/index.ts"
+      ],
       "relatedSymbols": [],
       "signatures": [],
       "members": [],
@@ -690,8 +760,13 @@
         "line": 15,
         "column": 1
       },
-      "exportPaths": ["src/index.ts"],
-      "relatedSymbols": ["Permission", "PermissionState"],
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [
+        "Permission",
+        "PermissionState"
+      ],
       "signatures": [],
       "members": [
         {
@@ -730,8 +805,13 @@
         "line": 28,
         "column": 1
       },
-      "exportPaths": ["src/index.ts"],
-      "relatedSymbols": ["Permission", "PermissionEnvironment"],
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [
+        "Permission",
+        "PermissionEnvironment"
+      ],
       "signatures": [],
       "members": [
         {
@@ -777,7 +857,9 @@
         "line": 23,
         "column": 1
       },
-      "exportPaths": ["src/index.ts"],
+      "exportPaths": [
+        "src/index.ts"
+      ],
       "relatedSymbols": [],
       "signatures": [],
       "members": [],
@@ -795,8 +877,15 @@
         "line": 47,
         "column": 1
       },
-      "exportPaths": ["src/index.ts", "src/react/index.tsx"],
-      "relatedSymbols": ["Permission", "PermissionState", "PermissionStatus"],
+      "exportPaths": [
+        "src/index.ts",
+        "src/react/index.tsx"
+      ],
+      "relatedSymbols": [
+        "Permission",
+        "PermissionState",
+        "PermissionStatus"
+      ],
       "signatures": [],
       "members": [
         {
@@ -884,8 +973,13 @@
         "line": 8,
         "column": 1
       },
-      "exportPaths": ["src/index.ts"],
-      "relatedSymbols": ["Permission", "PermissionState"],
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [
+        "Permission",
+        "PermissionState"
+      ],
       "signatures": [],
       "members": [
         {
@@ -924,7 +1018,9 @@
         "line": 38,
         "column": 14
       },
-      "exportPaths": ["src/index.ts"],
+      "exportPaths": [
+        "src/index.ts"
+      ],
       "relatedSymbols": [],
       "signatures": [],
       "members": [],
@@ -942,7 +1038,9 @@
         "line": 4,
         "column": 14
       },
-      "exportPaths": ["src/metadata/index.ts"],
+      "exportPaths": [
+        "src/metadata/index.ts"
+      ],
       "relatedSymbols": [],
       "signatures": [],
       "members": [],
@@ -960,8 +1058,13 @@
         "line": 67,
         "column": 1
       },
-      "exportPaths": ["src/index.ts", "src/react/index.tsx"],
-      "relatedSymbols": ["PermissionsProviderProps"],
+      "exportPaths": [
+        "src/index.ts",
+        "src/react/index.tsx"
+      ],
+      "relatedSymbols": [
+        "PermissionsProviderProps"
+      ],
       "signatures": [
         {
           "label": "({\n  children,\n  client,\n  manager,\n}: PermissionsProviderProps) => ReactNode",
@@ -992,8 +1095,14 @@
         "line": 30,
         "column": 1
       },
-      "exportPaths": ["src/index.ts", "src/react/index.tsx"],
-      "relatedSymbols": ["PermissionClient", "PermissionManager"],
+      "exportPaths": [
+        "src/index.ts",
+        "src/react/index.tsx"
+      ],
+      "relatedSymbols": [
+        "PermissionClient",
+        "PermissionManager"
+      ],
       "signatures": [],
       "members": [
         {
@@ -1032,8 +1141,13 @@
         "line": 34,
         "column": 1
       },
-      "exportPaths": ["src/index.ts"],
-      "relatedSymbols": ["Permission", "PermissionStatus"],
+      "exportPaths": [
+        "src/index.ts"
+      ],
+      "relatedSymbols": [
+        "Permission",
+        "PermissionStatus"
+      ],
       "signatures": [],
       "members": [
         {
@@ -1093,7 +1207,9 @@
         "line": 9,
         "column": 1
       },
-      "exportPaths": ["src/index.ts"],
+      "exportPaths": [
+        "src/index.ts"
+      ],
       "relatedSymbols": [],
       "signatures": [],
       "members": [],
@@ -1111,8 +1227,15 @@
         "line": 117,
         "column": 1
       },
-      "exportPaths": ["src/index.ts", "src/react/index.tsx"],
-      "relatedSymbols": ["Permission", "PermissionHookResult", "UsePermissionOptions"],
+      "exportPaths": [
+        "src/index.ts",
+        "src/react/index.tsx"
+      ],
+      "relatedSymbols": [
+        "Permission",
+        "PermissionHookResult",
+        "UsePermissionOptions"
+      ],
       "signatures": [
         {
           "label": "(permission: Permission, options?: UsePermissionOptions) => PermissionHookResult",
@@ -1149,8 +1272,13 @@
         "line": 39,
         "column": 1
       },
-      "exportPaths": ["src/index.ts", "src/react/index.tsx"],
-      "relatedSymbols": ["PermissionState"],
+      "exportPaths": [
+        "src/index.ts",
+        "src/react/index.tsx"
+      ],
+      "relatedSymbols": [
+        "PermissionState"
+      ],
       "signatures": [],
       "members": [
         {
@@ -1182,8 +1310,13 @@
         "line": 90,
         "column": 1
       },
-      "exportPaths": ["src/index.ts", "src/react/index.tsx"],
-      "relatedSymbols": ["PermissionManager"],
+      "exportPaths": [
+        "src/index.ts",
+        "src/react/index.tsx"
+      ],
+      "relatedSymbols": [
+        "PermissionManager"
+      ],
       "signatures": [
         {
           "label": "() => PermissionManager",
@@ -1207,7 +1340,9 @@
         "line": 67,
         "column": 1
       },
-      "exportPaths": ["src/web/index.ts"],
+      "exportPaths": [
+        "src/web/index.ts"
+      ],
       "relatedSymbols": [],
       "signatures": [],
       "members": [
@@ -1234,7 +1369,10 @@
         "line": 67,
         "column": 1
       },
-      "exportPaths": ["src/index.ts", "src/react/index.tsx"],
+      "exportPaths": [
+        "src/index.ts",
+        "src/react/index.tsx"
+      ],
       "props": [
         {
           "name": "children",
