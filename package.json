@@ -1,7 +1,7 @@
 {
   "name": "@ankhorage/permissions",
   "type": "module",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Cross-platform permission registry and runtime helpers for TypeScript apps, with unified request/check APIs for camera, media, location, notifications, microphone, etc. and web/native capabilities.",
   "homepage": "https://github.com/ankhorage/permissions#readme",
   "bugs": {
