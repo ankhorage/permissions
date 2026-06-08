@@ -5,6 +5,9 @@ export default defineParadoxConfig({
 
   docs: {
     title: 'PERMISSIONS',
+    usage: {
+      entrypoints: ['examples/basic/App.tsx'],
+    },
   },
 
   package: {
