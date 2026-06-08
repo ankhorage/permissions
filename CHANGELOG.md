@@ -1,5 +1,11 @@
 # @ankhorage/permissions
 
+## 0.1.1
+
+### Patch Changes
+
+- a45a271: Release Trigger (release.yml Workflow)
+
 ## 0.1.0
 
 ### Minor Changes
