@@ -275,7 +275,7 @@ Broad environment categories where a permission can be meaningful.
 
 Kind: `type`
 Module: `src/react/index.tsx`
-Source: `src/react/index.tsx:46:1`
+Source: `src/react/index.tsx:47:1`
 
 Result returned by `usePermission`.
 
@@ -330,7 +330,7 @@ Public package metadata used by generated documentation and tooling.
 
 Kind: `function`
 Module: `src/react/index.tsx`
-Source: `src/react/index.tsx:66:1`
+Source: `src/react/index.tsx:67:1`
 
 Provides a permission manager to React hooks.
 
@@ -355,7 +355,7 @@ import browser, Expo, or React Native permission APIs.
 
 Kind: `type`
 Module: `src/react/index.tsx`
-Source: `src/react/index.tsx:29:1`
+Source: `src/react/index.tsx:30:1`
 
 Props accepted by `PermissionsProvider`.
 
@@ -401,7 +401,7 @@ but user denial should be represented as a permission state.
 
 Kind: `function`
 Module: `src/react/index.tsx`
-Source: `src/react/index.tsx:116:1`
+Source: `src/react/index.tsx:117:1`
 
 Tracks a single permission and exposes explicit refresh/request actions.
 
@@ -429,7 +429,7 @@ return (
 
 Kind: `type`
 Module: `src/react/index.tsx`
-Source: `src/react/index.tsx:38:1`
+Source: `src/react/index.tsx:39:1`
 
 Options for `usePermission`.
 
@@ -444,7 +444,7 @@ Options for `usePermission`.
 
 Kind: `function`
 Module: `src/react/index.tsx`
-Source: `src/react/index.tsx:89:1`
+Source: `src/react/index.tsx:90:1`
 
 Reads the current permission manager from context.
 

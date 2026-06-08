@@ -47,35 +47,35 @@
   ],
   "exports": {
     ".": {
-      "react-native": "./src/index.ts",
-      "browser": "./src/index.ts",
+      "react-native": "./dist/index.js",
+      "browser": "./dist/index.js",
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "default": "./dist/index.js"
     },
     "./react": {
-      "react-native": "./src/react/index.tsx",
-      "browser": "./src/react/index.tsx",
+      "react-native": "./dist/react/index.js",
+      "browser": "./dist/react/index.js",
       "types": "./dist/react/index.d.ts",
       "import": "./dist/react/index.js",
       "default": "./dist/react/index.js"
     },
     "./testing": {
-      "react-native": "./src/testing/index.ts",
-      "browser": "./src/testing/index.ts",
+      "react-native": "./dist/testing/index.js",
+      "browser": "./dist/testing/index.js",
       "types": "./dist/testing/index.d.ts",
       "import": "./dist/testing/index.js",
       "default": "./dist/testing/index.js"
     },
     "./web": {
-      "browser": "./src/web/index.ts",
+      "browser": "./dist/web/index.js",
       "types": "./dist/web/index.d.ts",
       "import": "./dist/web/index.js",
       "default": "./dist/web/index.js"
     },
     "./metadata": {
-      "react-native": "./src/metadata/index.ts",
-      "browser": "./src/metadata/index.ts",
+      "react-native": "./dist/metadata/index.js",
+      "browser": "./dist/metadata/index.js",
       "types": "./dist/metadata/index.d.ts",
       "import": "./dist/metadata/index.js",
       "default": "./dist/metadata/index.js"

@@ -2,7 +2,7 @@
 
 ## PermissionsProvider
 
-Source: `src/react/index.tsx:66:1`
+Source: `src/react/index.tsx:67:1`
 
 Provides a permission manager to React hooks.
 

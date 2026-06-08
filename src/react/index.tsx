@@ -17,6 +17,7 @@ import {
 import type { Permission } from '../registry/permissions';
 import {
   createPermissionState,
+  normalizePermissionState,
   type PermissionState,
   type PermissionStatus,
 } from '../state/permissionState';
@@ -120,7 +121,9 @@ export function usePermission(
   const manager = usePermissions();
   const [state, setState] = useState<PermissionState>(
     () =>
-      options.initialState ??
+      (options.initialState === undefined
+        ? undefined
+        : normalizePermissionState(permission, options.initialState)) ??
       createPermissionState({
         permission,
         status: 'unknown',

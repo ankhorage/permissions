@@ -792,7 +792,7 @@
       "modulePath": "src/react/index.tsx",
       "sourceLocation": {
         "filePath": "src/react/index.tsx",
-        "line": 46,
+        "line": 47,
         "column": 1
       },
       "exportPaths": ["src/index.ts", "src/react/index.tsx"],
@@ -957,7 +957,7 @@
       "modulePath": "src/react/index.tsx",
       "sourceLocation": {
         "filePath": "src/react/index.tsx",
-        "line": 66,
+        "line": 67,
         "column": 1
       },
       "exportPaths": ["src/index.ts", "src/react/index.tsx"],
@@ -989,7 +989,7 @@
       "modulePath": "src/react/index.tsx",
       "sourceLocation": {
         "filePath": "src/react/index.tsx",
-        "line": 29,
+        "line": 30,
         "column": 1
       },
       "exportPaths": ["src/index.ts", "src/react/index.tsx"],
@@ -1108,7 +1108,7 @@
       "modulePath": "src/react/index.tsx",
       "sourceLocation": {
         "filePath": "src/react/index.tsx",
-        "line": 116,
+        "line": 117,
         "column": 1
       },
       "exportPaths": ["src/index.ts", "src/react/index.tsx"],
@@ -1146,7 +1146,7 @@
       "modulePath": "src/react/index.tsx",
       "sourceLocation": {
         "filePath": "src/react/index.tsx",
-        "line": 38,
+        "line": 39,
         "column": 1
       },
       "exportPaths": ["src/index.ts", "src/react/index.tsx"],
@@ -1179,7 +1179,7 @@
       "modulePath": "src/react/index.tsx",
       "sourceLocation": {
         "filePath": "src/react/index.tsx",
-        "line": 89,
+        "line": 90,
         "column": 1
       },
       "exportPaths": ["src/index.ts", "src/react/index.tsx"],
@@ -1231,7 +1231,7 @@
       "modulePath": "src/react/index.tsx",
       "sourceLocation": {
         "filePath": "src/react/index.tsx",
-        "line": 66,
+        "line": 67,
         "column": 1
       },
       "exportPaths": ["src/index.ts", "src/react/index.tsx"],
@@ -1272,7 +1272,7 @@
       "description": "Provides a permission manager to React hooks.\n\nReact helpers are framework-neutral. They depend on React only and do not\nimport browser, Expo, or React Native permission APIs.",
       "sourceLocation": {
         "filePath": "src/react/index.tsx",
-        "line": 66,
+        "line": 67,
         "column": 1
       }
     },
@@ -1281,7 +1281,7 @@
       "description": "Reads the current permission manager from context.",
       "sourceLocation": {
         "filePath": "src/react/index.tsx",
-        "line": 89,
+        "line": 90,
         "column": 1
       }
     },
@@ -1290,7 +1290,7 @@
       "description": "Tracks a single permission and exposes explicit refresh/request actions.\n\n```tsx\nconst camera = usePermission(Permission.Camera, { refreshOnMount: true });\n\nreturn (\n  <Button\n    disabled={camera.granted}\n    onPress={() => {\n      void camera.request();\n    }}\n  />\n);\n```",
       "sourceLocation": {
         "filePath": "src/react/index.tsx",
-        "line": 116,
+        "line": 117,
         "column": 1
       }
     },
@@ -1416,7 +1416,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/web/index.ts",
-        "line": 156,
+        "line": 163,
         "column": 1
       }
     },
@@ -1425,7 +1425,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/web/index.ts",
-        "line": 175,
+        "line": 182,
         "column": 1
       }
     },
@@ -1434,7 +1434,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/web/index.ts",
-        "line": 193,
+        "line": 200,
         "column": 1
       }
     },
@@ -1443,7 +1443,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/web/index.ts",
-        "line": 214,
+        "line": 221,
         "column": 1
       }
     },
@@ -1452,7 +1452,16 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/web/index.ts",
-        "line": 258,
+        "line": 265,
+        "column": 1
+      }
+    },
+    {
+      "name": "stateFromMediaError",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/web/index.ts",
+        "line": 297,
         "column": 1
       }
     },
@@ -1461,7 +1470,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/web/index.ts",
-        "line": 295,
+        "line": 329,
         "column": 1
       }
     },
@@ -1470,7 +1479,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/web/index.ts",
-        "line": 322,
+        "line": 356,
         "column": 1
       }
     },
@@ -1479,7 +1488,25 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/web/index.ts",
-        "line": 335,
+        "line": 369,
+        "column": 1
+      }
+    },
+    {
+      "name": "formatErrorName",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/web/index.ts",
+        "line": 378,
+        "column": 1
+      }
+    },
+    {
+      "name": "getErrorName",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/web/index.ts",
+        "line": 384,
         "column": 1
       }
     }
@@ -1782,6 +1809,12 @@
       },
       {
         "fromSymbol": "src/react/index.tsx",
+        "toSymbol": "normalizePermissionState",
+        "callExpression": "normalizePermissionState",
+        "sourcePath": "src/react/index.tsx"
+      },
+      {
+        "fromSymbol": "src/react/index.tsx",
         "toSymbol": "createPermissionState",
         "callExpression": "createPermissionState",
         "sourcePath": "src/react/index.tsx"
@@ -2033,6 +2066,12 @@
         "sourcePath": "src/web/index.ts"
       },
       {
+        "fromSymbol": "requestNotifications",
+        "toSymbol": "formatErrorName",
+        "callExpression": "formatErrorName",
+        "sourcePath": "src/web/index.ts"
+      },
+      {
         "fromSymbol": "getPermissionApiStatus",
         "toSymbol": "unavailable",
         "callExpression": "unavailable",
@@ -2141,6 +2180,24 @@
         "sourcePath": "src/web/index.ts"
       },
       {
+        "fromSymbol": "requestMedia",
+        "toSymbol": "stateFromMediaError",
+        "callExpression": "stateFromMediaError",
+        "sourcePath": "src/web/index.ts"
+      },
+      {
+        "fromSymbol": "stateFromMediaError",
+        "toSymbol": "getErrorName",
+        "callExpression": "getErrorName",
+        "sourcePath": "src/web/index.ts"
+      },
+      {
+        "fromSymbol": "stateFromMediaError",
+        "toSymbol": "createPermissionState",
+        "callExpression": "createPermissionState",
+        "sourcePath": "src/web/index.ts"
+      },
+      {
         "fromSymbol": "stateFromNotificationPermission",
         "toSymbol": "createPermissionState",
         "callExpression": "createPermissionState",
@@ -2156,6 +2213,12 @@
         "fromSymbol": "unavailable",
         "toSymbol": "createPermissionState",
         "callExpression": "createPermissionState",
+        "sourcePath": "src/web/index.ts"
+      },
+      {
+        "fromSymbol": "formatErrorName",
+        "toSymbol": "getErrorName",
+        "callExpression": "getErrorName",
         "sourcePath": "src/web/index.ts"
       }
     ],

@@ -592,7 +592,7 @@
     "modulePath": "src/react/index.tsx",
     "sourceLocation": {
       "filePath": "src/react/index.tsx",
-      "line": 46,
+      "line": 47,
       "column": 1
     },
     "exportPaths": ["src/index.ts", "src/react/index.tsx"],
@@ -757,7 +757,7 @@
     "modulePath": "src/react/index.tsx",
     "sourceLocation": {
       "filePath": "src/react/index.tsx",
-      "line": 66,
+      "line": 67,
       "column": 1
     },
     "exportPaths": ["src/index.ts", "src/react/index.tsx"],
@@ -789,7 +789,7 @@
     "modulePath": "src/react/index.tsx",
     "sourceLocation": {
       "filePath": "src/react/index.tsx",
-      "line": 29,
+      "line": 30,
       "column": 1
     },
     "exportPaths": ["src/index.ts", "src/react/index.tsx"],
@@ -908,7 +908,7 @@
     "modulePath": "src/react/index.tsx",
     "sourceLocation": {
       "filePath": "src/react/index.tsx",
-      "line": 116,
+      "line": 117,
       "column": 1
     },
     "exportPaths": ["src/index.ts", "src/react/index.tsx"],
@@ -946,7 +946,7 @@
     "modulePath": "src/react/index.tsx",
     "sourceLocation": {
       "filePath": "src/react/index.tsx",
-      "line": 38,
+      "line": 39,
       "column": 1
     },
     "exportPaths": ["src/index.ts", "src/react/index.tsx"],
@@ -979,7 +979,7 @@
     "modulePath": "src/react/index.tsx",
     "sourceLocation": {
       "filePath": "src/react/index.tsx",
-      "line": 89,
+      "line": 90,
       "column": 1
     },
     "exportPaths": ["src/index.ts", "src/react/index.tsx"],

@@ -51,6 +51,27 @@ describe('createWebPermissionClient', () => {
     });
   });
 
+  test('returns unavailable when notification request throws', async () => {
+    const client = createWebPermissionClient({
+      global: {
+        Notification: {
+          permission: 'default',
+          requestPermission: () => {
+            throw Object.assign(new Error('blocked'), { name: 'SecurityError' });
+          },
+        },
+      },
+    });
+
+    const state = await client.request(Permission.Notifications);
+
+    expect(state).toMatchObject({
+      status: 'unavailable',
+      granted: false,
+      reason: 'Notification permission request failed: SecurityError.',
+    });
+  });
+
   test('uses Permissions API for location status when available', async () => {
     const client = createWebPermissionClient({
       global: {
@@ -85,6 +106,32 @@ describe('createWebPermissionClient', () => {
     });
   });
 
+  test('requests geolocation without a 1ms timeout', async () => {
+    let requestedOptions:
+      | {
+          readonly maximumAge?: number;
+          readonly timeout?: number;
+        }
+      | undefined;
+    const client = createWebPermissionClient({
+      global: {
+        navigator: {
+          geolocation: {
+            getCurrentPosition: (success, _error, options) => {
+              requestedOptions = options;
+              success();
+            },
+          },
+        },
+      },
+    });
+
+    const state = await client.request(Permission.LocationForeground);
+
+    expect(state.status).toBe('granted');
+    expect(requestedOptions).toEqual({ maximumAge: 0 });
+  });
+
   test('requests media with getUserMedia and stops tracks', async () => {
     let stopped = false;
     const global: WebPermissionClientOptions['global'] = {
@@ -112,5 +159,47 @@ describe('createWebPermissionClient', () => {
       granted: true,
     });
     expect(stopped).toBe(true);
+  });
+
+  test('maps missing media devices to unavailable', async () => {
+    const client = createWebPermissionClient({
+      global: {
+        navigator: {
+          mediaDevices: {
+            getUserMedia: () =>
+              Promise.reject(Object.assign(new Error('missing'), { name: 'NotFoundError' })),
+          },
+        },
+      },
+    });
+
+    const state = await client.request(Permission.Camera);
+
+    expect(state).toMatchObject({
+      status: 'unavailable',
+      granted: false,
+      reason: 'Media permission request failed: NotFoundError.',
+    });
+  });
+
+  test('maps user media denial to denied', async () => {
+    const client = createWebPermissionClient({
+      global: {
+        navigator: {
+          mediaDevices: {
+            getUserMedia: () =>
+              Promise.reject(Object.assign(new Error('denied'), { name: 'NotAllowedError' })),
+          },
+        },
+      },
+    });
+
+    const state = await client.request(Permission.Camera);
+
+    expect(state).toMatchObject({
+      status: 'denied',
+      granted: false,
+      reason: 'Media permission request was denied: NotAllowedError.',
+    });
   });
 });

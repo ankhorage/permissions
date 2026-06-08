@@ -148,9 +148,16 @@ async function requestNotifications(
     return unavailable(permission, 'Notification API is unavailable.');
   }
 
-  const result = await global.Notification.requestPermission();
+  try {
+    const result = await global.Notification.requestPermission();
 
-  return stateFromNotificationPermission(permission, result);
+    return stateFromNotificationPermission(permission, result);
+  } catch (error) {
+    return unavailable(
+      permission,
+      `Notification permission request failed${formatErrorName(error)}.`,
+    );
+  }
 }
 
 async function getPermissionApiStatus(
@@ -250,7 +257,7 @@ async function requestGeolocation(
           }),
         );
       },
-      { maximumAge: 0, timeout: 1 },
+      { maximumAge: 0 },
     );
   });
 }
@@ -282,14 +289,41 @@ async function requestMedia(
       canAskAgain: true,
       requestedAt: new Date(),
     });
-  } catch {
+  } catch (error) {
+    return stateFromMediaError(permission, error);
+  }
+}
+
+function stateFromMediaError(permission: Permission, error: unknown): PermissionState {
+  const errorName = getErrorName(error);
+  const unavailableErrorNames = new Set([
+    'AbortError',
+    'NotFoundError',
+    'NotReadableError',
+    'OverconstrainedError',
+    'SecurityError',
+  ]);
+
+  if (errorName !== undefined && unavailableErrorNames.has(errorName)) {
     return createPermissionState({
       permission,
-      status: 'denied',
+      status: 'unavailable',
       canAskAgain: false,
       requestedAt: new Date(),
+      reason: `Media permission request failed: ${errorName}.`,
     });
   }
+
+  return createPermissionState({
+    permission,
+    status: 'denied',
+    canAskAgain: false,
+    requestedAt: new Date(),
+    reason:
+      errorName === undefined
+        ? 'Media permission request was denied.'
+        : `Media permission request was denied: ${errorName}.`,
+  });
 }
 
 function stateFromNotificationPermission(
@@ -339,4 +373,18 @@ function unavailable(permission: Permission, reason: string): PermissionState {
     canAskAgain: false,
     reason,
   });
+}
+
+function formatErrorName(error: unknown): string {
+  const errorName = getErrorName(error);
+
+  return errorName === undefined ? '' : `: ${errorName}`;
+}
+
+function getErrorName(error: unknown): string | undefined {
+  if (typeof error !== 'object' || error === null || !('name' in error)) {
+    return undefined;
+  }
+
+  return typeof error.name === 'string' && error.name.length > 0 ? error.name : undefined;
 }
