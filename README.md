@@ -5,7 +5,7 @@
 
 ![license: MIT](././paradox/badges/license.svg) ![npm: v0.0.0](././paradox/badges/npm.svg) ![runtime: bun](././paradox/badges/runtime.svg) ![typescript: strict](././paradox/badges/typescript.svg) ![eslint: checked](././paradox/badges/eslint.svg) ![prettier: checked](././paradox/badges/prettier.svg) ![build: checked](././paradox/badges/build.svg) ![tests: checked](././paradox/badges/tests.svg) ![docs: paradox](././paradox/badges/docs.svg)
 
-Cross-platform permission registry and runtime helpers for TypeScript apps, with unified request/check APIs for camera, media, location, notifications, microphone, and web/native capabilities.
+Cross-platform permission registry and runtime helpers for TypeScript apps.
 
 ## Generated documentation
 
@@ -15,3 +15,129 @@ Cross-platform permission registry and runtime helpers for TypeScript apps, with
 - [Architecture overview](././paradox/diagrams/architecture-overview.mmd)
 - [Module relationships](././paradox/diagrams/module-relationships.mmd)
 - [Export graph](././paradox/diagrams/export-graph.mmd)
+- [assertKnownPermission sequence](././paradox/diagrams/sequences/assert-known-permission.mmd)
+- [createFakePermissionClient sequence](././paradox/diagrams/sequences/create-fake-permission-client.mmd)
+- [createWebPermissionClient sequence](././paradox/diagrams/sequences/create-web-permission-client.mmd)
+- [getPermissionDefinition sequence](././paradox/diagrams/sequences/get-permission-definition.mmd)
+- [normalizePermissionState sequence](././paradox/diagrams/sequences/normalize-permission-state.mmd)
+- [PermissionsProvider sequence](././paradox/diagrams/sequences/permissions-provider.mmd)
+- [usePermission sequence](././paradox/diagrams/sequences/use-permission.mmd)
+- [usePermissions sequence](././paradox/diagrams/sequences/use-permissions.mmd)
+
+## Public API
+
+### Utilities
+
+<details>
+<summary>createFakePermissionClient</summary>
+
+```ts
+createFakePermissionClient(options?: FakePermissionClientOptions) => FakePermissionClient
+```
+
+Creates a deterministic in-memory client for tests and examples.
+
+Fake clients make permission flows testable without native devices, browser
+prompts, simulators, or network access.
+
+```ts
+const client = createFakePermissionClient({
+  initialStates: [{ permission: Permission.Camera, status: 'denied' }],
+});
+await client.request(Permission.Camera);
+```
+
+Module: `src/testing/index.ts`
+Source: `src/testing/index.ts:63:1`
+Related symbols: `FakePermissionClient`, `FakePermissionClientOptions`
+
+</details>
+
+<details>
+<summary>createPermissionManager</summary>
+
+```ts
+createPermissionManager(client: PermissionClient) => PermissionManager
+```
+
+Wraps a client with registry validation and normalized results.
+
+Runtime permissions and build-time native configuration are separate concerns.
+This manager checks or requests permissions through a client, but it does not
+generate iOS usage descriptions, Android manifest entries, or Expo config
+plugins.
+
+```ts
+const permissions = createPermissionManager(client);
+const camera = await permissions.getStatus(Permission.Camera);
+const requested = camera.granted ? camera : await permissions.request(Permission.Camera);
+```
+
+Module: `src/manager/createPermissionManager.ts`
+Source: `src/manager/createPermissionManager.ts:32:1`
+Related symbols: `PermissionClient`, `PermissionManager`
+
+</details>
+
+<details>
+<summary>createWebPermissionClient</summary>
+
+```ts
+createWebPermissionClient(options?: WebPermissionClientOptions) => PermissionClient
+```
+
+Creates a browser permission client using guarded structural globals.
+
+Unsupported web APIs resolve to `status: 'unavailable'`. The adapter does not
+import DOM types and does not assume it is running in a browser.
+
+Module: `src/web/index.ts`
+Source: `src/web/index.ts:78:1`
+Related symbols: `PermissionClient`, `WebPermissionClientOptions`
+
+</details>
+
+<details>
+<summary>Permission</summary>
+
+Common runtime permissions supported by the registry.
+
+The registry is intentionally platform-neutral. Adapters translate each
+permission into whatever a browser, React Native app, Expo app, or test
+environment can actually check or request.
+
+Module: `src/registry/permissions.ts`
+Source: `src/registry/permissions.ts:9:1`
+
+</details>
+
+<details>
+<summary>PermissionsProvider</summary>
+
+```ts
+PermissionsProvider({
+  children,
+  client,
+  manager,
+}: PermissionsProviderProps) => ReactNode
+```
+
+Provides a permission manager to React hooks.
+
+React helpers are framework-neutral. They depend on React only and do not
+import browser, Expo, or React Native permission APIs.
+
+Related types: `PermissionsProviderProps`
+
+<details>
+<summary>Props</summary>
+
+| Prop     | Type                             | Required | Default | Description |
+| -------- | -------------------------------- | -------- | ------- | ----------- |
+| children | `ReactNode \| undefined`         | no       | —       |             |
+| client   | `PermissionClient \| undefined`  | no       | —       |             |
+| manager  | `PermissionManager \| undefined` | no       | —       |             |
+
+</details>
+
+</details>

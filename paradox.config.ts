@@ -9,7 +9,13 @@ export default defineParadoxConfig({
 
   package: {
     root: '.',
-    entrypoints: ['src/index.ts'],
+    entrypoints: [
+      'src/index.ts',
+      'src/react/index.tsx',
+      'src/testing/index.ts',
+      'src/web/index.ts',
+      'src/metadata/index.ts',
+    ],
   },
 
   output: {

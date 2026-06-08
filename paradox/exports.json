@@ -1,1 +1,1024 @@
-[]
+[
+  {
+    "name": "assertKnownPermission",
+    "description": "Throws for programmer errors where an invalid permission reaches runtime.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "function",
+    "modulePath": "src/registry/permissions.ts",
+    "sourceLocation": {
+      "filePath": "src/registry/permissions.ts",
+      "line": 115,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["Permission"],
+    "signatures": [
+      {
+        "label": "(permission: string) => Permission",
+        "parameters": [
+          {
+            "name": "permission",
+            "type": "string",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "Permission",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "createFakePermissionClient",
+    "description": "Creates a deterministic in-memory client for tests and examples.\n\nFake clients make permission flows testable without native devices, browser\nprompts, simulators, or network access.\n\n```ts\nconst client = createFakePermissionClient({\n  initialStates: [{ permission: Permission.Camera, status: 'denied' }],\n});\nawait client.request(Permission.Camera);\n```",
+    "isReadme": true,
+    "examples": [],
+    "kind": "function",
+    "modulePath": "src/testing/index.ts",
+    "sourceLocation": {
+      "filePath": "src/testing/index.ts",
+      "line": 63,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts", "src/testing/index.ts"],
+    "relatedSymbols": ["FakePermissionClient", "FakePermissionClientOptions"],
+    "signatures": [
+      {
+        "label": "(options?: FakePermissionClientOptions) => FakePermissionClient",
+        "parameters": [
+          {
+            "name": "options",
+            "type": "FakePermissionClientOptions",
+            "required": false,
+            "description": null
+          }
+        ],
+        "returnType": "FakePermissionClient",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "createPermissionManager",
+    "description": "Wraps a client with registry validation and normalized results.\n\nRuntime permissions and build-time native configuration are separate concerns.\nThis manager checks or requests permissions through a client, but it does not\ngenerate iOS usage descriptions, Android manifest entries, or Expo config\nplugins.\n\n```ts\nconst permissions = createPermissionManager(client);\nconst camera = await permissions.getStatus(Permission.Camera);\nconst requested = camera.granted\n  ? camera\n  : await permissions.request(Permission.Camera);\n```",
+    "isReadme": true,
+    "examples": [],
+    "kind": "function",
+    "modulePath": "src/manager/createPermissionManager.ts",
+    "sourceLocation": {
+      "filePath": "src/manager/createPermissionManager.ts",
+      "line": 32,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["PermissionClient", "PermissionManager"],
+    "signatures": [
+      {
+        "label": "(client: PermissionClient) => PermissionManager",
+        "parameters": [
+          {
+            "name": "client",
+            "type": "PermissionClient",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "PermissionManager",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "createPermissionState",
+    "description": "Creates a normalized state and derives the `granted` convenience flag.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "function",
+    "modulePath": "src/state/permissionState.ts",
+    "sourceLocation": {
+      "filePath": "src/state/permissionState.ts",
+      "line": 61,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["PermissionState"],
+    "signatures": [
+      {
+        "label": "(input: CreatePermissionStateInput) => PermissionState",
+        "parameters": [
+          {
+            "name": "input",
+            "type": "CreatePermissionStateInput",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "PermissionState",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "createWebPermissionClient",
+    "description": "Creates a browser permission client using guarded structural globals.\n\nUnsupported web APIs resolve to `status: 'unavailable'`. The adapter does not\nimport DOM types and does not assume it is running in a browser.",
+    "isReadme": true,
+    "examples": [],
+    "kind": "function",
+    "modulePath": "src/web/index.ts",
+    "sourceLocation": {
+      "filePath": "src/web/index.ts",
+      "line": 78,
+      "column": 1
+    },
+    "exportPaths": ["src/web/index.ts"],
+    "relatedSymbols": ["PermissionClient", "WebPermissionClientOptions"],
+    "signatures": [
+      {
+        "label": "(options?: WebPermissionClientOptions) => PermissionClient",
+        "parameters": [
+          {
+            "name": "options",
+            "type": "WebPermissionClientOptions",
+            "required": false,
+            "description": null
+          }
+        ],
+        "returnType": "PermissionClient",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "FakePermissionClient",
+    "description": "Test client that stores permission states in memory.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/testing/index.ts",
+    "sourceLocation": {
+      "filePath": "src/testing/index.ts",
+      "line": 35,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts", "src/testing/index.ts"],
+    "relatedSymbols": [
+      "FakePermissionStateSeed",
+      "Permission",
+      "PermissionState",
+      "PermissionStatus"
+    ],
+    "signatures": [],
+    "members": [
+      {
+        "name": "getSnapshot",
+        "kind": "method",
+        "type": "() => readonly PermissionState[]",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "getStatus",
+        "kind": "method",
+        "type": "(permission: Permission) => Promise<PermissionState>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "openSettings",
+        "kind": "method",
+        "type": "(() => Promise<void>) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "request",
+        "kind": "method",
+        "type": "(permission: Permission) => Promise<PermissionState>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "setState",
+        "kind": "method",
+        "type": "(state: FakePermissionStateSeed) => void",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "setStatus",
+        "kind": "method",
+        "type": "(permission: Permission, status: PermissionStatus, options?: { readonly canAskAgain?: boolean; readonly reason?: string; }) => void",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "FakePermissionClientOptions",
+    "description": "Options for deterministic fake clients.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/testing/index.ts",
+    "sourceLocation": {
+      "filePath": "src/testing/index.ts",
+      "line": 25,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts", "src/testing/index.ts"],
+    "relatedSymbols": ["FakePermissionStateSeed"],
+    "signatures": [],
+    "members": [
+      {
+        "name": "initialStates",
+        "kind": "property",
+        "type": "readonly FakePermissionStateSeed[] | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "now",
+        "kind": "property",
+        "type": "(() => Date) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "openSettings",
+        "kind": "property",
+        "type": "(() => Promise<void>) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "requestStates",
+        "kind": "property",
+        "type": "readonly FakePermissionStateSeed[] | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "FakePermissionStateSeed",
+    "description": "Seed format accepted by the fake client.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/testing/index.ts",
+    "sourceLocation": {
+      "filePath": "src/testing/index.ts",
+      "line": 13,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts", "src/testing/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "getPermissionDefinition",
+    "description": "Reads registry metadata for a known permission.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "function",
+    "modulePath": "src/registry/permissions.ts",
+    "sourceLocation": {
+      "filePath": "src/registry/permissions.ts",
+      "line": 126,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["Permission", "PermissionDefinition"],
+    "signatures": [
+      {
+        "label": "(permission: Permission) => PermissionDefinition",
+        "parameters": [
+          {
+            "name": "permission",
+            "type": "Permission",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "PermissionDefinition",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "isPermission",
+    "description": "Returns true when a string is a registered permission identifier.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "function",
+    "modulePath": "src/registry/permissions.ts",
+    "sourceLocation": {
+      "filePath": "src/registry/permissions.ts",
+      "line": 108,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [
+      {
+        "label": "(value: string) => boolean",
+        "parameters": [
+          {
+            "name": "value",
+            "type": "string",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "boolean",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "isPermissionStatus",
+    "description": "Returns true when a string is one of the normalized statuses.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "function",
+    "modulePath": "src/state/permissionState.ts",
+    "sourceLocation": {
+      "filePath": "src/state/permissionState.ts",
+      "line": 54,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [
+      {
+        "label": "(value: string) => boolean",
+        "parameters": [
+          {
+            "name": "value",
+            "type": "string",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "boolean",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "normalizePermissionState",
+    "description": "Normalizes an adapter result to the requested permission and status shape.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "function",
+    "modulePath": "src/state/permissionState.ts",
+    "sourceLocation": {
+      "filePath": "src/state/permissionState.ts",
+      "line": 75,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["Permission", "PermissionState"],
+    "signatures": [
+      {
+        "label": "(permission: Permission, state: PermissionState) => PermissionState",
+        "parameters": [
+          {
+            "name": "permission",
+            "type": "Permission",
+            "required": true,
+            "description": null
+          },
+          {
+            "name": "state",
+            "type": "PermissionState",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "PermissionState",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "Permission",
+    "description": "Common runtime permissions supported by the registry.\n\nThe registry is intentionally platform-neutral. Adapters translate each\npermission into whatever a browser, React Native app, Expo app, or test\nenvironment can actually check or request.",
+    "isReadme": true,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/registry/permissions.ts",
+    "sourceLocation": {
+      "filePath": "src/registry/permissions.ts",
+      "line": 9,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "PERMISSION_REGISTRY",
+    "description": "Metadata for known permissions.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "value",
+    "modulePath": "src/registry/permissions.ts",
+    "sourceLocation": {
+      "filePath": "src/registry/permissions.ts",
+      "line": 54,
+      "column": 14
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "PERMISSION_STATUSES",
+    "description": "Stable ordered list of normalized statuses.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "value",
+    "modulePath": "src/state/permissionState.ts",
+    "sourceLocation": {
+      "filePath": "src/state/permissionState.ts",
+      "line": 20,
+      "column": 14
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "PermissionClient",
+    "description": "Adapter-neutral interface for runtime permission checks and requests.\n\n```ts\nconst state = await client.getStatus(Permission.Camera);\nif (!state.granted) {\n  await client.request(Permission.Camera);\n}\n```",
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/client/types.ts",
+    "sourceLocation": {
+      "filePath": "src/client/types.ts",
+      "line": 15,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["Permission", "PermissionState"],
+    "signatures": [],
+    "members": [
+      {
+        "name": "getStatus",
+        "kind": "method",
+        "type": "(permission: Permission) => Promise<PermissionState>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "openSettings",
+        "kind": "method",
+        "type": "(() => Promise<void>) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "request",
+        "kind": "method",
+        "type": "(permission: Permission) => Promise<PermissionState>",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "PermissionDefinition",
+    "description": "Describes a known permission without coupling the registry to a platform SDK.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/registry/permissions.ts",
+    "sourceLocation": {
+      "filePath": "src/registry/permissions.ts",
+      "line": 28,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["Permission", "PermissionEnvironment"],
+    "signatures": [],
+    "members": [
+      {
+        "name": "description",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "environments",
+        "kind": "property",
+        "type": "readonly PermissionEnvironment[]",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "label",
+        "kind": "property",
+        "type": "string",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "permission",
+        "kind": "property",
+        "type": "Permission",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "PermissionEnvironment",
+    "description": "Broad environment categories where a permission can be meaningful.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/registry/permissions.ts",
+    "sourceLocation": {
+      "filePath": "src/registry/permissions.ts",
+      "line": 23,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "PermissionHookResult",
+    "description": "Result returned by `usePermission`.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/react/index.tsx",
+    "sourceLocation": {
+      "filePath": "src/react/index.tsx",
+      "line": 46,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts", "src/react/index.tsx"],
+    "relatedSymbols": ["Permission", "PermissionState", "PermissionStatus"],
+    "signatures": [],
+    "members": [
+      {
+        "name": "canAskAgain",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "granted",
+        "kind": "property",
+        "type": "boolean",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "openSettings",
+        "kind": "property",
+        "type": "(() => Promise<void>) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "permission",
+        "kind": "property",
+        "type": "Permission",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "reason",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "refresh",
+        "kind": "property",
+        "type": "() => Promise<PermissionState>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "request",
+        "kind": "property",
+        "type": "() => Promise<PermissionState>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "requestedAt",
+        "kind": "property",
+        "type": "Date | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "state",
+        "kind": "property",
+        "type": "PermissionState",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "status",
+        "kind": "property",
+        "type": "PermissionStatus",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "PermissionManager",
+    "description": "Public manager returned by `createPermissionManager`.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/manager/createPermissionManager.ts",
+    "sourceLocation": {
+      "filePath": "src/manager/createPermissionManager.ts",
+      "line": 8,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["Permission", "PermissionState"],
+    "signatures": [],
+    "members": [
+      {
+        "name": "getStatus",
+        "kind": "method",
+        "type": "(permission: Permission) => Promise<PermissionState>",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "openSettings",
+        "kind": "method",
+        "type": "(() => Promise<void>) | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "request",
+        "kind": "method",
+        "type": "(permission: Permission) => Promise<PermissionState>",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "PERMISSIONS",
+    "description": "Stable ordered list of known permissions.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "value",
+    "modulePath": "src/registry/permissions.ts",
+    "sourceLocation": {
+      "filePath": "src/registry/permissions.ts",
+      "line": 38,
+      "column": 14
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "permissionsPackageMetadata",
+    "description": "Public package metadata used by generated documentation and tooling.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "value",
+    "modulePath": "src/metadata/index.ts",
+    "sourceLocation": {
+      "filePath": "src/metadata/index.ts",
+      "line": 4,
+      "column": 14
+    },
+    "exportPaths": ["src/metadata/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "PermissionsProvider",
+    "description": "Provides a permission manager to React hooks.\n\nReact helpers are framework-neutral. They depend on React only and do not\nimport browser, Expo, or React Native permission APIs.",
+    "isReadme": true,
+    "examples": [],
+    "kind": "function",
+    "modulePath": "src/react/index.tsx",
+    "sourceLocation": {
+      "filePath": "src/react/index.tsx",
+      "line": 66,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts", "src/react/index.tsx"],
+    "relatedSymbols": ["PermissionsProviderProps"],
+    "signatures": [
+      {
+        "label": "({\n  children,\n  client,\n  manager,\n}: PermissionsProviderProps) => ReactNode",
+        "parameters": [
+          {
+            "name": "{\n  children,\n  client,\n  manager,\n}",
+            "type": "PermissionsProviderProps",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "ReactNode",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "PermissionsProviderProps",
+    "description": "Props accepted by `PermissionsProvider`.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/react/index.tsx",
+    "sourceLocation": {
+      "filePath": "src/react/index.tsx",
+      "line": 29,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts", "src/react/index.tsx"],
+    "relatedSymbols": ["PermissionClient", "PermissionManager"],
+    "signatures": [],
+    "members": [
+      {
+        "name": "children",
+        "kind": "property",
+        "type": "ReactNode",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "client",
+        "kind": "property",
+        "type": "PermissionClient | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "manager",
+        "kind": "property",
+        "type": "PermissionManager | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "PermissionState",
+    "description": "Normalized result returned by permission clients and managers.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/state/permissionState.ts",
+    "sourceLocation": {
+      "filePath": "src/state/permissionState.ts",
+      "line": 34,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": ["Permission", "PermissionStatus"],
+    "signatures": [],
+    "members": [
+      {
+        "name": "canAskAgain",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "granted",
+        "kind": "property",
+        "type": "boolean",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "permission",
+        "kind": "property",
+        "type": "Permission",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "reason",
+        "kind": "property",
+        "type": "string | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "requestedAt",
+        "kind": "property",
+        "type": "Date | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "status",
+        "kind": "property",
+        "type": "PermissionStatus",
+        "required": true,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "PermissionStatus",
+    "description": "Normalized permission statuses shared by adapters and UI code.\n\nDenial is normal control flow. Unexpected adapter failures may still throw,\nbut user denial should be represented as a permission state.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/state/permissionState.ts",
+    "sourceLocation": {
+      "filePath": "src/state/permissionState.ts",
+      "line": 9,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "usePermission",
+    "description": "Tracks a single permission and exposes explicit refresh/request actions.\n\n```tsx\nconst camera = usePermission(Permission.Camera, { refreshOnMount: true });\n\nreturn (\n  <Button\n    disabled={camera.granted}\n    onPress={() => {\n      void camera.request();\n    }}\n  />\n);\n```",
+    "isReadme": false,
+    "examples": [],
+    "kind": "function",
+    "modulePath": "src/react/index.tsx",
+    "sourceLocation": {
+      "filePath": "src/react/index.tsx",
+      "line": 116,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts", "src/react/index.tsx"],
+    "relatedSymbols": ["Permission", "PermissionHookResult", "UsePermissionOptions"],
+    "signatures": [
+      {
+        "label": "(permission: Permission, options?: UsePermissionOptions) => PermissionHookResult",
+        "parameters": [
+          {
+            "name": "options",
+            "type": "UsePermissionOptions",
+            "required": false,
+            "description": null
+          },
+          {
+            "name": "permission",
+            "type": "Permission",
+            "required": true,
+            "description": null
+          }
+        ],
+        "returnType": "PermissionHookResult",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "UsePermissionOptions",
+    "description": "Options for `usePermission`.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/react/index.tsx",
+    "sourceLocation": {
+      "filePath": "src/react/index.tsx",
+      "line": 38,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts", "src/react/index.tsx"],
+    "relatedSymbols": ["PermissionState"],
+    "signatures": [],
+    "members": [
+      {
+        "name": "initialState",
+        "kind": "property",
+        "type": "PermissionState | undefined",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "refreshOnMount",
+        "kind": "property",
+        "type": "boolean | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  },
+  {
+    "name": "usePermissions",
+    "description": "Reads the current permission manager from context.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "function",
+    "modulePath": "src/react/index.tsx",
+    "sourceLocation": {
+      "filePath": "src/react/index.tsx",
+      "line": 89,
+      "column": 1
+    },
+    "exportPaths": ["src/index.ts", "src/react/index.tsx"],
+    "relatedSymbols": ["PermissionManager"],
+    "signatures": [
+      {
+        "label": "() => PermissionManager",
+        "parameters": [],
+        "returnType": "PermissionManager",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "WebPermissionClientOptions",
+    "description": "Options for the browser permission adapter.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/web/index.ts",
+    "sourceLocation": {
+      "filePath": "src/web/index.ts",
+      "line": 67,
+      "column": 1
+    },
+    "exportPaths": ["src/web/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [
+      {
+        "name": "global",
+        "kind": "property",
+        "type": "WebGlobalLike | undefined",
+        "required": false,
+        "description": null
+      }
+    ],
+    "structuredRows": []
+  }
+]

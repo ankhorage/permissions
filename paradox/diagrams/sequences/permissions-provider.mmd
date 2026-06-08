@@ -1,0 +1,8 @@
+sequenceDiagram
+  participant participant_createElement as createElement
+  participant participant_PermissionsProvider as PermissionsProvider
+  participant participant_useMemo as useMemo
+  participant_PermissionsProvider->>participant_useMemo: useMemo()
+  participant_useMemo-->>participant_PermissionsProvider: return
+  participant_PermissionsProvider->>participant_createElement: createElement()
+  participant_createElement-->>participant_PermissionsProvider: return

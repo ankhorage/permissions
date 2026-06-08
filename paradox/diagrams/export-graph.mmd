@@ -1,2 +1,106 @@
 graph LR
+  module_src_client_types_ts["src/client/types.ts"]
   module_src_index_ts["src/index.ts"]
+  module_src_manager_createPermissionManager_ts["src/manager/createPermissionManager.ts"]
+  module_src_metadata_index_ts["src/metadata/index.ts"]
+  module_src_react_index_tsx["src/react/index.tsx"]
+  module_src_registry_permissions_ts["src/registry/permissions.ts"]
+  module_src_state_permissionState_ts["src/state/permissionState.ts"]
+  module_src_testing_index_ts["src/testing/index.ts"]
+  module_src_web_index_ts["src/web/index.ts"]
+  export_assertKnownPermission["assertKnownPermission"]
+  module_src_registry_permissions_ts --> export_assertKnownPermission
+  export_assertKnownPermission -.-> export_Permission
+  export_createFakePermissionClient["createFakePermissionClient"]
+  module_src_testing_index_ts --> export_createFakePermissionClient
+  export_createFakePermissionClient -.-> export_FakePermissionClient
+  export_createFakePermissionClient -.-> export_FakePermissionClientOptions
+  export_createPermissionManager["createPermissionManager"]
+  module_src_manager_createPermissionManager_ts --> export_createPermissionManager
+  export_createPermissionManager -.-> export_PermissionClient
+  export_createPermissionManager -.-> export_PermissionManager
+  export_createPermissionState["createPermissionState"]
+  module_src_state_permissionState_ts --> export_createPermissionState
+  export_createPermissionState -.-> export_PermissionState
+  export_createWebPermissionClient["createWebPermissionClient"]
+  module_src_web_index_ts --> export_createWebPermissionClient
+  export_createWebPermissionClient -.-> export_PermissionClient
+  export_createWebPermissionClient -.-> export_WebPermissionClientOptions
+  export_FakePermissionClient["FakePermissionClient"]
+  module_src_testing_index_ts --> export_FakePermissionClient
+  export_FakePermissionClient -.-> export_FakePermissionStateSeed
+  export_FakePermissionClient -.-> export_Permission
+  export_FakePermissionClient -.-> export_PermissionState
+  export_FakePermissionClient -.-> export_PermissionStatus
+  export_FakePermissionClientOptions["FakePermissionClientOptions"]
+  module_src_testing_index_ts --> export_FakePermissionClientOptions
+  export_FakePermissionClientOptions -.-> export_FakePermissionStateSeed
+  export_FakePermissionStateSeed["FakePermissionStateSeed"]
+  module_src_testing_index_ts --> export_FakePermissionStateSeed
+  export_getPermissionDefinition["getPermissionDefinition"]
+  module_src_registry_permissions_ts --> export_getPermissionDefinition
+  export_getPermissionDefinition -.-> export_Permission
+  export_getPermissionDefinition -.-> export_PermissionDefinition
+  export_isPermission["isPermission"]
+  module_src_registry_permissions_ts --> export_isPermission
+  export_isPermissionStatus["isPermissionStatus"]
+  module_src_state_permissionState_ts --> export_isPermissionStatus
+  export_normalizePermissionState["normalizePermissionState"]
+  module_src_state_permissionState_ts --> export_normalizePermissionState
+  export_normalizePermissionState -.-> export_Permission
+  export_normalizePermissionState -.-> export_PermissionState
+  export_Permission["Permission"]
+  module_src_registry_permissions_ts --> export_Permission
+  export_PERMISSION_REGISTRY["PERMISSION_REGISTRY"]
+  module_src_registry_permissions_ts --> export_PERMISSION_REGISTRY
+  export_PERMISSION_STATUSES["PERMISSION_STATUSES"]
+  module_src_state_permissionState_ts --> export_PERMISSION_STATUSES
+  export_PermissionClient["PermissionClient"]
+  module_src_client_types_ts --> export_PermissionClient
+  export_PermissionClient -.-> export_Permission
+  export_PermissionClient -.-> export_PermissionState
+  export_PermissionDefinition["PermissionDefinition"]
+  module_src_registry_permissions_ts --> export_PermissionDefinition
+  export_PermissionDefinition -.-> export_Permission
+  export_PermissionDefinition -.-> export_PermissionEnvironment
+  export_PermissionEnvironment["PermissionEnvironment"]
+  module_src_registry_permissions_ts --> export_PermissionEnvironment
+  export_PermissionHookResult["PermissionHookResult"]
+  module_src_react_index_tsx --> export_PermissionHookResult
+  export_PermissionHookResult -.-> export_Permission
+  export_PermissionHookResult -.-> export_PermissionState
+  export_PermissionHookResult -.-> export_PermissionStatus
+  export_PermissionManager["PermissionManager"]
+  module_src_manager_createPermissionManager_ts --> export_PermissionManager
+  export_PermissionManager -.-> export_Permission
+  export_PermissionManager -.-> export_PermissionState
+  export_PERMISSIONS["PERMISSIONS"]
+  module_src_registry_permissions_ts --> export_PERMISSIONS
+  export_permissionsPackageMetadata["permissionsPackageMetadata"]
+  module_src_metadata_index_ts --> export_permissionsPackageMetadata
+  export_PermissionsProvider["PermissionsProvider"]
+  module_src_react_index_tsx --> export_PermissionsProvider
+  export_PermissionsProvider -.-> export_PermissionsProviderProps
+  export_PermissionsProviderProps["PermissionsProviderProps"]
+  module_src_react_index_tsx --> export_PermissionsProviderProps
+  export_PermissionsProviderProps -.-> export_PermissionClient
+  export_PermissionsProviderProps -.-> export_PermissionManager
+  export_PermissionState["PermissionState"]
+  module_src_state_permissionState_ts --> export_PermissionState
+  export_PermissionState -.-> export_Permission
+  export_PermissionState -.-> export_PermissionStatus
+  export_PermissionStatus["PermissionStatus"]
+  module_src_state_permissionState_ts --> export_PermissionStatus
+  export_usePermission["usePermission"]
+  module_src_react_index_tsx --> export_usePermission
+  export_usePermission -.-> export_Permission
+  export_usePermission -.-> export_PermissionHookResult
+  export_usePermission -.-> export_UsePermissionOptions
+  export_UsePermissionOptions["UsePermissionOptions"]
+  module_src_react_index_tsx --> export_UsePermissionOptions
+  export_UsePermissionOptions -.-> export_PermissionState
+  export_usePermissions["usePermissions"]
+  module_src_react_index_tsx --> export_usePermissions
+  export_usePermissions -.-> export_PermissionManager
+  export_WebPermissionClientOptions["WebPermissionClientOptions"]
+  module_src_web_index_ts --> export_WebPermissionClientOptions

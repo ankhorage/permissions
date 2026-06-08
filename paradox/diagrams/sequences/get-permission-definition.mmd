@@ -1,0 +1,8 @@
+sequenceDiagram
+  participant participant_assertKnownPermission as assertKnownPermission
+  participant participant_getPermissionDefinition as getPermissionDefinition
+  participant participant_isPermission as isPermission
+  participant_getPermissionDefinition->>participant_assertKnownPermission: assertKnownPermission()
+  participant_assertKnownPermission->>participant_isPermission: isPermission()
+  participant_isPermission-->>participant_assertKnownPermission: return
+  participant_assertKnownPermission-->>participant_getPermissionDefinition: return

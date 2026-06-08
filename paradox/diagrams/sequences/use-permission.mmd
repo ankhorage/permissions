@@ -1,0 +1,17 @@
+sequenceDiagram
+  participant participant_useCallback as useCallback
+  participant participant_useContext as useContext
+  participant participant_useEffect as useEffect
+  participant participant_usePermission as usePermission
+  participant participant_usePermissions as usePermissions
+  participant participant_useState as useState
+  participant_usePermission->>participant_usePermissions: usePermissions()
+  participant_usePermissions->>participant_useContext: useContext()
+  participant_useContext-->>participant_usePermissions: return
+  participant_usePermissions-->>participant_usePermission: return
+  participant_usePermission->>participant_useState: useState()
+  participant_useState-->>participant_usePermission: return
+  participant_usePermission->>participant_useCallback: useCallback()
+  participant_useCallback-->>participant_usePermission: return
+  participant_usePermission->>participant_useEffect: useEffect()
+  participant_useEffect-->>participant_usePermission: return

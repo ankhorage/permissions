@@ -1,0 +1,16 @@
+sequenceDiagram
+  participant participant_assertKnownPermission as assertKnownPermission
+  participant participant_createFakePermissionClient as createFakePermissionClient
+  participant participant_createPermissionState as createPermissionState
+  participant participant_isPermission as isPermission
+  participant participant_normalizeSeed as normalizeSeed
+  participant_createFakePermissionClient->>participant_createPermissionState: createPermissionState()
+  participant_createPermissionState-->>participant_createFakePermissionClient: return
+  participant_createFakePermissionClient->>participant_normalizeSeed: normalizeSeed()
+  participant_normalizeSeed->>participant_createPermissionState: createPermissionState()
+  participant_createPermissionState-->>participant_normalizeSeed: return
+  participant_normalizeSeed->>participant_assertKnownPermission: assertKnownPermission()
+  participant_assertKnownPermission->>participant_isPermission: isPermission()
+  participant_isPermission-->>participant_assertKnownPermission: return
+  participant_assertKnownPermission-->>participant_normalizeSeed: return
+  participant_normalizeSeed-->>participant_createFakePermissionClient: return
