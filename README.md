@@ -5,6 +5,8 @@
 
 ![license: MIT](././paradox/badges/license.svg) ![npm: v0.0.0](././paradox/badges/npm.svg) ![runtime: bun](././paradox/badges/runtime.svg) ![typescript: strict](././paradox/badges/typescript.svg) ![eslint: checked](././paradox/badges/eslint.svg) ![prettier: checked](././paradox/badges/prettier.svg) ![build: checked](././paradox/badges/build.svg) ![tests: checked](././paradox/badges/tests.svg) ![docs: paradox](././paradox/badges/docs.svg)
 
+Cross-platform permission registry and runtime helpers for TypeScript apps, with unified request/check APIs for camera, media, location, notifications, microphone, and web/native capabilities.
+
 ## Generated documentation
 
 - [Interactive documentation app](././paradox/index.html)
