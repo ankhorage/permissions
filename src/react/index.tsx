@@ -100,7 +100,7 @@ export function usePermissions(): PermissionManager {
 /***
  * Tracks a single permission and exposes explicit refresh/request actions.
  *
- * @usage
+ * @example
  * ```tsx
  * const camera = usePermission(Permission.Camera, { refreshOnMount: true });
  *

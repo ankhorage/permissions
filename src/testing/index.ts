@@ -52,7 +52,7 @@ export interface FakePermissionClient extends PermissionClient {
  * Fake clients make permission flows testable without native devices, browser
  * prompts, simulators, or network access.
  *
- * @usage
+ * @example
  * ```ts
  * const client = createFakePermissionClient({
  *   initialStates: [{ permission: Permission.Camera, status: 'denied' }],
