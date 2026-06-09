@@ -2,7 +2,7 @@
   "name": "@ankhorage/permissions",
   "type": "module",
   "version": "0.2.0",
-  "description": "Cross-platform permission registry and runtime helpers for TypeScript apps, with unified request/check APIs for camera, media, location, notifications, microphone, etc. and web/native capabilities.",
+  "description": "Cross-platform permission registry and runtime helpers for Expo, React Native, and React Native Web apps, with unified request/check APIs for camera, media, location, notifications, microphone, and other web/native capabilities.",
   "homepage": "https://github.com/ankhorage/permissions#readme",
   "bugs": {
     "url": "https://github.com/ankhorage/permissions/issues"

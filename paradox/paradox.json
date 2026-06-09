@@ -1,7 +1,7 @@
 {
   "packageName": "PERMISSIONS",
   "packageId": "@ankhorage/permissions",
-  "description": "Cross-platform permission registry and runtime helpers for TypeScript apps, with unified request/check APIs for camera, media, location, notifications, microphone, etc. and web/native capabilities.",
+  "description": "Cross-platform permission registry and runtime helpers for Expo, React Native, and React Native Web apps, with unified request/check APIs for camera, media, location, notifications, microphone, and other web/native capabilities.",
   "badges": [
     {
       "id": "license",
