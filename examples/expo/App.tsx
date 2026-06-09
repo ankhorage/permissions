@@ -1,6 +1,8 @@
 import { Permission, PermissionsProvider, usePermission } from '@ankhorage/permissions';
 import { createPermissionClient } from '@ankhorage/permissions/expo';
 
+const permissionClient = createPermissionClient();
+
 /***
  * Expo permissions runtime example.
  *
@@ -11,10 +13,8 @@ import { createPermissionClient } from '@ankhorage/permissions/expo';
  * @readme
  */
 export default function ExpoPermissionsExample() {
-  const client = createPermissionClient();
-
   return (
-    <PermissionsProvider client={client}>
+    <PermissionsProvider client={permissionClient}>
       <CameraPermissionExample />
     </PermissionsProvider>
   );

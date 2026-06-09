@@ -24,14 +24,14 @@ import {
   usePermission,
 } from '@ankhorage/permissions';
 
-export default function BasicPermissionsExample() {
-  const client = createFakePermissionClient({
-    initialStates: [{ permission: Permission.Camera, status: 'denied' }],
-    requestStates: [{ permission: Permission.Camera, status: 'granted' }],
-  });
+const permissionClient = createFakePermissionClient({
+  initialStates: [{ permission: Permission.Camera, status: 'denied' }],
+  requestStates: [{ permission: Permission.Camera, status: 'granted' }],
+});
 
+export default function BasicPermissionsExample() {
   return (
-    <PermissionsProvider client={client}>
+    <PermissionsProvider client={permissionClient}>
       <CameraPermissionExample />
     </PermissionsProvider>
   );
@@ -68,11 +68,11 @@ Source: `examples/expo/App.tsx`
 import { Permission, PermissionsProvider, usePermission } from '@ankhorage/permissions';
 import { createPermissionClient } from '@ankhorage/permissions/expo';
 
-export default function ExpoPermissionsExample() {
-  const client = createPermissionClient();
+const permissionClient = createPermissionClient();
 
+export default function ExpoPermissionsExample() {
   return (
-    <PermissionsProvider client={client}>
+    <PermissionsProvider client={permissionClient}>
       <CameraPermissionExample />
     </PermissionsProvider>
   );
