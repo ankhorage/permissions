@@ -2,7 +2,7 @@ import type { Permission } from '../../registry/permissions';
 import { Permission as KnownPermission } from '../../registry/permissions';
 import type { PermissionState } from '../../state/permissionState';
 import type { ExpoPermissionAdapter } from '../client';
-import { createExpoPermissionState, createExpoUnavailableState } from './shared';
+import { createExpoPermissionState, createExpoUnavailableState } from '../permissionResponse';
 
 export const mediaLibraryAdapter: ExpoPermissionAdapter = {
   async getStatus(permission: Permission): Promise<PermissionState> {

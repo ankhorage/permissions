@@ -6,7 +6,7 @@ import {
   createExpoUnavailableState,
   type ExpoPermissionMethod,
   findExpoPermissionMethod,
-} from './shared';
+} from '../permissionResponse';
 
 const AUDIO_PERMISSION_CONTAINER_NAMES = ['AudioModule', 'Audio'] as const;
 

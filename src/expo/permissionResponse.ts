@@ -1,9 +1,9 @@
-import type { Permission } from '../../registry/permissions';
+import type { Permission } from '../registry/permissions';
 import {
   createPermissionState,
   isPermissionStatus,
   type PermissionState,
-} from '../../state/permissionState';
+} from '../state/permissionState';
 
 export interface ExpoPermissionResponse {
   readonly status: string;
@@ -36,18 +36,6 @@ export function createExpoUnavailableState(
   });
 }
 
-function getExpoPermissionErrorMessage(error: unknown): string {
-  if (error instanceof Error && error.message.length > 0) {
-    return error.message;
-  }
-
-  if (typeof error === 'string' && error.length > 0) {
-    return error;
-  }
-
-  return 'Expo permission operation failed.';
-}
-
 export function findExpoPermissionMethod(
   source: unknown,
   methodName: string,
@@ -70,6 +58,18 @@ export function findExpoPermissionMethod(
   }
 
   return undefined;
+}
+
+function getExpoPermissionErrorMessage(error: unknown): string {
+  if (error instanceof Error && error.message.length > 0) {
+    return error.message;
+  }
+
+  if (typeof error === 'string' && error.length > 0) {
+    return error;
+  }
+
+  return 'Expo permission operation failed.';
 }
 
 function hasExpoPermissionMethod(

@@ -6,7 +6,7 @@ import {
   createExpoUnavailableState,
   type ExpoPermissionMethod,
   findExpoPermissionMethod,
-} from './shared';
+} from '../permissionResponse';
 
 const CAMERA_PERMISSION_CONTAINER_NAMES = ['CameraNativeModule', 'Camera'] as const;
 
