@@ -2,15 +2,9 @@ import type { Permission } from '../registry/permissions';
 import type { PermissionState } from '../state/permissionState';
 
 /***
- * Adapter-neutral interface for runtime permission checks and requests.
+ * Adapter-neutral contract for checking and requesting permissions.
  *
- * @usage
- * ```ts
- * const state = await client.getStatus(Permission.Camera);
- * if (!state.granted) {
- *   await client.request(Permission.Camera);
- * }
- * ```
+ * Implementations provide permission state and permission requests for a runtime environment.
  */
 export interface PermissionClient {
   getStatus(permission: Permission): Promise<PermissionState>;

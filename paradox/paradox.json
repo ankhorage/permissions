@@ -64,12 +64,21 @@
       "title": "Basic permissions runtime example.",
       "description": "Basic permissions runtime example.\n\nCreate a permission client, provide it at the app root, and use\n`usePermission` to read, refresh, and request a normalized permission state.",
       "language": "tsx",
-      "code": "import {\n  createFakePermissionClient,\n  Permission,\n  PermissionsProvider,\n  usePermission,\n} from '@ankhorage/permissions';\n\nexport default function BasicPermissionsExample() {\n  const client = createFakePermissionClient({\n    initialStates: [{ permission: Permission.Camera, status: 'denied' }],\n    requestStates: [{ permission: Permission.Camera, status: 'granted' }],\n  });\n\n  return (\n    <PermissionsProvider client={client}>\n      <CameraPermissionExample />\n    </PermissionsProvider>\n  );\n}\n\nfunction CameraPermissionExample() {\n  const camera = usePermission(Permission.Camera, { refreshOnMount: true });\n\n  return (\n    <>\n      <p>Camera permission: {camera.status}</p>\n      <button\n        type=\"button\"\n        disabled={camera.granted}\n        onClick={() => {\n          void camera.request();\n        }}\n      >\n        Request camera permission\n      </button>\n    </>\n  );\n}",
+      "code": "import {\n  createFakePermissionClient,\n  Permission,\n  PermissionsProvider,\n  usePermission,\n} from '@ankhorage/permissions';\n\nconst permissionClient = createFakePermissionClient({\n  initialStates: [{ permission: Permission.Camera, status: 'denied' }],\n  requestStates: [{ permission: Permission.Camera, status: 'granted' }],\n});\n\nexport default function BasicPermissionsExample() {\n  return (\n    <PermissionsProvider client={permissionClient}>\n      <CameraPermissionExample />\n    </PermissionsProvider>\n  );\n}\n\nfunction CameraPermissionExample() {\n  const camera = usePermission(Permission.Camera, { refreshOnMount: true });\n\n  return (\n    <>\n      <p>Camera permission: {camera.status}</p>\n      <button\n        type=\"button\"\n        disabled={camera.granted}\n        onClick={() => {\n          void camera.request();\n        }}\n      >\n        Request camera permission\n      </button>\n    </>\n  );\n}",
       "sourcePath": "examples/basic/App.tsx"
+    },
+    {
+      "title": "Expo permissions runtime example.",
+      "description": "Expo permissions runtime example.\n\nCreate the Expo permission client from the optional Expo entrypoint, provide\nit at the app root, and call `request()` only from an explicit user action.",
+      "language": "tsx",
+      "code": "import { Permission, PermissionsProvider, usePermission } from '@ankhorage/permissions';\nimport { createPermissionClient } from '@ankhorage/permissions/expo';\n\nconst permissionClient = createPermissionClient();\n\nexport default function ExpoPermissionsExample() {\n  return (\n    <PermissionsProvider client={permissionClient}>\n      <CameraPermissionExample />\n    </PermissionsProvider>\n  );\n}\n\nfunction CameraPermissionExample() {\n  const camera = usePermission(Permission.Camera, { refreshOnMount: true });\n\n  return (\n    <>\n      <p>Camera permission: {camera.status}</p>\n      <button\n        type=\"button\"\n        disabled={camera.granted}\n        onClick={() => {\n          void camera.request();\n        }}\n      >\n        Request camera permission\n      </button>\n    </>\n  );\n}",
+      "sourcePath": "examples/expo/App.tsx"
     }
   ],
   "config": null,
   "entrypoints": [
+    "src/expo/index.ts",
+    "src/expo/manifest.ts",
     "src/index.ts",
     "src/metadata/index.ts",
     "src/react/index.tsx",
@@ -82,6 +91,101 @@
       "isEntrypoint": false,
       "dependencies": ["src/registry/permissions.ts", "src/state/permissionState.ts"],
       "exports": ["PermissionClient"]
+    },
+    {
+      "path": "src/expo/adapters/camera.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/expo/client.ts",
+        "src/expo/permissionResponse.ts",
+        "src/registry/permissions.ts",
+        "src/state/permissionState.ts"
+      ],
+      "exports": ["cameraAdapter"]
+    },
+    {
+      "path": "src/expo/adapters/location.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/expo/client.ts",
+        "src/expo/permissionResponse.ts",
+        "src/registry/permissions.ts",
+        "src/state/permissionState.ts"
+      ],
+      "exports": ["locationAdapter"]
+    },
+    {
+      "path": "src/expo/adapters/mediaLibrary.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/expo/client.ts",
+        "src/expo/permissionResponse.ts",
+        "src/registry/permissions.ts",
+        "src/state/permissionState.ts"
+      ],
+      "exports": ["mediaLibraryAdapter"]
+    },
+    {
+      "path": "src/expo/adapters/microphone.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/expo/client.ts",
+        "src/expo/permissionResponse.ts",
+        "src/registry/permissions.ts",
+        "src/state/permissionState.ts"
+      ],
+      "exports": ["microphoneAdapter"]
+    },
+    {
+      "path": "src/expo/adapters/notifications.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/expo/client.ts",
+        "src/expo/permissionResponse.ts",
+        "src/registry/permissions.ts",
+        "src/state/permissionState.ts"
+      ],
+      "exports": ["notificationsAdapter"]
+    },
+    {
+      "path": "src/expo/client.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/client/types.ts",
+        "src/expo/adapters/camera.ts",
+        "src/expo/adapters/location.ts",
+        "src/expo/adapters/mediaLibrary.ts",
+        "src/expo/adapters/microphone.ts",
+        "src/expo/adapters/notifications.ts",
+        "src/expo/manifest.ts",
+        "src/registry/permissions.ts",
+        "src/state/permissionState.ts"
+      ],
+      "exports": ["createPermissionClient", "ExpoPermissionAdapter"]
+    },
+    {
+      "path": "src/expo/index.ts",
+      "isEntrypoint": true,
+      "dependencies": ["src/expo/client.ts"],
+      "exports": ["createPermissionClient"]
+    },
+    {
+      "path": "src/expo/manifest.ts",
+      "isEntrypoint": true,
+      "dependencies": ["src/registry/permissions.ts"],
+      "exports": ["EXPO_PERMISSION_SUPPORT", "ExpoPermissionMetadata", "PermissionSupport"]
+    },
+    {
+      "path": "src/expo/permissionResponse.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/registry/permissions.ts", "src/state/permissionState.ts"],
+      "exports": [
+        "createExpoPermissionState",
+        "createExpoUnavailableState",
+        "ExpoPermissionMethod",
+        "ExpoPermissionResponse",
+        "findExpoPermissionMethod"
+      ]
     },
     {
       "path": "src/index.ts",
@@ -241,14 +345,14 @@
     },
     {
       "name": "createFakePermissionClient",
-      "description": "Creates a deterministic in-memory client for tests and examples.\n\nFake clients make permission flows testable without native devices, browser\nprompts, simulators, or network access.\n\n```ts\nconst client = createFakePermissionClient({\n  initialStates: [{ permission: Permission.Camera, status: 'denied' }],\n});\nawait client.request(Permission.Camera);\n```",
+      "description": "Creates a deterministic in-memory client for tests and examples.\n\nFake clients make permission flows testable without native devices, browser\nprompts, simulators, or network access.",
       "isReadme": true,
       "examples": [],
       "kind": "function",
       "modulePath": "src/testing/index.ts",
       "sourceLocation": {
         "filePath": "src/testing/index.ts",
-        "line": 63,
+        "line": 55,
         "column": 1
       },
       "exportPaths": ["src/index.ts", "src/testing/index.ts"],
@@ -272,15 +376,40 @@
       "structuredRows": []
     },
     {
+      "name": "createPermissionClient",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "function",
+      "modulePath": "src/expo/client.ts",
+      "sourceLocation": {
+        "filePath": "src/expo/client.ts",
+        "line": 26,
+        "column": 1
+      },
+      "exportPaths": ["src/expo/index.ts"],
+      "relatedSymbols": ["PermissionClient"],
+      "signatures": [
+        {
+          "label": "() => PermissionClient",
+          "parameters": [],
+          "returnType": "PermissionClient",
+          "returnDescription": null
+        }
+      ],
+      "members": [],
+      "structuredRows": []
+    },
+    {
       "name": "createPermissionManager",
-      "description": "Wraps a client with registry validation and normalized results.\n\nRuntime permissions and build-time native configuration are separate concerns.\nThis manager checks or requests permissions through a client, but it does not\ngenerate iOS usage descriptions, Android manifest entries, or Expo config\nplugins.\n\n```ts\nconst permissions = createPermissionManager(client);\nconst camera = await permissions.getStatus(Permission.Camera);\nconst requested = camera.granted\n  ? camera\n  : await permissions.request(Permission.Camera);\n```",
+      "description": "Creates a permission manager from a runtime-specific client.\n\nThe manager validates permission names and normalizes client results.\nNative app configuration remains a separate build-time concern.",
       "isReadme": true,
       "examples": [],
       "kind": "function",
       "modulePath": "src/manager/createPermissionManager.ts",
       "sourceLocation": {
         "filePath": "src/manager/createPermissionManager.ts",
-        "line": 32,
+        "line": 21,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -365,6 +494,64 @@
         }
       ],
       "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "EXPO_PERMISSION_SUPPORT",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "value",
+      "modulePath": "src/expo/manifest.ts",
+      "sourceLocation": {
+        "filePath": "src/expo/manifest.ts",
+        "line": 16,
+        "column": 14
+      },
+      "exportPaths": ["src/expo/manifest.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "ExpoPermissionMetadata",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "type",
+      "modulePath": "src/expo/manifest.ts",
+      "sourceLocation": {
+        "filePath": "src/expo/manifest.ts",
+        "line": 10,
+        "column": 1
+      },
+      "exportPaths": ["src/expo/manifest.ts"],
+      "relatedSymbols": ["PermissionSupport"],
+      "signatures": [],
+      "members": [
+        {
+          "name": "configHints",
+          "kind": "property",
+          "type": "readonly string[]",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "requiredPackages",
+          "kind": "property",
+          "type": "readonly string[]",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "support",
+          "kind": "property",
+          "type": "PermissionSupport",
+          "required": true,
+          "description": null
+        }
+      ],
       "structuredRows": []
     },
     {
@@ -688,14 +875,14 @@
     },
     {
       "name": "PermissionClient",
-      "description": "Adapter-neutral interface for runtime permission checks and requests.\n\n```ts\nconst state = await client.getStatus(Permission.Camera);\nif (!state.granted) {\n  await client.request(Permission.Camera);\n}\n```",
+      "description": "Adapter-neutral contract for checking and requesting permissions.\n\nImplementations provide permission state and permission requests for a runtime environment.",
       "isReadme": false,
       "examples": [],
       "kind": "type",
       "modulePath": "src/client/types.ts",
       "sourceLocation": {
         "filePath": "src/client/types.ts",
-        "line": 15,
+        "line": 9,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -882,7 +1069,7 @@
     },
     {
       "name": "PermissionManager",
-      "description": "Public manager returned by `createPermissionManager`.",
+      "description": "Public facade for checking and requesting normalized permission state.",
       "isReadme": false,
       "examples": [],
       "kind": "type",
@@ -1108,15 +1295,33 @@
       "structuredRows": []
     },
     {
+      "name": "PermissionSupport",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "unknown",
+      "modulePath": "src/expo/manifest.ts",
+      "sourceLocation": {
+        "filePath": "src/expo/manifest.ts",
+        "line": 3,
+        "column": 1
+      },
+      "exportPaths": ["src/expo/manifest.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
       "name": "usePermission",
-      "description": "Tracks a single permission and exposes explicit refresh/request actions.\n\n```tsx\nconst camera = usePermission(Permission.Camera, { refreshOnMount: true });\n\nreturn (\n  <Button\n    disabled={camera.granted}\n    onPress={() => {\n      void camera.request();\n    }}\n  />\n);\n```",
+      "description": "Tracks a single permission and exposes explicit refresh/request actions.",
       "isReadme": false,
       "examples": [],
       "kind": "function",
       "modulePath": "src/react/index.tsx",
       "sourceLocation": {
         "filePath": "src/react/index.tsx",
-        "line": 117,
+        "line": 103,
         "column": 1
       },
       "exportPaths": ["src/index.ts", "src/react/index.tsx"],
@@ -1267,11 +1472,119 @@
   ],
   "sourceFunctions": [
     {
+      "name": "resolveCameraPermissionMethod",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/expo/adapters/camera.ts",
+        "line": 41,
+        "column": 1
+      }
+    },
+    {
+      "name": "isWriteOnlyPermission",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/expo/adapters/mediaLibrary.ts",
+        "line": 31,
+        "column": 1
+      }
+    },
+    {
+      "name": "resolveAudioPermissionMethod",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/expo/adapters/microphone.ts",
+        "line": 41,
+        "column": 1
+      }
+    },
+    {
+      "name": "createPermissionClient",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/expo/client.ts",
+        "line": 26,
+        "column": 1
+      }
+    },
+    {
+      "name": "createUnavailableSupportState",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/expo/client.ts",
+        "line": 66,
+        "column": 1
+      }
+    },
+    {
+      "name": "createNotRequiredState",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/expo/client.ts",
+        "line": 74,
+        "column": 1
+      }
+    },
+    {
+      "name": "createExpoPermissionState",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/expo/permissionResponse.ts",
+        "line": 15,
+        "column": 1
+      }
+    },
+    {
+      "name": "createExpoUnavailableState",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/expo/permissionResponse.ts",
+        "line": 28,
+        "column": 1
+      }
+    },
+    {
+      "name": "findExpoPermissionMethod",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/expo/permissionResponse.ts",
+        "line": 39,
+        "column": 1
+      }
+    },
+    {
+      "name": "getExpoPermissionErrorMessage",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/expo/permissionResponse.ts",
+        "line": 63,
+        "column": 1
+      }
+    },
+    {
+      "name": "hasExpoPermissionMethod",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/expo/permissionResponse.ts",
+        "line": 75,
+        "column": 1
+      }
+    },
+    {
+      "name": "isRecord",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/expo/permissionResponse.ts",
+        "line": 82,
+        "column": 1
+      }
+    },
+    {
       "name": "createPermissionManager",
-      "description": "Wraps a client with registry validation and normalized results.\n\nRuntime permissions and build-time native configuration are separate concerns.\nThis manager checks or requests permissions through a client, but it does not\ngenerate iOS usage descriptions, Android manifest entries, or Expo config\nplugins.\n\n```ts\nconst permissions = createPermissionManager(client);\nconst camera = await permissions.getStatus(Permission.Camera);\nconst requested = camera.granted\n  ? camera\n  : await permissions.request(Permission.Camera);\n```",
+      "description": "Creates a permission manager from a runtime-specific client.\n\nThe manager validates permission names and normalizes client results.\nNative app configuration remains a separate build-time concern.",
       "sourceLocation": {
         "filePath": "src/manager/createPermissionManager.ts",
-        "line": 32,
+        "line": 21,
         "column": 1
       }
     },
@@ -1295,10 +1608,10 @@
     },
     {
       "name": "usePermission",
-      "description": "Tracks a single permission and exposes explicit refresh/request actions.\n\n```tsx\nconst camera = usePermission(Permission.Camera, { refreshOnMount: true });\n\nreturn (\n  <Button\n    disabled={camera.granted}\n    onPress={() => {\n      void camera.request();\n    }}\n  />\n);\n```",
+      "description": "Tracks a single permission and exposes explicit refresh/request actions.",
       "sourceLocation": {
         "filePath": "src/react/index.tsx",
-        "line": 117,
+        "line": 103,
         "column": 1
       }
     },
@@ -1358,10 +1671,10 @@
     },
     {
       "name": "createFakePermissionClient",
-      "description": "Creates a deterministic in-memory client for tests and examples.\n\nFake clients make permission flows testable without native devices, browser\nprompts, simulators, or network access.\n\n```ts\nconst client = createFakePermissionClient({\n  initialStates: [{ permission: Permission.Camera, status: 'denied' }],\n});\nawait client.request(Permission.Camera);\n```",
+      "description": "Creates a deterministic in-memory client for tests and examples.\n\nFake clients make permission flows testable without native devices, browser\nprompts, simulators, or network access.",
       "sourceLocation": {
         "filePath": "src/testing/index.ts",
-        "line": 63,
+        "line": 55,
         "column": 1
       }
     },
@@ -1370,7 +1683,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/testing/index.ts",
-        "line": 143,
+        "line": 135,
         "column": 1
       }
     },
@@ -1379,7 +1692,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/testing/index.ts",
-        "line": 153,
+        "line": 145,
         "column": 1
       }
     },
@@ -1533,15 +1846,23 @@
       "name": "createFakePermissionClient",
       "sourcePath": "src/testing/index.ts",
       "symbolName": "createFakePermissionClient",
-      "description": "Creates a deterministic in-memory client for tests and examples.\n\nFake clients make permission flows testable without native devices, browser\nprompts, simulators, or network access.\n\n```ts\nconst client = createFakePermissionClient({\n  initialStates: [{ permission: Permission.Camera, status: 'denied' }],\n});\nawait client.request(Permission.Camera);\n```",
+      "description": "Creates a deterministic in-memory client for tests and examples.\n\nFake clients make permission flows testable without native devices, browser\nprompts, simulators, or network access.",
       "isReadme": true
+    },
+    {
+      "kind": "export",
+      "name": "createPermissionClient",
+      "sourcePath": "src/expo/client.ts",
+      "symbolName": "createPermissionClient",
+      "description": null,
+      "isReadme": false
     },
     {
       "kind": "export",
       "name": "createPermissionManager",
       "sourcePath": "src/manager/createPermissionManager.ts",
       "symbolName": "createPermissionManager",
-      "description": "Wraps a client with registry validation and normalized results.\n\nRuntime permissions and build-time native configuration are separate concerns.\nThis manager checks or requests permissions through a client, but it does not\ngenerate iOS usage descriptions, Android manifest entries, or Expo config\nplugins.\n\n```ts\nconst permissions = createPermissionManager(client);\nconst camera = await permissions.getStatus(Permission.Camera);\nconst requested = camera.granted\n  ? camera\n  : await permissions.request(Permission.Camera);\n```",
+      "description": "Creates a permission manager from a runtime-specific client.\n\nThe manager validates permission names and normalizes client results.\nNative app configuration remains a separate build-time concern.",
       "isReadme": true
     },
     {
@@ -1605,7 +1926,7 @@
       "name": "usePermission",
       "sourcePath": "src/react/index.tsx",
       "symbolName": "usePermission",
-      "description": "Tracks a single permission and exposes explicit refresh/request actions.\n\n```tsx\nconst camera = usePermission(Permission.Camera, { refreshOnMount: true });\n\nreturn (\n  <Button\n    disabled={camera.granted}\n    onPress={() => {\n      void camera.request();\n    }}\n  />\n);\n```",
+      "description": "Tracks a single permission and exposes explicit refresh/request actions.",
       "isReadme": false
     },
     {
@@ -1658,6 +1979,71 @@
         "fromPath": "src/client/types.ts",
         "toPath": "src/state/permissionState.ts",
         "sourcePath": "src/client/types.ts"
+      },
+      {
+        "fromPath": "src/expo/client.ts",
+        "toPath": "src/client/types.ts",
+        "sourcePath": "src/expo/client.ts"
+      },
+      {
+        "fromPath": "src/expo/client.ts",
+        "toPath": "src/registry/permissions.ts",
+        "sourcePath": "src/expo/client.ts"
+      },
+      {
+        "fromPath": "src/expo/client.ts",
+        "toPath": "src/state/permissionState.ts",
+        "sourcePath": "src/expo/client.ts"
+      },
+      {
+        "fromPath": "src/expo/client.ts",
+        "toPath": "src/expo/adapters/camera.ts",
+        "sourcePath": "src/expo/client.ts"
+      },
+      {
+        "fromPath": "src/expo/client.ts",
+        "toPath": "src/expo/adapters/location.ts",
+        "sourcePath": "src/expo/client.ts"
+      },
+      {
+        "fromPath": "src/expo/client.ts",
+        "toPath": "src/expo/adapters/mediaLibrary.ts",
+        "sourcePath": "src/expo/client.ts"
+      },
+      {
+        "fromPath": "src/expo/client.ts",
+        "toPath": "src/expo/adapters/microphone.ts",
+        "sourcePath": "src/expo/client.ts"
+      },
+      {
+        "fromPath": "src/expo/client.ts",
+        "toPath": "src/expo/adapters/notifications.ts",
+        "sourcePath": "src/expo/client.ts"
+      },
+      {
+        "fromPath": "src/expo/client.ts",
+        "toPath": "src/expo/manifest.ts",
+        "sourcePath": "src/expo/client.ts"
+      },
+      {
+        "fromPath": "src/expo/index.ts",
+        "toPath": "src/expo/client.ts",
+        "sourcePath": "src/expo/index.ts"
+      },
+      {
+        "fromPath": "src/expo/manifest.ts",
+        "toPath": "src/registry/permissions.ts",
+        "sourcePath": "src/expo/manifest.ts"
+      },
+      {
+        "fromPath": "src/expo/permissionResponse.ts",
+        "toPath": "src/registry/permissions.ts",
+        "sourcePath": "src/expo/permissionResponse.ts"
+      },
+      {
+        "fromPath": "src/expo/permissionResponse.ts",
+        "toPath": "src/state/permissionState.ts",
+        "sourcePath": "src/expo/permissionResponse.ts"
       },
       {
         "fromPath": "src/manager/createPermissionManager.ts",
@@ -1728,9 +2114,199 @@
         "fromPath": "src/web/index.ts",
         "toPath": "src/state/permissionState.ts",
         "sourcePath": "src/web/index.ts"
+      },
+      {
+        "fromPath": "src/expo/adapters/camera.ts",
+        "toPath": "src/registry/permissions.ts",
+        "sourcePath": "src/expo/adapters/camera.ts"
+      },
+      {
+        "fromPath": "src/expo/adapters/camera.ts",
+        "toPath": "src/state/permissionState.ts",
+        "sourcePath": "src/expo/adapters/camera.ts"
+      },
+      {
+        "fromPath": "src/expo/adapters/camera.ts",
+        "toPath": "src/expo/client.ts",
+        "sourcePath": "src/expo/adapters/camera.ts"
+      },
+      {
+        "fromPath": "src/expo/adapters/camera.ts",
+        "toPath": "src/expo/permissionResponse.ts",
+        "sourcePath": "src/expo/adapters/camera.ts"
+      },
+      {
+        "fromPath": "src/expo/adapters/location.ts",
+        "toPath": "src/registry/permissions.ts",
+        "sourcePath": "src/expo/adapters/location.ts"
+      },
+      {
+        "fromPath": "src/expo/adapters/location.ts",
+        "toPath": "src/state/permissionState.ts",
+        "sourcePath": "src/expo/adapters/location.ts"
+      },
+      {
+        "fromPath": "src/expo/adapters/location.ts",
+        "toPath": "src/expo/client.ts",
+        "sourcePath": "src/expo/adapters/location.ts"
+      },
+      {
+        "fromPath": "src/expo/adapters/location.ts",
+        "toPath": "src/expo/permissionResponse.ts",
+        "sourcePath": "src/expo/adapters/location.ts"
+      },
+      {
+        "fromPath": "src/expo/adapters/mediaLibrary.ts",
+        "toPath": "src/registry/permissions.ts",
+        "sourcePath": "src/expo/adapters/mediaLibrary.ts"
+      },
+      {
+        "fromPath": "src/expo/adapters/mediaLibrary.ts",
+        "toPath": "src/state/permissionState.ts",
+        "sourcePath": "src/expo/adapters/mediaLibrary.ts"
+      },
+      {
+        "fromPath": "src/expo/adapters/mediaLibrary.ts",
+        "toPath": "src/expo/client.ts",
+        "sourcePath": "src/expo/adapters/mediaLibrary.ts"
+      },
+      {
+        "fromPath": "src/expo/adapters/mediaLibrary.ts",
+        "toPath": "src/expo/permissionResponse.ts",
+        "sourcePath": "src/expo/adapters/mediaLibrary.ts"
+      },
+      {
+        "fromPath": "src/expo/adapters/microphone.ts",
+        "toPath": "src/registry/permissions.ts",
+        "sourcePath": "src/expo/adapters/microphone.ts"
+      },
+      {
+        "fromPath": "src/expo/adapters/microphone.ts",
+        "toPath": "src/state/permissionState.ts",
+        "sourcePath": "src/expo/adapters/microphone.ts"
+      },
+      {
+        "fromPath": "src/expo/adapters/microphone.ts",
+        "toPath": "src/expo/client.ts",
+        "sourcePath": "src/expo/adapters/microphone.ts"
+      },
+      {
+        "fromPath": "src/expo/adapters/microphone.ts",
+        "toPath": "src/expo/permissionResponse.ts",
+        "sourcePath": "src/expo/adapters/microphone.ts"
+      },
+      {
+        "fromPath": "src/expo/adapters/notifications.ts",
+        "toPath": "src/registry/permissions.ts",
+        "sourcePath": "src/expo/adapters/notifications.ts"
+      },
+      {
+        "fromPath": "src/expo/adapters/notifications.ts",
+        "toPath": "src/state/permissionState.ts",
+        "sourcePath": "src/expo/adapters/notifications.ts"
+      },
+      {
+        "fromPath": "src/expo/adapters/notifications.ts",
+        "toPath": "src/expo/client.ts",
+        "sourcePath": "src/expo/adapters/notifications.ts"
+      },
+      {
+        "fromPath": "src/expo/adapters/notifications.ts",
+        "toPath": "src/expo/permissionResponse.ts",
+        "sourcePath": "src/expo/adapters/notifications.ts"
       }
     ],
     "calls": [
+      {
+        "fromSymbol": "getStatus",
+        "toSymbol": "createUnavailableSupportState",
+        "callExpression": "createUnavailableSupportState",
+        "sourcePath": "src/expo/client.ts"
+      },
+      {
+        "fromSymbol": "getStatus",
+        "toSymbol": "createNotRequiredState",
+        "callExpression": "createNotRequiredState",
+        "sourcePath": "src/expo/client.ts"
+      },
+      {
+        "fromSymbol": "getStatus",
+        "toSymbol": "getStatus",
+        "callExpression": "adapter.getStatus",
+        "sourcePath": "src/expo/client.ts"
+      },
+      {
+        "fromSymbol": "request",
+        "toSymbol": "createUnavailableSupportState",
+        "callExpression": "createUnavailableSupportState",
+        "sourcePath": "src/expo/client.ts"
+      },
+      {
+        "fromSymbol": "request",
+        "toSymbol": "createNotRequiredState",
+        "callExpression": "createNotRequiredState",
+        "sourcePath": "src/expo/client.ts"
+      },
+      {
+        "fromSymbol": "request",
+        "toSymbol": "request",
+        "callExpression": "adapter.request",
+        "sourcePath": "src/expo/client.ts"
+      },
+      {
+        "fromSymbol": "createUnavailableSupportState",
+        "toSymbol": "createPermissionState",
+        "callExpression": "createPermissionState",
+        "sourcePath": "src/expo/client.ts"
+      },
+      {
+        "fromSymbol": "createNotRequiredState",
+        "toSymbol": "createPermissionState",
+        "callExpression": "createPermissionState",
+        "sourcePath": "src/expo/client.ts"
+      },
+      {
+        "fromSymbol": "createExpoPermissionState",
+        "toSymbol": "isPermissionStatus",
+        "callExpression": "isPermissionStatus",
+        "sourcePath": "src/expo/permissionResponse.ts"
+      },
+      {
+        "fromSymbol": "createExpoPermissionState",
+        "toSymbol": "createPermissionState",
+        "callExpression": "createPermissionState",
+        "sourcePath": "src/expo/permissionResponse.ts"
+      },
+      {
+        "fromSymbol": "createExpoUnavailableState",
+        "toSymbol": "createPermissionState",
+        "callExpression": "createPermissionState",
+        "sourcePath": "src/expo/permissionResponse.ts"
+      },
+      {
+        "fromSymbol": "createExpoUnavailableState",
+        "toSymbol": "getExpoPermissionErrorMessage",
+        "callExpression": "getExpoPermissionErrorMessage",
+        "sourcePath": "src/expo/permissionResponse.ts"
+      },
+      {
+        "fromSymbol": "findExpoPermissionMethod",
+        "toSymbol": "hasExpoPermissionMethod",
+        "callExpression": "hasExpoPermissionMethod",
+        "sourcePath": "src/expo/permissionResponse.ts"
+      },
+      {
+        "fromSymbol": "findExpoPermissionMethod",
+        "toSymbol": "isRecord",
+        "callExpression": "isRecord",
+        "sourcePath": "src/expo/permissionResponse.ts"
+      },
+      {
+        "fromSymbol": "hasExpoPermissionMethod",
+        "toSymbol": "isRecord",
+        "callExpression": "isRecord",
+        "sourcePath": "src/expo/permissionResponse.ts"
+      },
       {
         "fromSymbol": "getStatus",
         "toSymbol": "assertKnownPermission",
@@ -2228,6 +2804,246 @@
         "toSymbol": "getErrorName",
         "callExpression": "getErrorName",
         "sourcePath": "src/web/index.ts"
+      },
+      {
+        "fromSymbol": "getStatus",
+        "toSymbol": "__type",
+        "callExpression": "resolveCameraPermissionMethod(\n        await import('expo-camera'),\n        'getCameraPermissionsAsync',\n      )",
+        "sourcePath": "src/expo/adapters/camera.ts"
+      },
+      {
+        "fromSymbol": "getStatus",
+        "toSymbol": "resolveCameraPermissionMethod",
+        "callExpression": "resolveCameraPermissionMethod",
+        "sourcePath": "src/expo/adapters/camera.ts"
+      },
+      {
+        "fromSymbol": "getStatus",
+        "toSymbol": "createExpoPermissionState",
+        "callExpression": "createExpoPermissionState",
+        "sourcePath": "src/expo/adapters/camera.ts"
+      },
+      {
+        "fromSymbol": "getStatus",
+        "toSymbol": "createExpoUnavailableState",
+        "callExpression": "createExpoUnavailableState",
+        "sourcePath": "src/expo/adapters/camera.ts"
+      },
+      {
+        "fromSymbol": "request",
+        "toSymbol": "__type",
+        "callExpression": "resolveCameraPermissionMethod(\n        await import('expo-camera'),\n        'requestCameraPermissionsAsync',\n      )",
+        "sourcePath": "src/expo/adapters/camera.ts"
+      },
+      {
+        "fromSymbol": "request",
+        "toSymbol": "resolveCameraPermissionMethod",
+        "callExpression": "resolveCameraPermissionMethod",
+        "sourcePath": "src/expo/adapters/camera.ts"
+      },
+      {
+        "fromSymbol": "request",
+        "toSymbol": "createExpoPermissionState",
+        "callExpression": "createExpoPermissionState",
+        "sourcePath": "src/expo/adapters/camera.ts"
+      },
+      {
+        "fromSymbol": "request",
+        "toSymbol": "createExpoUnavailableState",
+        "callExpression": "createExpoUnavailableState",
+        "sourcePath": "src/expo/adapters/camera.ts"
+      },
+      {
+        "fromSymbol": "resolveCameraPermissionMethod",
+        "toSymbol": "findExpoPermissionMethod",
+        "callExpression": "findExpoPermissionMethod",
+        "sourcePath": "src/expo/adapters/camera.ts"
+      },
+      {
+        "fromSymbol": "getStatus",
+        "toSymbol": "getBackgroundPermissionsAsync",
+        "callExpression": "mod.getBackgroundPermissionsAsync",
+        "sourcePath": "src/expo/adapters/location.ts"
+      },
+      {
+        "fromSymbol": "getStatus",
+        "toSymbol": "getForegroundPermissionsAsync",
+        "callExpression": "mod.getForegroundPermissionsAsync",
+        "sourcePath": "src/expo/adapters/location.ts"
+      },
+      {
+        "fromSymbol": "getStatus",
+        "toSymbol": "createExpoPermissionState",
+        "callExpression": "createExpoPermissionState",
+        "sourcePath": "src/expo/adapters/location.ts"
+      },
+      {
+        "fromSymbol": "getStatus",
+        "toSymbol": "createExpoUnavailableState",
+        "callExpression": "createExpoUnavailableState",
+        "sourcePath": "src/expo/adapters/location.ts"
+      },
+      {
+        "fromSymbol": "request",
+        "toSymbol": "requestBackgroundPermissionsAsync",
+        "callExpression": "mod.requestBackgroundPermissionsAsync",
+        "sourcePath": "src/expo/adapters/location.ts"
+      },
+      {
+        "fromSymbol": "request",
+        "toSymbol": "requestForegroundPermissionsAsync",
+        "callExpression": "mod.requestForegroundPermissionsAsync",
+        "sourcePath": "src/expo/adapters/location.ts"
+      },
+      {
+        "fromSymbol": "request",
+        "toSymbol": "createExpoPermissionState",
+        "callExpression": "createExpoPermissionState",
+        "sourcePath": "src/expo/adapters/location.ts"
+      },
+      {
+        "fromSymbol": "request",
+        "toSymbol": "createExpoUnavailableState",
+        "callExpression": "createExpoUnavailableState",
+        "sourcePath": "src/expo/adapters/location.ts"
+      },
+      {
+        "fromSymbol": "getStatus",
+        "toSymbol": "getPermissionsAsync",
+        "callExpression": "mod.getPermissionsAsync",
+        "sourcePath": "src/expo/adapters/mediaLibrary.ts"
+      },
+      {
+        "fromSymbol": "getStatus",
+        "toSymbol": "isWriteOnlyPermission",
+        "callExpression": "isWriteOnlyPermission",
+        "sourcePath": "src/expo/adapters/mediaLibrary.ts"
+      },
+      {
+        "fromSymbol": "getStatus",
+        "toSymbol": "createExpoPermissionState",
+        "callExpression": "createExpoPermissionState",
+        "sourcePath": "src/expo/adapters/mediaLibrary.ts"
+      },
+      {
+        "fromSymbol": "getStatus",
+        "toSymbol": "createExpoUnavailableState",
+        "callExpression": "createExpoUnavailableState",
+        "sourcePath": "src/expo/adapters/mediaLibrary.ts"
+      },
+      {
+        "fromSymbol": "request",
+        "toSymbol": "requestPermissionsAsync",
+        "callExpression": "mod.requestPermissionsAsync",
+        "sourcePath": "src/expo/adapters/mediaLibrary.ts"
+      },
+      {
+        "fromSymbol": "request",
+        "toSymbol": "isWriteOnlyPermission",
+        "callExpression": "isWriteOnlyPermission",
+        "sourcePath": "src/expo/adapters/mediaLibrary.ts"
+      },
+      {
+        "fromSymbol": "request",
+        "toSymbol": "createExpoPermissionState",
+        "callExpression": "createExpoPermissionState",
+        "sourcePath": "src/expo/adapters/mediaLibrary.ts"
+      },
+      {
+        "fromSymbol": "request",
+        "toSymbol": "createExpoUnavailableState",
+        "callExpression": "createExpoUnavailableState",
+        "sourcePath": "src/expo/adapters/mediaLibrary.ts"
+      },
+      {
+        "fromSymbol": "getStatus",
+        "toSymbol": "__type",
+        "callExpression": "resolveAudioPermissionMethod(\n        await import('expo-audio'),\n        'getRecordingPermissionsAsync',\n      )",
+        "sourcePath": "src/expo/adapters/microphone.ts"
+      },
+      {
+        "fromSymbol": "getStatus",
+        "toSymbol": "resolveAudioPermissionMethod",
+        "callExpression": "resolveAudioPermissionMethod",
+        "sourcePath": "src/expo/adapters/microphone.ts"
+      },
+      {
+        "fromSymbol": "getStatus",
+        "toSymbol": "createExpoPermissionState",
+        "callExpression": "createExpoPermissionState",
+        "sourcePath": "src/expo/adapters/microphone.ts"
+      },
+      {
+        "fromSymbol": "getStatus",
+        "toSymbol": "createExpoUnavailableState",
+        "callExpression": "createExpoUnavailableState",
+        "sourcePath": "src/expo/adapters/microphone.ts"
+      },
+      {
+        "fromSymbol": "request",
+        "toSymbol": "__type",
+        "callExpression": "resolveAudioPermissionMethod(\n        await import('expo-audio'),\n        'requestRecordingPermissionsAsync',\n      )",
+        "sourcePath": "src/expo/adapters/microphone.ts"
+      },
+      {
+        "fromSymbol": "request",
+        "toSymbol": "resolveAudioPermissionMethod",
+        "callExpression": "resolveAudioPermissionMethod",
+        "sourcePath": "src/expo/adapters/microphone.ts"
+      },
+      {
+        "fromSymbol": "request",
+        "toSymbol": "createExpoPermissionState",
+        "callExpression": "createExpoPermissionState",
+        "sourcePath": "src/expo/adapters/microphone.ts"
+      },
+      {
+        "fromSymbol": "request",
+        "toSymbol": "createExpoUnavailableState",
+        "callExpression": "createExpoUnavailableState",
+        "sourcePath": "src/expo/adapters/microphone.ts"
+      },
+      {
+        "fromSymbol": "resolveAudioPermissionMethod",
+        "toSymbol": "findExpoPermissionMethod",
+        "callExpression": "findExpoPermissionMethod",
+        "sourcePath": "src/expo/adapters/microphone.ts"
+      },
+      {
+        "fromSymbol": "getStatus",
+        "toSymbol": "getPermissionsAsync",
+        "callExpression": "mod.getPermissionsAsync",
+        "sourcePath": "src/expo/adapters/notifications.ts"
+      },
+      {
+        "fromSymbol": "getStatus",
+        "toSymbol": "createExpoPermissionState",
+        "callExpression": "createExpoPermissionState",
+        "sourcePath": "src/expo/adapters/notifications.ts"
+      },
+      {
+        "fromSymbol": "getStatus",
+        "toSymbol": "createExpoUnavailableState",
+        "callExpression": "createExpoUnavailableState",
+        "sourcePath": "src/expo/adapters/notifications.ts"
+      },
+      {
+        "fromSymbol": "request",
+        "toSymbol": "requestPermissionsAsync",
+        "callExpression": "mod.requestPermissionsAsync",
+        "sourcePath": "src/expo/adapters/notifications.ts"
+      },
+      {
+        "fromSymbol": "request",
+        "toSymbol": "createExpoPermissionState",
+        "callExpression": "createExpoPermissionState",
+        "sourcePath": "src/expo/adapters/notifications.ts"
+      },
+      {
+        "fromSymbol": "request",
+        "toSymbol": "createExpoUnavailableState",
+        "callExpression": "createExpoUnavailableState",
+        "sourcePath": "src/expo/adapters/notifications.ts"
       }
     ],
     "typeReferences": [
@@ -2430,6 +3246,16 @@
         "fromSymbol": "WebPermissionClientOptions",
         "toType": "WebGlobalLike",
         "sourcePath": "src/web/index.ts"
+      },
+      {
+        "fromSymbol": "createPermissionClient",
+        "toType": "PermissionClient",
+        "sourcePath": "src/expo/client.ts"
+      },
+      {
+        "fromSymbol": "ExpoPermissionMetadata",
+        "toType": "PermissionSupport",
+        "sourcePath": "src/expo/manifest.ts"
       }
     ],
     "componentComposition": []

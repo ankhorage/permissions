@@ -73,6 +73,18 @@
       "import": "./dist/web/index.js",
       "default": "./dist/web/index.js"
     },
+    "./expo": {
+      "react-native": "./dist/expo/index.js",
+      "types": "./dist/expo/index.d.ts",
+      "import": "./dist/expo/index.js",
+      "default": "./dist/expo/index.js"
+    },
+    "./expo/manifest": {
+      "react-native": "./dist/expo/manifest.js",
+      "types": "./dist/expo/manifest.d.ts",
+      "import": "./dist/expo/manifest.js",
+      "default": "./dist/expo/manifest.js"
+    },
     "./metadata": {
       "react-native": "./dist/metadata/index.js",
       "browser": "./dist/metadata/index.js",

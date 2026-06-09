@@ -5,6 +5,11 @@ import {
   usePermission,
 } from '@ankhorage/permissions';
 
+const permissionClient = createFakePermissionClient({
+  initialStates: [{ permission: Permission.Camera, status: 'denied' }],
+  requestStates: [{ permission: Permission.Camera, status: 'granted' }],
+});
+
 /***
  * Basic permissions runtime example.
  *
@@ -15,13 +20,8 @@ import {
  * @readme
  */
 export default function BasicPermissionsExample() {
-  const client = createFakePermissionClient({
-    initialStates: [{ permission: Permission.Camera, status: 'denied' }],
-    requestStates: [{ permission: Permission.Camera, status: 'granted' }],
-  });
-
   return (
-    <PermissionsProvider client={client}>
+    <PermissionsProvider client={permissionClient}>
       <CameraPermissionExample />
     </PermissionsProvider>
   );

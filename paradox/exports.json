@@ -33,14 +33,14 @@
   },
   {
     "name": "createFakePermissionClient",
-    "description": "Creates a deterministic in-memory client for tests and examples.\n\nFake clients make permission flows testable without native devices, browser\nprompts, simulators, or network access.\n\n```ts\nconst client = createFakePermissionClient({\n  initialStates: [{ permission: Permission.Camera, status: 'denied' }],\n});\nawait client.request(Permission.Camera);\n```",
+    "description": "Creates a deterministic in-memory client for tests and examples.\n\nFake clients make permission flows testable without native devices, browser\nprompts, simulators, or network access.",
     "isReadme": true,
     "examples": [],
     "kind": "function",
     "modulePath": "src/testing/index.ts",
     "sourceLocation": {
       "filePath": "src/testing/index.ts",
-      "line": 63,
+      "line": 55,
       "column": 1
     },
     "exportPaths": ["src/index.ts", "src/testing/index.ts"],
@@ -64,15 +64,40 @@
     "structuredRows": []
   },
   {
+    "name": "createPermissionClient",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "function",
+    "modulePath": "src/expo/client.ts",
+    "sourceLocation": {
+      "filePath": "src/expo/client.ts",
+      "line": 26,
+      "column": 1
+    },
+    "exportPaths": ["src/expo/index.ts"],
+    "relatedSymbols": ["PermissionClient"],
+    "signatures": [
+      {
+        "label": "() => PermissionClient",
+        "parameters": [],
+        "returnType": "PermissionClient",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
     "name": "createPermissionManager",
-    "description": "Wraps a client with registry validation and normalized results.\n\nRuntime permissions and build-time native configuration are separate concerns.\nThis manager checks or requests permissions through a client, but it does not\ngenerate iOS usage descriptions, Android manifest entries, or Expo config\nplugins.\n\n```ts\nconst permissions = createPermissionManager(client);\nconst camera = await permissions.getStatus(Permission.Camera);\nconst requested = camera.granted\n  ? camera\n  : await permissions.request(Permission.Camera);\n```",
+    "description": "Creates a permission manager from a runtime-specific client.\n\nThe manager validates permission names and normalizes client results.\nNative app configuration remains a separate build-time concern.",
     "isReadme": true,
     "examples": [],
     "kind": "function",
     "modulePath": "src/manager/createPermissionManager.ts",
     "sourceLocation": {
       "filePath": "src/manager/createPermissionManager.ts",
-      "line": 32,
+      "line": 21,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -157,6 +182,64 @@
       }
     ],
     "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "EXPO_PERMISSION_SUPPORT",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "value",
+    "modulePath": "src/expo/manifest.ts",
+    "sourceLocation": {
+      "filePath": "src/expo/manifest.ts",
+      "line": 16,
+      "column": 14
+    },
+    "exportPaths": ["src/expo/manifest.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ExpoPermissionMetadata",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/expo/manifest.ts",
+    "sourceLocation": {
+      "filePath": "src/expo/manifest.ts",
+      "line": 10,
+      "column": 1
+    },
+    "exportPaths": ["src/expo/manifest.ts"],
+    "relatedSymbols": ["PermissionSupport"],
+    "signatures": [],
+    "members": [
+      {
+        "name": "configHints",
+        "kind": "property",
+        "type": "readonly string[]",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "requiredPackages",
+        "kind": "property",
+        "type": "readonly string[]",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "support",
+        "kind": "property",
+        "type": "PermissionSupport",
+        "required": true,
+        "description": null
+      }
+    ],
     "structuredRows": []
   },
   {
@@ -480,14 +563,14 @@
   },
   {
     "name": "PermissionClient",
-    "description": "Adapter-neutral interface for runtime permission checks and requests.\n\n```ts\nconst state = await client.getStatus(Permission.Camera);\nif (!state.granted) {\n  await client.request(Permission.Camera);\n}\n```",
+    "description": "Adapter-neutral contract for checking and requesting permissions.\n\nImplementations provide permission state and permission requests for a runtime environment.",
     "isReadme": false,
     "examples": [],
     "kind": "type",
     "modulePath": "src/client/types.ts",
     "sourceLocation": {
       "filePath": "src/client/types.ts",
-      "line": 15,
+      "line": 9,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -674,7 +757,7 @@
   },
   {
     "name": "PermissionManager",
-    "description": "Public manager returned by `createPermissionManager`.",
+    "description": "Public facade for checking and requesting normalized permission state.",
     "isReadme": false,
     "examples": [],
     "kind": "type",
@@ -900,15 +983,33 @@
     "structuredRows": []
   },
   {
+    "name": "PermissionSupport",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/expo/manifest.ts",
+    "sourceLocation": {
+      "filePath": "src/expo/manifest.ts",
+      "line": 3,
+      "column": 1
+    },
+    "exportPaths": ["src/expo/manifest.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
     "name": "usePermission",
-    "description": "Tracks a single permission and exposes explicit refresh/request actions.\n\n```tsx\nconst camera = usePermission(Permission.Camera, { refreshOnMount: true });\n\nreturn (\n  <Button\n    disabled={camera.granted}\n    onPress={() => {\n      void camera.request();\n    }}\n  />\n);\n```",
+    "description": "Tracks a single permission and exposes explicit refresh/request actions.",
     "isReadme": false,
     "examples": [],
     "kind": "function",
     "modulePath": "src/react/index.tsx",
     "sourceLocation": {
       "filePath": "src/react/index.tsx",
-      "line": 117,
+      "line": 103,
       "column": 1
     },
     "exportPaths": ["src/index.ts", "src/react/index.tsx"],

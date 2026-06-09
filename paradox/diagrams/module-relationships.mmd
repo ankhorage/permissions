@@ -1,5 +1,14 @@
 graph LR
   module_src_client_types_ts["src/client/types.ts"]
+  module_src_expo_adapters_camera_ts["src/expo/adapters/camera.ts"]
+  module_src_expo_adapters_location_ts["src/expo/adapters/location.ts"]
+  module_src_expo_adapters_mediaLibrary_ts["src/expo/adapters/mediaLibrary.ts"]
+  module_src_expo_adapters_microphone_ts["src/expo/adapters/microphone.ts"]
+  module_src_expo_adapters_notifications_ts["src/expo/adapters/notifications.ts"]
+  module_src_expo_client_ts["src/expo/client.ts"]
+  module_src_expo_index_ts["src/expo/index.ts"]
+  module_src_expo_manifest_ts["src/expo/manifest.ts"]
+  module_src_expo_permissionResponse_ts["src/expo/permissionResponse.ts"]
   module_src_index_ts["src/index.ts"]
   module_src_manager_createPermissionManager_ts["src/manager/createPermissionManager.ts"]
   module_src_metadata_index_ts["src/metadata/index.ts"]
@@ -10,6 +19,39 @@ graph LR
   module_src_web_index_ts["src/web/index.ts"]
   module_src_client_types_ts --> module_src_registry_permissions_ts
   module_src_client_types_ts --> module_src_state_permissionState_ts
+  module_src_expo_adapters_camera_ts --> module_src_expo_client_ts
+  module_src_expo_adapters_camera_ts --> module_src_expo_permissionResponse_ts
+  module_src_expo_adapters_camera_ts --> module_src_registry_permissions_ts
+  module_src_expo_adapters_camera_ts --> module_src_state_permissionState_ts
+  module_src_expo_adapters_location_ts --> module_src_expo_client_ts
+  module_src_expo_adapters_location_ts --> module_src_expo_permissionResponse_ts
+  module_src_expo_adapters_location_ts --> module_src_registry_permissions_ts
+  module_src_expo_adapters_location_ts --> module_src_state_permissionState_ts
+  module_src_expo_adapters_mediaLibrary_ts --> module_src_expo_client_ts
+  module_src_expo_adapters_mediaLibrary_ts --> module_src_expo_permissionResponse_ts
+  module_src_expo_adapters_mediaLibrary_ts --> module_src_registry_permissions_ts
+  module_src_expo_adapters_mediaLibrary_ts --> module_src_state_permissionState_ts
+  module_src_expo_adapters_microphone_ts --> module_src_expo_client_ts
+  module_src_expo_adapters_microphone_ts --> module_src_expo_permissionResponse_ts
+  module_src_expo_adapters_microphone_ts --> module_src_registry_permissions_ts
+  module_src_expo_adapters_microphone_ts --> module_src_state_permissionState_ts
+  module_src_expo_adapters_notifications_ts --> module_src_expo_client_ts
+  module_src_expo_adapters_notifications_ts --> module_src_expo_permissionResponse_ts
+  module_src_expo_adapters_notifications_ts --> module_src_registry_permissions_ts
+  module_src_expo_adapters_notifications_ts --> module_src_state_permissionState_ts
+  module_src_expo_client_ts --> module_src_client_types_ts
+  module_src_expo_client_ts --> module_src_expo_adapters_camera_ts
+  module_src_expo_client_ts --> module_src_expo_adapters_location_ts
+  module_src_expo_client_ts --> module_src_expo_adapters_mediaLibrary_ts
+  module_src_expo_client_ts --> module_src_expo_adapters_microphone_ts
+  module_src_expo_client_ts --> module_src_expo_adapters_notifications_ts
+  module_src_expo_client_ts --> module_src_expo_manifest_ts
+  module_src_expo_client_ts --> module_src_registry_permissions_ts
+  module_src_expo_client_ts --> module_src_state_permissionState_ts
+  module_src_expo_index_ts --> module_src_expo_client_ts
+  module_src_expo_manifest_ts --> module_src_registry_permissions_ts
+  module_src_expo_permissionResponse_ts --> module_src_registry_permissions_ts
+  module_src_expo_permissionResponse_ts --> module_src_state_permissionState_ts
   module_src_manager_createPermissionManager_ts --> module_src_client_types_ts
   module_src_manager_createPermissionManager_ts --> module_src_registry_permissions_ts
   module_src_manager_createPermissionManager_ts --> module_src_state_permissionState_ts

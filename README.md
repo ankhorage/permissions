@@ -24,14 +24,55 @@ import {
   usePermission,
 } from '@ankhorage/permissions';
 
+const permissionClient = createFakePermissionClient({
+  initialStates: [{ permission: Permission.Camera, status: 'denied' }],
+  requestStates: [{ permission: Permission.Camera, status: 'granted' }],
+});
+
 export default function BasicPermissionsExample() {
-  const client = createFakePermissionClient({
-    initialStates: [{ permission: Permission.Camera, status: 'denied' }],
-    requestStates: [{ permission: Permission.Camera, status: 'granted' }],
-  });
+  return (
+    <PermissionsProvider client={permissionClient}>
+      <CameraPermissionExample />
+    </PermissionsProvider>
+  );
+}
+
+function CameraPermissionExample() {
+  const camera = usePermission(Permission.Camera, { refreshOnMount: true });
 
   return (
-    <PermissionsProvider client={client}>
+    <>
+      <p>Camera permission: {camera.status}</p>
+      <button
+        type="button"
+        disabled={camera.granted}
+        onClick={() => {
+          void camera.request();
+        }}
+      >
+        Request camera permission
+      </button>
+    </>
+  );
+}
+```
+
+### Expo permissions runtime example.
+
+Create the Expo permission client from the optional Expo entrypoint, provide
+it at the app root, and call `request()` only from an explicit user action.
+
+Source: `examples/expo/App.tsx`
+
+```tsx
+import { Permission, PermissionsProvider, usePermission } from '@ankhorage/permissions';
+import { createPermissionClient } from '@ankhorage/permissions/expo';
+
+const permissionClient = createPermissionClient();
+
+export default function ExpoPermissionsExample() {
+  return (
+    <PermissionsProvider client={permissionClient}>
       <CameraPermissionExample />
     </PermissionsProvider>
   );
@@ -90,15 +131,8 @@ Creates a deterministic in-memory client for tests and examples.
 Fake clients make permission flows testable without native devices, browser
 prompts, simulators, or network access.
 
-```ts
-const client = createFakePermissionClient({
-  initialStates: [{ permission: Permission.Camera, status: 'denied' }],
-});
-await client.request(Permission.Camera);
-```
-
 Module: `src/testing/index.ts`
-Source: `src/testing/index.ts:63:1`
+Source: `src/testing/index.ts:55:1`
 Related symbols: `FakePermissionClient`, `FakePermissionClientOptions`
 
 </details>
@@ -110,21 +144,13 @@ Related symbols: `FakePermissionClient`, `FakePermissionClientOptions`
 createPermissionManager(client: PermissionClient) => PermissionManager
 ```
 
-Wraps a client with registry validation and normalized results.
+Creates a permission manager from a runtime-specific client.
 
-Runtime permissions and build-time native configuration are separate concerns.
-This manager checks or requests permissions through a client, but it does not
-generate iOS usage descriptions, Android manifest entries, or Expo config
-plugins.
-
-```ts
-const permissions = createPermissionManager(client);
-const camera = await permissions.getStatus(Permission.Camera);
-const requested = camera.granted ? camera : await permissions.request(Permission.Camera);
-```
+The manager validates permission names and normalizes client results.
+Native app configuration remains a separate build-time concern.
 
 Module: `src/manager/createPermissionManager.ts`
-Source: `src/manager/createPermissionManager.ts:32:1`
+Source: `src/manager/createPermissionManager.ts:21:1`
 Related symbols: `PermissionClient`, `PermissionManager`
 
 </details>
