@@ -6,7 +6,7 @@ export default defineParadoxConfig({
   docs: {
     title: 'PERMISSIONS',
     usage: {
-      entrypoints: ['examples/basic/App.tsx'],
+      entrypoints: ['examples/basic/App.tsx', 'examples/expo/App.tsx'],
     },
   },
 
@@ -17,6 +17,8 @@ export default defineParadoxConfig({
       'src/react/index.tsx',
       'src/testing/index.ts',
       'src/web/index.ts',
+      'src/expo/index.ts',
+      'src/expo/manifest.ts',
       'src/metadata/index.ts',
     ],
   },

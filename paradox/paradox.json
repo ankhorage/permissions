@@ -66,10 +66,19 @@
       "language": "tsx",
       "code": "import {\n  createFakePermissionClient,\n  Permission,\n  PermissionsProvider,\n  usePermission,\n} from '@ankhorage/permissions';\n\nexport default function BasicPermissionsExample() {\n  const client = createFakePermissionClient({\n    initialStates: [{ permission: Permission.Camera, status: 'denied' }],\n    requestStates: [{ permission: Permission.Camera, status: 'granted' }],\n  });\n\n  return (\n    <PermissionsProvider client={client}>\n      <CameraPermissionExample />\n    </PermissionsProvider>\n  );\n}\n\nfunction CameraPermissionExample() {\n  const camera = usePermission(Permission.Camera, { refreshOnMount: true });\n\n  return (\n    <>\n      <p>Camera permission: {camera.status}</p>\n      <button\n        type=\"button\"\n        disabled={camera.granted}\n        onClick={() => {\n          void camera.request();\n        }}\n      >\n        Request camera permission\n      </button>\n    </>\n  );\n}",
       "sourcePath": "examples/basic/App.tsx"
+    },
+    {
+      "title": "Expo permissions runtime example.",
+      "description": "Expo permissions runtime example.\n\nCreate the Expo permission client from the optional Expo entrypoint, provide\nit at the app root, and call `request()` only from an explicit user action.",
+      "language": "tsx",
+      "code": "import { Permission, PermissionsProvider, usePermission } from '@ankhorage/permissions';\nimport { createPermissionClient } from '@ankhorage/permissions/expo';\n\nexport default function ExpoPermissionsExample() {\n  const client = createPermissionClient();\n\n  return (\n    <PermissionsProvider client={client}>\n      <CameraPermissionExample />\n    </PermissionsProvider>\n  );\n}\n\nfunction CameraPermissionExample() {\n  const camera = usePermission(Permission.Camera, { refreshOnMount: true });\n\n  return (\n    <>\n      <p>Camera permission: {camera.status}</p>\n      <button\n        type=\"button\"\n        disabled={camera.granted}\n        onClick={() => {\n          void camera.request();\n        }}\n      >\n        Request camera permission\n      </button>\n    </>\n  );\n}",
+      "sourcePath": "examples/expo/App.tsx"
     }
   ],
   "config": null,
   "entrypoints": [
+    "src/expo/index.ts",
+    "src/expo/manifest.ts",
     "src/index.ts",
     "src/metadata/index.ts",
     "src/react/index.tsx",
@@ -168,13 +177,13 @@
     },
     {
       "path": "src/expo/index.ts",
-      "isEntrypoint": false,
+      "isEntrypoint": true,
       "dependencies": ["src/expo/client.ts"],
       "exports": ["createPermissionClient"]
     },
     {
       "path": "src/expo/manifest.ts",
-      "isEntrypoint": false,
+      "isEntrypoint": true,
       "dependencies": ["src/registry/permissions.ts"],
       "exports": ["EXPO_PERMISSION_SUPPORT", "ExpoPermissionMetadata", "PermissionSupport"]
     },
@@ -367,6 +376,31 @@
       "structuredRows": []
     },
     {
+      "name": "createPermissionClient",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "function",
+      "modulePath": "src/expo/client.ts",
+      "sourceLocation": {
+        "filePath": "src/expo/client.ts",
+        "line": 26,
+        "column": 1
+      },
+      "exportPaths": ["src/expo/index.ts"],
+      "relatedSymbols": ["PermissionClient"],
+      "signatures": [
+        {
+          "label": "() => PermissionClient",
+          "parameters": [],
+          "returnType": "PermissionClient",
+          "returnDescription": null
+        }
+      ],
+      "members": [],
+      "structuredRows": []
+    },
+    {
       "name": "createPermissionManager",
       "description": "Creates a permission manager from a runtime-specific client.\n\nThe manager validates permission names and normalizes client results.\nNative app configuration remains a separate build-time concern.",
       "isReadme": true,
@@ -460,6 +494,64 @@
         }
       ],
       "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "EXPO_PERMISSION_SUPPORT",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "value",
+      "modulePath": "src/expo/manifest.ts",
+      "sourceLocation": {
+        "filePath": "src/expo/manifest.ts",
+        "line": 16,
+        "column": 14
+      },
+      "exportPaths": ["src/expo/manifest.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
+      "name": "ExpoPermissionMetadata",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "type",
+      "modulePath": "src/expo/manifest.ts",
+      "sourceLocation": {
+        "filePath": "src/expo/manifest.ts",
+        "line": 10,
+        "column": 1
+      },
+      "exportPaths": ["src/expo/manifest.ts"],
+      "relatedSymbols": ["PermissionSupport"],
+      "signatures": [],
+      "members": [
+        {
+          "name": "configHints",
+          "kind": "property",
+          "type": "readonly string[]",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "requiredPackages",
+          "kind": "property",
+          "type": "readonly string[]",
+          "required": true,
+          "description": null
+        },
+        {
+          "name": "support",
+          "kind": "property",
+          "type": "PermissionSupport",
+          "required": true,
+          "description": null
+        }
+      ],
       "structuredRows": []
     },
     {
@@ -1203,6 +1295,24 @@
       "structuredRows": []
     },
     {
+      "name": "PermissionSupport",
+      "description": null,
+      "isReadme": false,
+      "examples": [],
+      "kind": "unknown",
+      "modulePath": "src/expo/manifest.ts",
+      "sourceLocation": {
+        "filePath": "src/expo/manifest.ts",
+        "line": 3,
+        "column": 1
+      },
+      "exportPaths": ["src/expo/manifest.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
       "name": "usePermission",
       "description": "Tracks a single permission and exposes explicit refresh/request actions.",
       "isReadme": false,
@@ -1738,6 +1848,14 @@
       "symbolName": "createFakePermissionClient",
       "description": "Creates a deterministic in-memory client for tests and examples.\n\nFake clients make permission flows testable without native devices, browser\nprompts, simulators, or network access.",
       "isReadme": true
+    },
+    {
+      "kind": "export",
+      "name": "createPermissionClient",
+      "sourcePath": "src/expo/client.ts",
+      "symbolName": "createPermissionClient",
+      "description": null,
+      "isReadme": false
     },
     {
       "kind": "export",
@@ -3128,6 +3246,16 @@
         "fromSymbol": "WebPermissionClientOptions",
         "toType": "WebGlobalLike",
         "sourcePath": "src/web/index.ts"
+      },
+      {
+        "fromSymbol": "createPermissionClient",
+        "toType": "PermissionClient",
+        "sourcePath": "src/expo/client.ts"
+      },
+      {
+        "fromSymbol": "ExpoPermissionMetadata",
+        "toType": "PermissionSupport",
+        "sourcePath": "src/expo/manifest.ts"
       }
     ],
     "componentComposition": []

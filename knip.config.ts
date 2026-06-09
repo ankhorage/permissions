@@ -1,7 +1,7 @@
 import { createKnipConfig } from '@ankhorage/devtools/knip';
 
 export default createKnipConfig({
-  entry: ['examples/basic/App.tsx'],
+  entry: ['examples/basic/App.tsx', 'examples/expo/App.tsx'],
   ignoreDependencies: [
     'expo-audio',
     'expo-camera',

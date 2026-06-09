@@ -64,6 +64,31 @@
     "structuredRows": []
   },
   {
+    "name": "createPermissionClient",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "function",
+    "modulePath": "src/expo/client.ts",
+    "sourceLocation": {
+      "filePath": "src/expo/client.ts",
+      "line": 26,
+      "column": 1
+    },
+    "exportPaths": ["src/expo/index.ts"],
+    "relatedSymbols": ["PermissionClient"],
+    "signatures": [
+      {
+        "label": "() => PermissionClient",
+        "parameters": [],
+        "returnType": "PermissionClient",
+        "returnDescription": null
+      }
+    ],
+    "members": [],
+    "structuredRows": []
+  },
+  {
     "name": "createPermissionManager",
     "description": "Creates a permission manager from a runtime-specific client.\n\nThe manager validates permission names and normalizes client results.\nNative app configuration remains a separate build-time concern.",
     "isReadme": true,
@@ -157,6 +182,64 @@
       }
     ],
     "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "EXPO_PERMISSION_SUPPORT",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "value",
+    "modulePath": "src/expo/manifest.ts",
+    "sourceLocation": {
+      "filePath": "src/expo/manifest.ts",
+      "line": 16,
+      "column": 14
+    },
+    "exportPaths": ["src/expo/manifest.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "ExpoPermissionMetadata",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "type",
+    "modulePath": "src/expo/manifest.ts",
+    "sourceLocation": {
+      "filePath": "src/expo/manifest.ts",
+      "line": 10,
+      "column": 1
+    },
+    "exportPaths": ["src/expo/manifest.ts"],
+    "relatedSymbols": ["PermissionSupport"],
+    "signatures": [],
+    "members": [
+      {
+        "name": "configHints",
+        "kind": "property",
+        "type": "readonly string[]",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "requiredPackages",
+        "kind": "property",
+        "type": "readonly string[]",
+        "required": true,
+        "description": null
+      },
+      {
+        "name": "support",
+        "kind": "property",
+        "type": "PermissionSupport",
+        "required": true,
+        "description": null
+      }
+    ],
     "structuredRows": []
   },
   {
@@ -894,6 +977,24 @@
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
+    "name": "PermissionSupport",
+    "description": null,
+    "isReadme": false,
+    "examples": [],
+    "kind": "unknown",
+    "modulePath": "src/expo/manifest.ts",
+    "sourceLocation": {
+      "filePath": "src/expo/manifest.ts",
+      "line": 3,
+      "column": 1
+    },
+    "exportPaths": ["src/expo/manifest.ts"],
     "relatedSymbols": [],
     "signatures": [],
     "members": [],

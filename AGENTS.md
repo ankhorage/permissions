@@ -222,7 +222,15 @@ Respect Paradox documentation generation.
 
 Use useful doc comments on public exports. Prefer comments that explain behavior and boundaries, not obvious restatements of names.
 
-Use Paradox-aware tags in Paradox doc comments which use /_\*\* (3 stars) _/ such as:
+Use Paradox-aware tags only in Paradox documentation comments.
+
+Paradox documentation comments use the repo's established triple-star form:
+
+```ts
+/***
+ * @readme
+ */
+```
 
 - `@readme` for key package concepts that should appear in generated README output
 
@@ -240,6 +248,7 @@ Document at least:
 Do not add shallow comments just to increase docs output.
 
 Do not add code snippets into comments.
+Usage examples belong in `examples/`.
 
 ## Testing rules
 

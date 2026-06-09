@@ -285,13 +285,15 @@
           <section class="panel">
             <h2>Package overview</h2>
             <div class="summary">
-              <div><strong>30</strong><span class="muted">public exports</span></div>
+              <div><strong>34</strong><span class="muted">public exports</span></div>
               <div><strong>1</strong><span class="muted">components</span></div>
               <div><strong>18</strong><span class="muted">modules</span></div>
-              <div><strong>5</strong><span class="muted">entrypoints</span></div>
+              <div><strong>7</strong><span class="muted">entrypoints</span></div>
             </div>
             <h3>Entrypoints</h3>
             <ul class="meta-list">
+              <li><code>src/expo/index.ts</code></li>
+              <li><code>src/expo/manifest.ts</code></li>
               <li><code>src/index.ts</code></li>
               <li><code>src/metadata/index.ts</code></li>
               <li><code>src/react/index.tsx</code></li>
@@ -420,7 +422,7 @@
               data-search="src/expo/index.ts src/expo/client.ts createPermissionClient"
             >
               <h3>src/expo/index.ts</h3>
-              <p class="muted">Referenced module</p>
+              <p class="muted">Configured entrypoint</p>
               <p><strong>Dependencies:</strong> <code>src/expo/client.ts</code></p>
               <p><strong>Exports:</strong> <code>createPermissionClient</code></p>
             </article>
@@ -429,7 +431,7 @@
               data-search="src/expo/manifest.ts src/registry/permissions.ts EXPO_PERMISSION_SUPPORT ExpoPermissionMetadata PermissionSupport"
             >
               <h3>src/expo/manifest.ts</h3>
-              <p class="muted">Referenced module</p>
+              <p class="muted">Configured entrypoint</p>
               <p><strong>Dependencies:</strong> <code>src/registry/permissions.ts</code></p>
               <p>
                 <strong>Exports:</strong> <code>EXPO_PERMISSION_SUPPORT</code>,
@@ -623,6 +625,107 @@
                     </tr>
                   </tbody>
                 </table>
+              </article>
+            </section>
+            <section>
+              <h3>src/expo/client.ts</h3>
+              <article
+                class="item"
+                id="symbol-createpermissionclient"
+                data-search="createPermissionClient function src/expo/client.ts  PermissionClient () =&gt; PermissionClient"
+              >
+                <h4>createPermissionClient</h4>
+                <p class="muted">function • <code>src/expo/client.ts:26:1</code></p>
+
+                <p><strong>Export paths:</strong> <code>src/expo/index.ts</code></p>
+                <div>
+                  <strong>Related symbols:</strong>
+                  <ul class="chips">
+                    <li class="chip">PermissionClient</li>
+                  </ul>
+                </div>
+                <div>
+                  <h5>Signature</h5>
+                  <pre>() =&gt; PermissionClient</pre>
+
+                  <p><strong>Returns:</strong> <code>PermissionClient</code></p>
+                </div>
+              </article>
+            </section>
+            <section>
+              <h3>src/expo/manifest.ts</h3>
+              <article
+                class="item"
+                id="symbol-expo-permission-support"
+                data-search="EXPO_PERMISSION_SUPPORT value src/expo/manifest.ts "
+              >
+                <h4>EXPO_PERMISSION_SUPPORT</h4>
+                <p class="muted">value • <code>src/expo/manifest.ts:16:14</code></p>
+
+                <p><strong>Export paths:</strong> <code>src/expo/manifest.ts</code></p>
+                <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
+              </article>
+              <article
+                class="item"
+                id="symbol-expopermissionmetadata"
+                data-search="ExpoPermissionMetadata type src/expo/manifest.ts  PermissionSupport"
+              >
+                <h4>ExpoPermissionMetadata</h4>
+                <p class="muted">type • <code>src/expo/manifest.ts:10:1</code></p>
+
+                <p><strong>Export paths:</strong> <code>src/expo/manifest.ts</code></p>
+                <div>
+                  <strong>Related symbols:</strong>
+                  <ul class="chips">
+                    <li class="chip">PermissionSupport</li>
+                  </ul>
+                </div>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Member</th>
+                      <th>Kind</th>
+                      <th>Type</th>
+                      <th>Required</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>configHints</code></td>
+                      <td>property</td>
+                      <td><code>readonly string[]</code></td>
+                      <td>yes</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>requiredPackages</code></td>
+                      <td>property</td>
+                      <td><code>readonly string[]</code></td>
+                      <td>yes</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><code>support</code></td>
+                      <td>property</td>
+                      <td><code>PermissionSupport</code></td>
+                      <td>yes</td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </article>
+              <article
+                class="item"
+                id="symbol-permissionsupport"
+                data-search="PermissionSupport unknown src/expo/manifest.ts "
+              >
+                <h4>PermissionSupport</h4>
+                <p class="muted">unknown • <code>src/expo/manifest.ts:3:1</code></p>
+
+                <p><strong>Export paths:</strong> <code>src/expo/manifest.ts</code></p>
+                <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
               </article>
             </section>
             <section>
@@ -1880,6 +1983,10 @@
               <p class="muted"><code>diagrams/architecture-overview.mmd</code></p>
               <div class="mermaid">
                 graph TD package__ankhorage_permissions[&quot;PERMISSIONS&quot;]
+                entrypoint_src_expo_index_ts[&quot;src/expo/index.ts&quot;]
+                package__ankhorage_permissions --&gt; entrypoint_src_expo_index_ts
+                entrypoint_src_expo_manifest_ts[&quot;src/expo/manifest.ts&quot;]
+                package__ankhorage_permissions --&gt; entrypoint_src_expo_manifest_ts
                 entrypoint_src_index_ts[&quot;src/index.ts&quot;] package__ankhorage_permissions
                 --&gt; entrypoint_src_index_ts
                 entrypoint_src_metadata_index_ts[&quot;src/metadata/index.ts&quot;]
@@ -1939,11 +2046,9 @@
                 module_src_expo_client_ts --&gt; module_src_expo_manifest_ts
                 module_src_expo_client_ts --&gt; module_src_registry_permissions_ts
                 module_src_expo_client_ts --&gt; module_src_state_permissionState_ts
-                module_src_expo_index_ts[&quot;src/expo/index.ts&quot;]
-                package__ankhorage_permissions -.-&gt; module_src_expo_index_ts
-                module_src_expo_index_ts --&gt; module_src_expo_client_ts
+                module_src_expo_index_ts[&quot;src/expo/index.ts&quot;] module_src_expo_index_ts
+                --&gt; module_src_expo_client_ts
                 module_src_expo_manifest_ts[&quot;src/expo/manifest.ts&quot;]
-                package__ankhorage_permissions -.-&gt; module_src_expo_manifest_ts
                 module_src_expo_manifest_ts --&gt; module_src_registry_permissions_ts
                 module_src_index_ts[&quot;src/index.ts&quot;]
                 module_src_manager_createPermissionManager_ts[&quot;src/manager/createPermissionManager.ts&quot;]
@@ -1977,6 +2082,10 @@
                 <pre>
 graph TD
   package__ankhorage_permissions[&quot;PERMISSIONS&quot;]
+  entrypoint_src_expo_index_ts[&quot;src/expo/index.ts&quot;]
+  package__ankhorage_permissions --&gt; entrypoint_src_expo_index_ts
+  entrypoint_src_expo_manifest_ts[&quot;src/expo/manifest.ts&quot;]
+  package__ankhorage_permissions --&gt; entrypoint_src_expo_manifest_ts
   entrypoint_src_index_ts[&quot;src/index.ts&quot;]
   package__ankhorage_permissions --&gt; entrypoint_src_index_ts
   entrypoint_src_metadata_index_ts[&quot;src/metadata/index.ts&quot;]
@@ -2037,10 +2146,8 @@ graph TD
   module_src_expo_client_ts --&gt; module_src_registry_permissions_ts
   module_src_expo_client_ts --&gt; module_src_state_permissionState_ts
   module_src_expo_index_ts[&quot;src/expo/index.ts&quot;]
-  package__ankhorage_permissions -.-&gt; module_src_expo_index_ts
   module_src_expo_index_ts --&gt; module_src_expo_client_ts
   module_src_expo_manifest_ts[&quot;src/expo/manifest.ts&quot;]
-  package__ankhorage_permissions -.-&gt; module_src_expo_manifest_ts
   module_src_expo_manifest_ts --&gt; module_src_registry_permissions_ts
   module_src_index_ts[&quot;src/index.ts&quot;]
   module_src_manager_createPermissionManager_ts[&quot;src/manager/createPermissionManager.ts&quot;]
@@ -2251,6 +2358,9 @@ graph LR
                 module_src_testing_index_ts --&gt; export_createFakePermissionClient
                 export_createFakePermissionClient -.-&gt; export_FakePermissionClient
                 export_createFakePermissionClient -.-&gt; export_FakePermissionClientOptions
+                export_createPermissionClient[&quot;createPermissionClient&quot;]
+                module_src_expo_client_ts --&gt; export_createPermissionClient
+                export_createPermissionClient -.-&gt; export_PermissionClient
                 export_createPermissionManager[&quot;createPermissionManager&quot;]
                 module_src_manager_createPermissionManager_ts --&gt; export_createPermissionManager
                 export_createPermissionManager -.-&gt; export_PermissionClient
@@ -2262,6 +2372,11 @@ graph LR
                 module_src_web_index_ts --&gt; export_createWebPermissionClient
                 export_createWebPermissionClient -.-&gt; export_PermissionClient
                 export_createWebPermissionClient -.-&gt; export_WebPermissionClientOptions
+                export_EXPO_PERMISSION_SUPPORT[&quot;EXPO_PERMISSION_SUPPORT&quot;]
+                module_src_expo_manifest_ts --&gt; export_EXPO_PERMISSION_SUPPORT
+                export_ExpoPermissionMetadata[&quot;ExpoPermissionMetadata&quot;]
+                module_src_expo_manifest_ts --&gt; export_ExpoPermissionMetadata
+                export_ExpoPermissionMetadata -.-&gt; export_PermissionSupport
                 export_FakePermissionClient[&quot;FakePermissionClient&quot;]
                 module_src_testing_index_ts --&gt; export_FakePermissionClient
                 export_FakePermissionClient -.-&gt; export_FakePermissionStateSeed
@@ -2321,10 +2436,11 @@ graph LR
                 export_PermissionState -.-&gt; export_Permission export_PermissionState -.-&gt;
                 export_PermissionStatus export_PermissionStatus[&quot;PermissionStatus&quot;]
                 module_src_state_permissionState_ts --&gt; export_PermissionStatus
-                export_usePermission[&quot;usePermission&quot;] module_src_react_index_tsx --&gt;
-                export_usePermission export_usePermission -.-&gt; export_Permission
-                export_usePermission -.-&gt; export_PermissionHookResult export_usePermission
-                -.-&gt; export_UsePermissionOptions
+                export_PermissionSupport[&quot;PermissionSupport&quot;] module_src_expo_manifest_ts
+                --&gt; export_PermissionSupport export_usePermission[&quot;usePermission&quot;]
+                module_src_react_index_tsx --&gt; export_usePermission export_usePermission -.-&gt;
+                export_Permission export_usePermission -.-&gt; export_PermissionHookResult
+                export_usePermission -.-&gt; export_UsePermissionOptions
                 export_UsePermissionOptions[&quot;UsePermissionOptions&quot;]
                 module_src_react_index_tsx --&gt; export_UsePermissionOptions
                 export_UsePermissionOptions -.-&gt; export_PermissionState
@@ -2362,6 +2478,9 @@ graph LR
   module_src_testing_index_ts --&gt; export_createFakePermissionClient
   export_createFakePermissionClient -.-&gt; export_FakePermissionClient
   export_createFakePermissionClient -.-&gt; export_FakePermissionClientOptions
+  export_createPermissionClient[&quot;createPermissionClient&quot;]
+  module_src_expo_client_ts --&gt; export_createPermissionClient
+  export_createPermissionClient -.-&gt; export_PermissionClient
   export_createPermissionManager[&quot;createPermissionManager&quot;]
   module_src_manager_createPermissionManager_ts --&gt; export_createPermissionManager
   export_createPermissionManager -.-&gt; export_PermissionClient
@@ -2373,6 +2492,11 @@ graph LR
   module_src_web_index_ts --&gt; export_createWebPermissionClient
   export_createWebPermissionClient -.-&gt; export_PermissionClient
   export_createWebPermissionClient -.-&gt; export_WebPermissionClientOptions
+  export_EXPO_PERMISSION_SUPPORT[&quot;EXPO_PERMISSION_SUPPORT&quot;]
+  module_src_expo_manifest_ts --&gt; export_EXPO_PERMISSION_SUPPORT
+  export_ExpoPermissionMetadata[&quot;ExpoPermissionMetadata&quot;]
+  module_src_expo_manifest_ts --&gt; export_ExpoPermissionMetadata
+  export_ExpoPermissionMetadata -.-&gt; export_PermissionSupport
   export_FakePermissionClient[&quot;FakePermissionClient&quot;]
   module_src_testing_index_ts --&gt; export_FakePermissionClient
   export_FakePermissionClient -.-&gt; export_FakePermissionStateSeed
@@ -2438,6 +2562,8 @@ graph LR
   export_PermissionState -.-&gt; export_PermissionStatus
   export_PermissionStatus[&quot;PermissionStatus&quot;]
   module_src_state_permissionState_ts --&gt; export_PermissionStatus
+  export_PermissionSupport[&quot;PermissionSupport&quot;]
+  module_src_expo_manifest_ts --&gt; export_PermissionSupport
   export_usePermission[&quot;usePermission&quot;]
   module_src_react_index_tsx --&gt; export_usePermission
   export_usePermission -.-&gt; export_Permission

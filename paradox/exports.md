@@ -31,6 +31,17 @@ prompts, simulators, or network access.
   - options: `FakePermissionClientOptions` (optional)
   - returns: `FakePermissionClient`
 
+## createPermissionClient
+
+Kind: `function`
+Module: `src/expo/client.ts`
+Source: `src/expo/client.ts:26:1`
+
+### Signatures
+
+- `() => PermissionClient`
+  - returns: `PermissionClient`
+
 ## createPermissionManager
 
 Kind: `function`
@@ -78,6 +89,26 @@ import DOM types and does not assume it is running in a browser.
 - `(options?: WebPermissionClientOptions) => PermissionClient`
   - options: `WebPermissionClientOptions` (optional)
   - returns: `PermissionClient`
+
+## EXPO_PERMISSION_SUPPORT
+
+Kind: `value`
+Module: `src/expo/manifest.ts`
+Source: `src/expo/manifest.ts:16:14`
+
+## ExpoPermissionMetadata
+
+Kind: `type`
+Module: `src/expo/manifest.ts`
+Source: `src/expo/manifest.ts:10:1`
+
+### Members
+
+| Name             | Kind     | Type                | Required | Description |
+| ---------------- | -------- | ------------------- | -------- | ----------- |
+| configHints      | property | `readonly string[]` | yes      |             |
+| requiredPackages | property | `readonly string[]` | yes      |             |
+| support          | property | `PermissionSupport` | yes      |             |
 
 ## FakePermissionClient
 
@@ -376,6 +407,12 @@ Normalized permission statuses shared by adapters and UI code.
 
 Denial is normal control flow. Unexpected adapter failures may still throw,
 but user denial should be represented as a permission state.
+
+## PermissionSupport
+
+Kind: `unknown`
+Module: `src/expo/manifest.ts`
+Source: `src/expo/manifest.ts:3:1`
 
 ## usePermission
 

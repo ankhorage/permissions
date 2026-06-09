@@ -1,5 +1,9 @@
 graph TD
   package__ankhorage_permissions["PERMISSIONS"]
+  entrypoint_src_expo_index_ts["src/expo/index.ts"]
+  package__ankhorage_permissions --> entrypoint_src_expo_index_ts
+  entrypoint_src_expo_manifest_ts["src/expo/manifest.ts"]
+  package__ankhorage_permissions --> entrypoint_src_expo_manifest_ts
   entrypoint_src_index_ts["src/index.ts"]
   package__ankhorage_permissions --> entrypoint_src_index_ts
   entrypoint_src_metadata_index_ts["src/metadata/index.ts"]
@@ -60,10 +64,8 @@ graph TD
   module_src_expo_client_ts --> module_src_registry_permissions_ts
   module_src_expo_client_ts --> module_src_state_permissionState_ts
   module_src_expo_index_ts["src/expo/index.ts"]
-  package__ankhorage_permissions -.-> module_src_expo_index_ts
   module_src_expo_index_ts --> module_src_expo_client_ts
   module_src_expo_manifest_ts["src/expo/manifest.ts"]
-  package__ankhorage_permissions -.-> module_src_expo_manifest_ts
   module_src_expo_manifest_ts --> module_src_registry_permissions_ts
   module_src_index_ts["src/index.ts"]
   module_src_manager_createPermissionManager_ts["src/manager/createPermissionManager.ts"]
