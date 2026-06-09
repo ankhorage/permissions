@@ -1,62 +1,52 @@
 import type { Permission } from '../../registry/permissions';
 import type { PermissionState } from '../../state/permissionState';
-import { isPermissionStatus } from '../../state/permissionState';
 import type { ExpoPermissionAdapter } from '../client';
+import {
+  createExpoPermissionState,
+  createExpoUnavailableState,
+  type ExpoPermissionMethod,
+  findExpoPermissionMethod,
+} from './shared';
 
-interface ExpoPermissionResult {
-  status: string;
-  canAskAgain: boolean;
-}
-
-interface ExpoAudioModule {
-  Audio: {
-    getPermissionsAsync(): Promise<ExpoPermissionResult>;
-    requestPermissionsAsync(): Promise<ExpoPermissionResult>;
-  };
-}
+const AUDIO_PERMISSION_CONTAINER_NAMES = ['AudioModule', 'Audio'] as const;
 
 export const microphoneAdapter: ExpoPermissionAdapter = {
   async getStatus(permission: Permission): Promise<PermissionState> {
     try {
-      const mod = (await import('expo-audio')) as ExpoAudioModule;
-      const result = await mod.Audio.getPermissionsAsync();
-      const status = isPermissionStatus(result.status) ? result.status : 'unknown';
+      const result = await resolveAudioPermissionMethod(
+        await import('expo-audio'),
+        'getRecordingPermissionsAsync',
+      )();
 
-      return {
-        permission,
-        status,
-        granted: status === 'granted',
-        canAskAgain: result.canAskAgain,
-      };
+      return createExpoPermissionState(permission, result);
     } catch (error) {
-      return {
-        permission,
-        status: 'unavailable',
-        granted: false,
-        reason: (error as Error).message,
-      };
+      return createExpoUnavailableState(permission, error);
     }
   },
 
   async request(permission: Permission): Promise<PermissionState> {
     try {
-      const mod = (await import('expo-audio')) as ExpoAudioModule;
-      const result = await mod.Audio.requestPermissionsAsync();
-      const status = isPermissionStatus(result.status) ? result.status : 'unknown';
+      const result = await resolveAudioPermissionMethod(
+        await import('expo-audio'),
+        'requestRecordingPermissionsAsync',
+      )();
 
-      return {
-        permission,
-        status,
-        granted: status === 'granted',
-        canAskAgain: result.canAskAgain,
-      };
+      return createExpoPermissionState(permission, result);
     } catch (error) {
-      return {
-        permission,
-        status: 'unavailable',
-        granted: false,
-        reason: (error as Error).message,
-      };
+      return createExpoUnavailableState(permission, error);
     }
   },
 };
+
+function resolveAudioPermissionMethod(
+  source: unknown,
+  methodName: 'getRecordingPermissionsAsync' | 'requestRecordingPermissionsAsync',
+): ExpoPermissionMethod {
+  const method = findExpoPermissionMethod(source, methodName, AUDIO_PERMISSION_CONTAINER_NAMES);
+
+  if (method === undefined) {
+    throw new Error(`expo-audio does not export ${methodName}.`);
+  }
+
+  return method;
+}

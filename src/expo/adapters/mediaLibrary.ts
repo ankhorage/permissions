@@ -1,60 +1,33 @@
 import type { Permission } from '../../registry/permissions';
+import { Permission as KnownPermission } from '../../registry/permissions';
 import type { PermissionState } from '../../state/permissionState';
-import { isPermissionStatus } from '../../state/permissionState';
 import type { ExpoPermissionAdapter } from '../client';
-
-interface ExpoPermissionResult {
-  status: string;
-  canAskAgain: boolean;
-}
-
-interface ExpoMediaLibraryModule {
-  getPermissionsAsync(): Promise<ExpoPermissionResult>;
-  requestPermissionsAsync(): Promise<ExpoPermissionResult>;
-}
+import { createExpoPermissionState, createExpoUnavailableState } from './shared';
 
 export const mediaLibraryAdapter: ExpoPermissionAdapter = {
   async getStatus(permission: Permission): Promise<PermissionState> {
     try {
-      const mod = (await import('expo-media-library')) as ExpoMediaLibraryModule;
-      const result = await mod.getPermissionsAsync();
-      const status = isPermissionStatus(result.status) ? result.status : 'unknown';
+      const mod = await import('expo-media-library');
+      const result = await mod.getPermissionsAsync(isWriteOnlyPermission(permission));
 
-      return {
-        permission,
-        status,
-        granted: status === 'granted',
-        canAskAgain: result.canAskAgain,
-      };
+      return createExpoPermissionState(permission, result);
     } catch (error) {
-      return {
-        permission,
-        status: 'unavailable',
-        granted: false,
-        reason: (error as Error).message,
-      };
+      return createExpoUnavailableState(permission, error);
     }
   },
 
   async request(permission: Permission): Promise<PermissionState> {
     try {
-      const mod = (await import('expo-media-library')) as ExpoMediaLibraryModule;
-      const result = await mod.requestPermissionsAsync();
-      const status = isPermissionStatus(result.status) ? result.status : 'unknown';
+      const mod = await import('expo-media-library');
+      const result = await mod.requestPermissionsAsync(isWriteOnlyPermission(permission));
 
-      return {
-        permission,
-        status,
-        granted: status === 'granted',
-        canAskAgain: result.canAskAgain,
-      };
+      return createExpoPermissionState(permission, result);
     } catch (error) {
-      return {
-        permission,
-        status: 'unavailable',
-        granted: false,
-        reason: (error as Error).message,
-      };
+      return createExpoUnavailableState(permission, error);
     }
   },
 };
+
+function isWriteOnlyPermission(permission: Permission): boolean {
+  return permission === KnownPermission.MediaLibraryWrite;
+}

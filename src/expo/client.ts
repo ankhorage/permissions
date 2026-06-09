@@ -1,21 +1,18 @@
 import type { PermissionClient } from '../client/types';
 import { Permission } from '../registry/permissions';
-import type { PermissionState } from '../state/permissionState';
+import { createPermissionState, type PermissionState } from '../state/permissionState';
 import { cameraAdapter } from './adapters/camera';
-import { clipboardAdapter } from './adapters/clipboard';
 import { locationAdapter } from './adapters/location';
 import { mediaLibraryAdapter } from './adapters/mediaLibrary';
 import { microphoneAdapter } from './adapters/microphone';
 import { notificationsAdapter } from './adapters/notifications';
 import { EXPO_PERMISSION_SUPPORT } from './manifest';
 
-// Interface for per-permission Expo adapters
 export interface ExpoPermissionAdapter {
   getStatus(permission: Permission): Promise<PermissionState>;
   request(permission: Permission): Promise<PermissionState>;
 }
 
-// Map of permissions to their corresponding adapters
 const adapters: Partial<Record<Permission, ExpoPermissionAdapter>> = {
   [Permission.Camera]: cameraAdapter,
   [Permission.MediaLibrary]: mediaLibraryAdapter,
@@ -24,7 +21,6 @@ const adapters: Partial<Record<Permission, ExpoPermissionAdapter>> = {
   [Permission.LocationForeground]: locationAdapter,
   [Permission.LocationBackground]: locationAdapter,
   [Permission.Notifications]: notificationsAdapter,
-  [Permission.Clipboard]: clipboardAdapter,
 };
 
 export function createPermissionClient(): PermissionClient {
@@ -32,12 +28,11 @@ export function createPermissionClient(): PermissionClient {
     async getStatus(permission: Permission): Promise<PermissionState> {
       const metadata = EXPO_PERMISSION_SUPPORT[permission];
       if (metadata.support === 'unsupported' || metadata.support === 'notImplemented') {
-        return {
-          permission,
-          status: 'unavailable',
-          granted: false,
-          reason: `Permission ${permission} is not implemented or supported on Expo.`,
-        };
+        return createUnavailableSupportState(permission);
+      }
+
+      if (metadata.support === 'notRequired') {
+        return createNotRequiredState(permission);
       }
 
       const adapter = adapters[permission];
@@ -51,20 +46,11 @@ export function createPermissionClient(): PermissionClient {
     async request(permission: Permission): Promise<PermissionState> {
       const metadata = EXPO_PERMISSION_SUPPORT[permission];
       if (metadata.support === 'unsupported' || metadata.support === 'notImplemented') {
-        return {
-          permission,
-          status: 'unavailable',
-          granted: false,
-          reason: `Permission ${permission} is not implemented or supported on Expo.`,
-        };
+        return createUnavailableSupportState(permission);
       }
 
       if (metadata.support === 'notRequired') {
-        return {
-          permission,
-          status: 'granted',
-          granted: true,
-        };
+        return createNotRequiredState(permission);
       }
 
       const adapter = adapters[permission];
@@ -75,4 +61,19 @@ export function createPermissionClient(): PermissionClient {
       return adapter.request(permission);
     },
   };
+}
+
+function createUnavailableSupportState(permission: Permission): PermissionState {
+  return createPermissionState({
+    permission,
+    status: 'unavailable',
+    reason: `Permission ${permission} is not implemented or supported on Expo.`,
+  });
+}
+
+function createNotRequiredState(permission: Permission): PermissionState {
+  return createPermissionState({
+    permission,
+    status: 'granted',
+  });
 }

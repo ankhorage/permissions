@@ -50,8 +50,8 @@ export const EXPO_PERMISSION_SUPPORT: Readonly<Record<Permission, ExpoPermission
     configHints: ['notificationsPermission'],
   },
   [Permission.Clipboard]: {
-    support: 'notRequired', // Or 'unsupported' depending on target flow.
-    requiredPackages: ['expo-clipboard'],
+    support: 'notRequired',
+    requiredPackages: [],
     configHints: [],
   },
 };

@@ -1,58 +1,52 @@
 import type { Permission } from '../../registry/permissions';
 import type { PermissionState } from '../../state/permissionState';
-import { isPermissionStatus } from '../../state/permissionState';
 import type { ExpoPermissionAdapter } from '../client';
+import {
+  createExpoPermissionState,
+  createExpoUnavailableState,
+  type ExpoPermissionMethod,
+  findExpoPermissionMethod,
+} from './shared';
 
-// Define explicit interface for Expo Camera to satisfy linter
-interface ExpoCameraModule {
-  getCameraPermissionsAsync(): Promise<{ status: string; canAskAgain: boolean }>;
-  requestCameraPermissionsAsync(): Promise<{ status: string; canAskAgain: boolean }>;
-}
+const CAMERA_PERMISSION_CONTAINER_NAMES = ['CameraNativeModule', 'Camera'] as const;
 
 export const cameraAdapter: ExpoPermissionAdapter = {
   async getStatus(permission: Permission): Promise<PermissionState> {
     try {
-      const { Camera } = (await import('expo-camera')) as { Camera: ExpoCameraModule };
-      const result = await Camera.getCameraPermissionsAsync();
+      const result = await resolveCameraPermissionMethod(
+        await import('expo-camera'),
+        'getCameraPermissionsAsync',
+      )();
 
-      const status = isPermissionStatus(result.status) ? result.status : 'unknown';
-
-      return {
-        permission,
-        status,
-        granted: status === 'granted',
-        canAskAgain: result.canAskAgain,
-      };
+      return createExpoPermissionState(permission, result);
     } catch (error) {
-      return {
-        permission,
-        status: 'unavailable',
-        granted: false,
-        reason: (error as Error).message,
-      };
+      return createExpoUnavailableState(permission, error);
     }
   },
 
   async request(permission: Permission): Promise<PermissionState> {
     try {
-      const { Camera } = (await import('expo-camera')) as { Camera: ExpoCameraModule };
-      const result = await Camera.requestCameraPermissionsAsync();
+      const result = await resolveCameraPermissionMethod(
+        await import('expo-camera'),
+        'requestCameraPermissionsAsync',
+      )();
 
-      const status = isPermissionStatus(result.status) ? result.status : 'unknown';
-
-      return {
-        permission,
-        status,
-        granted: status === 'granted',
-        canAskAgain: result.canAskAgain,
-      };
+      return createExpoPermissionState(permission, result);
     } catch (error) {
-      return {
-        permission,
-        status: 'unavailable',
-        granted: false,
-        reason: (error as Error).message,
-      };
+      return createExpoUnavailableState(permission, error);
     }
   },
 };
+
+function resolveCameraPermissionMethod(
+  source: unknown,
+  methodName: 'getCameraPermissionsAsync' | 'requestCameraPermissionsAsync',
+): ExpoPermissionMethod {
+  const method = findExpoPermissionMethod(source, methodName, CAMERA_PERMISSION_CONTAINER_NAMES);
+
+  if (method === undefined) {
+    throw new Error(`expo-camera does not export ${methodName}.`);
+  }
+
+  return method;
+}
