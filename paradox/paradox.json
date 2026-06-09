@@ -96,8 +96,8 @@
       "path": "src/expo/adapters/camera.ts",
       "isEntrypoint": false,
       "dependencies": [
-        "src/expo/adapters/shared.ts",
         "src/expo/client.ts",
+        "src/expo/permissionResponse.ts",
         "src/registry/permissions.ts",
         "src/state/permissionState.ts"
       ],
@@ -107,8 +107,8 @@
       "path": "src/expo/adapters/location.ts",
       "isEntrypoint": false,
       "dependencies": [
-        "src/expo/adapters/shared.ts",
         "src/expo/client.ts",
+        "src/expo/permissionResponse.ts",
         "src/registry/permissions.ts",
         "src/state/permissionState.ts"
       ],
@@ -118,8 +118,8 @@
       "path": "src/expo/adapters/mediaLibrary.ts",
       "isEntrypoint": false,
       "dependencies": [
-        "src/expo/adapters/shared.ts",
         "src/expo/client.ts",
+        "src/expo/permissionResponse.ts",
         "src/registry/permissions.ts",
         "src/state/permissionState.ts"
       ],
@@ -129,8 +129,8 @@
       "path": "src/expo/adapters/microphone.ts",
       "isEntrypoint": false,
       "dependencies": [
-        "src/expo/adapters/shared.ts",
         "src/expo/client.ts",
+        "src/expo/permissionResponse.ts",
         "src/registry/permissions.ts",
         "src/state/permissionState.ts"
       ],
@@ -140,24 +140,12 @@
       "path": "src/expo/adapters/notifications.ts",
       "isEntrypoint": false,
       "dependencies": [
-        "src/expo/adapters/shared.ts",
         "src/expo/client.ts",
+        "src/expo/permissionResponse.ts",
         "src/registry/permissions.ts",
         "src/state/permissionState.ts"
       ],
       "exports": ["notificationsAdapter"]
-    },
-    {
-      "path": "src/expo/adapters/shared.ts",
-      "isEntrypoint": false,
-      "dependencies": ["src/registry/permissions.ts", "src/state/permissionState.ts"],
-      "exports": [
-        "createExpoPermissionState",
-        "createExpoUnavailableState",
-        "ExpoPermissionMethod",
-        "ExpoPermissionResponse",
-        "findExpoPermissionMethod"
-      ]
     },
     {
       "path": "src/expo/client.ts",
@@ -186,6 +174,18 @@
       "isEntrypoint": true,
       "dependencies": ["src/registry/permissions.ts"],
       "exports": ["EXPO_PERMISSION_SUPPORT", "ExpoPermissionMetadata", "PermissionSupport"]
+    },
+    {
+      "path": "src/expo/permissionResponse.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/registry/permissions.ts", "src/state/permissionState.ts"],
+      "exports": [
+        "createExpoPermissionState",
+        "createExpoUnavailableState",
+        "ExpoPermissionMethod",
+        "ExpoPermissionResponse",
+        "findExpoPermissionMethod"
+      ]
     },
     {
       "path": "src/index.ts",
@@ -1499,60 +1499,6 @@
       }
     },
     {
-      "name": "createExpoPermissionState",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/expo/adapters/shared.ts",
-        "line": 15,
-        "column": 1
-      }
-    },
-    {
-      "name": "createExpoUnavailableState",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/expo/adapters/shared.ts",
-        "line": 28,
-        "column": 1
-      }
-    },
-    {
-      "name": "getExpoPermissionErrorMessage",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/expo/adapters/shared.ts",
-        "line": 39,
-        "column": 1
-      }
-    },
-    {
-      "name": "findExpoPermissionMethod",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/expo/adapters/shared.ts",
-        "line": 51,
-        "column": 1
-      }
-    },
-    {
-      "name": "hasExpoPermissionMethod",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/expo/adapters/shared.ts",
-        "line": 75,
-        "column": 1
-      }
-    },
-    {
-      "name": "isRecord",
-      "description": null,
-      "sourceLocation": {
-        "filePath": "src/expo/adapters/shared.ts",
-        "line": 82,
-        "column": 1
-      }
-    },
-    {
       "name": "createPermissionClient",
       "description": null,
       "sourceLocation": {
@@ -1576,6 +1522,60 @@
       "sourceLocation": {
         "filePath": "src/expo/client.ts",
         "line": 74,
+        "column": 1
+      }
+    },
+    {
+      "name": "createExpoPermissionState",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/expo/permissionResponse.ts",
+        "line": 15,
+        "column": 1
+      }
+    },
+    {
+      "name": "createExpoUnavailableState",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/expo/permissionResponse.ts",
+        "line": 28,
+        "column": 1
+      }
+    },
+    {
+      "name": "findExpoPermissionMethod",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/expo/permissionResponse.ts",
+        "line": 39,
+        "column": 1
+      }
+    },
+    {
+      "name": "getExpoPermissionErrorMessage",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/expo/permissionResponse.ts",
+        "line": 63,
+        "column": 1
+      }
+    },
+    {
+      "name": "hasExpoPermissionMethod",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/expo/permissionResponse.ts",
+        "line": 75,
+        "column": 1
+      }
+    },
+    {
+      "name": "isRecord",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/expo/permissionResponse.ts",
+        "line": 82,
         "column": 1
       }
     },
@@ -2036,6 +2036,16 @@
         "sourcePath": "src/expo/manifest.ts"
       },
       {
+        "fromPath": "src/expo/permissionResponse.ts",
+        "toPath": "src/registry/permissions.ts",
+        "sourcePath": "src/expo/permissionResponse.ts"
+      },
+      {
+        "fromPath": "src/expo/permissionResponse.ts",
+        "toPath": "src/state/permissionState.ts",
+        "sourcePath": "src/expo/permissionResponse.ts"
+      },
+      {
         "fromPath": "src/manager/createPermissionManager.ts",
         "toPath": "src/client/types.ts",
         "sourcePath": "src/manager/createPermissionManager.ts"
@@ -2122,7 +2132,7 @@
       },
       {
         "fromPath": "src/expo/adapters/camera.ts",
-        "toPath": "src/expo/adapters/shared.ts",
+        "toPath": "src/expo/permissionResponse.ts",
         "sourcePath": "src/expo/adapters/camera.ts"
       },
       {
@@ -2142,7 +2152,7 @@
       },
       {
         "fromPath": "src/expo/adapters/location.ts",
-        "toPath": "src/expo/adapters/shared.ts",
+        "toPath": "src/expo/permissionResponse.ts",
         "sourcePath": "src/expo/adapters/location.ts"
       },
       {
@@ -2162,7 +2172,7 @@
       },
       {
         "fromPath": "src/expo/adapters/mediaLibrary.ts",
-        "toPath": "src/expo/adapters/shared.ts",
+        "toPath": "src/expo/permissionResponse.ts",
         "sourcePath": "src/expo/adapters/mediaLibrary.ts"
       },
       {
@@ -2182,7 +2192,7 @@
       },
       {
         "fromPath": "src/expo/adapters/microphone.ts",
-        "toPath": "src/expo/adapters/shared.ts",
+        "toPath": "src/expo/permissionResponse.ts",
         "sourcePath": "src/expo/adapters/microphone.ts"
       },
       {
@@ -2202,18 +2212,8 @@
       },
       {
         "fromPath": "src/expo/adapters/notifications.ts",
-        "toPath": "src/expo/adapters/shared.ts",
+        "toPath": "src/expo/permissionResponse.ts",
         "sourcePath": "src/expo/adapters/notifications.ts"
-      },
-      {
-        "fromPath": "src/expo/adapters/shared.ts",
-        "toPath": "src/registry/permissions.ts",
-        "sourcePath": "src/expo/adapters/shared.ts"
-      },
-      {
-        "fromPath": "src/expo/adapters/shared.ts",
-        "toPath": "src/state/permissionState.ts",
-        "sourcePath": "src/expo/adapters/shared.ts"
       }
     ],
     "calls": [
@@ -2264,6 +2264,48 @@
         "toSymbol": "createPermissionState",
         "callExpression": "createPermissionState",
         "sourcePath": "src/expo/client.ts"
+      },
+      {
+        "fromSymbol": "createExpoPermissionState",
+        "toSymbol": "isPermissionStatus",
+        "callExpression": "isPermissionStatus",
+        "sourcePath": "src/expo/permissionResponse.ts"
+      },
+      {
+        "fromSymbol": "createExpoPermissionState",
+        "toSymbol": "createPermissionState",
+        "callExpression": "createPermissionState",
+        "sourcePath": "src/expo/permissionResponse.ts"
+      },
+      {
+        "fromSymbol": "createExpoUnavailableState",
+        "toSymbol": "createPermissionState",
+        "callExpression": "createPermissionState",
+        "sourcePath": "src/expo/permissionResponse.ts"
+      },
+      {
+        "fromSymbol": "createExpoUnavailableState",
+        "toSymbol": "getExpoPermissionErrorMessage",
+        "callExpression": "getExpoPermissionErrorMessage",
+        "sourcePath": "src/expo/permissionResponse.ts"
+      },
+      {
+        "fromSymbol": "findExpoPermissionMethod",
+        "toSymbol": "hasExpoPermissionMethod",
+        "callExpression": "hasExpoPermissionMethod",
+        "sourcePath": "src/expo/permissionResponse.ts"
+      },
+      {
+        "fromSymbol": "findExpoPermissionMethod",
+        "toSymbol": "isRecord",
+        "callExpression": "isRecord",
+        "sourcePath": "src/expo/permissionResponse.ts"
+      },
+      {
+        "fromSymbol": "hasExpoPermissionMethod",
+        "toSymbol": "isRecord",
+        "callExpression": "isRecord",
+        "sourcePath": "src/expo/permissionResponse.ts"
       },
       {
         "fromSymbol": "getStatus",
@@ -3002,48 +3044,6 @@
         "toSymbol": "createExpoUnavailableState",
         "callExpression": "createExpoUnavailableState",
         "sourcePath": "src/expo/adapters/notifications.ts"
-      },
-      {
-        "fromSymbol": "createExpoPermissionState",
-        "toSymbol": "isPermissionStatus",
-        "callExpression": "isPermissionStatus",
-        "sourcePath": "src/expo/adapters/shared.ts"
-      },
-      {
-        "fromSymbol": "createExpoPermissionState",
-        "toSymbol": "createPermissionState",
-        "callExpression": "createPermissionState",
-        "sourcePath": "src/expo/adapters/shared.ts"
-      },
-      {
-        "fromSymbol": "createExpoUnavailableState",
-        "toSymbol": "createPermissionState",
-        "callExpression": "createPermissionState",
-        "sourcePath": "src/expo/adapters/shared.ts"
-      },
-      {
-        "fromSymbol": "createExpoUnavailableState",
-        "toSymbol": "getExpoPermissionErrorMessage",
-        "callExpression": "getExpoPermissionErrorMessage",
-        "sourcePath": "src/expo/adapters/shared.ts"
-      },
-      {
-        "fromSymbol": "findExpoPermissionMethod",
-        "toSymbol": "hasExpoPermissionMethod",
-        "callExpression": "hasExpoPermissionMethod",
-        "sourcePath": "src/expo/adapters/shared.ts"
-      },
-      {
-        "fromSymbol": "findExpoPermissionMethod",
-        "toSymbol": "isRecord",
-        "callExpression": "isRecord",
-        "sourcePath": "src/expo/adapters/shared.ts"
-      },
-      {
-        "fromSymbol": "hasExpoPermissionMethod",
-        "toSymbol": "isRecord",
-        "callExpression": "isRecord",
-        "sourcePath": "src/expo/adapters/shared.ts"
       }
     ],
     "typeReferences": [
