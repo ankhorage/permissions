@@ -25,13 +25,6 @@ Creates a deterministic in-memory client for tests and examples.
 Fake clients make permission flows testable without native devices, browser
 prompts, simulators, or network access.
 
-```ts
-const client = createFakePermissionClient({
-  initialStates: [{ permission: Permission.Camera, status: 'denied' }],
-});
-await client.request(Permission.Camera);
-```
-
 ### Signatures
 
 - `(options?: FakePermissionClientOptions) => FakePermissionClient`
@@ -42,20 +35,12 @@ await client.request(Permission.Camera);
 
 Kind: `function`
 Module: `src/manager/createPermissionManager.ts`
-Source: `src/manager/createPermissionManager.ts:32:1`
+Source: `src/manager/createPermissionManager.ts:21:1`
 
-Wraps a client with registry validation and normalized results.
+Creates a permission manager from a runtime-specific client.
 
-Runtime permissions and build-time native configuration are separate concerns.
-This manager checks or requests permissions through a client, but it does not
-generate iOS usage descriptions, Android manifest entries, or Expo config
-plugins.
-
-```ts
-const permissions = createPermissionManager(client);
-const camera = await permissions.getStatus(Permission.Camera);
-const requested = camera.granted ? camera : await permissions.request(Permission.Camera);
-```
+The manager validates permission names and normalizes client results.
+Native app configuration remains a separate build-time concern.
 
 ### Signatures
 
@@ -227,16 +212,11 @@ Stable ordered list of normalized statuses.
 
 Kind: `type`
 Module: `src/client/types.ts`
-Source: `src/client/types.ts:15:1`
+Source: `src/client/types.ts:9:1`
 
-Adapter-neutral interface for runtime permission checks and requests.
+Adapter-neutral contract for checking and requesting permissions.
 
-```ts
-const state = await client.getStatus(Permission.Camera);
-if (!state.granted) {
-  await client.request(Permission.Camera);
-}
-```
+Implementations provide permission state and permission requests for a runtime environment.
 
 ### Members
 
@@ -300,7 +280,7 @@ Kind: `type`
 Module: `src/manager/createPermissionManager.ts`
 Source: `src/manager/createPermissionManager.ts:8:1`
 
-Public manager returned by `createPermissionManager`.
+Public facade for checking and requesting normalized permission state.
 
 ### Members
 
@@ -404,19 +384,6 @@ Module: `src/react/index.tsx`
 Source: `src/react/index.tsx:117:1`
 
 Tracks a single permission and exposes explicit refresh/request actions.
-
-```tsx
-const camera = usePermission(Permission.Camera, { refreshOnMount: true });
-
-return (
-  <Button
-    disabled={camera.granted}
-    onPress={() => {
-      void camera.request();
-    }}
-  />
-);
-```
 
 ### Signatures
 

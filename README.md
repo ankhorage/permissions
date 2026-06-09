@@ -110,21 +110,13 @@ Related symbols: `FakePermissionClient`, `FakePermissionClientOptions`
 createPermissionManager(client: PermissionClient) => PermissionManager
 ```
 
-Wraps a client with registry validation and normalized results.
+Creates a permission manager from a runtime-specific client.
 
-Runtime permissions and build-time native configuration are separate concerns.
-This manager checks or requests permissions through a client, but it does not
-generate iOS usage descriptions, Android manifest entries, or Expo config
-plugins.
-
-```ts
-const permissions = createPermissionManager(client);
-const camera = await permissions.getStatus(Permission.Camera);
-const requested = camera.granted ? camera : await permissions.request(Permission.Camera);
-```
+The manager validates permission names and normalizes client results.
+Native app configuration remains a separate build-time concern.
 
 Module: `src/manager/createPermissionManager.ts`
-Source: `src/manager/createPermissionManager.ts:32:1`
+Source: `src/manager/createPermissionManager.ts:21:1`
 Related symbols: `PermissionClient`, `PermissionManager`
 
 </details>

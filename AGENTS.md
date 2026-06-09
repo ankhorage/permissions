@@ -239,7 +239,7 @@ Document at least:
 
 Do not add shallow comments just to increase docs output.
 
-Do not add code snippets in the comments: they would have to be manually kept in-sync with the codebase and therefore it's an anti-pattern leading inevitably to outdated documentation.
+Do not add code snippets into comments.
 
 ## Testing rules
 
