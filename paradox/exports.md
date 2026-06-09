@@ -18,7 +18,7 @@ Throws for programmer errors where an invalid permission reaches runtime.
 
 Kind: `function`
 Module: `src/testing/index.ts`
-Source: `src/testing/index.ts:63:1`
+Source: `src/testing/index.ts:55:1`
 
 Creates a deterministic in-memory client for tests and examples.
 
@@ -381,7 +381,7 @@ but user denial should be represented as a permission state.
 
 Kind: `function`
 Module: `src/react/index.tsx`
-Source: `src/react/index.tsx:117:1`
+Source: `src/react/index.tsx:103:1`
 
 Tracks a single permission and exposes explicit refresh/request actions.
 

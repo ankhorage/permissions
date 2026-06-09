@@ -35,18 +35,12 @@
     "name": "createFakePermissionClient",
     "description": "Creates a deterministic in-memory client for tests and examples.\n\nFake clients make permission flows testable without native devices, browser\nprompts, simulators, or network access.",
     "isReadme": true,
-    "examples": [
-      {
-        "title": null,
-        "language": "ts",
-        "code": "const client = createFakePermissionClient({\n  initialStates: [{ permission: Permission.Camera, status: 'denied' }],\n});\nawait client.request(Permission.Camera);"
-      }
-    ],
+    "examples": [],
     "kind": "function",
     "modulePath": "src/testing/index.ts",
     "sourceLocation": {
       "filePath": "src/testing/index.ts",
-      "line": 63,
+      "line": 55,
       "column": 1
     },
     "exportPaths": ["src/index.ts", "src/testing/index.ts"],
@@ -909,18 +903,12 @@
     "name": "usePermission",
     "description": "Tracks a single permission and exposes explicit refresh/request actions.",
     "isReadme": false,
-    "examples": [
-      {
-        "title": null,
-        "language": "tsx",
-        "code": "const camera = usePermission(Permission.Camera, { refreshOnMount: true });\n\nreturn (\n  <Button\n    disabled={camera.granted}\n    onPress={() => {\n      void camera.request();\n    }}\n  />\n);"
-      }
-    ],
+    "examples": [],
     "kind": "function",
     "modulePath": "src/react/index.tsx",
     "sourceLocation": {
       "filePath": "src/react/index.tsx",
-      "line": 117,
+      "line": 103,
       "column": 1
     },
     "exportPaths": ["src/index.ts", "src/react/index.tsx"],

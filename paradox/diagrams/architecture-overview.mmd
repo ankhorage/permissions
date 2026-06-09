@@ -16,39 +16,42 @@ graph TD
   module_src_client_types_ts --> module_src_state_permissionState_ts
   module_src_expo_adapters_camera_ts["src/expo/adapters/camera.ts"]
   package__ankhorage_permissions -.-> module_src_expo_adapters_camera_ts
+  module_src_expo_adapters_camera_ts --> module_src_expo_adapters_shared_ts
   module_src_expo_adapters_camera_ts --> module_src_expo_client_ts
   module_src_expo_adapters_camera_ts --> module_src_registry_permissions_ts
   module_src_expo_adapters_camera_ts --> module_src_state_permissionState_ts
-  module_src_expo_adapters_clipboard_ts["src/expo/adapters/clipboard.ts"]
-  package__ankhorage_permissions -.-> module_src_expo_adapters_clipboard_ts
-  module_src_expo_adapters_clipboard_ts --> module_src_expo_client_ts
-  module_src_expo_adapters_clipboard_ts --> module_src_registry_permissions_ts
-  module_src_expo_adapters_clipboard_ts --> module_src_state_permissionState_ts
   module_src_expo_adapters_location_ts["src/expo/adapters/location.ts"]
   package__ankhorage_permissions -.-> module_src_expo_adapters_location_ts
+  module_src_expo_adapters_location_ts --> module_src_expo_adapters_shared_ts
   module_src_expo_adapters_location_ts --> module_src_expo_client_ts
   module_src_expo_adapters_location_ts --> module_src_registry_permissions_ts
   module_src_expo_adapters_location_ts --> module_src_state_permissionState_ts
   module_src_expo_adapters_mediaLibrary_ts["src/expo/adapters/mediaLibrary.ts"]
   package__ankhorage_permissions -.-> module_src_expo_adapters_mediaLibrary_ts
+  module_src_expo_adapters_mediaLibrary_ts --> module_src_expo_adapters_shared_ts
   module_src_expo_adapters_mediaLibrary_ts --> module_src_expo_client_ts
   module_src_expo_adapters_mediaLibrary_ts --> module_src_registry_permissions_ts
   module_src_expo_adapters_mediaLibrary_ts --> module_src_state_permissionState_ts
   module_src_expo_adapters_microphone_ts["src/expo/adapters/microphone.ts"]
   package__ankhorage_permissions -.-> module_src_expo_adapters_microphone_ts
+  module_src_expo_adapters_microphone_ts --> module_src_expo_adapters_shared_ts
   module_src_expo_adapters_microphone_ts --> module_src_expo_client_ts
   module_src_expo_adapters_microphone_ts --> module_src_registry_permissions_ts
   module_src_expo_adapters_microphone_ts --> module_src_state_permissionState_ts
   module_src_expo_adapters_notifications_ts["src/expo/adapters/notifications.ts"]
   package__ankhorage_permissions -.-> module_src_expo_adapters_notifications_ts
+  module_src_expo_adapters_notifications_ts --> module_src_expo_adapters_shared_ts
   module_src_expo_adapters_notifications_ts --> module_src_expo_client_ts
   module_src_expo_adapters_notifications_ts --> module_src_registry_permissions_ts
   module_src_expo_adapters_notifications_ts --> module_src_state_permissionState_ts
+  module_src_expo_adapters_shared_ts["src/expo/adapters/shared.ts"]
+  package__ankhorage_permissions -.-> module_src_expo_adapters_shared_ts
+  module_src_expo_adapters_shared_ts --> module_src_registry_permissions_ts
+  module_src_expo_adapters_shared_ts --> module_src_state_permissionState_ts
   module_src_expo_client_ts["src/expo/client.ts"]
   package__ankhorage_permissions -.-> module_src_expo_client_ts
   module_src_expo_client_ts --> module_src_client_types_ts
   module_src_expo_client_ts --> module_src_expo_adapters_camera_ts
-  module_src_expo_client_ts --> module_src_expo_adapters_clipboard_ts
   module_src_expo_client_ts --> module_src_expo_adapters_location_ts
   module_src_expo_client_ts --> module_src_expo_adapters_mediaLibrary_ts
   module_src_expo_client_ts --> module_src_expo_adapters_microphone_ts

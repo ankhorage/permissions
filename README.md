@@ -90,15 +90,8 @@ Creates a deterministic in-memory client for tests and examples.
 Fake clients make permission flows testable without native devices, browser
 prompts, simulators, or network access.
 
-```ts
-const client = createFakePermissionClient({
-  initialStates: [{ permission: Permission.Camera, status: 'denied' }],
-});
-await client.request(Permission.Camera);
-```
-
 Module: `src/testing/index.ts`
-Source: `src/testing/index.ts:63:1`
+Source: `src/testing/index.ts:55:1`
 Related symbols: `FakePermissionClient`, `FakePermissionClientOptions`
 
 </details>
