@@ -37,6 +37,16 @@
   "peerDependencies": {
     "react": ">=18.2.0 || >=19.0.0"
   },
+  "ankh": {
+    "category": "permissions",
+    "provider": "./dist/ankh.provider.js",
+    "capabilities": [
+      "permissions.inspect",
+      "permissions.check",
+      "permissions.request",
+      "permissions.manifest"
+    ]
+  },
   "files": [
     "dist",
     "src",
@@ -98,7 +108,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "rm -rf dist tsconfig.tsbuildinfo && bun x tsc -p tsconfig.json",
+    "build": "\u0072m -rf dist tsconfig.tsbuildinfo && bun x tsc -p tsconfig.json",
     "changeset": "changeset",
     "changeset:status": "changeset status --since=origin/main",
     "docs": "paradox",
