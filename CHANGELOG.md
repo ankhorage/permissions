@@ -1,5 +1,11 @@
 # @ankhorage/permissions
 
+## 0.2.1
+
+### Patch Changes
+
+- 15d1dae: Expose permission registry, check, request, and manifest commands through an Ankh provider manifest.
+
 ## 0.2.0
 
 ### Minor Changes
