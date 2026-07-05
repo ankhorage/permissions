@@ -1,4 +1,5 @@
 graph LR
+  module_src_ankh_provider_ts["src/ankh.provider.ts"]
   module_src_client_types_ts["src/client/types.ts"]
   module_src_expo_adapters_camera_ts["src/expo/adapters/camera.ts"]
   module_src_expo_adapters_location_ts["src/expo/adapters/location.ts"]
@@ -17,6 +18,7 @@ graph LR
   module_src_state_permissionState_ts["src/state/permissionState.ts"]
   module_src_testing_index_ts["src/testing/index.ts"]
   module_src_web_index_ts["src/web/index.ts"]
+  module_src_ankh_provider_ts --> module_src_registry_permissions_ts
   module_src_client_types_ts --> module_src_registry_permissions_ts
   module_src_client_types_ts --> module_src_state_permissionState_ts
   module_src_expo_adapters_camera_ts --> module_src_expo_client_ts
