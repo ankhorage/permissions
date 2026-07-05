@@ -37,6 +37,16 @@
   "peerDependencies": {
     "react": ">=18.2.0 || >=19.0.0"
   },
+  "ankh": {
+    "category": "permissions",
+    "provider": "./dist/ankh.provider.js",
+    "capabilities": [
+      "permissions.inspect",
+      "permissions.check",
+      "permissions.request",
+      "permissions.manifest"
+    ]
+  },
   "files": [
     "dist",
     "src",
