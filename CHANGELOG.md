@@ -1,5 +1,11 @@
 # @ankhorage/permissions
 
+## 0.2.2
+
+### Patch Changes
+
+- 2a54d0c: Update package metadata.
+
 ## 0.2.1
 
 ### Patch Changes
