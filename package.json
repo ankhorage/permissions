@@ -39,7 +39,7 @@
   },
   "ankh": {
     "category": "permissions",
-    "provider": "./dist/ankh.provider.js",
+    "provider": "./dist/cli/index.js",
     "capabilities": [
       "permissions.inspect",
       "permissions.check",
@@ -62,6 +62,11 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "default": "./dist/index.js"
+    },
+    "./cli": {
+      "types": "./dist/cli/index.d.ts",
+      "import": "./dist/cli/index.js",
+      "default": "./dist/cli/index.js"
     },
     "./react": {
       "react-native": "./dist/react/index.js",
