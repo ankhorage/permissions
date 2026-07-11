@@ -39,8 +39,13 @@
   },
   "ankh": {
     "category": "permissions",
-    "provider": null,
-    "capabilities": []
+    "provider": "./dist/ankh.provider.js",
+    "capabilities": [
+      "permissions.inspect",
+      "permissions.check",
+      "permissions.request",
+      "permissions.manifest"
+    ]
   },
   "files": [
     "dist",
