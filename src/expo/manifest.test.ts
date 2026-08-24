@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import { describe, expect, test } from 'bun:test';
 
 import { Permission, PERMISSIONS } from '../registry/permissions';
-import { EXPO_PERMISSION_SUPPORT } from './manifest';
+import { EXPO_PERMISSION_CLIENT_REQUIRED_PACKAGES, EXPO_PERMISSION_SUPPORT } from './manifest';
 
 describe('EXPO_PERMISSION_SUPPORT', () => {
   test('defines metadata for every known permission', () => {
@@ -15,6 +15,10 @@ describe('EXPO_PERMISSION_SUPPORT', () => {
 
     expect(source).not.toContain("from 'expo-");
     expect(source).not.toContain('await import(');
+  });
+
+  test('projects client-level settings recovery dependencies', () => {
+    expect(EXPO_PERMISSION_CLIENT_REQUIRED_PACKAGES).toEqual(['expo-linking']);
   });
 
   test('includes package and config hints for camera, microphone, and location permissions', () => {

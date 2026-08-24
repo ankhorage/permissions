@@ -40,6 +40,8 @@ graph LR
   module_src_web_index_ts --> export_createWebPermissionClient
   export_createWebPermissionClient -.-> export_PermissionClient
   export_createWebPermissionClient -.-> export_WebPermissionClientOptions
+  export_EXPO_PERMISSION_CLIENT_REQUIRED_PACKAGES["EXPO_PERMISSION_CLIENT_REQUIRED_PACKAGES"]
+  module_src_expo_manifest_ts --> export_EXPO_PERMISSION_CLIENT_REQUIRED_PACKAGES
   export_EXPO_PERMISSION_SUPPORT["EXPO_PERMISSION_SUPPORT"]
   module_src_expo_manifest_ts --> export_EXPO_PERMISSION_SUPPORT
   export_ExpoPermissionMetadata["ExpoPermissionMetadata"]

@@ -62,7 +62,7 @@ const notificationsMock = {
 
 const linkingMock = {
   calls: 0,
-  error: undefined as string | undefined,
+  error: undefined as Error | undefined,
 };
 
 void mock.module('expo-camera', () => ({
@@ -209,7 +209,7 @@ void mock.module('expo-linking', () => ({
     linkingMock.calls += 1;
 
     if (linkingMock.error !== undefined) {
-      throw new Error(linkingMock.error);
+      throw linkingMock.error;
     }
 
     return Promise.resolve();
@@ -450,29 +450,25 @@ describe('createPermissionClient', () => {
     expect(linkingMock.calls).toBe(1);
   });
 
-  test('rejects with a stable error when Expo Linking cannot open settings', async () => {
-    linkingMock.error = 'settings unavailable';
+  test('rejects with a stable error and preserves the native failure cause', async () => {
+    const cause = new Error('native settings unavailable');
+    linkingMock.error = cause;
     const client = createPermissionClient();
+    const error = await captureOpenSettingsErrorAsync(client);
 
-    if (client.openSettings === undefined) {
-      throw new Error('Expo permission client must expose openSettings.');
-    }
+    expect(error.message).toBe('Unable to open application settings.');
+    expect(error.cause).toBe(cause);
+  });
 
-    let caughtError: unknown;
+  test('uses the same stable error for Expo Linking on Web', async () => {
+    const cause = new Error('openSettings is unavailable on web');
+    cause.name = 'UnavailabilityError';
+    linkingMock.error = cause;
+    const client = createPermissionClient();
+    const error = await captureOpenSettingsErrorAsync(client);
 
-    try {
-      await client.openSettings();
-    } catch (error) {
-      caughtError = error;
-    }
-
-    expect(caughtError).toBeInstanceOf(Error);
-
-    if (!(caughtError instanceof Error)) {
-      throw new Error('Opening settings must reject with an Error instance.');
-    }
-
-    expect(caughtError.message).toBe('Unable to open application settings: settings unavailable');
+    expect(error.message).toBe('Unable to open application settings.');
+    expect(error.cause).toBe(cause);
   });
 
   test('returns unavailable when a camera permission call fails at runtime', async () => {
@@ -503,6 +499,26 @@ describe('createPermissionClient', () => {
     });
   });
 });
+
+async function captureOpenSettingsErrorAsync(
+  client: ReturnType<typeof createPermissionClient>,
+): Promise<Error> {
+  if (client.openSettings === undefined) {
+    throw new Error('Expo permission client must expose openSettings.');
+  }
+
+  try {
+    await client.openSettings();
+  } catch (error) {
+    if (error instanceof Error) {
+      return error;
+    }
+
+    throw new Error('Opening settings must reject with an Error instance.', { cause: error });
+  }
+
+  throw new Error('Opening settings must reject.');
+}
 
 function resetExpoMocks(): void {
   cameraMock.mode = 'topLevel';

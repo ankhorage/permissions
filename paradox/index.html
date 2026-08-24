@@ -212,7 +212,7 @@
                 data-target="src/expo/adapters/mediaLibrary.ts"
               >
                 src/expo/adapters/mediaLibrary.ts
-                <small>1 function</small>
+                <small>2 functions</small>
               </button>
             </li>
             <li>
@@ -226,15 +226,25 @@
               </button>
             </li>
             <li>
+              <button
+                class="nav-button"
+                type="button"
+                data-target="src/expo/adapters/notifications.ts"
+              >
+                src/expo/adapters/notifications.ts
+                <small>2 functions</small>
+              </button>
+            </li>
+            <li>
               <button class="nav-button" type="button" data-target="src/expo/client.ts">
                 src/expo/client.ts
-                <small>4 functions</small>
+                <small>3 functions</small>
               </button>
             </li>
             <li>
               <button class="nav-button" type="button" data-target="src/expo/permissionResponse.ts">
                 src/expo/permissionResponse.ts
-                <small>9 functions</small>
+                <small>7 functions</small>
               </button>
             </li>
             <li>
@@ -285,7 +295,7 @@
           <section class="panel">
             <h2>Package overview</h2>
             <div class="summary">
-              <div><strong>34</strong><span class="muted">public exports</span></div>
+              <div><strong>35</strong><span class="muted">public exports</span></div>
               <div><strong>1</strong><span class="muted">components</span></div>
               <div><strong>20</strong><span class="muted">modules</span></div>
               <div><strong>7</strong><span class="muted">entrypoints</span></div>
@@ -427,19 +437,20 @@
             </article>
             <article
               class="item"
-              data-search="src/expo/manifest.ts src/registry/permissions.ts EXPO_PERMISSION_SUPPORT ExpoPermissionMetadata PermissionSupport"
+              data-search="src/expo/manifest.ts src/registry/permissions.ts EXPO_PERMISSION_CLIENT_REQUIRED_PACKAGES EXPO_PERMISSION_SUPPORT ExpoPermissionMetadata PermissionSupport"
             >
               <h3>src/expo/manifest.ts</h3>
               <p class="muted">Configured entrypoint</p>
               <p><strong>Dependencies:</strong> <code>src/registry/permissions.ts</code></p>
               <p>
-                <strong>Exports:</strong> <code>EXPO_PERMISSION_SUPPORT</code>,
-                <code>ExpoPermissionMetadata</code>, <code>PermissionSupport</code>
+                <strong>Exports:</strong> <code>EXPO_PERMISSION_CLIENT_REQUIRED_PACKAGES</code>,
+                <code>EXPO_PERMISSION_SUPPORT</code>, <code>ExpoPermissionMetadata</code>,
+                <code>PermissionSupport</code>
               </p>
             </article>
             <article
               class="item"
-              data-search="src/expo/permissionResponse.ts src/registry/permissions.ts src/state/permissionState.ts createExpoMediaLibraryPermissionState createExpoNotificationPermissionState createExpoPermissionState createExpoUnavailableState ExpoPermissionMethod ExpoPermissionResponse findExpoPermissionMethod"
+              data-search="src/expo/permissionResponse.ts src/registry/permissions.ts src/state/permissionState.ts createExpoPermissionState createExpoUnavailableState ExpoPermissionMethod ExpoPermissionResponse findExpoPermissionMethod"
             >
               <h3>src/expo/permissionResponse.ts</h3>
               <p class="muted">Referenced module</p>
@@ -448,11 +459,9 @@
                 <code>src/state/permissionState.ts</code>
               </p>
               <p>
-                <strong>Exports:</strong> <code>createExpoMediaLibraryPermissionState</code>,
-                <code>createExpoNotificationPermissionState</code>,
-                <code>createExpoPermissionState</code>, <code>createExpoUnavailableState</code>,
-                <code>ExpoPermissionMethod</code>, <code>ExpoPermissionResponse</code>,
-                <code>findExpoPermissionMethod</code>
+                <strong>Exports:</strong> <code>createExpoPermissionState</code>,
+                <code>createExpoUnavailableState</code>, <code>ExpoPermissionMethod</code>,
+                <code>ExpoPermissionResponse</code>, <code>findExpoPermissionMethod</code>
               </p>
             </article>
             <article
@@ -649,19 +658,19 @@
               <article
                 class="item"
                 id="symbol-createpermissionclient"
-                data-search="createPermissionClient function src/expo/client.ts Creates a permission client backed by Expo SDK modules.&#10;&#10;Denials that Expo cannot request again are normalized to `blocked`. Limited&#10;media-library access and provisional or ephemeral iOS notification access&#10;are normalized to usable `limited` states, where `granted` remains true.&#10;The client exposes settings recovery through `expo-linking` and rejects with&#10;a stable error when the operating-system settings page cannot be opened.&#10;&#10;Expo modules are loaded only when a client operation uses them. The package&#10;root and Expo manifest metadata remain free of native module imports. PermissionClient () =&gt; PermissionClient"
+                data-search="createPermissionClient function src/expo/client.ts Creates a permission client backed by Expo SDK modules.&#10;&#10;Denials that Expo cannot request again are normalized to `blocked`. Limited&#10;media-library access and provisional or ephemeral iOS notification access&#10;are normalized to usable `limited` states, where `granted` remains true.&#10;The client requires `expo-linking` for settings recovery and rejects with a&#10;stable error when the operating-system settings page cannot be opened.&#10;&#10;Expo modules are loaded only when a client operation uses them. The package&#10;root and Expo manifest metadata remain free of native module imports. PermissionClient () =&gt; PermissionClient"
               >
                 <h4>createPermissionClient</h4>
-                <p class="muted">function • <code>src/expo/client.ts:40:1</code></p>
+                <p class="muted">function • <code>src/expo/client.ts:42:1</code></p>
                 <p>
                   Creates a permission client backed by Expo SDK modules. Denials that Expo cannot
                   request again are normalized to `blocked`. Limited media-library access and
                   provisional or ephemeral iOS notification access are normalized to usable
-                  `limited` states, where `granted` remains true. The client exposes settings
-                  recovery through `expo-linking` and rejects with a stable error when the
-                  operating-system settings page cannot be opened. Expo modules are loaded only when
-                  a client operation uses them. The package root and Expo manifest metadata remain
-                  free of native module imports.
+                  `limited` states, where `granted` remains true. The client requires `expo-linking`
+                  for settings recovery and rejects with a stable error when the operating-system
+                  settings page cannot be opened. Expo modules are loaded only when a client
+                  operation uses them. The package root and Expo manifest metadata remain free of
+                  native module imports.
                 </p>
                 <p><strong>Export paths:</strong> <code>src/expo/index.ts</code></p>
                 <div>
@@ -682,11 +691,25 @@
               <h3>src/expo/manifest.ts</h3>
               <article
                 class="item"
+                id="symbol-expo-permission-client-required-packages"
+                data-search="EXPO_PERMISSION_CLIENT_REQUIRED_PACKAGES value src/expo/manifest.ts Expo packages required by the permission client independently of a specific&#10;permission capability."
+              >
+                <h4>EXPO_PERMISSION_CLIENT_REQUIRED_PACKAGES</h4>
+                <p class="muted">value • <code>src/expo/manifest.ts:20:14</code></p>
+                <p>
+                  Expo packages required by the permission client independently of a specific
+                  permission capability.
+                </p>
+                <p><strong>Export paths:</strong> <code>src/expo/manifest.ts</code></p>
+                <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
+              </article>
+              <article
+                class="item"
                 id="symbol-expo-permission-support"
                 data-search="EXPO_PERMISSION_SUPPORT value src/expo/manifest.ts "
               >
                 <h4>EXPO_PERMISSION_SUPPORT</h4>
-                <p class="muted">value • <code>src/expo/manifest.ts:16:14</code></p>
+                <p class="muted">value • <code>src/expo/manifest.ts:22:14</code></p>
 
                 <p><strong>Export paths:</strong> <code>src/expo/manifest.ts</code></p>
                 <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
@@ -2422,6 +2445,8 @@ graph LR
                 module_src_web_index_ts --&gt; export_createWebPermissionClient
                 export_createWebPermissionClient -.-&gt; export_PermissionClient
                 export_createWebPermissionClient -.-&gt; export_WebPermissionClientOptions
+                export_EXPO_PERMISSION_CLIENT_REQUIRED_PACKAGES[&quot;EXPO_PERMISSION_CLIENT_REQUIRED_PACKAGES&quot;]
+                module_src_expo_manifest_ts --&gt; export_EXPO_PERMISSION_CLIENT_REQUIRED_PACKAGES
                 export_EXPO_PERMISSION_SUPPORT[&quot;EXPO_PERMISSION_SUPPORT&quot;]
                 module_src_expo_manifest_ts --&gt; export_EXPO_PERMISSION_SUPPORT
                 export_ExpoPermissionMetadata[&quot;ExpoPermissionMetadata&quot;]
@@ -2544,6 +2569,8 @@ graph LR
   module_src_web_index_ts --&gt; export_createWebPermissionClient
   export_createWebPermissionClient -.-&gt; export_PermissionClient
   export_createWebPermissionClient -.-&gt; export_WebPermissionClientOptions
+  export_EXPO_PERMISSION_CLIENT_REQUIRED_PACKAGES[&quot;EXPO_PERMISSION_CLIENT_REQUIRED_PACKAGES&quot;]
+  module_src_expo_manifest_ts --&gt; export_EXPO_PERMISSION_CLIENT_REQUIRED_PACKAGES
   export_EXPO_PERMISSION_SUPPORT[&quot;EXPO_PERMISSION_SUPPORT&quot;]
   module_src_expo_manifest_ts --&gt; export_EXPO_PERMISSION_SUPPORT
   export_ExpoPermissionMetadata[&quot;ExpoPermissionMetadata&quot;]
@@ -2921,10 +2948,18 @@ sequenceDiagram
             <h2>src/expo/adapters/mediaLibrary.ts</h2>
             <article
               class="item"
+              data-search="createMediaLibraryPermissionState src/expo/adapters/mediaLibrary.ts "
+            >
+              <h3>createMediaLibraryPermissionState</h3>
+              <p class="muted"><code>src/expo/adapters/mediaLibrary.ts:39:1</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
               data-search="isWriteOnlyPermission src/expo/adapters/mediaLibrary.ts "
             >
               <h3>isWriteOnlyPermission</h3>
-              <p class="muted"><code>src/expo/adapters/mediaLibrary.ts:34:1</code></p>
+              <p class="muted"><code>src/expo/adapters/mediaLibrary.ts:55:1</code></p>
               <p class="empty">No description available.</p>
             </article>
           </section>
@@ -2947,21 +2982,47 @@ sequenceDiagram
             </article>
           </section>
         </section>
+        <section
+          id="view-src-expo-adapters-notifications-ts"
+          class="view"
+          data-view="src/expo/adapters/notifications.ts"
+          hidden
+        >
+          <section class="panel">
+            <h2>src/expo/adapters/notifications.ts</h2>
+            <article
+              class="item"
+              data-search="createNotificationPermissionState src/expo/adapters/notifications.ts "
+            >
+              <h3>createNotificationPermissionState</h3>
+              <p class="muted"><code>src/expo/adapters/notifications.ts:40:1</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="createNotificationState src/expo/adapters/notifications.ts "
+            >
+              <h3>createNotificationState</h3>
+              <p class="muted"><code>src/expo/adapters/notifications.ts:80:1</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+          </section>
+        </section>
         <section id="view-src-expo-client-ts" class="view" data-view="src/expo/client.ts" hidden>
           <section class="panel">
             <h2>src/expo/client.ts</h2>
             <article
               class="item"
-              data-search="createPermissionClient src/expo/client.ts Creates a permission client backed by Expo SDK modules.&#10;&#10;Denials that Expo cannot request again are normalized to `blocked`. Limited&#10;media-library access and provisional or ephemeral iOS notification access&#10;are normalized to usable `limited` states, where `granted` remains true.&#10;The client exposes settings recovery through `expo-linking` and rejects with&#10;a stable error when the operating-system settings page cannot be opened.&#10;&#10;Expo modules are loaded only when a client operation uses them. The package&#10;root and Expo manifest metadata remain free of native module imports."
+              data-search="createPermissionClient src/expo/client.ts Creates a permission client backed by Expo SDK modules.&#10;&#10;Denials that Expo cannot request again are normalized to `blocked`. Limited&#10;media-library access and provisional or ephemeral iOS notification access&#10;are normalized to usable `limited` states, where `granted` remains true.&#10;The client requires `expo-linking` for settings recovery and rejects with a&#10;stable error when the operating-system settings page cannot be opened.&#10;&#10;Expo modules are loaded only when a client operation uses them. The package&#10;root and Expo manifest metadata remain free of native module imports."
             >
               <h3>createPermissionClient</h3>
-              <p class="muted"><code>src/expo/client.ts:40:1</code></p>
+              <p class="muted"><code>src/expo/client.ts:42:1</code></p>
               <p>
                 Creates a permission client backed by Expo SDK modules. Denials that Expo cannot
                 request again are normalized to `blocked`. Limited media-library access and
                 provisional or ephemeral iOS notification access are normalized to usable `limited`
-                states, where `granted` remains true. The client exposes settings recovery through
-                `expo-linking` and rejects with a stable error when the operating-system settings
+                states, where `granted` remains true. The client requires `expo-linking` for
+                settings recovery and rejects with a stable error when the operating-system settings
                 page cannot be opened. Expo modules are loaded only when a client operation uses
                 them. The package root and Expo manifest metadata remain free of native module
                 imports.
@@ -2969,17 +3030,12 @@ sequenceDiagram
             </article>
             <article class="item" data-search="createUnavailableSupportState src/expo/client.ts ">
               <h3>createUnavailableSupportState</h3>
-              <p class="muted"><code>src/expo/client.ts:92:1</code></p>
+              <p class="muted"><code>src/expo/client.ts:94:1</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article class="item" data-search="createNotRequiredState src/expo/client.ts ">
               <h3>createNotRequiredState</h3>
-              <p class="muted"><code>src/expo/client.ts:100:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article class="item" data-search="getErrorMessage src/expo/client.ts ">
-              <h3>getErrorMessage</h3>
-              <p class="muted"><code>src/expo/client.ts:107:1</code></p>
+              <p class="muted"><code>src/expo/client.ts:102:1</code></p>
               <p class="empty">No description available.</p>
             </article>
           </section>
@@ -2997,23 +3053,7 @@ sequenceDiagram
               data-search="createExpoPermissionState src/expo/permissionResponse.ts "
             >
               <h3>createExpoPermissionState</h3>
-              <p class="muted"><code>src/expo/permissionResponse.ts:20:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article
-              class="item"
-              data-search="createExpoMediaLibraryPermissionState src/expo/permissionResponse.ts "
-            >
-              <h3>createExpoMediaLibraryPermissionState</h3>
-              <p class="muted"><code>src/expo/permissionResponse.ts:29:1</code></p>
-              <p class="empty">No description available.</p>
-            </article>
-            <article
-              class="item"
-              data-search="createExpoNotificationPermissionState src/expo/permissionResponse.ts "
-            >
-              <h3>createExpoNotificationPermissionState</h3>
-              <p class="muted"><code>src/expo/permissionResponse.ts:45:1</code></p>
+              <p class="muted"><code>src/expo/permissionResponse.ts:16:1</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article
@@ -3021,7 +3061,7 @@ sequenceDiagram
               data-search="createExpoUnavailableState src/expo/permissionResponse.ts "
             >
               <h3>createExpoUnavailableState</h3>
-              <p class="muted"><code>src/expo/permissionResponse.ts:85:1</code></p>
+              <p class="muted"><code>src/expo/permissionResponse.ts:25:1</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article
@@ -3029,7 +3069,7 @@ sequenceDiagram
               data-search="findExpoPermissionMethod src/expo/permissionResponse.ts "
             >
               <h3>findExpoPermissionMethod</h3>
-              <p class="muted"><code>src/expo/permissionResponse.ts:96:1</code></p>
+              <p class="muted"><code>src/expo/permissionResponse.ts:36:1</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article
@@ -3037,7 +3077,7 @@ sequenceDiagram
               data-search="getExpoPermissionErrorMessage src/expo/permissionResponse.ts "
             >
               <h3>getExpoPermissionErrorMessage</h3>
-              <p class="muted"><code>src/expo/permissionResponse.ts:120:1</code></p>
+              <p class="muted"><code>src/expo/permissionResponse.ts:60:1</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article
@@ -3045,7 +3085,7 @@ sequenceDiagram
               data-search="createNormalizedExpoPermissionState src/expo/permissionResponse.ts "
             >
               <h3>createNormalizedExpoPermissionState</h3>
-              <p class="muted"><code>src/expo/permissionResponse.ts:132:1</code></p>
+              <p class="muted"><code>src/expo/permissionResponse.ts:72:1</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article
@@ -3053,12 +3093,12 @@ sequenceDiagram
               data-search="hasExpoPermissionMethod src/expo/permissionResponse.ts "
             >
               <h3>hasExpoPermissionMethod</h3>
-              <p class="muted"><code>src/expo/permissionResponse.ts:152:1</code></p>
+              <p class="muted"><code>src/expo/permissionResponse.ts:92:1</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article class="item" data-search="isRecord src/expo/permissionResponse.ts ">
               <h3>isRecord</h3>
-              <p class="muted"><code>src/expo/permissionResponse.ts:159:1</code></p>
+              <p class="muted"><code>src/expo/permissionResponse.ts:99:1</code></p>
               <p class="empty">No description available.</p>
             </article>
           </section>

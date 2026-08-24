@@ -1,7 +1,13 @@
 interface ExpoPermissionResult {
   status: string;
   canAskAgain?: boolean;
+}
+
+interface ExpoMediaLibraryPermissionResult extends ExpoPermissionResult {
   accessPrivileges?: 'all' | 'limited' | 'none';
+}
+
+interface ExpoNotificationPermissionResult extends ExpoPermissionResult {
   ios?: {
     status?: number;
   };
@@ -35,11 +41,11 @@ declare module 'expo-media-library' {
   export function getPermissionsAsync(
     writeOnly?: boolean,
     granularPermissions?: readonly string[],
-  ): Promise<ExpoPermissionResult>;
+  ): Promise<ExpoMediaLibraryPermissionResult>;
   export function requestPermissionsAsync(
     writeOnly?: boolean,
     granularPermissions?: readonly string[],
-  ): Promise<ExpoPermissionResult>;
+  ): Promise<ExpoMediaLibraryPermissionResult>;
 }
 
 declare module 'expo-audio' {
@@ -56,6 +62,6 @@ declare module 'expo-audio' {
 }
 
 declare module 'expo-notifications' {
-  export function getPermissionsAsync(): Promise<ExpoPermissionResult>;
-  export function requestPermissionsAsync(): Promise<ExpoPermissionResult>;
+  export function getPermissionsAsync(): Promise<ExpoNotificationPermissionResult>;
+  export function requestPermissionsAsync(): Promise<ExpoNotificationPermissionResult>;
 }
