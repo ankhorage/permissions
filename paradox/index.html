@@ -212,7 +212,7 @@
                 data-target="src/expo/adapters/mediaLibrary.ts"
               >
                 src/expo/adapters/mediaLibrary.ts
-                <small>1 function</small>
+                <small>2 functions</small>
               </button>
             </li>
             <li>
@@ -226,6 +226,16 @@
               </button>
             </li>
             <li>
+              <button
+                class="nav-button"
+                type="button"
+                data-target="src/expo/adapters/notifications.ts"
+              >
+                src/expo/adapters/notifications.ts
+                <small>2 functions</small>
+              </button>
+            </li>
+            <li>
               <button class="nav-button" type="button" data-target="src/expo/client.ts">
                 src/expo/client.ts
                 <small>3 functions</small>
@@ -234,7 +244,7 @@
             <li>
               <button class="nav-button" type="button" data-target="src/expo/permissionResponse.ts">
                 src/expo/permissionResponse.ts
-                <small>6 functions</small>
+                <small>7 functions</small>
               </button>
             </li>
             <li>
@@ -285,9 +295,9 @@
           <section class="panel">
             <h2>Package overview</h2>
             <div class="summary">
-              <div><strong>34</strong><span class="muted">public exports</span></div>
+              <div><strong>35</strong><span class="muted">public exports</span></div>
               <div><strong>1</strong><span class="muted">components</span></div>
-              <div><strong>19</strong><span class="muted">modules</span></div>
+              <div><strong>20</strong><span class="muted">modules</span></div>
               <div><strong>7</strong><span class="muted">entrypoints</span></div>
             </div>
             <h3>Entrypoints</h3>
@@ -311,6 +321,12 @@
               <h3>src/ankh.provider.ts</h3>
               <p class="muted">Referenced module</p>
               <p><strong>Dependencies:</strong> <code>src/registry/permissions.ts</code></p>
+              <p><strong>Exports:</strong> <code>default</code></p>
+            </article>
+            <article class="item" data-search="src/cli/index.ts default">
+              <h3>src/cli/index.ts</h3>
+              <p class="muted">Referenced module</p>
+              <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
               <p><strong>Exports:</strong> <code>default</code></p>
             </article>
             <article
@@ -421,14 +437,15 @@
             </article>
             <article
               class="item"
-              data-search="src/expo/manifest.ts src/registry/permissions.ts EXPO_PERMISSION_SUPPORT ExpoPermissionMetadata PermissionSupport"
+              data-search="src/expo/manifest.ts src/registry/permissions.ts EXPO_PERMISSION_CLIENT_REQUIRED_PACKAGES EXPO_PERMISSION_SUPPORT ExpoPermissionMetadata PermissionSupport"
             >
               <h3>src/expo/manifest.ts</h3>
               <p class="muted">Configured entrypoint</p>
               <p><strong>Dependencies:</strong> <code>src/registry/permissions.ts</code></p>
               <p>
-                <strong>Exports:</strong> <code>EXPO_PERMISSION_SUPPORT</code>,
-                <code>ExpoPermissionMetadata</code>, <code>PermissionSupport</code>
+                <strong>Exports:</strong> <code>EXPO_PERMISSION_CLIENT_REQUIRED_PACKAGES</code>,
+                <code>EXPO_PERMISSION_SUPPORT</code>, <code>ExpoPermissionMetadata</code>,
+                <code>PermissionSupport</code>
               </p>
             </article>
             <article
@@ -641,11 +658,20 @@
               <article
                 class="item"
                 id="symbol-createpermissionclient"
-                data-search="createPermissionClient function src/expo/client.ts  PermissionClient () =&gt; PermissionClient"
+                data-search="createPermissionClient function src/expo/client.ts Creates a permission client backed by Expo SDK modules.&#10;&#10;Denials that Expo cannot request again are normalized to `blocked`. Limited&#10;media-library access and provisional or ephemeral iOS notification access&#10;are normalized to usable `limited` states, where `granted` remains true.&#10;The client requires `expo-linking` for settings recovery and rejects with a&#10;stable error when the operating-system settings page cannot be opened.&#10;&#10;Expo modules are loaded only when a client operation uses them. The package&#10;root and Expo manifest metadata remain free of native module imports. PermissionClient () =&gt; PermissionClient"
               >
                 <h4>createPermissionClient</h4>
-                <p class="muted">function • <code>src/expo/client.ts:26:1</code></p>
-
+                <p class="muted">function • <code>src/expo/client.ts:42:1</code></p>
+                <p>
+                  Creates a permission client backed by Expo SDK modules. Denials that Expo cannot
+                  request again are normalized to `blocked`. Limited media-library access and
+                  provisional or ephemeral iOS notification access are normalized to usable
+                  `limited` states, where `granted` remains true. The client requires `expo-linking`
+                  for settings recovery and rejects with a stable error when the operating-system
+                  settings page cannot be opened. Expo modules are loaded only when a client
+                  operation uses them. The package root and Expo manifest metadata remain free of
+                  native module imports.
+                </p>
                 <p><strong>Export paths:</strong> <code>src/expo/index.ts</code></p>
                 <div>
                   <strong>Related symbols:</strong>
@@ -665,11 +691,25 @@
               <h3>src/expo/manifest.ts</h3>
               <article
                 class="item"
+                id="symbol-expo-permission-client-required-packages"
+                data-search="EXPO_PERMISSION_CLIENT_REQUIRED_PACKAGES value src/expo/manifest.ts Expo packages required by the permission client independently of a specific&#10;permission capability."
+              >
+                <h4>EXPO_PERMISSION_CLIENT_REQUIRED_PACKAGES</h4>
+                <p class="muted">value • <code>src/expo/manifest.ts:20:14</code></p>
+                <p>
+                  Expo packages required by the permission client independently of a specific
+                  permission capability.
+                </p>
+                <p><strong>Export paths:</strong> <code>src/expo/manifest.ts</code></p>
+                <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
+              </article>
+              <article
+                class="item"
                 id="symbol-expo-permission-support"
                 data-search="EXPO_PERMISSION_SUPPORT value src/expo/manifest.ts "
               >
                 <h4>EXPO_PERMISSION_SUPPORT</h4>
-                <p class="muted">value • <code>src/expo/manifest.ts:16:14</code></p>
+                <p class="muted">value • <code>src/expo/manifest.ts:22:14</code></p>
 
                 <p><strong>Export paths:</strong> <code>src/expo/manifest.ts</code></p>
                 <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
@@ -1424,11 +1464,15 @@
               <article
                 class="item"
                 id="symbol-createpermissionstate"
-                data-search="createPermissionState function src/state/permissionState.ts Creates a normalized state and derives the `granted` convenience flag. PermissionState (input: CreatePermissionStateInput) =&gt; PermissionState"
+                data-search="createPermissionState function src/state/permissionState.ts Creates a normalized state and derives the `granted` convenience flag.&#10;Limited access is usable partial authorization, so both `granted` and&#10;`limited` states set `granted` to true. PermissionState (input: CreatePermissionStateInput) =&gt; PermissionState"
               >
                 <h4>createPermissionState</h4>
-                <p class="muted">function • <code>src/state/permissionState.ts:61:1</code></p>
-                <p>Creates a normalized state and derives the `granted` convenience flag.</p>
+                <p class="muted">function • <code>src/state/permissionState.ts:63:1</code></p>
+                <p>
+                  Creates a normalized state and derives the `granted` convenience flag. Limited
+                  access is usable partial authorization, so both `granted` and `limited` states set
+                  `granted` to true.
+                </p>
                 <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
                 <div>
                   <strong>Related symbols:</strong>
@@ -1500,7 +1544,7 @@
                 data-search="normalizePermissionState function src/state/permissionState.ts Normalizes an adapter result to the requested permission and status shape. Permission PermissionState (permission: Permission, state: PermissionState) =&gt; PermissionState"
               >
                 <h4>normalizePermissionState</h4>
-                <p class="muted">function • <code>src/state/permissionState.ts:75:1</code></p>
+                <p class="muted">function • <code>src/state/permissionState.ts:77:1</code></p>
                 <p>Normalizes an adapter result to the requested permission and status shape.</p>
                 <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
                 <div>
@@ -2009,6 +2053,8 @@
                 module_src_ankh_provider_ts[&quot;src/ankh.provider.ts&quot;]
                 package__ankhorage_permissions -.-&gt; module_src_ankh_provider_ts
                 module_src_ankh_provider_ts --&gt; module_src_registry_permissions_ts
+                module_src_cli_index_ts[&quot;src/cli/index.ts&quot;] package__ankhorage_permissions
+                -.-&gt; module_src_cli_index_ts
                 module_src_client_types_ts[&quot;src/client/types.ts&quot;]
                 package__ankhorage_permissions -.-&gt; module_src_client_types_ts
                 module_src_client_types_ts --&gt; module_src_registry_permissions_ts
@@ -2113,6 +2159,8 @@ graph TD
   module_src_ankh_provider_ts[&quot;src/ankh.provider.ts&quot;]
   package__ankhorage_permissions -.-&gt; module_src_ankh_provider_ts
   module_src_ankh_provider_ts --&gt; module_src_registry_permissions_ts
+  module_src_cli_index_ts[&quot;src/cli/index.ts&quot;]
+  package__ankhorage_permissions -.-&gt; module_src_cli_index_ts
   module_src_client_types_ts[&quot;src/client/types.ts&quot;]
   package__ankhorage_permissions -.-&gt; module_src_client_types_ts
   module_src_client_types_ts --&gt; module_src_registry_permissions_ts
@@ -2203,6 +2251,7 @@ graph TD
               <p class="muted"><code>diagrams/module-relationships.mmd</code></p>
               <div class="mermaid">
                 graph LR module_src_ankh_provider_ts[&quot;src/ankh.provider.ts&quot;]
+                module_src_cli_index_ts[&quot;src/cli/index.ts&quot;]
                 module_src_client_types_ts[&quot;src/client/types.ts&quot;]
                 module_src_expo_adapters_camera_ts[&quot;src/expo/adapters/camera.ts&quot;]
                 module_src_expo_adapters_location_ts[&quot;src/expo/adapters/location.ts&quot;]
@@ -2278,6 +2327,7 @@ graph TD
                 <pre>
 graph LR
   module_src_ankh_provider_ts[&quot;src/ankh.provider.ts&quot;]
+  module_src_cli_index_ts[&quot;src/cli/index.ts&quot;]
   module_src_client_types_ts[&quot;src/client/types.ts&quot;]
   module_src_expo_adapters_camera_ts[&quot;src/expo/adapters/camera.ts&quot;]
   module_src_expo_adapters_location_ts[&quot;src/expo/adapters/location.ts&quot;]
@@ -2355,6 +2405,7 @@ graph LR
               <p class="muted"><code>diagrams/export-graph.mmd</code></p>
               <div class="mermaid">
                 graph LR module_src_ankh_provider_ts[&quot;src/ankh.provider.ts&quot;]
+                module_src_cli_index_ts[&quot;src/cli/index.ts&quot;]
                 module_src_client_types_ts[&quot;src/client/types.ts&quot;]
                 module_src_expo_adapters_camera_ts[&quot;src/expo/adapters/camera.ts&quot;]
                 module_src_expo_adapters_location_ts[&quot;src/expo/adapters/location.ts&quot;]
@@ -2394,6 +2445,8 @@ graph LR
                 module_src_web_index_ts --&gt; export_createWebPermissionClient
                 export_createWebPermissionClient -.-&gt; export_PermissionClient
                 export_createWebPermissionClient -.-&gt; export_WebPermissionClientOptions
+                export_EXPO_PERMISSION_CLIENT_REQUIRED_PACKAGES[&quot;EXPO_PERMISSION_CLIENT_REQUIRED_PACKAGES&quot;]
+                module_src_expo_manifest_ts --&gt; export_EXPO_PERMISSION_CLIENT_REQUIRED_PACKAGES
                 export_EXPO_PERMISSION_SUPPORT[&quot;EXPO_PERMISSION_SUPPORT&quot;]
                 module_src_expo_manifest_ts --&gt; export_EXPO_PERMISSION_SUPPORT
                 export_ExpoPermissionMetadata[&quot;ExpoPermissionMetadata&quot;]
@@ -2476,6 +2529,7 @@ graph LR
                 <pre>
 graph LR
   module_src_ankh_provider_ts[&quot;src/ankh.provider.ts&quot;]
+  module_src_cli_index_ts[&quot;src/cli/index.ts&quot;]
   module_src_client_types_ts[&quot;src/client/types.ts&quot;]
   module_src_expo_adapters_camera_ts[&quot;src/expo/adapters/camera.ts&quot;]
   module_src_expo_adapters_location_ts[&quot;src/expo/adapters/location.ts&quot;]
@@ -2515,6 +2569,8 @@ graph LR
   module_src_web_index_ts --&gt; export_createWebPermissionClient
   export_createWebPermissionClient -.-&gt; export_PermissionClient
   export_createWebPermissionClient -.-&gt; export_WebPermissionClientOptions
+  export_EXPO_PERMISSION_CLIENT_REQUIRED_PACKAGES[&quot;EXPO_PERMISSION_CLIENT_REQUIRED_PACKAGES&quot;]
+  module_src_expo_manifest_ts --&gt; export_EXPO_PERMISSION_CLIENT_REQUIRED_PACKAGES
   export_EXPO_PERMISSION_SUPPORT[&quot;EXPO_PERMISSION_SUPPORT&quot;]
   module_src_expo_manifest_ts --&gt; export_EXPO_PERMISSION_SUPPORT
   export_ExpoPermissionMetadata[&quot;ExpoPermissionMetadata&quot;]
@@ -2892,10 +2948,18 @@ sequenceDiagram
             <h2>src/expo/adapters/mediaLibrary.ts</h2>
             <article
               class="item"
+              data-search="createMediaLibraryPermissionState src/expo/adapters/mediaLibrary.ts "
+            >
+              <h3>createMediaLibraryPermissionState</h3>
+              <p class="muted"><code>src/expo/adapters/mediaLibrary.ts:39:1</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
               data-search="isWriteOnlyPermission src/expo/adapters/mediaLibrary.ts "
             >
               <h3>isWriteOnlyPermission</h3>
-              <p class="muted"><code>src/expo/adapters/mediaLibrary.ts:31:1</code></p>
+              <p class="muted"><code>src/expo/adapters/mediaLibrary.ts:55:1</code></p>
               <p class="empty">No description available.</p>
             </article>
           </section>
@@ -2918,22 +2982,60 @@ sequenceDiagram
             </article>
           </section>
         </section>
+        <section
+          id="view-src-expo-adapters-notifications-ts"
+          class="view"
+          data-view="src/expo/adapters/notifications.ts"
+          hidden
+        >
+          <section class="panel">
+            <h2>src/expo/adapters/notifications.ts</h2>
+            <article
+              class="item"
+              data-search="createNotificationPermissionState src/expo/adapters/notifications.ts "
+            >
+              <h3>createNotificationPermissionState</h3>
+              <p class="muted"><code>src/expo/adapters/notifications.ts:40:1</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="createNotificationState src/expo/adapters/notifications.ts "
+            >
+              <h3>createNotificationState</h3>
+              <p class="muted"><code>src/expo/adapters/notifications.ts:80:1</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+          </section>
+        </section>
         <section id="view-src-expo-client-ts" class="view" data-view="src/expo/client.ts" hidden>
           <section class="panel">
             <h2>src/expo/client.ts</h2>
-            <article class="item" data-search="createPermissionClient src/expo/client.ts ">
+            <article
+              class="item"
+              data-search="createPermissionClient src/expo/client.ts Creates a permission client backed by Expo SDK modules.&#10;&#10;Denials that Expo cannot request again are normalized to `blocked`. Limited&#10;media-library access and provisional or ephemeral iOS notification access&#10;are normalized to usable `limited` states, where `granted` remains true.&#10;The client requires `expo-linking` for settings recovery and rejects with a&#10;stable error when the operating-system settings page cannot be opened.&#10;&#10;Expo modules are loaded only when a client operation uses them. The package&#10;root and Expo manifest metadata remain free of native module imports."
+            >
               <h3>createPermissionClient</h3>
-              <p class="muted"><code>src/expo/client.ts:26:1</code></p>
-              <p class="empty">No description available.</p>
+              <p class="muted"><code>src/expo/client.ts:42:1</code></p>
+              <p>
+                Creates a permission client backed by Expo SDK modules. Denials that Expo cannot
+                request again are normalized to `blocked`. Limited media-library access and
+                provisional or ephemeral iOS notification access are normalized to usable `limited`
+                states, where `granted` remains true. The client requires `expo-linking` for
+                settings recovery and rejects with a stable error when the operating-system settings
+                page cannot be opened. Expo modules are loaded only when a client operation uses
+                them. The package root and Expo manifest metadata remain free of native module
+                imports.
+              </p>
             </article>
             <article class="item" data-search="createUnavailableSupportState src/expo/client.ts ">
               <h3>createUnavailableSupportState</h3>
-              <p class="muted"><code>src/expo/client.ts:66:1</code></p>
+              <p class="muted"><code>src/expo/client.ts:94:1</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article class="item" data-search="createNotRequiredState src/expo/client.ts ">
               <h3>createNotRequiredState</h3>
-              <p class="muted"><code>src/expo/client.ts:74:1</code></p>
+              <p class="muted"><code>src/expo/client.ts:102:1</code></p>
               <p class="empty">No description available.</p>
             </article>
           </section>
@@ -2951,7 +3053,7 @@ sequenceDiagram
               data-search="createExpoPermissionState src/expo/permissionResponse.ts "
             >
               <h3>createExpoPermissionState</h3>
-              <p class="muted"><code>src/expo/permissionResponse.ts:15:1</code></p>
+              <p class="muted"><code>src/expo/permissionResponse.ts:16:1</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article
@@ -2959,7 +3061,7 @@ sequenceDiagram
               data-search="createExpoUnavailableState src/expo/permissionResponse.ts "
             >
               <h3>createExpoUnavailableState</h3>
-              <p class="muted"><code>src/expo/permissionResponse.ts:28:1</code></p>
+              <p class="muted"><code>src/expo/permissionResponse.ts:25:1</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article
@@ -2967,7 +3069,7 @@ sequenceDiagram
               data-search="findExpoPermissionMethod src/expo/permissionResponse.ts "
             >
               <h3>findExpoPermissionMethod</h3>
-              <p class="muted"><code>src/expo/permissionResponse.ts:39:1</code></p>
+              <p class="muted"><code>src/expo/permissionResponse.ts:36:1</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article
@@ -2975,7 +3077,15 @@ sequenceDiagram
               data-search="getExpoPermissionErrorMessage src/expo/permissionResponse.ts "
             >
               <h3>getExpoPermissionErrorMessage</h3>
-              <p class="muted"><code>src/expo/permissionResponse.ts:63:1</code></p>
+              <p class="muted"><code>src/expo/permissionResponse.ts:60:1</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="createNormalizedExpoPermissionState src/expo/permissionResponse.ts "
+            >
+              <h3>createNormalizedExpoPermissionState</h3>
+              <p class="muted"><code>src/expo/permissionResponse.ts:72:1</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article
@@ -2983,12 +3093,12 @@ sequenceDiagram
               data-search="hasExpoPermissionMethod src/expo/permissionResponse.ts "
             >
               <h3>hasExpoPermissionMethod</h3>
-              <p class="muted"><code>src/expo/permissionResponse.ts:75:1</code></p>
+              <p class="muted"><code>src/expo/permissionResponse.ts:92:1</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article class="item" data-search="isRecord src/expo/permissionResponse.ts ">
               <h3>isRecord</h3>
-              <p class="muted"><code>src/expo/permissionResponse.ts:82:1</code></p>
+              <p class="muted"><code>src/expo/permissionResponse.ts:99:1</code></p>
               <p class="empty">No description available.</p>
             </article>
           </section>
@@ -3100,18 +3210,22 @@ sequenceDiagram
             </article>
             <article
               class="item"
-              data-search="createPermissionState src/state/permissionState.ts Creates a normalized state and derives the `granted` convenience flag."
+              data-search="createPermissionState src/state/permissionState.ts Creates a normalized state and derives the `granted` convenience flag.&#10;Limited access is usable partial authorization, so both `granted` and&#10;`limited` states set `granted` to true."
             >
               <h3>createPermissionState</h3>
-              <p class="muted"><code>src/state/permissionState.ts:61:1</code></p>
-              <p>Creates a normalized state and derives the `granted` convenience flag.</p>
+              <p class="muted"><code>src/state/permissionState.ts:63:1</code></p>
+              <p>
+                Creates a normalized state and derives the `granted` convenience flag. Limited
+                access is usable partial authorization, so both `granted` and `limited` states set
+                `granted` to true.
+              </p>
             </article>
             <article
               class="item"
               data-search="normalizePermissionState src/state/permissionState.ts Normalizes an adapter result to the requested permission and status shape."
             >
               <h3>normalizePermissionState</h3>
-              <p class="muted"><code>src/state/permissionState.ts:75:1</code></p>
+              <p class="muted"><code>src/state/permissionState.ts:77:1</code></p>
               <p>Normalizes an adapter result to the requested permission and status shape.</p>
             </article>
           </section>

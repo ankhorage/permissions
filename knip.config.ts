@@ -5,6 +5,7 @@ export default createKnipConfig({
   ignoreDependencies: [
     'expo-audio',
     'expo-camera',
+    'expo-linking',
     'expo-location',
     'expo-media-library',
     'expo-notifications',

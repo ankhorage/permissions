@@ -3,6 +3,7 @@ import {
   createPermissionState,
   isPermissionStatus,
   type PermissionState,
+  type PermissionStatus,
 } from '../state/permissionState';
 
 export interface ExpoPermissionResponse {
@@ -18,11 +19,7 @@ export function createExpoPermissionState(
 ): PermissionState {
   const status = isPermissionStatus(response.status) ? response.status : 'unknown';
 
-  return createPermissionState({
-    permission,
-    status,
-    canAskAgain: response.canAskAgain,
-  });
+  return createNormalizedExpoPermissionState(permission, response, status);
 }
 
 export function createExpoUnavailableState(
@@ -70,6 +67,26 @@ function getExpoPermissionErrorMessage(error: unknown): string {
   }
 
   return 'Expo permission operation failed.';
+}
+
+function createNormalizedExpoPermissionState(
+  permission: Permission,
+  response: ExpoPermissionResponse,
+  status: PermissionStatus,
+  reason?: string,
+): PermissionState {
+  const normalizedStatus =
+    status === 'denied' && response.canAskAgain === false ? 'blocked' : status;
+
+  return createPermissionState({
+    permission,
+    status: normalizedStatus,
+    canAskAgain: response.canAskAgain,
+    reason:
+      normalizedStatus === 'blocked'
+        ? 'Permission is blocked. Open system settings to change it.'
+        : reason,
+  });
 }
 
 function hasExpoPermissionMethod(

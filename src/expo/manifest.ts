@@ -13,6 +13,12 @@ export interface ExpoPermissionMetadata {
   readonly configHints: readonly string[];
 }
 
+/***
+ * Expo packages required by the permission client independently of a specific
+ * permission capability.
+ */
+export const EXPO_PERMISSION_CLIENT_REQUIRED_PACKAGES = ['expo-linking'] as const;
+
 export const EXPO_PERMISSION_SUPPORT: Readonly<Record<Permission, ExpoPermissionMetadata>> = {
   [Permission.Camera]: {
     support: 'supported',

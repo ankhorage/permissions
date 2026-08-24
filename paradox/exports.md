@@ -35,7 +35,18 @@ prompts, simulators, or network access.
 
 Kind: `function`
 Module: `src/expo/client.ts`
-Source: `src/expo/client.ts:26:1`
+Source: `src/expo/client.ts:42:1`
+
+Creates a permission client backed by Expo SDK modules.
+
+Denials that Expo cannot request again are normalized to `blocked`. Limited
+media-library access and provisional or ephemeral iOS notification access
+are normalized to usable `limited` states, where `granted` remains true.
+The client requires `expo-linking` for settings recovery and rejects with a
+stable error when the operating-system settings page cannot be opened.
+
+Expo modules are loaded only when a client operation uses them. The package
+root and Expo manifest metadata remain free of native module imports.
 
 ### Signatures
 
@@ -63,9 +74,11 @@ Native app configuration remains a separate build-time concern.
 
 Kind: `function`
 Module: `src/state/permissionState.ts`
-Source: `src/state/permissionState.ts:61:1`
+Source: `src/state/permissionState.ts:63:1`
 
 Creates a normalized state and derives the `granted` convenience flag.
+Limited access is usable partial authorization, so both `granted` and
+`limited` states set `granted` to true.
 
 ### Signatures
 
@@ -90,11 +103,20 @@ import DOM types and does not assume it is running in a browser.
   - options: `WebPermissionClientOptions` (optional)
   - returns: `PermissionClient`
 
+## EXPO_PERMISSION_CLIENT_REQUIRED_PACKAGES
+
+Kind: `value`
+Module: `src/expo/manifest.ts`
+Source: `src/expo/manifest.ts:20:14`
+
+Expo packages required by the permission client independently of a specific
+permission capability.
+
 ## EXPO_PERMISSION_SUPPORT
 
 Kind: `value`
 Module: `src/expo/manifest.ts`
-Source: `src/expo/manifest.ts:16:14`
+Source: `src/expo/manifest.ts:22:14`
 
 ## ExpoPermissionMetadata
 
@@ -200,7 +222,7 @@ Returns true when a string is one of the normalized statuses.
 
 Kind: `function`
 Module: `src/state/permissionState.ts`
-Source: `src/state/permissionState.ts:75:1`
+Source: `src/state/permissionState.ts:77:1`
 
 Normalizes an adapter result to the requested permission and status shape.
 

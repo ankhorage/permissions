@@ -27,6 +27,13 @@ describe('permission state', () => {
 
     expect(
       createPermissionState({
+        permission: Permission.MediaLibrary,
+        status: 'limited',
+      }).granted,
+    ).toBe(true);
+
+    expect(
+      createPermissionState({
         permission: Permission.Camera,
         status: 'denied',
       }).granted,
@@ -45,7 +52,7 @@ describe('permission state', () => {
     expect(state).toEqual({
       permission: Permission.Camera,
       status: 'limited',
-      granted: false,
+      granted: true,
       canAskAgain: true,
       requestedAt: undefined,
       reason: 'library-limited',

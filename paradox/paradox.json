@@ -93,6 +93,12 @@
       "exports": ["default"]
     },
     {
+      "path": "src/cli/index.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": ["default"]
+    },
+    {
       "path": "src/client/types.ts",
       "isEntrypoint": false,
       "dependencies": ["src/registry/permissions.ts", "src/state/permissionState.ts"],
@@ -179,7 +185,12 @@
       "path": "src/expo/manifest.ts",
       "isEntrypoint": true,
       "dependencies": ["src/registry/permissions.ts"],
-      "exports": ["EXPO_PERMISSION_SUPPORT", "ExpoPermissionMetadata", "PermissionSupport"]
+      "exports": [
+        "EXPO_PERMISSION_CLIENT_REQUIRED_PACKAGES",
+        "EXPO_PERMISSION_SUPPORT",
+        "ExpoPermissionMetadata",
+        "PermissionSupport"
+      ]
     },
     {
       "path": "src/expo/permissionResponse.ts",
@@ -383,14 +394,14 @@
     },
     {
       "name": "createPermissionClient",
-      "description": null,
-      "isReadme": false,
+      "description": "Creates a permission client backed by Expo SDK modules.\n\nDenials that Expo cannot request again are normalized to `blocked`. Limited\nmedia-library access and provisional or ephemeral iOS notification access\nare normalized to usable `limited` states, where `granted` remains true.\nThe client requires `expo-linking` for settings recovery and rejects with a\nstable error when the operating-system settings page cannot be opened.\n\nExpo modules are loaded only when a client operation uses them. The package\nroot and Expo manifest metadata remain free of native module imports.",
+      "isReadme": true,
       "examples": [],
       "kind": "function",
       "modulePath": "src/expo/client.ts",
       "sourceLocation": {
         "filePath": "src/expo/client.ts",
-        "line": 26,
+        "line": 42,
         "column": 1
       },
       "exportPaths": ["src/expo/index.ts"],
@@ -440,14 +451,14 @@
     },
     {
       "name": "createPermissionState",
-      "description": "Creates a normalized state and derives the `granted` convenience flag.",
+      "description": "Creates a normalized state and derives the `granted` convenience flag.\nLimited access is usable partial authorization, so both `granted` and\n`limited` states set `granted` to true.",
       "isReadme": false,
       "examples": [],
       "kind": "function",
       "modulePath": "src/state/permissionState.ts",
       "sourceLocation": {
         "filePath": "src/state/permissionState.ts",
-        "line": 61,
+        "line": 63,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -503,6 +514,24 @@
       "structuredRows": []
     },
     {
+      "name": "EXPO_PERMISSION_CLIENT_REQUIRED_PACKAGES",
+      "description": "Expo packages required by the permission client independently of a specific\npermission capability.",
+      "isReadme": false,
+      "examples": [],
+      "kind": "value",
+      "modulePath": "src/expo/manifest.ts",
+      "sourceLocation": {
+        "filePath": "src/expo/manifest.ts",
+        "line": 20,
+        "column": 14
+      },
+      "exportPaths": ["src/expo/manifest.ts"],
+      "relatedSymbols": [],
+      "signatures": [],
+      "members": [],
+      "structuredRows": []
+    },
+    {
       "name": "EXPO_PERMISSION_SUPPORT",
       "description": null,
       "isReadme": false,
@@ -511,7 +540,7 @@
       "modulePath": "src/expo/manifest.ts",
       "sourceLocation": {
         "filePath": "src/expo/manifest.ts",
-        "line": 16,
+        "line": 22,
         "column": 14
       },
       "exportPaths": ["src/expo/manifest.ts"],
@@ -796,7 +825,7 @@
       "modulePath": "src/state/permissionState.ts",
       "sourceLocation": {
         "filePath": "src/state/permissionState.ts",
-        "line": 75,
+        "line": 77,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -1487,11 +1516,20 @@
       }
     },
     {
+      "name": "createMediaLibraryPermissionState",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/expo/adapters/mediaLibrary.ts",
+        "line": 39,
+        "column": 1
+      }
+    },
+    {
       "name": "isWriteOnlyPermission",
       "description": null,
       "sourceLocation": {
         "filePath": "src/expo/adapters/mediaLibrary.ts",
-        "line": 31,
+        "line": 55,
         "column": 1
       }
     },
@@ -1505,11 +1543,29 @@
       }
     },
     {
-      "name": "createPermissionClient",
+      "name": "createNotificationPermissionState",
       "description": null,
       "sourceLocation": {
+        "filePath": "src/expo/adapters/notifications.ts",
+        "line": 40,
+        "column": 1
+      }
+    },
+    {
+      "name": "createNotificationState",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/expo/adapters/notifications.ts",
+        "line": 80,
+        "column": 1
+      }
+    },
+    {
+      "name": "createPermissionClient",
+      "description": "Creates a permission client backed by Expo SDK modules.\n\nDenials that Expo cannot request again are normalized to `blocked`. Limited\nmedia-library access and provisional or ephemeral iOS notification access\nare normalized to usable `limited` states, where `granted` remains true.\nThe client requires `expo-linking` for settings recovery and rejects with a\nstable error when the operating-system settings page cannot be opened.\n\nExpo modules are loaded only when a client operation uses them. The package\nroot and Expo manifest metadata remain free of native module imports.",
+      "sourceLocation": {
         "filePath": "src/expo/client.ts",
-        "line": 26,
+        "line": 42,
         "column": 1
       }
     },
@@ -1518,7 +1574,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/expo/client.ts",
-        "line": 66,
+        "line": 94,
         "column": 1
       }
     },
@@ -1527,7 +1583,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/expo/client.ts",
-        "line": 74,
+        "line": 102,
         "column": 1
       }
     },
@@ -1536,7 +1592,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/expo/permissionResponse.ts",
-        "line": 15,
+        "line": 16,
         "column": 1
       }
     },
@@ -1545,7 +1601,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/expo/permissionResponse.ts",
-        "line": 28,
+        "line": 25,
         "column": 1
       }
     },
@@ -1554,7 +1610,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/expo/permissionResponse.ts",
-        "line": 39,
+        "line": 36,
         "column": 1
       }
     },
@@ -1563,7 +1619,16 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/expo/permissionResponse.ts",
-        "line": 63,
+        "line": 60,
+        "column": 1
+      }
+    },
+    {
+      "name": "createNormalizedExpoPermissionState",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/expo/permissionResponse.ts",
+        "line": 72,
         "column": 1
       }
     },
@@ -1572,7 +1637,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/expo/permissionResponse.ts",
-        "line": 75,
+        "line": 92,
         "column": 1
       }
     },
@@ -1581,7 +1646,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/expo/permissionResponse.ts",
-        "line": 82,
+        "line": 99,
         "column": 1
       }
     },
@@ -1659,10 +1724,10 @@
     },
     {
       "name": "createPermissionState",
-      "description": "Creates a normalized state and derives the `granted` convenience flag.",
+      "description": "Creates a normalized state and derives the `granted` convenience flag.\nLimited access is usable partial authorization, so both `granted` and\n`limited` states set `granted` to true.",
       "sourceLocation": {
         "filePath": "src/state/permissionState.ts",
-        "line": 61,
+        "line": 63,
         "column": 1
       }
     },
@@ -1671,7 +1736,7 @@
       "description": "Normalizes an adapter result to the requested permission and status shape.",
       "sourceLocation": {
         "filePath": "src/state/permissionState.ts",
-        "line": 75,
+        "line": 77,
         "column": 1
       }
     },
@@ -1860,8 +1925,8 @@
       "name": "createPermissionClient",
       "sourcePath": "src/expo/client.ts",
       "symbolName": "createPermissionClient",
-      "description": null,
-      "isReadme": false
+      "description": "Creates a permission client backed by Expo SDK modules.\n\nDenials that Expo cannot request again are normalized to `blocked`. Limited\nmedia-library access and provisional or ephemeral iOS notification access\nare normalized to usable `limited` states, where `granted` remains true.\nThe client requires `expo-linking` for settings recovery and rejects with a\nstable error when the operating-system settings page cannot be opened.\n\nExpo modules are loaded only when a client operation uses them. The package\nroot and Expo manifest metadata remain free of native module imports.",
+      "isReadme": true
     },
     {
       "kind": "export",
@@ -1876,7 +1941,7 @@
       "name": "createPermissionState",
       "sourcePath": "src/state/permissionState.ts",
       "symbolName": "createPermissionState",
-      "description": "Creates a normalized state and derives the `granted` convenience flag.",
+      "description": "Creates a normalized state and derives the `granted` convenience flag.\nLimited access is usable partial authorization, so both `granted` and\n`limited` states set `granted` to true.",
       "isReadme": false
     },
     {
@@ -1980,6 +2045,11 @@
         "fromPath": "src/index.ts",
         "toPath": "src/testing/index.ts",
         "sourcePath": "src/index.ts"
+      },
+      {
+        "fromPath": "src/cli/index.ts",
+        "toPath": "src/ankh.provider.ts",
+        "sourcePath": "src/cli/index.ts"
       },
       {
         "fromPath": "src/client/types.ts",
@@ -2271,6 +2341,12 @@
         "sourcePath": "src/expo/client.ts"
       },
       {
+        "fromSymbol": "openSettings",
+        "toSymbol": "openSettings",
+        "callExpression": "linking.openSettings",
+        "sourcePath": "src/expo/client.ts"
+      },
+      {
         "fromSymbol": "createUnavailableSupportState",
         "toSymbol": "createPermissionState",
         "callExpression": "createPermissionState",
@@ -2290,8 +2366,8 @@
       },
       {
         "fromSymbol": "createExpoPermissionState",
-        "toSymbol": "createPermissionState",
-        "callExpression": "createPermissionState",
+        "toSymbol": "createNormalizedExpoPermissionState",
+        "callExpression": "createNormalizedExpoPermissionState",
         "sourcePath": "src/expo/permissionResponse.ts"
       },
       {
@@ -2316,6 +2392,12 @@
         "fromSymbol": "findExpoPermissionMethod",
         "toSymbol": "isRecord",
         "callExpression": "isRecord",
+        "sourcePath": "src/expo/permissionResponse.ts"
+      },
+      {
+        "fromSymbol": "createNormalizedExpoPermissionState",
+        "toSymbol": "createPermissionState",
+        "callExpression": "createPermissionState",
         "sourcePath": "src/expo/permissionResponse.ts"
       },
       {
@@ -2938,8 +3020,8 @@
       },
       {
         "fromSymbol": "getStatus",
-        "toSymbol": "createExpoPermissionState",
-        "callExpression": "createExpoPermissionState",
+        "toSymbol": "createMediaLibraryPermissionState",
+        "callExpression": "createMediaLibraryPermissionState",
         "sourcePath": "src/expo/adapters/mediaLibrary.ts"
       },
       {
@@ -2962,14 +3044,26 @@
       },
       {
         "fromSymbol": "request",
-        "toSymbol": "createExpoPermissionState",
-        "callExpression": "createExpoPermissionState",
+        "toSymbol": "createMediaLibraryPermissionState",
+        "callExpression": "createMediaLibraryPermissionState",
         "sourcePath": "src/expo/adapters/mediaLibrary.ts"
       },
       {
         "fromSymbol": "request",
         "toSymbol": "createExpoUnavailableState",
         "callExpression": "createExpoUnavailableState",
+        "sourcePath": "src/expo/adapters/mediaLibrary.ts"
+      },
+      {
+        "fromSymbol": "createMediaLibraryPermissionState",
+        "toSymbol": "createExpoPermissionState",
+        "callExpression": "createExpoPermissionState",
+        "sourcePath": "src/expo/adapters/mediaLibrary.ts"
+      },
+      {
+        "fromSymbol": "createMediaLibraryPermissionState",
+        "toSymbol": "createPermissionState",
+        "callExpression": "createPermissionState",
         "sourcePath": "src/expo/adapters/mediaLibrary.ts"
       },
       {
@@ -3034,8 +3128,8 @@
       },
       {
         "fromSymbol": "getStatus",
-        "toSymbol": "createExpoPermissionState",
-        "callExpression": "createExpoPermissionState",
+        "toSymbol": "createNotificationPermissionState",
+        "callExpression": "createNotificationPermissionState",
         "sourcePath": "src/expo/adapters/notifications.ts"
       },
       {
@@ -3052,14 +3146,38 @@
       },
       {
         "fromSymbol": "request",
-        "toSymbol": "createExpoPermissionState",
-        "callExpression": "createExpoPermissionState",
+        "toSymbol": "createNotificationPermissionState",
+        "callExpression": "createNotificationPermissionState",
         "sourcePath": "src/expo/adapters/notifications.ts"
       },
       {
         "fromSymbol": "request",
         "toSymbol": "createExpoUnavailableState",
         "callExpression": "createExpoUnavailableState",
+        "sourcePath": "src/expo/adapters/notifications.ts"
+      },
+      {
+        "fromSymbol": "createNotificationPermissionState",
+        "toSymbol": "createNotificationState",
+        "callExpression": "createNotificationState",
+        "sourcePath": "src/expo/adapters/notifications.ts"
+      },
+      {
+        "fromSymbol": "createNotificationPermissionState",
+        "toSymbol": "createExpoPermissionState",
+        "callExpression": "createExpoPermissionState",
+        "sourcePath": "src/expo/adapters/notifications.ts"
+      },
+      {
+        "fromSymbol": "createNotificationState",
+        "toSymbol": "createExpoPermissionState",
+        "callExpression": "createExpoPermissionState",
+        "sourcePath": "src/expo/adapters/notifications.ts"
+      },
+      {
+        "fromSymbol": "createNotificationState",
+        "toSymbol": "createPermissionState",
+        "callExpression": "createPermissionState",
         "sourcePath": "src/expo/adapters/notifications.ts"
       }
     ],

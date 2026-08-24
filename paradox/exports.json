@@ -65,14 +65,14 @@
   },
   {
     "name": "createPermissionClient",
-    "description": null,
-    "isReadme": false,
+    "description": "Creates a permission client backed by Expo SDK modules.\n\nDenials that Expo cannot request again are normalized to `blocked`. Limited\nmedia-library access and provisional or ephemeral iOS notification access\nare normalized to usable `limited` states, where `granted` remains true.\nThe client requires `expo-linking` for settings recovery and rejects with a\nstable error when the operating-system settings page cannot be opened.\n\nExpo modules are loaded only when a client operation uses them. The package\nroot and Expo manifest metadata remain free of native module imports.",
+    "isReadme": true,
     "examples": [],
     "kind": "function",
     "modulePath": "src/expo/client.ts",
     "sourceLocation": {
       "filePath": "src/expo/client.ts",
-      "line": 26,
+      "line": 42,
       "column": 1
     },
     "exportPaths": ["src/expo/index.ts"],
@@ -122,14 +122,14 @@
   },
   {
     "name": "createPermissionState",
-    "description": "Creates a normalized state and derives the `granted` convenience flag.",
+    "description": "Creates a normalized state and derives the `granted` convenience flag.\nLimited access is usable partial authorization, so both `granted` and\n`limited` states set `granted` to true.",
     "isReadme": false,
     "examples": [],
     "kind": "function",
     "modulePath": "src/state/permissionState.ts",
     "sourceLocation": {
       "filePath": "src/state/permissionState.ts",
-      "line": 61,
+      "line": 63,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -185,6 +185,24 @@
     "structuredRows": []
   },
   {
+    "name": "EXPO_PERMISSION_CLIENT_REQUIRED_PACKAGES",
+    "description": "Expo packages required by the permission client independently of a specific\npermission capability.",
+    "isReadme": false,
+    "examples": [],
+    "kind": "value",
+    "modulePath": "src/expo/manifest.ts",
+    "sourceLocation": {
+      "filePath": "src/expo/manifest.ts",
+      "line": 20,
+      "column": 14
+    },
+    "exportPaths": ["src/expo/manifest.ts"],
+    "relatedSymbols": [],
+    "signatures": [],
+    "members": [],
+    "structuredRows": []
+  },
+  {
     "name": "EXPO_PERMISSION_SUPPORT",
     "description": null,
     "isReadme": false,
@@ -193,7 +211,7 @@
     "modulePath": "src/expo/manifest.ts",
     "sourceLocation": {
       "filePath": "src/expo/manifest.ts",
-      "line": 16,
+      "line": 22,
       "column": 14
     },
     "exportPaths": ["src/expo/manifest.ts"],
@@ -478,7 +496,7 @@
     "modulePath": "src/state/permissionState.ts",
     "sourceLocation": {
       "filePath": "src/state/permissionState.ts",
-      "line": 75,
+      "line": 77,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
