@@ -35,7 +35,18 @@ prompts, simulators, or network access.
 
 Kind: `function`
 Module: `src/expo/client.ts`
-Source: `src/expo/client.ts:26:1`
+Source: `src/expo/client.ts:40:1`
+
+Creates a permission client backed by Expo SDK modules.
+
+Denials that Expo cannot request again are normalized to `blocked`. Limited
+media-library access and provisional or ephemeral iOS notification access
+are normalized to usable `limited` states, where `granted` remains true.
+The client exposes settings recovery through `expo-linking` and rejects with
+a stable error when the operating-system settings page cannot be opened.
+
+Expo modules are loaded only when a client operation uses them. The package
+root and Expo manifest metadata remain free of native module imports.
 
 ### Signatures
 
@@ -63,9 +74,11 @@ Native app configuration remains a separate build-time concern.
 
 Kind: `function`
 Module: `src/state/permissionState.ts`
-Source: `src/state/permissionState.ts:61:1`
+Source: `src/state/permissionState.ts:63:1`
 
 Creates a normalized state and derives the `granted` convenience flag.
+Limited access is usable partial authorization, so both `granted` and
+`limited` states set `granted` to true.
 
 ### Signatures
 
@@ -200,7 +213,7 @@ Returns true when a string is one of the normalized statuses.
 
 Kind: `function`
 Module: `src/state/permissionState.ts`
-Source: `src/state/permissionState.ts:75:1`
+Source: `src/state/permissionState.ts:77:1`
 
 Normalizes an adapter result to the requested permission and status shape.
 

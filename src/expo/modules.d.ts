@@ -1,6 +1,14 @@
 interface ExpoPermissionResult {
   status: string;
   canAskAgain?: boolean;
+  accessPrivileges?: 'all' | 'limited' | 'none';
+  ios?: {
+    status?: number;
+  };
+}
+
+declare module 'expo-linking' {
+  export function openSettings(): Promise<void>;
 }
 
 declare module 'expo-camera' {

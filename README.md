@@ -138,6 +138,30 @@ Related symbols: `FakePermissionClient`, `FakePermissionClientOptions`
 </details>
 
 <details>
+<summary>createPermissionClient</summary>
+
+```ts
+createPermissionClient() => PermissionClient
+```
+
+Creates a permission client backed by Expo SDK modules.
+
+Denials that Expo cannot request again are normalized to `blocked`. Limited
+media-library access and provisional or ephemeral iOS notification access
+are normalized to usable `limited` states, where `granted` remains true.
+The client exposes settings recovery through `expo-linking` and rejects with
+a stable error when the operating-system settings page cannot be opened.
+
+Expo modules are loaded only when a client operation uses them. The package
+root and Expo manifest metadata remain free of native module imports.
+
+Module: `src/expo/client.ts`
+Source: `src/expo/client.ts:40:1`
+Related symbols: `PermissionClient`
+
+</details>
+
+<details>
 <summary>createPermissionManager</summary>
 
 ```ts

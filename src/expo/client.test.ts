@@ -6,6 +6,10 @@ import { createPermissionClient } from './client';
 interface MockPermissionResponse {
   readonly status: string;
   readonly canAskAgain?: boolean;
+  readonly accessPrivileges?: 'all' | 'limited' | 'none';
+  readonly ios?: {
+    readonly status?: number;
+  };
 }
 
 type CameraMockMode = 'topLevel' | 'cameraNamespace' | 'missingExports';
@@ -54,6 +58,11 @@ const notificationsMock = {
   requestResponse: permissionResponse('granted'),
   getError: undefined as string | undefined,
   requestError: undefined as string | undefined,
+};
+
+const linkingMock = {
+  calls: 0,
+  error: undefined as string | undefined,
 };
 
 void mock.module('expo-camera', () => ({
@@ -195,6 +204,18 @@ void mock.module('expo-notifications', () => ({
   },
 }));
 
+void mock.module('expo-linking', () => ({
+  openSettings: () => {
+    linkingMock.calls += 1;
+
+    if (linkingMock.error !== undefined) {
+      throw new Error(linkingMock.error);
+    }
+
+    return Promise.resolve();
+  },
+}));
+
 describe('createPermissionClient', () => {
   beforeEach(() => {
     resetExpoMocks();
@@ -249,9 +270,10 @@ describe('createPermissionClient', () => {
 
     expect(await client.getStatus(Permission.Camera)).toMatchObject({
       permission: Permission.Camera,
-      status: 'denied',
+      status: 'blocked',
       granted: false,
       canAskAgain: false,
+      reason: 'Permission is blocked. Open system settings to change it.',
     });
     expect(await client.request(Permission.Camera)).toMatchObject({
       permission: Permission.Camera,
@@ -269,9 +291,10 @@ describe('createPermissionClient', () => {
 
     expect(await client.getStatus(Permission.Microphone)).toMatchObject({
       permission: Permission.Microphone,
-      status: 'denied',
+      status: 'blocked',
       granted: false,
       canAskAgain: false,
+      reason: 'Permission is blocked. Open system settings to change it.',
     });
     expect(await client.request(Permission.Microphone)).toMatchObject({
       permission: Permission.Microphone,
@@ -295,18 +318,161 @@ describe('createPermissionClient', () => {
     });
   });
 
-  test('preserves denied request responses', async () => {
+  test('normalizes non-requestable denials to blocked for getStatus and request', async () => {
+    notificationsMock.getResponse = permissionResponse('denied', false);
     notificationsMock.requestResponse = permissionResponse('denied', false);
 
     const client = createPermissionClient();
-    const state = await client.request(Permission.Notifications);
 
-    expect(state).toMatchObject({
-      permission: Permission.Notifications,
-      status: 'denied',
-      granted: false,
+    for (const state of [
+      await client.getStatus(Permission.Notifications),
+      await client.request(Permission.Notifications),
+    ]) {
+      expect(state).toMatchObject({
+        permission: Permission.Notifications,
+        status: 'blocked',
+        granted: false,
+        canAskAgain: false,
+        reason: 'Permission is blocked. Open system settings to change it.',
+      });
+    }
+  });
+
+  test('normalizes limited media-library access as usable partial authorization', async () => {
+    mediaLibraryMock.getResponse = {
+      status: 'granted',
       canAskAgain: false,
-    });
+      accessPrivileges: 'limited',
+    };
+    mediaLibraryMock.requestResponse = {
+      status: 'granted',
+      canAskAgain: false,
+      accessPrivileges: 'limited',
+    };
+
+    const client = createPermissionClient();
+
+    for (const state of [
+      await client.getStatus(Permission.MediaLibrary),
+      await client.request(Permission.MediaLibrary),
+    ]) {
+      expect(state).toMatchObject({
+        permission: Permission.MediaLibrary,
+        status: 'limited',
+        granted: true,
+        canAskAgain: false,
+        reason: 'Media library access is limited to user-selected assets.',
+      });
+    }
+  });
+
+  test('uses granular iOS notification authorization for getStatus and request', async () => {
+    const cases = [
+      {
+        iosStatus: 0,
+        canAskAgain: true,
+        expectedStatus: 'unknown',
+        expectedGranted: false,
+        expectedReason: 'iOS notification authorization has not been determined.',
+      },
+      {
+        iosStatus: 1,
+        canAskAgain: true,
+        expectedStatus: 'denied',
+        expectedGranted: false,
+        expectedReason: 'iOS notification authorization is denied.',
+      },
+      {
+        iosStatus: 1,
+        canAskAgain: false,
+        expectedStatus: 'blocked',
+        expectedGranted: false,
+        expectedReason: 'Permission is blocked. Open system settings to change it.',
+      },
+      {
+        iosStatus: 2,
+        canAskAgain: false,
+        expectedStatus: 'granted',
+        expectedGranted: true,
+        expectedReason: undefined,
+      },
+      {
+        iosStatus: 3,
+        canAskAgain: false,
+        expectedStatus: 'limited',
+        expectedGranted: true,
+        expectedReason: 'iOS notification authorization is provisional.',
+      },
+      {
+        iosStatus: 4,
+        canAskAgain: false,
+        expectedStatus: 'limited',
+        expectedGranted: true,
+        expectedReason: 'iOS notification authorization is ephemeral.',
+      },
+    ] as const;
+
+    const client = createPermissionClient();
+
+    for (const testCase of cases) {
+      const response: MockPermissionResponse = {
+        status: testCase.iosStatus === 2 ? 'denied' : 'granted',
+        canAskAgain: testCase.canAskAgain,
+        ios: { status: testCase.iosStatus },
+      };
+      notificationsMock.getResponse = response;
+      notificationsMock.requestResponse = response;
+
+      for (const state of [
+        await client.getStatus(Permission.Notifications),
+        await client.request(Permission.Notifications),
+      ]) {
+        expect(state).toMatchObject({
+          permission: Permission.Notifications,
+          status: testCase.expectedStatus,
+          granted: testCase.expectedGranted,
+          canAskAgain: testCase.canAskAgain,
+          reason: testCase.expectedReason,
+        });
+      }
+    }
+  });
+
+  test('opens native application settings through Expo Linking', async () => {
+    const client = createPermissionClient();
+
+    if (client.openSettings === undefined) {
+      throw new Error('Expo permission client must expose openSettings.');
+    }
+
+    await client.openSettings();
+
+    expect(linkingMock.calls).toBe(1);
+  });
+
+  test('rejects with a stable error when Expo Linking cannot open settings', async () => {
+    linkingMock.error = 'settings unavailable';
+    const client = createPermissionClient();
+
+    if (client.openSettings === undefined) {
+      throw new Error('Expo permission client must expose openSettings.');
+    }
+
+    let caughtError: unknown;
+
+    try {
+      await client.openSettings();
+    } catch (error) {
+      caughtError = error;
+    }
+
+    expect(caughtError).toBeInstanceOf(Error);
+
+    if (!(caughtError instanceof Error)) {
+      throw new Error('Opening settings must reject with an Error instance.');
+    }
+
+    expect(caughtError.message).toBe('Unable to open application settings: settings unavailable');
   });
 
   test('returns unavailable when a camera permission call fails at runtime', async () => {
@@ -369,4 +535,7 @@ function resetExpoMocks(): void {
   notificationsMock.requestResponse = permissionResponse('granted');
   notificationsMock.getError = undefined;
   notificationsMock.requestError = undefined;
+
+  linkingMock.calls = 0;
+  linkingMock.error = undefined;
 }

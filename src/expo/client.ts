@@ -23,6 +23,20 @@ const adapters: Partial<Record<Permission, ExpoPermissionAdapter>> = {
   [Permission.Notifications]: notificationsAdapter,
 };
 
+/***
+ * Creates a permission client backed by Expo SDK modules.
+ *
+ * Denials that Expo cannot request again are normalized to `blocked`. Limited
+ * media-library access and provisional or ephemeral iOS notification access
+ * are normalized to usable `limited` states, where `granted` remains true.
+ * The client exposes settings recovery through `expo-linking` and rejects with
+ * a stable error when the operating-system settings page cannot be opened.
+ *
+ * Expo modules are loaded only when a client operation uses them. The package
+ * root and Expo manifest metadata remain free of native module imports.
+ *
+ * @readme
+ */
 export function createPermissionClient(): PermissionClient {
   return {
     async getStatus(permission: Permission): Promise<PermissionState> {
@@ -60,6 +74,18 @@ export function createPermissionClient(): PermissionClient {
 
       return adapter.request(permission);
     },
+
+    async openSettings(): Promise<void> {
+      try {
+        const linking = await import('expo-linking');
+
+        await linking.openSettings();
+      } catch (error) {
+        throw new Error(`Unable to open application settings: ${getErrorMessage(error)}`, {
+          cause: error,
+        });
+      }
+    },
   };
 }
 
@@ -76,4 +102,16 @@ function createNotRequiredState(permission: Permission): PermissionState {
     permission,
     status: 'granted',
   });
+}
+
+function getErrorMessage(error: unknown): string {
+  if (error instanceof Error && error.message.length > 0) {
+    return error.message;
+  }
+
+  if (typeof error === 'string' && error.length > 0) {
+    return error;
+  }
+
+  return 'unknown Expo linking error';
 }

@@ -1,7 +1,10 @@
 import type { Permission } from '../../registry/permissions';
 import type { PermissionState } from '../../state/permissionState';
 import type { ExpoPermissionAdapter } from '../client';
-import { createExpoPermissionState, createExpoUnavailableState } from '../permissionResponse';
+import {
+  createExpoNotificationPermissionState,
+  createExpoUnavailableState,
+} from '../permissionResponse';
 
 export const notificationsAdapter: ExpoPermissionAdapter = {
   async getStatus(permission: Permission): Promise<PermissionState> {
@@ -9,7 +12,7 @@ export const notificationsAdapter: ExpoPermissionAdapter = {
       const mod = await import('expo-notifications');
       const result = await mod.getPermissionsAsync();
 
-      return createExpoPermissionState(permission, result);
+      return createExpoNotificationPermissionState(permission, result);
     } catch (error) {
       return createExpoUnavailableState(permission, error);
     }
@@ -20,7 +23,7 @@ export const notificationsAdapter: ExpoPermissionAdapter = {
       const mod = await import('expo-notifications');
       const result = await mod.requestPermissionsAsync();
 
-      return createExpoPermissionState(permission, result);
+      return createExpoNotificationPermissionState(permission, result);
     } catch (error) {
       return createExpoUnavailableState(permission, error);
     }

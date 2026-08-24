@@ -57,13 +57,15 @@ export function isPermissionStatus(value: string): value is PermissionStatus {
 
 /***
  * Creates a normalized state and derives the `granted` convenience flag.
+ * Limited access is usable partial authorization, so both `granted` and
+ * `limited` states set `granted` to true.
  */
 export function createPermissionState(input: CreatePermissionStateInput): PermissionState {
   return {
     permission: input.permission,
     status: input.status,
     canAskAgain: input.canAskAgain,
-    granted: input.status === 'granted',
+    granted: input.status === 'granted' || input.status === 'limited',
     requestedAt: input.requestedAt,
     reason: input.reason,
   };
