@@ -1,5 +1,12 @@
 # @ankhorage/permissions
 
+## 0.2.3
+
+### Patch Changes
+
+- 8ee977d: Normalize blocked and partial Expo authorization states, project the Expo client dependency,
+  and add settings recovery with a stable failure contract.
+
 ## 0.2.2
 
 ### Patch Changes
