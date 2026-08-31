@@ -236,9 +236,15 @@
               </button>
             </li>
             <li>
+              <button class="nav-button" type="button" data-target="src/expo/client.testSupport.ts">
+                src/expo/client.testSupport.ts
+                <small>3 functions</small>
+              </button>
+            </li>
+            <li>
               <button class="nav-button" type="button" data-target="src/expo/client.ts">
                 src/expo/client.ts
-                <small>3 functions</small>
+                <small>4 functions</small>
               </button>
             </li>
             <li>
@@ -260,7 +266,7 @@
             <li>
               <button class="nav-button" type="button" data-target="src/react/index.tsx">
                 src/react/index.tsx
-                <small>3 functions</small>
+                <small>4 functions</small>
               </button>
             </li>
             <li>
@@ -278,13 +284,19 @@
             <li>
               <button class="nav-button" type="button" data-target="src/testing/index.ts">
                 src/testing/index.ts
-                <small>3 functions</small>
+                <small>5 functions</small>
               </button>
             </li>
             <li>
               <button class="nav-button" type="button" data-target="src/web/index.ts">
                 src/web/index.ts
-                <small>15 functions</small>
+                <small>9 functions</small>
+              </button>
+            </li>
+            <li>
+              <button class="nav-button" type="button" data-target="src/web/permissionStates.ts">
+                src/web/permissionStates.ts
+                <small>6 functions</small>
               </button>
             </li>
           </ul>
@@ -297,7 +309,7 @@
             <div class="summary">
               <div><strong>35</strong><span class="muted">public exports</span></div>
               <div><strong>1</strong><span class="muted">components</span></div>
-              <div><strong>20</strong><span class="muted">modules</span></div>
+              <div><strong>22</strong><span class="muted">modules</span></div>
               <div><strong>7</strong><span class="muted">entrypoints</span></div>
             </div>
             <h3>Entrypoints</h3>
@@ -405,6 +417,20 @@
                 <code>src/registry/permissions.ts</code>, <code>src/state/permissionState.ts</code>
               </p>
               <p><strong>Exports:</strong> <code>notificationsAdapter</code></p>
+            </article>
+            <article
+              class="item"
+              data-search="src/expo/client.testSupport.ts audioMock cameraMock linkingMock locationMock mediaLibraryMock MockPermissionResponse notificationsMock permissionResponse resetExpoMocks"
+            >
+              <h3>src/expo/client.testSupport.ts</h3>
+              <p class="muted">Referenced module</p>
+              <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
+              <p>
+                <strong>Exports:</strong> <code>audioMock</code>, <code>cameraMock</code>,
+                <code>linkingMock</code>, <code>locationMock</code>, <code>mediaLibraryMock</code>,
+                <code>MockPermissionResponse</code>, <code>notificationsMock</code>,
+                <code>permissionResponse</code>, <code>resetExpoMocks</code>
+              </p>
             </article>
             <article
               class="item"
@@ -574,17 +600,35 @@
             </article>
             <article
               class="item"
-              data-search="src/web/index.ts src/client/types.ts src/registry/permissions.ts src/state/permissionState.ts createWebPermissionClient WebPermissionClientOptions"
+              data-search="src/web/index.ts src/client/types.ts src/registry/permissions.ts src/state/permissionState.ts src/web/permissionStates.ts createWebPermissionClient WebPermissionClientOptions"
             >
               <h3>src/web/index.ts</h3>
               <p class="muted">Configured entrypoint</p>
               <p>
                 <strong>Dependencies:</strong> <code>src/client/types.ts</code>,
-                <code>src/registry/permissions.ts</code>, <code>src/state/permissionState.ts</code>
+                <code>src/registry/permissions.ts</code>, <code>src/state/permissionState.ts</code>,
+                <code>src/web/permissionStates.ts</code>
               </p>
               <p>
                 <strong>Exports:</strong> <code>createWebPermissionClient</code>,
                 <code>WebPermissionClientOptions</code>
+              </p>
+            </article>
+            <article
+              class="item"
+              data-search="src/web/permissionStates.ts src/registry/permissions.ts src/state/permissionState.ts BrowserPermissionState formatErrorName NotificationPermissionState stateFromBrowserPermission stateFromMediaError stateFromNotificationPermission unavailable"
+            >
+              <h3>src/web/permissionStates.ts</h3>
+              <p class="muted">Referenced module</p>
+              <p>
+                <strong>Dependencies:</strong> <code>src/registry/permissions.ts</code>,
+                <code>src/state/permissionState.ts</code>
+              </p>
+              <p>
+                <strong>Exports:</strong> <code>BrowserPermissionState</code>,
+                <code>formatErrorName</code>, <code>NotificationPermissionState</code>,
+                <code>stateFromBrowserPermission</code>, <code>stateFromMediaError</code>,
+                <code>stateFromNotificationPermission</code>, <code>unavailable</code>
               </p>
             </article>
           </section>
@@ -695,7 +739,7 @@
                 data-search="EXPO_PERMISSION_CLIENT_REQUIRED_PACKAGES value src/expo/manifest.ts Expo packages required by the permission client independently of a specific&#10;permission capability."
               >
                 <h4>EXPO_PERMISSION_CLIENT_REQUIRED_PACKAGES</h4>
-                <p class="muted">value • <code>src/expo/manifest.ts:20:14</code></p>
+                <p class="muted">value • <code>src/expo/manifest.ts:16:14</code></p>
                 <p>
                   Expo packages required by the permission client independently of a specific
                   permission capability.
@@ -709,7 +753,7 @@
                 data-search="EXPO_PERMISSION_SUPPORT value src/expo/manifest.ts "
               >
                 <h4>EXPO_PERMISSION_SUPPORT</h4>
-                <p class="muted">value • <code>src/expo/manifest.ts:22:14</code></p>
+                <p class="muted">value • <code>src/expo/manifest.ts:18:14</code></p>
 
                 <p><strong>Export paths:</strong> <code>src/expo/manifest.ts</code></p>
                 <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
@@ -720,7 +764,7 @@
                 data-search="ExpoPermissionMetadata type src/expo/manifest.ts  PermissionSupport"
               >
                 <h4>ExpoPermissionMetadata</h4>
-                <p class="muted">type • <code>src/expo/manifest.ts:10:1</code></p>
+                <p class="muted">type • <code>src/expo/manifest.ts:6:1</code></p>
 
                 <p><strong>Export paths:</strong> <code>src/expo/manifest.ts</code></p>
                 <div>
@@ -1032,8 +1076,7 @@
   children,
   client,
   manager,
-}: PermissionsProviderProps) =&gt; ReactNode</pre
-                  >
+}: PermissionsProviderProps) =&gt; ReactNode</pre>
                   <table>
                     <thead>
                       <tr>
@@ -1133,8 +1176,7 @@
                 <div>
                   <h5>Signature</h5>
                   <pre>
-(permission: Permission, options?: UsePermissionOptions) =&gt; PermissionHookResult</pre
-                  >
+(permission: Permission, options?: UsePermissionOptions) =&gt; PermissionHookResult</pre>
                   <table>
                     <thead>
                       <tr>
@@ -1467,7 +1509,7 @@
                 data-search="createPermissionState function src/state/permissionState.ts Creates a normalized state and derives the `granted` convenience flag.&#10;Limited access is usable partial authorization, so both `granted` and&#10;`limited` states set `granted` to true. PermissionState (input: CreatePermissionStateInput) =&gt; PermissionState"
               >
                 <h4>createPermissionState</h4>
-                <p class="muted">function • <code>src/state/permissionState.ts:63:1</code></p>
+                <p class="muted">function • <code>src/state/permissionState.ts:58:1</code></p>
                 <p>
                   Creates a normalized state and derives the `granted` convenience flag. Limited
                   access is usable partial authorization, so both `granted` and `limited` states set
@@ -1510,7 +1552,7 @@
                 data-search="isPermissionStatus function src/state/permissionState.ts Returns true when a string is one of the normalized statuses. (value: string) =&gt; boolean"
               >
                 <h4>isPermissionStatus</h4>
-                <p class="muted">function • <code>src/state/permissionState.ts:54:1</code></p>
+                <p class="muted">function • <code>src/state/permissionState.ts:49:1</code></p>
                 <p>Returns true when a string is one of the normalized statuses.</p>
                 <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
                 <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
@@ -1544,7 +1586,7 @@
                 data-search="normalizePermissionState function src/state/permissionState.ts Normalizes an adapter result to the requested permission and status shape. Permission PermissionState (permission: Permission, state: PermissionState) =&gt; PermissionState"
               >
                 <h4>normalizePermissionState</h4>
-                <p class="muted">function • <code>src/state/permissionState.ts:77:1</code></p>
+                <p class="muted">function • <code>src/state/permissionState.ts:72:1</code></p>
                 <p>Normalizes an adapter result to the requested permission and status shape.</p>
                 <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
                 <div>
@@ -1590,7 +1632,7 @@
                 data-search="PERMISSION_STATUSES value src/state/permissionState.ts Stable ordered list of normalized statuses."
               >
                 <h4>PERMISSION_STATUSES</h4>
-                <p class="muted">value • <code>src/state/permissionState.ts:20:14</code></p>
+                <p class="muted">value • <code>src/state/permissionState.ts:15:14</code></p>
                 <p>Stable ordered list of normalized statuses.</p>
                 <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
                 <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
@@ -1601,7 +1643,7 @@
                 data-search="PermissionState type src/state/permissionState.ts Normalized result returned by permission clients and managers. Permission PermissionStatus"
               >
                 <h4>PermissionState</h4>
-                <p class="muted">type • <code>src/state/permissionState.ts:34:1</code></p>
+                <p class="muted">type • <code>src/state/permissionState.ts:29:1</code></p>
                 <p>Normalized result returned by permission clients and managers.</p>
                 <p><strong>Export paths:</strong> <code>src/index.ts</code></p>
                 <div>
@@ -1692,7 +1734,7 @@
                 data-search="createFakePermissionClient function src/testing/index.ts Creates a deterministic in-memory client for tests and examples.&#10;&#10;Fake clients make permission flows testable without native devices, browser&#10;prompts, simulators, or network access. FakePermissionClient FakePermissionClientOptions (options?: FakePermissionClientOptions) =&gt; FakePermissionClient"
               >
                 <h4>createFakePermissionClient</h4>
-                <p class="muted">function • <code>src/testing/index.ts:55:1</code></p>
+                <p class="muted">function • <code>src/testing/index.ts:61:1</code></p>
                 <p>
                   Creates a deterministic in-memory client for tests and examples. Fake clients make
                   permission flows testable without native devices, browser prompts, simulators, or
@@ -1904,7 +1946,7 @@
                 data-search="createWebPermissionClient function src/web/index.ts Creates a browser permission client using guarded structural globals.&#10;&#10;Unsupported web APIs resolve to `status: &#39;unavailable&#39;`. The adapter does not&#10;import DOM types and does not assume it is running in a browser. PermissionClient WebPermissionClientOptions (options?: WebPermissionClientOptions) =&gt; PermissionClient"
               >
                 <h4>createWebPermissionClient</h4>
-                <p class="muted">function • <code>src/web/index.ts:78:1</code></p>
+                <p class="muted">function • <code>src/web/index.ts:80:1</code></p>
                 <p>
                   Creates a browser permission client using guarded structural globals. Unsupported
                   web APIs resolve to `status: &#39;unavailable&#39;`. The adapter does not import
@@ -1948,7 +1990,7 @@
                 data-search="WebPermissionClientOptions type src/web/index.ts Options for the browser permission adapter."
               >
                 <h4>WebPermissionClientOptions</h4>
-                <p class="muted">type • <code>src/web/index.ts:67:1</code></p>
+                <p class="muted">type • <code>src/web/index.ts:69:1</code></p>
                 <p>Options for the browser permission adapter.</p>
                 <p><strong>Export paths:</strong> <code>src/web/index.ts</code></p>
                 <div><strong>Related symbols:</strong> <span class="empty">None</span></div>
@@ -2091,6 +2133,8 @@
                 module_src_expo_permissionResponse_ts module_src_expo_adapters_notifications_ts
                 --&gt; module_src_registry_permissions_ts module_src_expo_adapters_notifications_ts
                 --&gt; module_src_state_permissionState_ts
+                module_src_expo_client_testSupport_ts[&quot;src/expo/client.testSupport.ts&quot;]
+                package__ankhorage_permissions -.-&gt; module_src_expo_client_testSupport_ts
                 module_src_expo_client_ts[&quot;src/expo/client.ts&quot;]
                 package__ankhorage_permissions -.-&gt; module_src_expo_client_ts
                 module_src_expo_client_ts --&gt; module_src_client_types_ts
@@ -2135,7 +2179,12 @@
                 module_src_web_index_ts[&quot;src/web/index.ts&quot;] module_src_web_index_ts --&gt;
                 module_src_client_types_ts module_src_web_index_ts --&gt;
                 module_src_registry_permissions_ts module_src_web_index_ts --&gt;
-                module_src_state_permissionState_ts
+                module_src_state_permissionState_ts module_src_web_index_ts --&gt;
+                module_src_web_permissionStates_ts
+                module_src_web_permissionStates_ts[&quot;src/web/permissionStates.ts&quot;]
+                package__ankhorage_permissions -.-&gt; module_src_web_permissionStates_ts
+                module_src_web_permissionStates_ts --&gt; module_src_registry_permissions_ts
+                module_src_web_permissionStates_ts --&gt; module_src_state_permissionState_ts
               </div>
               <details>
                 <summary>View Mermaid source</summary>
@@ -2195,6 +2244,8 @@ graph TD
   module_src_expo_adapters_notifications_ts --&gt; module_src_expo_permissionResponse_ts
   module_src_expo_adapters_notifications_ts --&gt; module_src_registry_permissions_ts
   module_src_expo_adapters_notifications_ts --&gt; module_src_state_permissionState_ts
+  module_src_expo_client_testSupport_ts[&quot;src/expo/client.testSupport.ts&quot;]
+  package__ankhorage_permissions -.-&gt; module_src_expo_client_testSupport_ts
   module_src_expo_client_ts[&quot;src/expo/client.ts&quot;]
   package__ankhorage_permissions -.-&gt; module_src_expo_client_ts
   module_src_expo_client_ts --&gt; module_src_client_types_ts
@@ -2239,8 +2290,12 @@ graph TD
   module_src_web_index_ts --&gt; module_src_client_types_ts
   module_src_web_index_ts --&gt; module_src_registry_permissions_ts
   module_src_web_index_ts --&gt; module_src_state_permissionState_ts
-</pre
-                >
+  module_src_web_index_ts --&gt; module_src_web_permissionStates_ts
+  module_src_web_permissionStates_ts[&quot;src/web/permissionStates.ts&quot;]
+  package__ankhorage_permissions -.-&gt; module_src_web_permissionStates_ts
+  module_src_web_permissionStates_ts --&gt; module_src_registry_permissions_ts
+  module_src_web_permissionStates_ts --&gt; module_src_state_permissionState_ts
+</pre>
               </details>
             </article>
             <article
@@ -2258,6 +2313,7 @@ graph TD
                 module_src_expo_adapters_mediaLibrary_ts[&quot;src/expo/adapters/mediaLibrary.ts&quot;]
                 module_src_expo_adapters_microphone_ts[&quot;src/expo/adapters/microphone.ts&quot;]
                 module_src_expo_adapters_notifications_ts[&quot;src/expo/adapters/notifications.ts&quot;]
+                module_src_expo_client_testSupport_ts[&quot;src/expo/client.testSupport.ts&quot;]
                 module_src_expo_client_ts[&quot;src/expo/client.ts&quot;]
                 module_src_expo_index_ts[&quot;src/expo/index.ts&quot;]
                 module_src_expo_manifest_ts[&quot;src/expo/manifest.ts&quot;]
@@ -2269,19 +2325,21 @@ graph TD
                 module_src_registry_permissions_ts[&quot;src/registry/permissions.ts&quot;]
                 module_src_state_permissionState_ts[&quot;src/state/permissionState.ts&quot;]
                 module_src_testing_index_ts[&quot;src/testing/index.ts&quot;]
-                module_src_web_index_ts[&quot;src/web/index.ts&quot;] module_src_ankh_provider_ts
-                --&gt; module_src_registry_permissions_ts module_src_client_types_ts --&gt;
-                module_src_registry_permissions_ts module_src_client_types_ts --&gt;
-                module_src_state_permissionState_ts module_src_expo_adapters_camera_ts --&gt;
-                module_src_expo_client_ts module_src_expo_adapters_camera_ts --&gt;
-                module_src_expo_permissionResponse_ts module_src_expo_adapters_camera_ts --&gt;
-                module_src_registry_permissions_ts module_src_expo_adapters_camera_ts --&gt;
-                module_src_state_permissionState_ts module_src_expo_adapters_location_ts --&gt;
-                module_src_expo_client_ts module_src_expo_adapters_location_ts --&gt;
-                module_src_expo_permissionResponse_ts module_src_expo_adapters_location_ts --&gt;
-                module_src_registry_permissions_ts module_src_expo_adapters_location_ts --&gt;
-                module_src_state_permissionState_ts module_src_expo_adapters_mediaLibrary_ts --&gt;
-                module_src_expo_client_ts module_src_expo_adapters_mediaLibrary_ts --&gt;
+                module_src_web_index_ts[&quot;src/web/index.ts&quot;]
+                module_src_web_permissionStates_ts[&quot;src/web/permissionStates.ts&quot;]
+                module_src_ankh_provider_ts --&gt; module_src_registry_permissions_ts
+                module_src_client_types_ts --&gt; module_src_registry_permissions_ts
+                module_src_client_types_ts --&gt; module_src_state_permissionState_ts
+                module_src_expo_adapters_camera_ts --&gt; module_src_expo_client_ts
+                module_src_expo_adapters_camera_ts --&gt; module_src_expo_permissionResponse_ts
+                module_src_expo_adapters_camera_ts --&gt; module_src_registry_permissions_ts
+                module_src_expo_adapters_camera_ts --&gt; module_src_state_permissionState_ts
+                module_src_expo_adapters_location_ts --&gt; module_src_expo_client_ts
+                module_src_expo_adapters_location_ts --&gt; module_src_expo_permissionResponse_ts
+                module_src_expo_adapters_location_ts --&gt; module_src_registry_permissions_ts
+                module_src_expo_adapters_location_ts --&gt; module_src_state_permissionState_ts
+                module_src_expo_adapters_mediaLibrary_ts --&gt; module_src_expo_client_ts
+                module_src_expo_adapters_mediaLibrary_ts --&gt;
                 module_src_expo_permissionResponse_ts module_src_expo_adapters_mediaLibrary_ts
                 --&gt; module_src_registry_permissions_ts module_src_expo_adapters_mediaLibrary_ts
                 --&gt; module_src_state_permissionState_ts module_src_expo_adapters_microphone_ts
@@ -2320,6 +2378,9 @@ graph TD
                 module_src_state_permissionState_ts module_src_web_index_ts --&gt;
                 module_src_client_types_ts module_src_web_index_ts --&gt;
                 module_src_registry_permissions_ts module_src_web_index_ts --&gt;
+                module_src_state_permissionState_ts module_src_web_index_ts --&gt;
+                module_src_web_permissionStates_ts module_src_web_permissionStates_ts --&gt;
+                module_src_registry_permissions_ts module_src_web_permissionStates_ts --&gt;
                 module_src_state_permissionState_ts
               </div>
               <details>
@@ -2334,6 +2395,7 @@ graph LR
   module_src_expo_adapters_mediaLibrary_ts[&quot;src/expo/adapters/mediaLibrary.ts&quot;]
   module_src_expo_adapters_microphone_ts[&quot;src/expo/adapters/microphone.ts&quot;]
   module_src_expo_adapters_notifications_ts[&quot;src/expo/adapters/notifications.ts&quot;]
+  module_src_expo_client_testSupport_ts[&quot;src/expo/client.testSupport.ts&quot;]
   module_src_expo_client_ts[&quot;src/expo/client.ts&quot;]
   module_src_expo_index_ts[&quot;src/expo/index.ts&quot;]
   module_src_expo_manifest_ts[&quot;src/expo/manifest.ts&quot;]
@@ -2346,6 +2408,7 @@ graph LR
   module_src_state_permissionState_ts[&quot;src/state/permissionState.ts&quot;]
   module_src_testing_index_ts[&quot;src/testing/index.ts&quot;]
   module_src_web_index_ts[&quot;src/web/index.ts&quot;]
+  module_src_web_permissionStates_ts[&quot;src/web/permissionStates.ts&quot;]
   module_src_ankh_provider_ts --&gt; module_src_registry_permissions_ts
   module_src_client_types_ts --&gt; module_src_registry_permissions_ts
   module_src_client_types_ts --&gt; module_src_state_permissionState_ts
@@ -2396,8 +2459,10 @@ graph LR
   module_src_web_index_ts --&gt; module_src_client_types_ts
   module_src_web_index_ts --&gt; module_src_registry_permissions_ts
   module_src_web_index_ts --&gt; module_src_state_permissionState_ts
-</pre
-                >
+  module_src_web_index_ts --&gt; module_src_web_permissionStates_ts
+  module_src_web_permissionStates_ts --&gt; module_src_registry_permissions_ts
+  module_src_web_permissionStates_ts --&gt; module_src_state_permissionState_ts
+</pre>
               </details>
             </article>
             <article class="item" data-search="Export graph diagrams/export-graph.mmd">
@@ -2412,6 +2477,7 @@ graph LR
                 module_src_expo_adapters_mediaLibrary_ts[&quot;src/expo/adapters/mediaLibrary.ts&quot;]
                 module_src_expo_adapters_microphone_ts[&quot;src/expo/adapters/microphone.ts&quot;]
                 module_src_expo_adapters_notifications_ts[&quot;src/expo/adapters/notifications.ts&quot;]
+                module_src_expo_client_testSupport_ts[&quot;src/expo/client.testSupport.ts&quot;]
                 module_src_expo_client_ts[&quot;src/expo/client.ts&quot;]
                 module_src_expo_index_ts[&quot;src/expo/index.ts&quot;]
                 module_src_expo_manifest_ts[&quot;src/expo/manifest.ts&quot;]
@@ -2424,6 +2490,7 @@ graph LR
                 module_src_state_permissionState_ts[&quot;src/state/permissionState.ts&quot;]
                 module_src_testing_index_ts[&quot;src/testing/index.ts&quot;]
                 module_src_web_index_ts[&quot;src/web/index.ts&quot;]
+                module_src_web_permissionStates_ts[&quot;src/web/permissionStates.ts&quot;]
                 export_assertKnownPermission[&quot;assertKnownPermission&quot;]
                 module_src_registry_permissions_ts --&gt; export_assertKnownPermission
                 export_assertKnownPermission -.-&gt; export_Permission
@@ -2536,6 +2603,7 @@ graph LR
   module_src_expo_adapters_mediaLibrary_ts[&quot;src/expo/adapters/mediaLibrary.ts&quot;]
   module_src_expo_adapters_microphone_ts[&quot;src/expo/adapters/microphone.ts&quot;]
   module_src_expo_adapters_notifications_ts[&quot;src/expo/adapters/notifications.ts&quot;]
+  module_src_expo_client_testSupport_ts[&quot;src/expo/client.testSupport.ts&quot;]
   module_src_expo_client_ts[&quot;src/expo/client.ts&quot;]
   module_src_expo_index_ts[&quot;src/expo/index.ts&quot;]
   module_src_expo_manifest_ts[&quot;src/expo/manifest.ts&quot;]
@@ -2548,6 +2616,7 @@ graph LR
   module_src_state_permissionState_ts[&quot;src/state/permissionState.ts&quot;]
   module_src_testing_index_ts[&quot;src/testing/index.ts&quot;]
   module_src_web_index_ts[&quot;src/web/index.ts&quot;]
+  module_src_web_permissionStates_ts[&quot;src/web/permissionStates.ts&quot;]
   export_assertKnownPermission[&quot;assertKnownPermission&quot;]
   module_src_registry_permissions_ts --&gt; export_assertKnownPermission
   export_assertKnownPermission -.-&gt; export_Permission
@@ -2656,8 +2725,7 @@ graph LR
   export_usePermissions -.-&gt; export_PermissionManager
   export_WebPermissionClientOptions[&quot;WebPermissionClientOptions&quot;]
   module_src_web_index_ts --&gt; export_WebPermissionClientOptions
-</pre
-                >
+</pre>
               </details>
             </article>
             <article
@@ -2680,8 +2748,7 @@ sequenceDiagram
   participant participant_isPermission as isPermission
   participant_assertKnownPermission-&gt;&gt;participant_isPermission: isPermission()
   participant_isPermission--&gt;&gt;participant_assertKnownPermission: return
-</pre
-                >
+</pre>
               </details>
             </article>
             <article
@@ -2693,13 +2760,17 @@ sequenceDiagram
               <div class="mermaid">
                 sequenceDiagram participant participant_assertKnownPermission as
                 assertKnownPermission participant participant_createFakePermissionClient as
-                createFakePermissionClient participant participant_createPermissionState as
+                createFakePermissionClient participant participant_createFakePermissionContext as
+                createFakePermissionContext participant participant_createFakePermissionOperations
+                as createFakePermissionOperations participant participant_createPermissionState as
                 createPermissionState participant participant_isPermission as isPermission
                 participant participant_normalizeSeed as normalizeSeed
-                participant_createFakePermissionClient-&gt;&gt;participant_createPermissionState:
+                participant_createFakePermissionClient-&gt;&gt;participant_createFakePermissionContext:
+                createFakePermissionContext()
+                participant_createFakePermissionContext-&gt;&gt;participant_createPermissionState:
                 createPermissionState()
-                participant_createPermissionState--&gt;&gt;participant_createFakePermissionClient:
-                return participant_createFakePermissionClient-&gt;&gt;participant_normalizeSeed:
+                participant_createPermissionState--&gt;&gt;participant_createFakePermissionContext:
+                return participant_createFakePermissionContext-&gt;&gt;participant_normalizeSeed:
                 normalizeSeed() participant_normalizeSeed-&gt;&gt;participant_createPermissionState:
                 createPermissionState()
                 participant_createPermissionState--&gt;&gt;participant_normalizeSeed: return
@@ -2708,7 +2779,13 @@ sequenceDiagram
                 participant_assertKnownPermission-&gt;&gt;participant_isPermission: isPermission()
                 participant_isPermission--&gt;&gt;participant_assertKnownPermission: return
                 participant_assertKnownPermission--&gt;&gt;participant_normalizeSeed: return
-                participant_normalizeSeed--&gt;&gt;participant_createFakePermissionClient: return
+                participant_normalizeSeed--&gt;&gt;participant_createFakePermissionContext: return
+                participant_createFakePermissionContext--&gt;&gt;participant_createFakePermissionClient:
+                return
+                participant_createFakePermissionClient-&gt;&gt;participant_createFakePermissionOperations:
+                createFakePermissionOperations()
+                participant_createFakePermissionOperations--&gt;&gt;participant_createFakePermissionClient:
+                return
               </div>
               <details>
                 <summary>View Mermaid source</summary>
@@ -2716,21 +2793,26 @@ sequenceDiagram
 sequenceDiagram
   participant participant_assertKnownPermission as assertKnownPermission
   participant participant_createFakePermissionClient as createFakePermissionClient
+  participant participant_createFakePermissionContext as createFakePermissionContext
+  participant participant_createFakePermissionOperations as createFakePermissionOperations
   participant participant_createPermissionState as createPermissionState
   participant participant_isPermission as isPermission
   participant participant_normalizeSeed as normalizeSeed
-  participant_createFakePermissionClient-&gt;&gt;participant_createPermissionState: createPermissionState()
-  participant_createPermissionState--&gt;&gt;participant_createFakePermissionClient: return
-  participant_createFakePermissionClient-&gt;&gt;participant_normalizeSeed: normalizeSeed()
+  participant_createFakePermissionClient-&gt;&gt;participant_createFakePermissionContext: createFakePermissionContext()
+  participant_createFakePermissionContext-&gt;&gt;participant_createPermissionState: createPermissionState()
+  participant_createPermissionState--&gt;&gt;participant_createFakePermissionContext: return
+  participant_createFakePermissionContext-&gt;&gt;participant_normalizeSeed: normalizeSeed()
   participant_normalizeSeed-&gt;&gt;participant_createPermissionState: createPermissionState()
   participant_createPermissionState--&gt;&gt;participant_normalizeSeed: return
   participant_normalizeSeed-&gt;&gt;participant_assertKnownPermission: assertKnownPermission()
   participant_assertKnownPermission-&gt;&gt;participant_isPermission: isPermission()
   participant_isPermission--&gt;&gt;participant_assertKnownPermission: return
   participant_assertKnownPermission--&gt;&gt;participant_normalizeSeed: return
-  participant_normalizeSeed--&gt;&gt;participant_createFakePermissionClient: return
-</pre
-                >
+  participant_normalizeSeed--&gt;&gt;participant_createFakePermissionContext: return
+  participant_createFakePermissionContext--&gt;&gt;participant_createFakePermissionClient: return
+  participant_createFakePermissionClient-&gt;&gt;participant_createFakePermissionOperations: createFakePermissionOperations()
+  participant_createFakePermissionOperations--&gt;&gt;participant_createFakePermissionClient: return
+</pre>
               </details>
             </article>
             <article
@@ -2755,8 +2837,7 @@ sequenceDiagram
   participant participant_getDefaultGlobal as getDefaultGlobal
   participant_createWebPermissionClient-&gt;&gt;participant_getDefaultGlobal: getDefaultGlobal()
   participant_getDefaultGlobal--&gt;&gt;participant_createWebPermissionClient: return
-</pre
-                >
+</pre>
               </details>
             </article>
             <article
@@ -2787,8 +2868,7 @@ sequenceDiagram
   participant_assertKnownPermission-&gt;&gt;participant_isPermission: isPermission()
   participant_isPermission--&gt;&gt;participant_assertKnownPermission: return
   participant_assertKnownPermission--&gt;&gt;participant_getPermissionDefinition: return
-</pre
-                >
+</pre>
               </details>
             </article>
             <article
@@ -2814,8 +2894,7 @@ sequenceDiagram
   participant participant_normalizePermissionState as normalizePermissionState
   participant_normalizePermissionState-&gt;&gt;participant_createPermissionState: createPermissionState()
   participant_createPermissionState--&gt;&gt;participant_normalizePermissionState: return
-</pre
-                >
+</pre>
               </details>
             </article>
             <article
@@ -2844,8 +2923,7 @@ sequenceDiagram
   participant_useMemo--&gt;&gt;participant_PermissionsProvider: return
   participant_PermissionsProvider-&gt;&gt;participant_createElement: createElement()
   participant_createElement--&gt;&gt;participant_PermissionsProvider: return
-</pre
-                >
+</pre>
               </details>
             </article>
             <article
@@ -2890,8 +2968,7 @@ sequenceDiagram
   participant_useCallback--&gt;&gt;participant_usePermission: return
   participant_usePermission-&gt;&gt;participant_useEffect: useEffect()
   participant_useEffect--&gt;&gt;participant_usePermission: return
-</pre
-                >
+</pre>
               </details>
             </article>
             <article
@@ -2914,8 +2991,7 @@ sequenceDiagram
   participant participant_usePermissions as usePermissions
   participant_usePermissions-&gt;&gt;participant_useContext: useContext()
   participant_useContext--&gt;&gt;participant_usePermissions: return
-</pre
-                >
+</pre>
               </details>
             </article>
           </section>
@@ -3008,6 +3084,34 @@ sequenceDiagram
             </article>
           </section>
         </section>
+        <section
+          id="view-src-expo-client-testsupport-ts"
+          class="view"
+          data-view="src/expo/client.testSupport.ts"
+          hidden
+        >
+          <section class="panel">
+            <h2>src/expo/client.testSupport.ts</h2>
+            <article class="item" data-search="permissionResponse src/expo/client.testSupport.ts ">
+              <h3>permissionResponse</h3>
+              <p class="muted"><code>src/expo/client.testSupport.ts:13:1</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article class="item" data-search="resetExpoMocks src/expo/client.testSupport.ts ">
+              <h3>resetExpoMocks</h3>
+              <p class="muted"><code>src/expo/client.testSupport.ts:155:1</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="resetCollectionMocks src/expo/client.testSupport.ts "
+            >
+              <h3>resetCollectionMocks</h3>
+              <p class="muted"><code>src/expo/client.testSupport.ts:175:1</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+          </section>
+        </section>
         <section id="view-src-expo-client-ts" class="view" data-view="src/expo/client.ts" hidden>
           <section class="panel">
             <h2>src/expo/client.ts</h2>
@@ -3028,14 +3132,19 @@ sequenceDiagram
                 imports.
               </p>
             </article>
+            <article class="item" data-search="getPermissionSupport src/expo/client.ts ">
+              <h3>getPermissionSupport</h3>
+              <p class="muted"><code>src/expo/client.ts:94:1</code></p>
+              <p class="empty">No description available.</p>
+            </article>
             <article class="item" data-search="createUnavailableSupportState src/expo/client.ts ">
               <h3>createUnavailableSupportState</h3>
-              <p class="muted"><code>src/expo/client.ts:94:1</code></p>
+              <p class="muted"><code>src/expo/client.ts:98:1</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article class="item" data-search="createNotRequiredState src/expo/client.ts ">
               <h3>createNotRequiredState</h3>
-              <p class="muted"><code>src/expo/client.ts:102:1</code></p>
+              <p class="muted"><code>src/expo/client.ts:106:1</code></p>
               <p class="empty">No description available.</p>
             </article>
           </section>
@@ -3156,6 +3265,11 @@ sequenceDiagram
               <p class="muted"><code>src/react/index.tsx:103:1</code></p>
               <p>Tracks a single permission and exposes explicit refresh/request actions.</p>
             </article>
+            <article class="item" data-search="createInitialPermissionState src/react/index.tsx ">
+              <h3>createInitialPermissionState</h3>
+              <p class="muted"><code>src/react/index.tsx:156:1</code></p>
+              <p class="empty">No description available.</p>
+            </article>
           </section>
         </section>
         <section
@@ -3205,7 +3319,7 @@ sequenceDiagram
               data-search="isPermissionStatus src/state/permissionState.ts Returns true when a string is one of the normalized statuses."
             >
               <h3>isPermissionStatus</h3>
-              <p class="muted"><code>src/state/permissionState.ts:54:1</code></p>
+              <p class="muted"><code>src/state/permissionState.ts:49:1</code></p>
               <p>Returns true when a string is one of the normalized statuses.</p>
             </article>
             <article
@@ -3213,7 +3327,7 @@ sequenceDiagram
               data-search="createPermissionState src/state/permissionState.ts Creates a normalized state and derives the `granted` convenience flag.&#10;Limited access is usable partial authorization, so both `granted` and&#10;`limited` states set `granted` to true."
             >
               <h3>createPermissionState</h3>
-              <p class="muted"><code>src/state/permissionState.ts:63:1</code></p>
+              <p class="muted"><code>src/state/permissionState.ts:58:1</code></p>
               <p>
                 Creates a normalized state and derives the `granted` convenience flag. Limited
                 access is usable partial authorization, so both `granted` and `limited` states set
@@ -3225,7 +3339,7 @@ sequenceDiagram
               data-search="normalizePermissionState src/state/permissionState.ts Normalizes an adapter result to the requested permission and status shape."
             >
               <h3>normalizePermissionState</h3>
-              <p class="muted"><code>src/state/permissionState.ts:77:1</code></p>
+              <p class="muted"><code>src/state/permissionState.ts:72:1</code></p>
               <p>Normalizes an adapter result to the requested permission and status shape.</p>
             </article>
           </section>
@@ -3243,21 +3357,34 @@ sequenceDiagram
               data-search="createFakePermissionClient src/testing/index.ts Creates a deterministic in-memory client for tests and examples.&#10;&#10;Fake clients make permission flows testable without native devices, browser&#10;prompts, simulators, or network access."
             >
               <h3>createFakePermissionClient</h3>
-              <p class="muted"><code>src/testing/index.ts:55:1</code></p>
+              <p class="muted"><code>src/testing/index.ts:61:1</code></p>
               <p>
                 Creates a deterministic in-memory client for tests and examples. Fake clients make
                 permission flows testable without native devices, browser prompts, simulators, or
                 network access.
               </p>
             </article>
+            <article class="item" data-search="createFakePermissionContext src/testing/index.ts ">
+              <h3>createFakePermissionContext</h3>
+              <p class="muted"><code>src/testing/index.ts:70:1</code></p>
+              <p class="empty">No description available.</p>
+            </article>
+            <article
+              class="item"
+              data-search="createFakePermissionOperations src/testing/index.ts "
+            >
+              <h3>createFakePermissionOperations</h3>
+              <p class="muted"><code>src/testing/index.ts:98:1</code></p>
+              <p class="empty">No description available.</p>
+            </article>
             <article class="item" data-search="normalizeSeed src/testing/index.ts ">
               <h3>normalizeSeed</h3>
-              <p class="muted"><code>src/testing/index.ts:135:1</code></p>
+              <p class="muted"><code>src/testing/index.ts:146:1</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article class="item" data-search="getStoredState src/testing/index.ts ">
               <h3>getStoredState</h3>
-              <p class="muted"><code>src/testing/index.ts:145:1</code></p>
+              <p class="muted"><code>src/testing/index.ts:156:1</code></p>
               <p class="empty">No description available.</p>
             </article>
           </section>
@@ -3270,7 +3397,7 @@ sequenceDiagram
               data-search="createWebPermissionClient src/web/index.ts Creates a browser permission client using guarded structural globals.&#10;&#10;Unsupported web APIs resolve to `status: &#39;unavailable&#39;`. The adapter does not&#10;import DOM types and does not assume it is running in a browser."
             >
               <h3>createWebPermissionClient</h3>
-              <p class="muted"><code>src/web/index.ts:78:1</code></p>
+              <p class="muted"><code>src/web/index.ts:80:1</code></p>
               <p>
                 Creates a browser permission client using guarded structural globals. Unsupported
                 web APIs resolve to `status: &#39;unavailable&#39;`. The adapter does not import DOM
@@ -3279,72 +3406,88 @@ sequenceDiagram
             </article>
             <article class="item" data-search="getDefaultGlobal src/web/index.ts ">
               <h3>getDefaultGlobal</h3>
-              <p class="muted"><code>src/web/index.ts:131:1</code></p>
+              <p class="muted"><code>src/web/index.ts:133:1</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article class="item" data-search="getNotificationStatus src/web/index.ts ">
               <h3>getNotificationStatus</h3>
-              <p class="muted"><code>src/web/index.ts:135:1</code></p>
+              <p class="muted"><code>src/web/index.ts:137:1</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article class="item" data-search="requestNotifications src/web/index.ts ">
               <h3>requestNotifications</h3>
-              <p class="muted"><code>src/web/index.ts:143:1</code></p>
+              <p class="muted"><code>src/web/index.ts:145:1</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article class="item" data-search="getPermissionApiStatus src/web/index.ts ">
               <h3>getPermissionApiStatus</h3>
-              <p class="muted"><code>src/web/index.ts:163:1</code></p>
+              <p class="muted"><code>src/web/index.ts:165:1</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article class="item" data-search="getMediaStatus src/web/index.ts ">
               <h3>getMediaStatus</h3>
-              <p class="muted"><code>src/web/index.ts:182:1</code></p>
+              <p class="muted"><code>src/web/index.ts:184:1</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article class="item" data-search="getMediaAvailability src/web/index.ts ">
               <h3>getMediaAvailability</h3>
-              <p class="muted"><code>src/web/index.ts:200:1</code></p>
+              <p class="muted"><code>src/web/index.ts:202:1</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article class="item" data-search="requestGeolocation src/web/index.ts ">
               <h3>requestGeolocation</h3>
-              <p class="muted"><code>src/web/index.ts:221:1</code></p>
+              <p class="muted"><code>src/web/index.ts:223:1</code></p>
               <p class="empty">No description available.</p>
             </article>
             <article class="item" data-search="requestMedia src/web/index.ts ">
               <h3>requestMedia</h3>
-              <p class="muted"><code>src/web/index.ts:265:1</code></p>
+              <p class="muted"><code>src/web/index.ts:267:1</code></p>
               <p class="empty">No description available.</p>
             </article>
-            <article class="item" data-search="stateFromMediaError src/web/index.ts ">
+          </section>
+        </section>
+        <section
+          id="view-src-web-permissionstates-ts"
+          class="view"
+          data-view="src/web/permissionStates.ts"
+          hidden
+        >
+          <section class="panel">
+            <h2>src/web/permissionStates.ts</h2>
+            <article class="item" data-search="stateFromMediaError src/web/permissionStates.ts ">
               <h3>stateFromMediaError</h3>
-              <p class="muted"><code>src/web/index.ts:297:1</code></p>
+              <p class="muted"><code>src/web/permissionStates.ts:11:1</code></p>
               <p class="empty">No description available.</p>
             </article>
-            <article class="item" data-search="stateFromNotificationPermission src/web/index.ts ">
+            <article
+              class="item"
+              data-search="stateFromNotificationPermission src/web/permissionStates.ts "
+            >
               <h3>stateFromNotificationPermission</h3>
-              <p class="muted"><code>src/web/index.ts:329:1</code></p>
+              <p class="muted"><code>src/web/permissionStates.ts:41:1</code></p>
               <p class="empty">No description available.</p>
             </article>
-            <article class="item" data-search="stateFromBrowserPermission src/web/index.ts ">
+            <article
+              class="item"
+              data-search="stateFromBrowserPermission src/web/permissionStates.ts "
+            >
               <h3>stateFromBrowserPermission</h3>
-              <p class="muted"><code>src/web/index.ts:356:1</code></p>
+              <p class="muted"><code>src/web/permissionStates.ts:54:1</code></p>
               <p class="empty">No description available.</p>
             </article>
-            <article class="item" data-search="unavailable src/web/index.ts ">
+            <article class="item" data-search="unavailable src/web/permissionStates.ts ">
               <h3>unavailable</h3>
-              <p class="muted"><code>src/web/index.ts:369:1</code></p>
+              <p class="muted"><code>src/web/permissionStates.ts:66:1</code></p>
               <p class="empty">No description available.</p>
             </article>
-            <article class="item" data-search="formatErrorName src/web/index.ts ">
+            <article class="item" data-search="formatErrorName src/web/permissionStates.ts ">
               <h3>formatErrorName</h3>
-              <p class="muted"><code>src/web/index.ts:378:1</code></p>
+              <p class="muted"><code>src/web/permissionStates.ts:75:1</code></p>
               <p class="empty">No description available.</p>
             </article>
-            <article class="item" data-search="getErrorName src/web/index.ts ">
+            <article class="item" data-search="getErrorName src/web/permissionStates.ts ">
               <h3>getErrorName</h3>
-              <p class="muted"><code>src/web/index.ts:384:1</code></p>
+              <p class="muted"><code>src/web/permissionStates.ts:80:1</code></p>
               <p class="empty">No description available.</p>
             </article>
           </section>

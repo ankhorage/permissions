@@ -7,6 +7,7 @@ graph LR
   module_src_expo_adapters_mediaLibrary_ts["src/expo/adapters/mediaLibrary.ts"]
   module_src_expo_adapters_microphone_ts["src/expo/adapters/microphone.ts"]
   module_src_expo_adapters_notifications_ts["src/expo/adapters/notifications.ts"]
+  module_src_expo_client_testSupport_ts["src/expo/client.testSupport.ts"]
   module_src_expo_client_ts["src/expo/client.ts"]
   module_src_expo_index_ts["src/expo/index.ts"]
   module_src_expo_manifest_ts["src/expo/manifest.ts"]
@@ -19,6 +20,7 @@ graph LR
   module_src_state_permissionState_ts["src/state/permissionState.ts"]
   module_src_testing_index_ts["src/testing/index.ts"]
   module_src_web_index_ts["src/web/index.ts"]
+  module_src_web_permissionStates_ts["src/web/permissionStates.ts"]
   module_src_ankh_provider_ts --> module_src_registry_permissions_ts
   module_src_client_types_ts --> module_src_registry_permissions_ts
   module_src_client_types_ts --> module_src_state_permissionState_ts
@@ -69,3 +71,6 @@ graph LR
   module_src_web_index_ts --> module_src_client_types_ts
   module_src_web_index_ts --> module_src_registry_permissions_ts
   module_src_web_index_ts --> module_src_state_permissionState_ts
+  module_src_web_index_ts --> module_src_web_permissionStates_ts
+  module_src_web_permissionStates_ts --> module_src_registry_permissions_ts
+  module_src_web_permissionStates_ts --> module_src_state_permissionState_ts

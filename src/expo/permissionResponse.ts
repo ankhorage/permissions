@@ -39,7 +39,7 @@ export function findExpoPermissionMethod(
   containerNames: readonly string[] = [],
 ): ExpoPermissionMethod | undefined {
   if (hasExpoPermissionMethod(source, methodName)) {
-    return source[methodName];
+    return Reflect.get(source, methodName);
   }
 
   if (!isRecord(source)) {
@@ -47,10 +47,10 @@ export function findExpoPermissionMethod(
   }
 
   for (const containerName of containerNames) {
-    const container = source[containerName];
+    const container = Reflect.get(source, containerName);
 
     if (hasExpoPermissionMethod(container, methodName)) {
-      return container[methodName];
+      return Reflect.get(container, methodName);
     }
   }
 
@@ -93,7 +93,7 @@ function hasExpoPermissionMethod(
   value: unknown,
   methodName: string,
 ): value is Record<string, ExpoPermissionMethod> {
-  return isRecord(value) && typeof value[methodName] === 'function';
+  return isRecord(value) && typeof Reflect.get(value, methodName) === 'function';
 }
 
 function isRecord(value: unknown): value is Record<string, unknown> {

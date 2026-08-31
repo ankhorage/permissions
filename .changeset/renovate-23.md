@@ -1,4 +1,5 @@
 ---
+'@ankhorage/permissions': patch
 ---
 
-Update Ankhorage dependencies: `@ankhorage/devtools`.
+Adopt the current Devtools policy and keep permission clients compatible with strict React and security linting.

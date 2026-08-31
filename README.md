@@ -3,7 +3,7 @@
 
 # PERMISSIONS
 
-![license: MIT](././paradox/badges/license.svg) ![npm: v0.2.2](././paradox/badges/npm.svg) ![runtime: bun](././paradox/badges/runtime.svg) ![typescript: strict](././paradox/badges/typescript.svg) ![eslint: checked](././paradox/badges/eslint.svg) ![prettier: checked](././paradox/badges/prettier.svg) ![build: checked](././paradox/badges/build.svg) ![tests: checked](././paradox/badges/tests.svg) ![docs: paradox](././paradox/badges/docs.svg)
+![license: MIT](././paradox/badges/license.svg) ![npm: v0.2.3](././paradox/badges/npm.svg) ![runtime: bun](././paradox/badges/runtime.svg) ![typescript: strict](././paradox/badges/typescript.svg) ![eslint: checked](././paradox/badges/eslint.svg) ![prettier: checked](././paradox/badges/prettier.svg) ![build: checked](././paradox/badges/build.svg) ![tests: checked](././paradox/badges/tests.svg) ![docs: paradox](././paradox/badges/docs.svg)
 
 Cross-platform permission registry and runtime helpers for Expo, React Native, and React Native Web apps, with unified request/check APIs for camera, media, location, notifications, microphone, and other web/native capabilities.
 
@@ -132,7 +132,7 @@ Fake clients make permission flows testable without native devices, browser
 prompts, simulators, or network access.
 
 Module: `src/testing/index.ts`
-Source: `src/testing/index.ts:55:1`
+Source: `src/testing/index.ts:61:1`
 Related symbols: `FakePermissionClient`, `FakePermissionClientOptions`
 
 </details>
@@ -192,7 +192,7 @@ Unsupported web APIs resolve to `status: 'unavailable'`. The adapter does not
 import DOM types and does not assume it is running in a browser.
 
 Module: `src/web/index.ts`
-Source: `src/web/index.ts:78:1`
+Source: `src/web/index.ts:80:1`
 Related symbols: `PermissionClient`, `WebPermissionClientOptions`
 
 </details>

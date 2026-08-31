@@ -10,5 +10,11 @@ export default createKnipConfig({
     'expo-media-library',
     'expo-notifications',
   ],
-  ignoreFiles: ['.prettierrc.js', 'eslint.config.mjs', 'paradox.config.ts'],
+  ignoreFiles: [
+    '.prettierrc.js',
+    'eslint.config.mjs',
+    'eslint.local.config.mjs',
+    'paradox.config.ts',
+    'prettier.local.config.js',
+  ],
 });

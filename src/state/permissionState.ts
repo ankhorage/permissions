@@ -7,12 +7,7 @@ import type { Permission } from '../registry/permissions';
  * but user denial should be represented as a permission state.
  */
 export type PermissionStatus =
-  | 'unknown'
-  | 'granted'
-  | 'denied'
-  | 'blocked'
-  | 'limited'
-  | 'unavailable';
+  'unknown' | 'granted' | 'denied' | 'blocked' | 'limited' | 'unavailable';
 
 /***
  * Stable ordered list of normalized statuses.

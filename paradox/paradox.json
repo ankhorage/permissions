@@ -2,6 +2,8 @@
   "packageName": "PERMISSIONS",
   "packageId": "@ankhorage/permissions",
   "description": "Cross-platform permission registry and runtime helpers for Expo, React Native, and React Native Web apps, with unified request/check APIs for camera, media, location, notifications, microphone, and other web/native capabilities.",
+  "collaborators": null,
+  "donation": null,
   "badges": [
     {
       "id": "license",
@@ -12,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v0.2.2",
+      "value": "v0.2.3",
       "color": "cb3837"
     },
     {
@@ -59,6 +61,7 @@
     }
   ],
   "usage": null,
+  "readmeUsageDescription": null,
   "readmeUsage": [
     {
       "title": "Basic permissions runtime example.",
@@ -75,6 +78,8 @@
       "sourcePath": "examples/expo/App.tsx"
     }
   ],
+  "readmeCli": null,
+  "readmeConfig": null,
   "config": null,
   "entrypoints": [
     "src/expo/index.ts",
@@ -158,6 +163,22 @@
         "src/state/permissionState.ts"
       ],
       "exports": ["notificationsAdapter"]
+    },
+    {
+      "path": "src/expo/client.testSupport.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "audioMock",
+        "cameraMock",
+        "linkingMock",
+        "locationMock",
+        "mediaLibraryMock",
+        "MockPermissionResponse",
+        "notificationsMock",
+        "permissionResponse",
+        "resetExpoMocks"
+      ]
     },
     {
       "path": "src/expo/client.ts",
@@ -322,9 +343,24 @@
       "dependencies": [
         "src/client/types.ts",
         "src/registry/permissions.ts",
-        "src/state/permissionState.ts"
+        "src/state/permissionState.ts",
+        "src/web/permissionStates.ts"
       ],
       "exports": ["createWebPermissionClient", "WebPermissionClientOptions"]
+    },
+    {
+      "path": "src/web/permissionStates.ts",
+      "isEntrypoint": false,
+      "dependencies": ["src/registry/permissions.ts", "src/state/permissionState.ts"],
+      "exports": [
+        "BrowserPermissionState",
+        "formatErrorName",
+        "NotificationPermissionState",
+        "stateFromBrowserPermission",
+        "stateFromMediaError",
+        "stateFromNotificationPermission",
+        "unavailable"
+      ]
     }
   ],
   "exports": [
@@ -369,7 +405,7 @@
       "modulePath": "src/testing/index.ts",
       "sourceLocation": {
         "filePath": "src/testing/index.ts",
-        "line": 55,
+        "line": 61,
         "column": 1
       },
       "exportPaths": ["src/index.ts", "src/testing/index.ts"],
@@ -458,7 +494,7 @@
       "modulePath": "src/state/permissionState.ts",
       "sourceLocation": {
         "filePath": "src/state/permissionState.ts",
-        "line": 63,
+        "line": 58,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -490,7 +526,7 @@
       "modulePath": "src/web/index.ts",
       "sourceLocation": {
         "filePath": "src/web/index.ts",
-        "line": 78,
+        "line": 80,
         "column": 1
       },
       "exportPaths": ["src/web/index.ts"],
@@ -522,7 +558,7 @@
       "modulePath": "src/expo/manifest.ts",
       "sourceLocation": {
         "filePath": "src/expo/manifest.ts",
-        "line": 20,
+        "line": 16,
         "column": 14
       },
       "exportPaths": ["src/expo/manifest.ts"],
@@ -540,7 +576,7 @@
       "modulePath": "src/expo/manifest.ts",
       "sourceLocation": {
         "filePath": "src/expo/manifest.ts",
-        "line": 22,
+        "line": 18,
         "column": 14
       },
       "exportPaths": ["src/expo/manifest.ts"],
@@ -558,7 +594,7 @@
       "modulePath": "src/expo/manifest.ts",
       "sourceLocation": {
         "filePath": "src/expo/manifest.ts",
-        "line": 10,
+        "line": 6,
         "column": 1
       },
       "exportPaths": ["src/expo/manifest.ts"],
@@ -793,7 +829,7 @@
       "modulePath": "src/state/permissionState.ts",
       "sourceLocation": {
         "filePath": "src/state/permissionState.ts",
-        "line": 54,
+        "line": 49,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -825,7 +861,7 @@
       "modulePath": "src/state/permissionState.ts",
       "sourceLocation": {
         "filePath": "src/state/permissionState.ts",
-        "line": 77,
+        "line": 72,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -899,7 +935,7 @@
       "modulePath": "src/state/permissionState.ts",
       "sourceLocation": {
         "filePath": "src/state/permissionState.ts",
-        "line": 20,
+        "line": 15,
         "column": 14
       },
       "exportPaths": ["src/index.ts"],
@@ -1259,7 +1295,7 @@
       "modulePath": "src/state/permissionState.ts",
       "sourceLocation": {
         "filePath": "src/state/permissionState.ts",
-        "line": 34,
+        "line": 29,
         "column": 1
       },
       "exportPaths": ["src/index.ts"],
@@ -1452,7 +1488,7 @@
       "modulePath": "src/web/index.ts",
       "sourceLocation": {
         "filePath": "src/web/index.ts",
-        "line": 67,
+        "line": 69,
         "column": 1
       },
       "exportPaths": ["src/web/index.ts"],
@@ -1561,6 +1597,33 @@
       }
     },
     {
+      "name": "permissionResponse",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/expo/client.testSupport.ts",
+        "line": 13,
+        "column": 1
+      }
+    },
+    {
+      "name": "resetExpoMocks",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/expo/client.testSupport.ts",
+        "line": 155,
+        "column": 1
+      }
+    },
+    {
+      "name": "resetCollectionMocks",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/expo/client.testSupport.ts",
+        "line": 175,
+        "column": 1
+      }
+    },
+    {
       "name": "createPermissionClient",
       "description": "Creates a permission client backed by Expo SDK modules.\n\nDenials that Expo cannot request again are normalized to `blocked`. Limited\nmedia-library access and provisional or ephemeral iOS notification access\nare normalized to usable `limited` states, where `granted` remains true.\nThe client requires `expo-linking` for settings recovery and rejects with a\nstable error when the operating-system settings page cannot be opened.\n\nExpo modules are loaded only when a client operation uses them. The package\nroot and Expo manifest metadata remain free of native module imports.",
       "sourceLocation": {
@@ -1570,7 +1633,7 @@
       }
     },
     {
-      "name": "createUnavailableSupportState",
+      "name": "getPermissionSupport",
       "description": null,
       "sourceLocation": {
         "filePath": "src/expo/client.ts",
@@ -1579,11 +1642,20 @@
       }
     },
     {
+      "name": "createUnavailableSupportState",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/expo/client.ts",
+        "line": 98,
+        "column": 1
+      }
+    },
+    {
       "name": "createNotRequiredState",
       "description": null,
       "sourceLocation": {
         "filePath": "src/expo/client.ts",
-        "line": 102,
+        "line": 106,
         "column": 1
       }
     },
@@ -1687,6 +1759,15 @@
       }
     },
     {
+      "name": "createInitialPermissionState",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/react/index.tsx",
+        "line": 156,
+        "column": 1
+      }
+    },
+    {
       "name": "isPermission",
       "description": "Returns true when a string is a registered permission identifier.",
       "sourceLocation": {
@@ -1718,7 +1799,7 @@
       "description": "Returns true when a string is one of the normalized statuses.",
       "sourceLocation": {
         "filePath": "src/state/permissionState.ts",
-        "line": 54,
+        "line": 49,
         "column": 1
       }
     },
@@ -1727,7 +1808,7 @@
       "description": "Creates a normalized state and derives the `granted` convenience flag.\nLimited access is usable partial authorization, so both `granted` and\n`limited` states set `granted` to true.",
       "sourceLocation": {
         "filePath": "src/state/permissionState.ts",
-        "line": 63,
+        "line": 58,
         "column": 1
       }
     },
@@ -1736,7 +1817,7 @@
       "description": "Normalizes an adapter result to the requested permission and status shape.",
       "sourceLocation": {
         "filePath": "src/state/permissionState.ts",
-        "line": 77,
+        "line": 72,
         "column": 1
       }
     },
@@ -1745,7 +1826,25 @@
       "description": "Creates a deterministic in-memory client for tests and examples.\n\nFake clients make permission flows testable without native devices, browser\nprompts, simulators, or network access.",
       "sourceLocation": {
         "filePath": "src/testing/index.ts",
-        "line": 55,
+        "line": 61,
+        "column": 1
+      }
+    },
+    {
+      "name": "createFakePermissionContext",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/testing/index.ts",
+        "line": 70,
+        "column": 1
+      }
+    },
+    {
+      "name": "createFakePermissionOperations",
+      "description": null,
+      "sourceLocation": {
+        "filePath": "src/testing/index.ts",
+        "line": 98,
         "column": 1
       }
     },
@@ -1754,7 +1853,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/testing/index.ts",
-        "line": 135,
+        "line": 146,
         "column": 1
       }
     },
@@ -1763,7 +1862,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/testing/index.ts",
-        "line": 145,
+        "line": 156,
         "column": 1
       }
     },
@@ -1772,7 +1871,7 @@
       "description": "Creates a browser permission client using guarded structural globals.\n\nUnsupported web APIs resolve to `status: 'unavailable'`. The adapter does not\nimport DOM types and does not assume it is running in a browser.",
       "sourceLocation": {
         "filePath": "src/web/index.ts",
-        "line": 78,
+        "line": 80,
         "column": 1
       }
     },
@@ -1781,7 +1880,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/web/index.ts",
-        "line": 131,
+        "line": 133,
         "column": 1
       }
     },
@@ -1790,7 +1889,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/web/index.ts",
-        "line": 135,
+        "line": 137,
         "column": 1
       }
     },
@@ -1799,7 +1898,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/web/index.ts",
-        "line": 143,
+        "line": 145,
         "column": 1
       }
     },
@@ -1808,7 +1907,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/web/index.ts",
-        "line": 163,
+        "line": 165,
         "column": 1
       }
     },
@@ -1817,7 +1916,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/web/index.ts",
-        "line": 182,
+        "line": 184,
         "column": 1
       }
     },
@@ -1826,7 +1925,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/web/index.ts",
-        "line": 200,
+        "line": 202,
         "column": 1
       }
     },
@@ -1835,7 +1934,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/web/index.ts",
-        "line": 221,
+        "line": 223,
         "column": 1
       }
     },
@@ -1844,7 +1943,7 @@
       "description": null,
       "sourceLocation": {
         "filePath": "src/web/index.ts",
-        "line": 265,
+        "line": 267,
         "column": 1
       }
     },
@@ -1852,8 +1951,8 @@
       "name": "stateFromMediaError",
       "description": null,
       "sourceLocation": {
-        "filePath": "src/web/index.ts",
-        "line": 297,
+        "filePath": "src/web/permissionStates.ts",
+        "line": 11,
         "column": 1
       }
     },
@@ -1861,8 +1960,8 @@
       "name": "stateFromNotificationPermission",
       "description": null,
       "sourceLocation": {
-        "filePath": "src/web/index.ts",
-        "line": 329,
+        "filePath": "src/web/permissionStates.ts",
+        "line": 41,
         "column": 1
       }
     },
@@ -1870,8 +1969,8 @@
       "name": "stateFromBrowserPermission",
       "description": null,
       "sourceLocation": {
-        "filePath": "src/web/index.ts",
-        "line": 356,
+        "filePath": "src/web/permissionStates.ts",
+        "line": 54,
         "column": 1
       }
     },
@@ -1879,8 +1978,8 @@
       "name": "unavailable",
       "description": null,
       "sourceLocation": {
-        "filePath": "src/web/index.ts",
-        "line": 369,
+        "filePath": "src/web/permissionStates.ts",
+        "line": 66,
         "column": 1
       }
     },
@@ -1888,8 +1987,8 @@
       "name": "formatErrorName",
       "description": null,
       "sourceLocation": {
-        "filePath": "src/web/index.ts",
-        "line": 378,
+        "filePath": "src/web/permissionStates.ts",
+        "line": 75,
         "column": 1
       }
     },
@@ -1897,8 +1996,8 @@
       "name": "getErrorName",
       "description": null,
       "sourceLocation": {
-        "filePath": "src/web/index.ts",
-        "line": 384,
+        "filePath": "src/web/permissionStates.ts",
+        "line": 80,
         "column": 1
       }
     }
@@ -2197,6 +2296,21 @@
         "sourcePath": "src/web/index.ts"
       },
       {
+        "fromPath": "src/web/index.ts",
+        "toPath": "src/web/permissionStates.ts",
+        "sourcePath": "src/web/index.ts"
+      },
+      {
+        "fromPath": "src/web/permissionStates.ts",
+        "toPath": "src/registry/permissions.ts",
+        "sourcePath": "src/web/permissionStates.ts"
+      },
+      {
+        "fromPath": "src/web/permissionStates.ts",
+        "toPath": "src/state/permissionState.ts",
+        "sourcePath": "src/web/permissionStates.ts"
+      },
+      {
         "fromPath": "src/expo/adapters/camera.ts",
         "toPath": "src/registry/permissions.ts",
         "sourcePath": "src/expo/adapters/camera.ts"
@@ -2305,6 +2419,36 @@
         "sourcePath": "src/ankh.provider.ts"
       },
       {
+        "fromSymbol": "src/expo/client.testSupport.ts",
+        "toSymbol": "permissionResponse",
+        "callExpression": "permissionResponse",
+        "sourcePath": "src/expo/client.testSupport.ts"
+      },
+      {
+        "fromSymbol": "resetExpoMocks",
+        "toSymbol": "permissionResponse",
+        "callExpression": "permissionResponse",
+        "sourcePath": "src/expo/client.testSupport.ts"
+      },
+      {
+        "fromSymbol": "resetExpoMocks",
+        "toSymbol": "resetCollectionMocks",
+        "callExpression": "resetCollectionMocks",
+        "sourcePath": "src/expo/client.testSupport.ts"
+      },
+      {
+        "fromSymbol": "resetCollectionMocks",
+        "toSymbol": "permissionResponse",
+        "callExpression": "permissionResponse",
+        "sourcePath": "src/expo/client.testSupport.ts"
+      },
+      {
+        "fromSymbol": "getStatus",
+        "toSymbol": "getPermissionSupport",
+        "callExpression": "getPermissionSupport",
+        "sourcePath": "src/expo/client.ts"
+      },
+      {
         "fromSymbol": "getStatus",
         "toSymbol": "createUnavailableSupportState",
         "callExpression": "createUnavailableSupportState",
@@ -2320,6 +2464,12 @@
         "fromSymbol": "getStatus",
         "toSymbol": "getStatus",
         "callExpression": "adapter.getStatus",
+        "sourcePath": "src/expo/client.ts"
+      },
+      {
+        "fromSymbol": "request",
+        "toSymbol": "getPermissionSupport",
+        "callExpression": "getPermissionSupport",
         "sourcePath": "src/expo/client.ts"
       },
       {
@@ -2492,14 +2642,8 @@
       },
       {
         "fromSymbol": "src/react/index.tsx",
-        "toSymbol": "normalizePermissionState",
-        "callExpression": "normalizePermissionState",
-        "sourcePath": "src/react/index.tsx"
-      },
-      {
-        "fromSymbol": "src/react/index.tsx",
-        "toSymbol": "createPermissionState",
-        "callExpression": "createPermissionState",
+        "toSymbol": "createInitialPermissionState",
+        "callExpression": "createInitialPermissionState",
         "sourcePath": "src/react/index.tsx"
       },
       {
@@ -2534,14 +2678,20 @@
       },
       {
         "fromSymbol": "src/react/index.tsx",
-        "toSymbol": "refresh",
-        "callExpression": "refresh",
+        "toSymbol": "openSettings",
+        "callExpression": "manager.openSettings",
         "sourcePath": "src/react/index.tsx"
       },
       {
-        "fromSymbol": "src/react/index.tsx",
-        "toSymbol": "openSettings",
-        "callExpression": "manager.openSettings",
+        "fromSymbol": "createInitialPermissionState",
+        "toSymbol": "normalizePermissionState",
+        "callExpression": "normalizePermissionState",
+        "sourcePath": "src/react/index.tsx"
+      },
+      {
+        "fromSymbol": "createInitialPermissionState",
+        "toSymbol": "createPermissionState",
+        "callExpression": "createPermissionState",
         "sourcePath": "src/react/index.tsx"
       },
       {
@@ -2564,12 +2714,24 @@
       },
       {
         "fromSymbol": "createFakePermissionClient",
+        "toSymbol": "createFakePermissionContext",
+        "callExpression": "createFakePermissionContext",
+        "sourcePath": "src/testing/index.ts"
+      },
+      {
+        "fromSymbol": "createFakePermissionClient",
+        "toSymbol": "createFakePermissionOperations",
+        "callExpression": "createFakePermissionOperations",
+        "sourcePath": "src/testing/index.ts"
+      },
+      {
+        "fromSymbol": "createFakePermissionContext",
         "toSymbol": "createPermissionState",
         "callExpression": "createPermissionState",
         "sourcePath": "src/testing/index.ts"
       },
       {
-        "fromSymbol": "createFakePermissionClient",
+        "fromSymbol": "createFakePermissionContext",
         "toSymbol": "normalizeSeed",
         "callExpression": "normalizeSeed",
         "sourcePath": "src/testing/index.ts"
@@ -2607,7 +2769,7 @@
       {
         "fromSymbol": "request",
         "toSymbol": "now",
-        "callExpression": "now",
+        "callExpression": "context.now",
         "sourcePath": "src/testing/index.ts"
       },
       {
@@ -2872,37 +3034,37 @@
         "fromSymbol": "stateFromMediaError",
         "toSymbol": "getErrorName",
         "callExpression": "getErrorName",
-        "sourcePath": "src/web/index.ts"
+        "sourcePath": "src/web/permissionStates.ts"
       },
       {
         "fromSymbol": "stateFromMediaError",
         "toSymbol": "createPermissionState",
         "callExpression": "createPermissionState",
-        "sourcePath": "src/web/index.ts"
+        "sourcePath": "src/web/permissionStates.ts"
       },
       {
         "fromSymbol": "stateFromNotificationPermission",
         "toSymbol": "createPermissionState",
         "callExpression": "createPermissionState",
-        "sourcePath": "src/web/index.ts"
+        "sourcePath": "src/web/permissionStates.ts"
       },
       {
         "fromSymbol": "stateFromBrowserPermission",
         "toSymbol": "createPermissionState",
         "callExpression": "createPermissionState",
-        "sourcePath": "src/web/index.ts"
+        "sourcePath": "src/web/permissionStates.ts"
       },
       {
         "fromSymbol": "unavailable",
         "toSymbol": "createPermissionState",
         "callExpression": "createPermissionState",
-        "sourcePath": "src/web/index.ts"
+        "sourcePath": "src/web/permissionStates.ts"
       },
       {
         "fromSymbol": "formatErrorName",
         "toSymbol": "getErrorName",
         "callExpression": "getErrorName",
-        "sourcePath": "src/web/index.ts"
+        "sourcePath": "src/web/permissionStates.ts"
       },
       {
         "fromSymbol": "getStatus",

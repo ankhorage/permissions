@@ -1,11 +1,7 @@
 import { Permission } from '../registry/permissions';
 
 export type PermissionSupport =
-  | 'supported'
-  | 'notRequired'
-  | 'limited'
-  | 'notImplemented'
-  | 'unsupported';
+  'supported' | 'notRequired' | 'limited' | 'notImplemented' | 'unsupported';
 
 export interface ExpoPermissionMetadata {
   readonly support: PermissionSupport;

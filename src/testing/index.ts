@@ -45,6 +45,12 @@ export interface FakePermissionClient extends PermissionClient {
   getSnapshot(): readonly PermissionState[];
 }
 
+interface FakePermissionContext {
+  readonly now: () => Date;
+  readonly requestStates: Map<Permission, PermissionState>;
+  readonly states: Map<Permission, PermissionState>;
+}
+
 /***
  * Creates a deterministic in-memory client for tests and examples.
  *
@@ -55,12 +61,21 @@ export interface FakePermissionClient extends PermissionClient {
 export function createFakePermissionClient(
   options: FakePermissionClientOptions = {},
 ): FakePermissionClient {
-  const now = options.now ?? (() => new Date());
-  const states = new Map<Permission, PermissionState>();
-  const requestStates = new Map<Permission, PermissionState>();
+  const context = createFakePermissionContext(options);
+  const client = createFakePermissionOperations(context, options.openSettings);
+  if (options.openSettings === undefined) delete client.openSettings;
+  return client;
+}
+
+function createFakePermissionContext(options: FakePermissionClientOptions): FakePermissionContext {
+  const context: FakePermissionContext = {
+    now: options.now ?? (() => new Date()),
+    states: new Map<Permission, PermissionState>(),
+    requestStates: new Map<Permission, PermissionState>(),
+  };
 
   for (const permission of PERMISSIONS) {
-    states.set(
+    context.states.set(
       permission,
       createPermissionState({
         permission,
@@ -71,45 +86,47 @@ export function createFakePermissionClient(
   }
 
   for (const state of options.initialStates ?? []) {
-    states.set(state.permission, normalizeSeed(state));
+    context.states.set(state.permission, normalizeSeed(state));
   }
 
   for (const state of options.requestStates ?? []) {
-    requestStates.set(state.permission, normalizeSeed(state));
+    context.requestStates.set(state.permission, normalizeSeed(state));
   }
+  return context;
+}
 
+function createFakePermissionOperations(
+  context: FakePermissionContext,
+  openSettings: (() => Promise<void>) | undefined,
+): FakePermissionClient {
   const client: FakePermissionClient = {
     getStatus(permission) {
-      return Promise.resolve(getStoredState(states, assertKnownPermission(permission)));
+      return Promise.resolve(getStoredState(context.states, assertKnownPermission(permission)));
     },
-
     request(permission) {
       const knownPermission = assertKnownPermission(permission);
       const requestState =
-        requestStates.get(knownPermission) ?? getStoredState(states, knownPermission);
+        context.requestStates.get(knownPermission) ??
+        getStoredState(context.states, knownPermission);
       const nextState = createPermissionState({
         permission: knownPermission,
         status: requestState.status,
         canAskAgain: requestState.canAskAgain,
-        requestedAt: now(),
+        requestedAt: context.now(),
         reason: requestState.reason,
       });
 
-      states.set(knownPermission, nextState);
-
+      context.states.set(knownPermission, nextState);
       return Promise.resolve(nextState);
     },
-
-    openSettings: options.openSettings,
-
+    openSettings,
     setState(state) {
       const normalizedState = normalizeSeed(state);
-      states.set(normalizedState.permission, normalizedState);
+      context.states.set(normalizedState.permission, normalizedState);
     },
-
     setStatus(permission, status, statusOptions = {}) {
       const knownPermission = assertKnownPermission(permission);
-      states.set(
+      context.states.set(
         knownPermission,
         createPermissionState({
           permission: knownPermission,
@@ -119,16 +136,10 @@ export function createFakePermissionClient(
         }),
       );
     },
-
     getSnapshot() {
-      return PERMISSIONS.map((permission) => getStoredState(states, permission));
+      return PERMISSIONS.map((permission) => getStoredState(context.states, permission));
     },
   };
-
-  if (options.openSettings === undefined) {
-    delete client.openSettings;
-  }
-
   return client;
 }
 
