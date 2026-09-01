@@ -1,5 +1,11 @@
 # @ankhorage/permissions
 
+## 0.2.4
+
+### Patch Changes
+
+- f4b561b: Adopt the current Devtools policy and keep permission clients compatible with strict React and security linting.
+
 ## 0.2.3
 
 ### Patch Changes
