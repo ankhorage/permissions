@@ -15,15 +15,15 @@ export interface ExpoPermissionAdapter {
   request(permission: Permission): Promise<PermissionState>;
 }
 
-const adapters: Partial<Record<Permission, ExpoPermissionAdapter>> = {
-  [Permission.Camera]: cameraAdapter,
-  [Permission.MediaLibrary]: mediaLibraryAdapter,
-  [Permission.MediaLibraryWrite]: mediaLibraryAdapter,
-  [Permission.Microphone]: microphoneAdapter,
-  [Permission.LocationForeground]: locationAdapter,
-  [Permission.LocationBackground]: locationAdapter,
-  [Permission.Notifications]: notificationsAdapter,
-};
+const adapters = new Map<Permission, ExpoPermissionAdapter>([
+  [Permission.Camera, cameraAdapter],
+  [Permission.MediaLibrary, mediaLibraryAdapter],
+  [Permission.MediaLibraryWrite, mediaLibraryAdapter],
+  [Permission.Microphone, microphoneAdapter],
+  [Permission.LocationForeground, locationAdapter],
+  [Permission.LocationBackground, locationAdapter],
+  [Permission.Notifications, notificationsAdapter],
+]);
 
 /***
  * Creates a permission client backed by Expo SDK modules.
@@ -42,7 +42,7 @@ const adapters: Partial<Record<Permission, ExpoPermissionAdapter>> = {
 export function createPermissionClient(): PermissionClient {
   return {
     async getStatus(permission: Permission): Promise<PermissionState> {
-      const metadata = EXPO_PERMISSION_SUPPORT[permission];
+      const metadata = getPermissionSupport(permission);
       if (metadata.support === 'unsupported' || metadata.support === 'notImplemented') {
         return createUnavailableSupportState(permission);
       }
@@ -51,7 +51,7 @@ export function createPermissionClient(): PermissionClient {
         return createNotRequiredState(permission);
       }
 
-      const adapter = adapters[permission];
+      const adapter = adapters.get(permission);
       if (!adapter) {
         throw new Error(`No adapter registered for permission: ${permission}`);
       }
@@ -60,7 +60,7 @@ export function createPermissionClient(): PermissionClient {
     },
 
     async request(permission: Permission): Promise<PermissionState> {
-      const metadata = EXPO_PERMISSION_SUPPORT[permission];
+      const metadata = getPermissionSupport(permission);
       if (metadata.support === 'unsupported' || metadata.support === 'notImplemented') {
         return createUnavailableSupportState(permission);
       }
@@ -69,7 +69,7 @@ export function createPermissionClient(): PermissionClient {
         return createNotRequiredState(permission);
       }
 
-      const adapter = adapters[permission];
+      const adapter = adapters.get(permission);
       if (!adapter) {
         throw new Error(`No adapter registered for permission: ${permission}`);
       }
@@ -89,6 +89,10 @@ export function createPermissionClient(): PermissionClient {
       }
     },
   };
+}
+
+function getPermissionSupport(permission: Permission) {
+  return Reflect.get(EXPO_PERMISSION_SUPPORT, permission);
 }
 
 function createUnavailableSupportState(permission: Permission): PermissionState {

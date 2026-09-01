@@ -18,7 +18,7 @@ Throws for programmer errors where an invalid permission reaches runtime.
 
 Kind: `function`
 Module: `src/testing/index.ts`
-Source: `src/testing/index.ts:55:1`
+Source: `src/testing/index.ts:61:1`
 
 Creates a deterministic in-memory client for tests and examples.
 
@@ -74,7 +74,7 @@ Native app configuration remains a separate build-time concern.
 
 Kind: `function`
 Module: `src/state/permissionState.ts`
-Source: `src/state/permissionState.ts:63:1`
+Source: `src/state/permissionState.ts:58:1`
 
 Creates a normalized state and derives the `granted` convenience flag.
 Limited access is usable partial authorization, so both `granted` and
@@ -90,7 +90,7 @@ Limited access is usable partial authorization, so both `granted` and
 
 Kind: `function`
 Module: `src/web/index.ts`
-Source: `src/web/index.ts:78:1`
+Source: `src/web/index.ts:80:1`
 
 Creates a browser permission client using guarded structural globals.
 
@@ -107,7 +107,7 @@ import DOM types and does not assume it is running in a browser.
 
 Kind: `value`
 Module: `src/expo/manifest.ts`
-Source: `src/expo/manifest.ts:20:14`
+Source: `src/expo/manifest.ts:16:14`
 
 Expo packages required by the permission client independently of a specific
 permission capability.
@@ -116,13 +116,13 @@ permission capability.
 
 Kind: `value`
 Module: `src/expo/manifest.ts`
-Source: `src/expo/manifest.ts:22:14`
+Source: `src/expo/manifest.ts:18:14`
 
 ## ExpoPermissionMetadata
 
 Kind: `type`
 Module: `src/expo/manifest.ts`
-Source: `src/expo/manifest.ts:10:1`
+Source: `src/expo/manifest.ts:6:1`
 
 ### Members
 
@@ -208,7 +208,7 @@ Returns true when a string is a registered permission identifier.
 
 Kind: `function`
 Module: `src/state/permissionState.ts`
-Source: `src/state/permissionState.ts:54:1`
+Source: `src/state/permissionState.ts:49:1`
 
 Returns true when a string is one of the normalized statuses.
 
@@ -222,7 +222,7 @@ Returns true when a string is one of the normalized statuses.
 
 Kind: `function`
 Module: `src/state/permissionState.ts`
-Source: `src/state/permissionState.ts:77:1`
+Source: `src/state/permissionState.ts:72:1`
 
 Normalizes an adapter result to the requested permission and status shape.
 
@@ -257,7 +257,7 @@ Metadata for known permissions.
 
 Kind: `value`
 Module: `src/state/permissionState.ts`
-Source: `src/state/permissionState.ts:20:14`
+Source: `src/state/permissionState.ts:15:14`
 
 Stable ordered list of normalized statuses.
 
@@ -373,9 +373,9 @@ import browser, Expo, or React Native permission APIs.
 ### Signatures
 
 - `({
-  children,
-  client,
-  manager,
+children,
+client,
+manager,
 }: PermissionsProviderProps) => ReactNode`
   - {
     children,
@@ -404,7 +404,7 @@ Props accepted by `PermissionsProvider`.
 
 Kind: `type`
 Module: `src/state/permissionState.ts`
-Source: `src/state/permissionState.ts:34:1`
+Source: `src/state/permissionState.ts:29:1`
 
 Normalized result returned by permission clients and managers.
 
@@ -483,7 +483,7 @@ Reads the current permission manager from context.
 
 Kind: `type`
 Module: `src/web/index.ts`
-Source: `src/web/index.ts:67:1`
+Source: `src/web/index.ts:69:1`
 
 Options for the browser permission adapter.
 

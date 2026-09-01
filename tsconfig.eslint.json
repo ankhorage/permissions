@@ -15,6 +15,10 @@
     "resolveJsonModule": true,
     "noEmit": true,
     "baseUrl": ".",
+    "paths": {
+      "@ankhorage/permissions": ["./src/index.ts"],
+      "@ankhorage/permissions/*": ["./src/*/index.ts"]
+    },
     "types": ["bun", "node"]
   },
   "include": [

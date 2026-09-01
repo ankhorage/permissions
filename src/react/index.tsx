@@ -105,15 +105,8 @@ export function usePermission(
   options: UsePermissionOptions = {},
 ): PermissionHookResult {
   const manager = usePermissions();
-  const [state, setState] = useState<PermissionState>(
-    () =>
-      (options.initialState === undefined
-        ? undefined
-        : normalizePermissionState(permission, options.initialState)) ??
-      createPermissionState({
-        permission,
-        status: 'unknown',
-      }),
+  const [state, setState] = useState<PermissionState>(() =>
+    createInitialPermissionState(permission, options.initialState),
   );
 
   const refresh = useCallback(async () => {
@@ -131,10 +124,15 @@ export function usePermission(
   }, [manager, permission]);
 
   useEffect(() => {
-    if (options.refreshOnMount === true) {
-      void refresh();
-    }
-  }, [options.refreshOnMount, refresh]);
+    if (options.refreshOnMount !== true) return;
+    let active = true;
+    void manager.getStatus(permission).then((nextState) => {
+      if (active) setState(nextState);
+    });
+    return () => {
+      active = false;
+    };
+  }, [manager, options.refreshOnMount, permission]);
 
   const openSettings =
     manager.openSettings === undefined
@@ -153,4 +151,14 @@ export function usePermission(
     request,
     openSettings,
   };
+}
+
+function createInitialPermissionState(
+  permission: Permission,
+  initialState: PermissionState | undefined,
+): PermissionState {
+  return (
+    (initialState === undefined ? undefined : normalizePermissionState(permission, initialState)) ??
+    createPermissionState({ permission, status: 'unknown' })
+  );
 }

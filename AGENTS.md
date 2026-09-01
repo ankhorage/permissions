@@ -144,12 +144,7 @@ export enum Permission {
 }
 
 export type PermissionStatus =
-  | 'unknown'
-  | 'granted'
-  | 'denied'
-  | 'blocked'
-  | 'limited'
-  | 'unavailable';
+  'unknown' | 'granted' | 'denied' | 'blocked' | 'limited' | 'unavailable';
 
 export interface PermissionState {
   permission: Permission;

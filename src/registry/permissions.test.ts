@@ -24,9 +24,10 @@ describe('permission registry', () => {
 
   test('exposes metadata for every permission', () => {
     for (const permission of PERMISSIONS) {
-      expect(PERMISSION_REGISTRY[permission].permission).toBe(permission);
-      expect(PERMISSION_REGISTRY[permission].label.length).toBeGreaterThan(0);
-      expect(getPermissionDefinition(permission)).toEqual(PERMISSION_REGISTRY[permission]);
+      const definition = Reflect.get(PERMISSION_REGISTRY, permission);
+      expect(definition.permission).toBe(permission);
+      expect(definition.label.length).toBeGreaterThan(0);
+      expect(getPermissionDefinition(permission)).toEqual(definition);
     }
   });
 

@@ -40,7 +40,7 @@
     "modulePath": "src/testing/index.ts",
     "sourceLocation": {
       "filePath": "src/testing/index.ts",
-      "line": 55,
+      "line": 61,
       "column": 1
     },
     "exportPaths": ["src/index.ts", "src/testing/index.ts"],
@@ -129,7 +129,7 @@
     "modulePath": "src/state/permissionState.ts",
     "sourceLocation": {
       "filePath": "src/state/permissionState.ts",
-      "line": 63,
+      "line": 58,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -161,7 +161,7 @@
     "modulePath": "src/web/index.ts",
     "sourceLocation": {
       "filePath": "src/web/index.ts",
-      "line": 78,
+      "line": 80,
       "column": 1
     },
     "exportPaths": ["src/web/index.ts"],
@@ -193,7 +193,7 @@
     "modulePath": "src/expo/manifest.ts",
     "sourceLocation": {
       "filePath": "src/expo/manifest.ts",
-      "line": 20,
+      "line": 16,
       "column": 14
     },
     "exportPaths": ["src/expo/manifest.ts"],
@@ -211,7 +211,7 @@
     "modulePath": "src/expo/manifest.ts",
     "sourceLocation": {
       "filePath": "src/expo/manifest.ts",
-      "line": 22,
+      "line": 18,
       "column": 14
     },
     "exportPaths": ["src/expo/manifest.ts"],
@@ -229,7 +229,7 @@
     "modulePath": "src/expo/manifest.ts",
     "sourceLocation": {
       "filePath": "src/expo/manifest.ts",
-      "line": 10,
+      "line": 6,
       "column": 1
     },
     "exportPaths": ["src/expo/manifest.ts"],
@@ -464,7 +464,7 @@
     "modulePath": "src/state/permissionState.ts",
     "sourceLocation": {
       "filePath": "src/state/permissionState.ts",
-      "line": 54,
+      "line": 49,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -496,7 +496,7 @@
     "modulePath": "src/state/permissionState.ts",
     "sourceLocation": {
       "filePath": "src/state/permissionState.ts",
-      "line": 77,
+      "line": 72,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -570,7 +570,7 @@
     "modulePath": "src/state/permissionState.ts",
     "sourceLocation": {
       "filePath": "src/state/permissionState.ts",
-      "line": 20,
+      "line": 15,
       "column": 14
     },
     "exportPaths": ["src/index.ts"],
@@ -930,7 +930,7 @@
     "modulePath": "src/state/permissionState.ts",
     "sourceLocation": {
       "filePath": "src/state/permissionState.ts",
-      "line": 34,
+      "line": 29,
       "column": 1
     },
     "exportPaths": ["src/index.ts"],
@@ -1123,7 +1123,7 @@
     "modulePath": "src/web/index.ts",
     "sourceLocation": {
       "filePath": "src/web/index.ts",
-      "line": 67,
+      "line": 69,
       "column": 1
     },
     "exportPaths": ["src/web/index.ts"],

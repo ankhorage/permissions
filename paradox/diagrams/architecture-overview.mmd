@@ -53,6 +53,8 @@ graph TD
   module_src_expo_adapters_notifications_ts --> module_src_expo_permissionResponse_ts
   module_src_expo_adapters_notifications_ts --> module_src_registry_permissions_ts
   module_src_expo_adapters_notifications_ts --> module_src_state_permissionState_ts
+  module_src_expo_client_testSupport_ts["src/expo/client.testSupport.ts"]
+  package__ankhorage_permissions -.-> module_src_expo_client_testSupport_ts
   module_src_expo_client_ts["src/expo/client.ts"]
   package__ankhorage_permissions -.-> module_src_expo_client_ts
   module_src_expo_client_ts --> module_src_client_types_ts
@@ -97,3 +99,8 @@ graph TD
   module_src_web_index_ts --> module_src_client_types_ts
   module_src_web_index_ts --> module_src_registry_permissions_ts
   module_src_web_index_ts --> module_src_state_permissionState_ts
+  module_src_web_index_ts --> module_src_web_permissionStates_ts
+  module_src_web_permissionStates_ts["src/web/permissionStates.ts"]
+  package__ankhorage_permissions -.-> module_src_web_permissionStates_ts
+  module_src_web_permissionStates_ts --> module_src_registry_permissions_ts
+  module_src_web_permissionStates_ts --> module_src_state_permissionState_ts
