@@ -5,8 +5,8 @@ const localEntries = Array.isArray(localConfig) ? localConfig : [localConfig];
 
 export default [
   ...createConfig({
-    files: ['examples/**/*.{ts,tsx}', 'src/**/*.{ts,tsx}'],
-    project: ['./tsconfig.eslint.json'],
+    files: ['src/**/*.{ts,tsx}'],
+    project: ['./tsconfig.json'],
     tsconfigRootDir: import.meta.dirname,
   }),
   ...localEntries,
