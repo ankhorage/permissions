@@ -1,5 +1,6 @@
 import { describe, expect, test } from 'bun:test';
 
+import packageJson from '../../package.json';
 import {
   getPermissionDefinition,
   isPermission,
@@ -29,6 +30,16 @@ describe('permission registry', () => {
       expect(definition.label.length).toBeGreaterThan(0);
       expect(getPermissionDefinition(permission)).toEqual(definition);
     }
+  });
+
+  test('publishes the registry as a dedicated headless subpath', () => {
+    expect(packageJson.exports['./registry']).toEqual({
+      'react-native': './dist/registry/permissions.js',
+      browser: './dist/registry/permissions.js',
+      types: './dist/registry/permissions.d.ts',
+      import: './dist/registry/permissions.js',
+      default: './dist/registry/permissions.js',
+    });
   });
 
   test('validates permission strings', () => {
