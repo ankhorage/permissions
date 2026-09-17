@@ -1,5 +1,11 @@
 # @ankhorage/permissions
 
+## 0.2.5
+
+### Patch Changes
+
+- f8f19fe: Expose the permission registry through the headless `@ankhorage/permissions/registry` subpath so planning and CLI consumers do not load React APIs.
+
 ## 0.2.4
 
 ### Patch Changes
