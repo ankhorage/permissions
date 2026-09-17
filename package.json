@@ -108,7 +108,14 @@
       "import": "./dist/metadata/index.js",
       "default": "./dist/metadata/index.js"
     },
-    "./package.json": "./package.json"
+    "./package.json": "./package.json",
+    "./registry": {
+      "react-native": "./dist/registry/permissions.js",
+      "browser": "./dist/registry/permissions.js",
+      "types": "./dist/registry/permissions.d.ts",
+      "import": "./dist/registry/permissions.js",
+      "default": "./dist/registry/permissions.js"
+    }
   },
   "publishConfig": {
     "access": "public"
