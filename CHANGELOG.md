@@ -1,5 +1,11 @@
 # @ankhorage/permissions
 
+## 0.2.6
+
+### Patch Changes
+
+- c52f76f: Update dependencies from Renovate pull request #77.
+
 ## 0.2.5
 
 ### Patch Changes
