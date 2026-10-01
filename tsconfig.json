@@ -3,9 +3,7 @@
   "compilerOptions": {
     "target": "ES2022",
     "inlineSources": true,
-    "lib": [
-      "ES2022"
-    ],
+    "lib": ["ES2022"],
     "module": "ESNext",
     "moduleResolution": "bundler",
     "jsx": "react-native",
@@ -19,19 +17,10 @@
     "sourceMap": true,
     "verbatimModuleSyntax": true,
     "resolveJsonModule": true,
+    "types": ["bun", "node"],
     "rootDir": "src",
-    "outDir": "dist",
-    "types": [
-      "bun",
-      "node"
-    ]
+    "outDir": "dist"
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx"
-  ],
-  "exclude": [
-    "dist",
-    "node_modules"
-  ]
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["dist", "node_modules"]
 }
