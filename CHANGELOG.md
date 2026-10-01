@@ -1,5 +1,11 @@
 # @ankhorage/permissions
 
+## 0.2.7
+
+### Patch Changes
+
+- 0930169: Declare Bun and Node runtime type libraries explicitly so the package and its test support compile reliably with TypeScript 6.
+
 ## 0.2.6
 
 ### Patch Changes
