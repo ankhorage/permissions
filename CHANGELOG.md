@@ -1,5 +1,11 @@
 # @ankhorage/permissions
 
+## 0.2.8
+
+### Patch Changes
+
+- f032a2b: Update external development dependencies including React, TypeScript, and Node/React type definitions.
+
 ## 0.2.7
 
 ### Patch Changes
