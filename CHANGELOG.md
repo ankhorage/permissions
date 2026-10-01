@@ -1,5 +1,11 @@
 # @ankhorage/permissions
 
+## 0.2.30
+
+### Patch Changes
+
+- a340818: Update dependencies: `@ankhorage/paradox`.
+
 ## 0.2.29
 
 ### Patch Changes
