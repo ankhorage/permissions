@@ -1,5 +1,11 @@
 # @ankhorage/permissions
 
+## 0.2.27
+
+### Patch Changes
+
+- 8832c94: Update dependencies: `@types/node`.
+
 ## 0.2.26
 
 ### Patch Changes
