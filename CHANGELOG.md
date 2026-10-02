@@ -1,5 +1,12 @@
 # @ankhorage/permissions
 
+## 0.2.31
+
+### Patch Changes
+
+- ed68fd7: Update Renovate-managed workflows.
+- 5ba49d6: Update dependencies: `@ankhorage/paradox`.
+
 ## 0.2.30
 
 ### Patch Changes
