@@ -1,5 +1,11 @@
 # @ankhorage/permissions
 
+## 0.2.57
+
+### Patch Changes
+
+- bf141e5: Update Renovate-managed workflows.
+
 ## 0.2.56
 
 ### Patch Changes
