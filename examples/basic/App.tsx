@@ -13,6 +13,8 @@ const permissionClient = createFakePermissionClient({
 /***
  * Basic permissions runtime example.
  *
+ * @title Basic permissions
+ *
  * Create a permission client, provide it at the app root, and use
  * `usePermission` to read, refresh, and request a normalized permission state.
  *

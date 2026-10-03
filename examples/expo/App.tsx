@@ -6,11 +6,12 @@ const permissionClient = createPermissionClient();
 /***
  * Expo permissions runtime example.
  *
+ * @title Expo permissions
+ *
  * Create the Expo permission client from the optional Expo entrypoint, provide
  * it at the app root, and call `request()` only from an explicit user action.
  *
  * @usage
- * @readme
  */
 export default function ExpoPermissionsExample() {
   return (
