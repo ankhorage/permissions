@@ -5,7 +5,7 @@ import {
   createExpoPermissionState,
   createExpoUnavailableState,
   type ExpoPermissionResponse,
-} from '../permissionResponse';
+} from './permissionResponse';
 
 interface ExpoNotificationPermissionResponse extends ExpoPermissionResponse {
   readonly ios?: {
