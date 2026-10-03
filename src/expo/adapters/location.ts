@@ -1,7 +1,7 @@
 import { Permission } from '../../registry/permissions';
 import type { PermissionState } from '../../state/permissionState';
 import type { ExpoPermissionAdapter } from '../../types/expo';
-import { createExpoPermissionState, createExpoUnavailableState } from '../permissionResponse';
+import { createExpoPermissionState, createExpoUnavailableState } from './permissionResponse';
 
 export const locationAdapter: ExpoPermissionAdapter = {
   async getStatus(permission: Permission): Promise<PermissionState> {
