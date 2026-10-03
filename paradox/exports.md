@@ -35,7 +35,7 @@ prompts, simulators, or network access.
 
 Kind: `function`
 Module: `src/expo/client.ts`
-Source: `src/expo/client.ts:42:1`
+Source: `src/expo/client.ts:38:1`
 
 Creates a permission client backed by Expo SDK modules.
 
@@ -126,11 +126,11 @@ Source: `src/expo/manifest.ts:6:1`
 
 ### Members
 
-| Name             | Kind     | Type                | Required | Description |
-| ---------------- | -------- | ------------------- | -------- | ----------- |
-| configHints      | property | `readonly string[]` | yes      |             |
-| requiredPackages | property | `readonly string[]` | yes      |             |
-| support          | property | `PermissionSupport` | yes      |             |
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| configHints | property | `readonly string[]` | yes |  |
+| requiredPackages | property | `readonly string[]` | yes |  |
+| support | property | `PermissionSupport` | yes |  |
 
 ## FakePermissionClient
 
@@ -142,14 +142,14 @@ Test client that stores permission states in memory.
 
 ### Members
 
-| Name         | Kind   | Type                                                                                                                                  | Required | Description |
-| ------------ | ------ | ------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
-| getSnapshot  | method | `() => readonly PermissionState[]`                                                                                                    | yes      |             |
-| getStatus    | method | `(permission: Permission) => Promise<PermissionState>`                                                                                | yes      |             |
-| openSettings | method | `(() => Promise<void>) \| undefined`                                                                                                  | no       |             |
-| request      | method | `(permission: Permission) => Promise<PermissionState>`                                                                                | yes      |             |
-| setState     | method | `(state: FakePermissionStateSeed) => void`                                                                                            | yes      |             |
-| setStatus    | method | `(permission: Permission, status: PermissionStatus, options?: { readonly canAskAgain?: boolean; readonly reason?: string; }) => void` | yes      |             |
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| getSnapshot | method | `() => readonly PermissionState[]` | yes |  |
+| getStatus | method | `(permission: Permission) => Promise<PermissionState>` | yes |  |
+| openSettings | method | `(() => Promise<void>) \| undefined` | no |  |
+| request | method | `(permission: Permission) => Promise<PermissionState>` | yes |  |
+| setState | method | `(state: FakePermissionStateSeed) => void` | yes |  |
+| setStatus | method | `(permission: Permission, status: PermissionStatus, options?: { readonly canAskAgain?: boolean; readonly reason?: string; }) => void` | yes |  |
 
 ## FakePermissionClientOptions
 
@@ -161,12 +161,12 @@ Options for deterministic fake clients.
 
 ### Members
 
-| Name          | Kind     | Type                                              | Required | Description |
-| ------------- | -------- | ------------------------------------------------- | -------- | ----------- |
-| initialStates | property | `readonly FakePermissionStateSeed[] \| undefined` | no       |             |
-| now           | property | `(() => Date) \| undefined`                       | no       |             |
-| openSettings  | property | `(() => Promise<void>) \| undefined`              | no       |             |
-| requestStates | property | `readonly FakePermissionStateSeed[] \| undefined` | no       |             |
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| initialStates | property | `readonly FakePermissionStateSeed[] \| undefined` | no |  |
+| now | property | `(() => Date) \| undefined` | no |  |
+| openSettings | property | `(() => Promise<void>) \| undefined` | no |  |
+| requestStates | property | `readonly FakePermissionStateSeed[] \| undefined` | no |  |
 
 ## FakePermissionStateSeed
 
@@ -273,11 +273,11 @@ Implementations provide permission state and permission requests for a runtime e
 
 ### Members
 
-| Name         | Kind   | Type                                                   | Required | Description |
-| ------------ | ------ | ------------------------------------------------------ | -------- | ----------- |
-| getStatus    | method | `(permission: Permission) => Promise<PermissionState>` | yes      |             |
-| openSettings | method | `(() => Promise<void>) \| undefined`                   | no       |             |
-| request      | method | `(permission: Permission) => Promise<PermissionState>` | yes      |             |
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| getStatus | method | `(permission: Permission) => Promise<PermissionState>` | yes |  |
+| openSettings | method | `(() => Promise<void>) \| undefined` | no |  |
+| request | method | `(permission: Permission) => Promise<PermissionState>` | yes |  |
 
 ## PermissionDefinition
 
@@ -289,12 +289,12 @@ Describes a known permission without coupling the registry to a platform SDK.
 
 ### Members
 
-| Name         | Kind     | Type                               | Required | Description |
-| ------------ | -------- | ---------------------------------- | -------- | ----------- |
-| description  | property | `string`                           | yes      |             |
-| environments | property | `readonly PermissionEnvironment[]` | yes      |             |
-| label        | property | `string`                           | yes      |             |
-| permission   | property | `Permission`                       | yes      |             |
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| description | property | `string` | yes |  |
+| environments | property | `readonly PermissionEnvironment[]` | yes |  |
+| label | property | `string` | yes |  |
+| permission | property | `Permission` | yes |  |
 
 ## PermissionEnvironment
 
@@ -314,18 +314,18 @@ Result returned by `usePermission`.
 
 ### Members
 
-| Name         | Kind     | Type                                 | Required | Description |
-| ------------ | -------- | ------------------------------------ | -------- | ----------- |
-| canAskAgain  | property | `boolean \| undefined`               | no       |             |
-| granted      | property | `boolean`                            | yes      |             |
-| openSettings | property | `(() => Promise<void>) \| undefined` | no       |             |
-| permission   | property | `Permission`                         | yes      |             |
-| reason       | property | `string \| undefined`                | no       |             |
-| refresh      | property | `() => Promise<PermissionState>`     | yes      |             |
-| request      | property | `() => Promise<PermissionState>`     | yes      |             |
-| requestedAt  | property | `Date \| undefined`                  | no       |             |
-| state        | property | `PermissionState`                    | yes      |             |
-| status       | property | `PermissionStatus`                   | yes      |             |
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| canAskAgain | property | `boolean \| undefined` | no |  |
+| granted | property | `boolean` | yes |  |
+| openSettings | property | `(() => Promise<void>) \| undefined` | no |  |
+| permission | property | `Permission` | yes |  |
+| reason | property | `string \| undefined` | no |  |
+| refresh | property | `() => Promise<PermissionState>` | yes |  |
+| request | property | `() => Promise<PermissionState>` | yes |  |
+| requestedAt | property | `Date \| undefined` | no |  |
+| state | property | `PermissionState` | yes |  |
+| status | property | `PermissionStatus` | yes |  |
 
 ## PermissionManager
 
@@ -337,11 +337,11 @@ Public facade for checking and requesting normalized permission state.
 
 ### Members
 
-| Name         | Kind   | Type                                                   | Required | Description |
-| ------------ | ------ | ------------------------------------------------------ | -------- | ----------- |
-| getStatus    | method | `(permission: Permission) => Promise<PermissionState>` | yes      |             |
-| openSettings | method | `(() => Promise<void>) \| undefined`                   | no       |             |
-| request      | method | `(permission: Permission) => Promise<PermissionState>` | yes      |             |
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| getStatus | method | `(permission: Permission) => Promise<PermissionState>` | yes |  |
+| openSettings | method | `(() => Promise<void>) \| undefined` | no |  |
+| request | method | `(permission: Permission) => Promise<PermissionState>` | yes |  |
 
 ## PERMISSIONS
 
@@ -373,15 +373,15 @@ import browser, Expo, or React Native permission APIs.
 ### Signatures
 
 - `({
-children,
-client,
-manager,
+  children,
+  client,
+  manager,
 }: PermissionsProviderProps) => ReactNode`
   - {
-    children,
-    client,
-    manager,
-    }: `PermissionsProviderProps`
+  children,
+  client,
+  manager,
+}: `PermissionsProviderProps`
   - returns: `ReactNode`
 
 ## PermissionsProviderProps
@@ -394,11 +394,11 @@ Props accepted by `PermissionsProvider`.
 
 ### Members
 
-| Name     | Kind     | Type                             | Required | Description |
-| -------- | -------- | -------------------------------- | -------- | ----------- |
-| children | property | `ReactNode`                      | yes      |             |
-| client   | property | `PermissionClient \| undefined`  | no       |             |
-| manager  | property | `PermissionManager \| undefined` | no       |             |
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| children | property | `ReactNode` | yes |  |
+| client | property | `PermissionClient \| undefined` | no |  |
+| manager | property | `PermissionManager \| undefined` | no |  |
 
 ## PermissionState
 
@@ -410,14 +410,14 @@ Normalized result returned by permission clients and managers.
 
 ### Members
 
-| Name        | Kind     | Type                   | Required | Description |
-| ----------- | -------- | ---------------------- | -------- | ----------- |
-| canAskAgain | property | `boolean \| undefined` | no       |             |
-| granted     | property | `boolean`              | yes      |             |
-| permission  | property | `Permission`           | yes      |             |
-| reason      | property | `string \| undefined`  | no       |             |
-| requestedAt | property | `Date \| undefined`    | no       |             |
-| status      | property | `PermissionStatus`     | yes      |             |
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| canAskAgain | property | `boolean \| undefined` | no |  |
+| granted | property | `boolean` | yes |  |
+| permission | property | `Permission` | yes |  |
+| reason | property | `string \| undefined` | no |  |
+| requestedAt | property | `Date \| undefined` | no |  |
+| status | property | `PermissionStatus` | yes |  |
 
 ## PermissionStatus
 
@@ -461,10 +461,10 @@ Options for `usePermission`.
 
 ### Members
 
-| Name           | Kind     | Type                           | Required | Description |
-| -------------- | -------- | ------------------------------ | -------- | ----------- |
-| initialState   | property | `PermissionState \| undefined` | no       |             |
-| refreshOnMount | property | `boolean \| undefined`         | no       |             |
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| initialState | property | `PermissionState \| undefined` | no |  |
+| refreshOnMount | property | `boolean \| undefined` | no |  |
 
 ## usePermissions
 
@@ -489,6 +489,6 @@ Options for the browser permission adapter.
 
 ### Members
 
-| Name   | Kind     | Type                         | Required | Description |
-| ------ | -------- | ---------------------------- | -------- | ----------- |
-| global | property | `WebGlobalLike \| undefined` | no       |             |
+| Name | Kind | Type | Required | Description |
+| --- | --- | --- | --- | --- |
+| global | property | `WebGlobalLike \| undefined` | no |  |

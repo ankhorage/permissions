@@ -1,5 +1,15 @@
 # @ankhorage/permissions
 
+## 0.2.64
+
+### Patch Changes
+
+- 1699471: Update dependencies: `@ankhorage/devtools`.
+- 4f72e8d: Update Renovate-managed workflows.
+- 39117c9: Update dependencies: `@ankhorage/devtools`.
+- aed1e43: Update Renovate-managed workflows.
+- 5dac26d: Update dependencies: `@ankhorage/paradox`.
+
 ## 0.2.63
 
 ### Patch Changes

@@ -1,4 +1,5 @@
 graph LR
+  module_package_json["package.json"]
   module_src_ankh_provider_ts["src/ankh.provider.ts"]
   module_src_cli_index_ts["src/cli/index.ts"]
   module_src_client_types_ts["src/client/types.ts"]
@@ -7,43 +8,62 @@ graph LR
   module_src_expo_adapters_mediaLibrary_ts["src/expo/adapters/mediaLibrary.ts"]
   module_src_expo_adapters_microphone_ts["src/expo/adapters/microphone.ts"]
   module_src_expo_adapters_notifications_ts["src/expo/adapters/notifications.ts"]
+  module_src_expo_adapters_permissionResponse_ts["src/expo/adapters/permissionResponse.ts"]
+  module_src_expo_client_notifications_test_ts["src/expo/client.notifications.test.ts"]
+  module_src_expo_client_test_ts["src/expo/client.test.ts"]
   module_src_expo_client_testSupport_ts["src/expo/client.testSupport.ts"]
   module_src_expo_client_ts["src/expo/client.ts"]
   module_src_expo_index_ts["src/expo/index.ts"]
+  module_src_expo_manifest_test_ts["src/expo/manifest.test.ts"]
   module_src_expo_manifest_ts["src/expo/manifest.ts"]
-  module_src_expo_permissionResponse_ts["src/expo/permissionResponse.ts"]
   module_src_index_ts["src/index.ts"]
+  module_src_manager_createPermissionManager_test_ts["src/manager/createPermissionManager.test.ts"]
   module_src_manager_createPermissionManager_ts["src/manager/createPermissionManager.ts"]
   module_src_metadata_index_ts["src/metadata/index.ts"]
+  module_src_provider_test_ts["src/provider.test.ts"]
+  module_src_react_index_test_ts["src/react/index.test.ts"]
   module_src_react_index_tsx["src/react/index.tsx"]
+  module_src_registry_permissions_test_ts["src/registry/permissions.test.ts"]
   module_src_registry_permissions_ts["src/registry/permissions.ts"]
+  module_src_state_permissionState_test_ts["src/state/permissionState.test.ts"]
   module_src_state_permissionState_ts["src/state/permissionState.ts"]
+  module_src_testing_index_test_ts["src/testing/index.test.ts"]
   module_src_testing_index_ts["src/testing/index.ts"]
+  module_src_types_expo_ts["src/types/expo.ts"]
+  module_src_web_index_test_ts["src/web/index.test.ts"]
   module_src_web_index_ts["src/web/index.ts"]
   module_src_web_permissionStates_ts["src/web/permissionStates.ts"]
   module_src_ankh_provider_ts --> module_src_registry_permissions_ts
   module_src_client_types_ts --> module_src_registry_permissions_ts
   module_src_client_types_ts --> module_src_state_permissionState_ts
-  module_src_expo_adapters_camera_ts --> module_src_expo_client_ts
-  module_src_expo_adapters_camera_ts --> module_src_expo_permissionResponse_ts
+  module_src_expo_adapters_camera_ts --> module_src_expo_adapters_permissionResponse_ts
   module_src_expo_adapters_camera_ts --> module_src_registry_permissions_ts
   module_src_expo_adapters_camera_ts --> module_src_state_permissionState_ts
-  module_src_expo_adapters_location_ts --> module_src_expo_client_ts
-  module_src_expo_adapters_location_ts --> module_src_expo_permissionResponse_ts
+  module_src_expo_adapters_camera_ts --> module_src_types_expo_ts
+  module_src_expo_adapters_location_ts --> module_src_expo_adapters_permissionResponse_ts
   module_src_expo_adapters_location_ts --> module_src_registry_permissions_ts
   module_src_expo_adapters_location_ts --> module_src_state_permissionState_ts
-  module_src_expo_adapters_mediaLibrary_ts --> module_src_expo_client_ts
-  module_src_expo_adapters_mediaLibrary_ts --> module_src_expo_permissionResponse_ts
+  module_src_expo_adapters_location_ts --> module_src_types_expo_ts
+  module_src_expo_adapters_mediaLibrary_ts --> module_src_expo_adapters_permissionResponse_ts
   module_src_expo_adapters_mediaLibrary_ts --> module_src_registry_permissions_ts
   module_src_expo_adapters_mediaLibrary_ts --> module_src_state_permissionState_ts
-  module_src_expo_adapters_microphone_ts --> module_src_expo_client_ts
-  module_src_expo_adapters_microphone_ts --> module_src_expo_permissionResponse_ts
+  module_src_expo_adapters_mediaLibrary_ts --> module_src_types_expo_ts
+  module_src_expo_adapters_microphone_ts --> module_src_expo_adapters_permissionResponse_ts
   module_src_expo_adapters_microphone_ts --> module_src_registry_permissions_ts
   module_src_expo_adapters_microphone_ts --> module_src_state_permissionState_ts
-  module_src_expo_adapters_notifications_ts --> module_src_expo_client_ts
-  module_src_expo_adapters_notifications_ts --> module_src_expo_permissionResponse_ts
+  module_src_expo_adapters_microphone_ts --> module_src_types_expo_ts
+  module_src_expo_adapters_notifications_ts --> module_src_expo_adapters_permissionResponse_ts
   module_src_expo_adapters_notifications_ts --> module_src_registry_permissions_ts
   module_src_expo_adapters_notifications_ts --> module_src_state_permissionState_ts
+  module_src_expo_adapters_notifications_ts --> module_src_types_expo_ts
+  module_src_expo_adapters_permissionResponse_ts --> module_src_registry_permissions_ts
+  module_src_expo_adapters_permissionResponse_ts --> module_src_state_permissionState_ts
+  module_src_expo_client_notifications_test_ts --> module_src_expo_client_testSupport_ts
+  module_src_expo_client_notifications_test_ts --> module_src_expo_client_ts
+  module_src_expo_client_notifications_test_ts --> module_src_registry_permissions_ts
+  module_src_expo_client_test_ts --> module_src_expo_client_testSupport_ts
+  module_src_expo_client_test_ts --> module_src_expo_client_ts
+  module_src_expo_client_test_ts --> module_src_registry_permissions_ts
   module_src_expo_client_ts --> module_src_client_types_ts
   module_src_expo_client_ts --> module_src_expo_adapters_camera_ts
   module_src_expo_client_ts --> module_src_expo_adapters_location_ts
@@ -53,21 +73,37 @@ graph LR
   module_src_expo_client_ts --> module_src_expo_manifest_ts
   module_src_expo_client_ts --> module_src_registry_permissions_ts
   module_src_expo_client_ts --> module_src_state_permissionState_ts
+  module_src_expo_client_ts --> module_src_types_expo_ts
   module_src_expo_index_ts --> module_src_expo_client_ts
+  module_src_expo_manifest_test_ts --> module_src_expo_manifest_ts
+  module_src_expo_manifest_test_ts --> module_src_registry_permissions_ts
   module_src_expo_manifest_ts --> module_src_registry_permissions_ts
-  module_src_expo_permissionResponse_ts --> module_src_registry_permissions_ts
-  module_src_expo_permissionResponse_ts --> module_src_state_permissionState_ts
+  module_src_manager_createPermissionManager_test_ts --> module_src_manager_createPermissionManager_ts
+  module_src_manager_createPermissionManager_test_ts --> module_src_registry_permissions_ts
+  module_src_manager_createPermissionManager_test_ts --> module_src_testing_index_ts
   module_src_manager_createPermissionManager_ts --> module_src_client_types_ts
   module_src_manager_createPermissionManager_ts --> module_src_registry_permissions_ts
   module_src_manager_createPermissionManager_ts --> module_src_state_permissionState_ts
+  module_src_provider_test_ts --> module_src_ankh_provider_ts
+  module_src_react_index_test_ts --> module_src_react_index_tsx
   module_src_react_index_tsx --> module_src_client_types_ts
   module_src_react_index_tsx --> module_src_manager_createPermissionManager_ts
   module_src_react_index_tsx --> module_src_registry_permissions_ts
   module_src_react_index_tsx --> module_src_state_permissionState_ts
+  module_src_registry_permissions_test_ts --> module_package_json
+  module_src_registry_permissions_test_ts --> module_src_registry_permissions_ts
+  module_src_state_permissionState_test_ts --> module_src_registry_permissions_ts
+  module_src_state_permissionState_test_ts --> module_src_state_permissionState_ts
   module_src_state_permissionState_ts --> module_src_registry_permissions_ts
+  module_src_testing_index_test_ts --> module_src_registry_permissions_ts
+  module_src_testing_index_test_ts --> module_src_testing_index_ts
   module_src_testing_index_ts --> module_src_client_types_ts
   module_src_testing_index_ts --> module_src_registry_permissions_ts
   module_src_testing_index_ts --> module_src_state_permissionState_ts
+  module_src_types_expo_ts --> module_src_registry_permissions_ts
+  module_src_types_expo_ts --> module_src_state_permissionState_ts
+  module_src_web_index_test_ts --> module_src_registry_permissions_ts
+  module_src_web_index_test_ts --> module_src_web_index_ts
   module_src_web_index_ts --> module_src_client_types_ts
   module_src_web_index_ts --> module_src_registry_permissions_ts
   module_src_web_index_ts --> module_src_state_permissionState_ts

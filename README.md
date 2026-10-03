@@ -3,32 +3,33 @@
 
 # PERMISSIONS
 
-![license: MIT](././paradox/badges/license.svg) ![npm: v0.2.3](././paradox/badges/npm.svg) ![runtime: bun](././paradox/badges/runtime.svg) ![typescript: strict](././paradox/badges/typescript.svg) ![eslint: checked](././paradox/badges/eslint.svg) ![prettier: checked](././paradox/badges/prettier.svg) ![build: checked](././paradox/badges/build.svg) ![tests: checked](././paradox/badges/tests.svg) ![docs: paradox](././paradox/badges/docs.svg)
+![license: MIT](././paradox/badges/license.svg) ![npm: v0.2.64](././paradox/badges/npm.svg) ![runtime: bun](././paradox/badges/runtime.svg) ![typescript: strict](././paradox/badges/typescript.svg) ![eslint: checked](././paradox/badges/eslint.svg) ![prettier: checked](././paradox/badges/prettier.svg) ![build: checked](././paradox/badges/build.svg) ![tests: checked](././paradox/badges/tests.svg) ![paradox: canonical](././paradox/badges/docs.svg)
 
 Cross-platform permission registry and runtime helpers for Expo, React Native, and React Native Web apps, with unified request/check APIs for camera, media, location, notifications, microphone, and other web/native capabilities.
 
 ## Usage
 
-### Basic permissions runtime example.
+### CLI
+
+Ankhorage packages expose their command-line interface through `ankh`. Use `ankh --help` to discover available package commands, or run a package command with `--help` for package-specific usage.
+
+```zsh
+# Install the Ankhorage CLI
+bun add --global @ankhorage/ankh
+
+# Show usage information for permissions
+ankh permissions --help
+```
+
+### Basic permissions
+
+Basic permissions runtime example.
+
 
 Create a permission client, provide it at the app root, and use
 `usePermission` to read, refresh, and request a normalized permission state.
 
-Source: `examples/basic/App.tsx`
-
 ```tsx
-import {
-  createFakePermissionClient,
-  Permission,
-  PermissionsProvider,
-  usePermission,
-} from '@ankhorage/permissions';
-
-const permissionClient = createFakePermissionClient({
-  initialStates: [{ permission: Permission.Camera, status: 'denied' }],
-  requestStates: [{ permission: Permission.Camera, status: 'granted' }],
-});
-
 export default function BasicPermissionsExample() {
   return (
     <PermissionsProvider client={permissionClient}>
@@ -36,67 +37,9 @@ export default function BasicPermissionsExample() {
     </PermissionsProvider>
   );
 }
-
-function CameraPermissionExample() {
-  const camera = usePermission(Permission.Camera, { refreshOnMount: true });
-
-  return (
-    <>
-      <p>Camera permission: {camera.status}</p>
-      <button
-        type="button"
-        disabled={camera.granted}
-        onClick={() => {
-          void camera.request();
-        }}
-      >
-        Request camera permission
-      </button>
-    </>
-  );
-}
 ```
 
-### Expo permissions runtime example.
-
-Create the Expo permission client from the optional Expo entrypoint, provide
-it at the app root, and call `request()` only from an explicit user action.
-
-Source: `examples/expo/App.tsx`
-
-```tsx
-import { Permission, PermissionsProvider, usePermission } from '@ankhorage/permissions';
-import { createPermissionClient } from '@ankhorage/permissions/expo';
-
-const permissionClient = createPermissionClient();
-
-export default function ExpoPermissionsExample() {
-  return (
-    <PermissionsProvider client={permissionClient}>
-      <CameraPermissionExample />
-    </PermissionsProvider>
-  );
-}
-
-function CameraPermissionExample() {
-  const camera = usePermission(Permission.Camera, { refreshOnMount: true });
-
-  return (
-    <>
-      <p>Camera permission: {camera.status}</p>
-      <button
-        type="button"
-        disabled={camera.granted}
-        onClick={() => {
-          void camera.request();
-        }}
-      >
-        Request camera permission
-      </button>
-    </>
-  );
-}
-```
+This package contains 1 additional example. See the generated documentation for the complete set.
 
 ## Generated documentation
 
@@ -156,7 +99,7 @@ Expo modules are loaded only when a client operation uses them. The package
 root and Expo manifest metadata remain free of native module imports.
 
 Module: `src/expo/client.ts`
-Source: `src/expo/client.ts:42:1`
+Source: `src/expo/client.ts:38:1`
 Related symbols: `PermissionClient`
 
 </details>
@@ -232,11 +175,11 @@ Related types: `PermissionsProviderProps`
 <details>
 <summary>Props</summary>
 
-| Prop     | Type                             | Required | Default | Description |
-| -------- | -------------------------------- | -------- | ------- | ----------- |
-| children | `ReactNode \| undefined`         | no       | —       |             |
-| client   | `PermissionClient \| undefined`  | no       | —       |             |
-| manager  | `PermissionManager \| undefined` | no       | —       |             |
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| children | `ReactNode \| undefined` | no | — |  |
+| client | `PermissionClient \| undefined` | no | — |  |
+| manager | `PermissionManager \| undefined` | no | — |  |
 
 </details>
 
