@@ -1,7 +1,7 @@
 import type { Permission } from '../../registry/permissions';
 import { Permission as KnownPermission } from '../../registry/permissions';
 import { createPermissionState, type PermissionState } from '../../state/permissionState';
-import type { ExpoPermissionAdapter } from '../client';
+import type { ExpoPermissionAdapter } from '../../types/expo';
 import {
   createExpoPermissionState,
   createExpoUnavailableState,
