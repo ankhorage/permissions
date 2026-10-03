@@ -11,7 +11,6 @@ import { EXPO_PERMISSION_SUPPORT } from './manifest';
 
 const OPEN_SETTINGS_ERROR_MESSAGE = 'Unable to open application settings.';
 
-
 const adapters = new Map<Permission, ExpoPermissionAdapter>([
   [Permission.Camera, cameraAdapter],
   [Permission.MediaLibrary, mediaLibraryAdapter],
