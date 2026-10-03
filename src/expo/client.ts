@@ -1,6 +1,7 @@
 import type { PermissionClient } from '../client/types';
 import { Permission } from '../registry/permissions';
 import { createPermissionState, type PermissionState } from '../state/permissionState';
+import type { ExpoPermissionAdapter } from '../types/expo';
 import { cameraAdapter } from './adapters/camera';
 import { locationAdapter } from './adapters/location';
 import { mediaLibraryAdapter } from './adapters/mediaLibrary';
@@ -9,11 +10,6 @@ import { notificationsAdapter } from './adapters/notifications';
 import { EXPO_PERMISSION_SUPPORT } from './manifest';
 
 const OPEN_SETTINGS_ERROR_MESSAGE = 'Unable to open application settings.';
-
-export interface ExpoPermissionAdapter {
-  getStatus(permission: Permission): Promise<PermissionState>;
-  request(permission: Permission): Promise<PermissionState>;
-}
 
 const adapters = new Map<Permission, ExpoPermissionAdapter>([
   [Permission.Camera, cameraAdapter],

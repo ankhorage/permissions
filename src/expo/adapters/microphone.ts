@@ -1,12 +1,12 @@
 import type { Permission } from '../../registry/permissions';
 import type { PermissionState } from '../../state/permissionState';
-import type { ExpoPermissionAdapter } from '../client';
+import type { ExpoPermissionAdapter } from '../../types/expo';
 import {
   createExpoPermissionState,
   createExpoUnavailableState,
   type ExpoPermissionMethod,
   findExpoPermissionMethod,
-} from '../permissionResponse';
+} from './permissionResponse';
 
 const AUDIO_PERMISSION_CONTAINER_NAMES = ['AudioModule', 'Audio'] as const;
 

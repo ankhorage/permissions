@@ -1,11 +1,11 @@
 import type { Permission } from '../../registry/permissions';
 import { createPermissionState, type PermissionState } from '../../state/permissionState';
-import type { ExpoPermissionAdapter } from '../client';
+import type { ExpoPermissionAdapter } from '../../types/expo';
 import {
   createExpoPermissionState,
   createExpoUnavailableState,
   type ExpoPermissionResponse,
-} from '../permissionResponse';
+} from './permissionResponse';
 
 interface ExpoNotificationPermissionResponse extends ExpoPermissionResponse {
   readonly ios?: {

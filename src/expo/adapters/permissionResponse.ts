@@ -1,10 +1,10 @@
-import type { Permission } from '../registry/permissions';
+import type { Permission } from '../../registry/permissions';
 import {
   createPermissionState,
   isPermissionStatus,
   type PermissionState,
   type PermissionStatus,
-} from '../state/permissionState';
+} from '../../state/permissionState';
 
 export interface ExpoPermissionResponse {
   readonly status: string;
