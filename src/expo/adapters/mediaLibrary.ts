@@ -6,7 +6,7 @@ import {
   createExpoPermissionState,
   createExpoUnavailableState,
   type ExpoPermissionResponse,
-} from '../permissionResponse';
+} from './permissionResponse';
 
 interface ExpoMediaLibraryPermissionResponse extends ExpoPermissionResponse {
   readonly accessPrivileges?: 'all' | 'limited' | 'none';
