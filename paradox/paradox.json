@@ -14,7 +14,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v0.2.64",
+      "value": "v0.3.0",
       "color": "cb3837"
     },
     {
@@ -111,10 +111,28 @@
       "path": "src/ankh.provider.ts",
       "isEntrypoint": false,
       "dependencies": [
+        "package.json",
+        "src/capabilities/index.ts",
         "src/registry/permissions.ts"
       ],
       "exports": [
         "default"
+      ]
+    },
+    {
+      "path": "src/capabilities/index.test.ts",
+      "isEntrypoint": false,
+      "dependencies": [
+        "src/capabilities/index.ts"
+      ],
+      "exports": []
+    },
+    {
+      "path": "src/capabilities/index.ts",
+      "isEntrypoint": false,
+      "dependencies": [],
+      "exports": [
+        "CAPABILITIES"
       ]
     },
     {
@@ -372,7 +390,9 @@
       "path": "src/provider.test.ts",
       "isEntrypoint": false,
       "dependencies": [
-        "src/ankh.provider.ts"
+        "package.json",
+        "src/ankh.provider.ts",
+        "src/capabilities/index.ts"
       ],
       "exports": []
     },
@@ -2597,6 +2617,16 @@
     "imports": [
       {
         "fromPath": "src/ankh.provider.ts",
+        "toPath": "package.json",
+        "sourcePath": "src/ankh.provider.ts"
+      },
+      {
+        "fromPath": "src/ankh.provider.ts",
+        "toPath": "src/capabilities/index.ts",
+        "sourcePath": "src/ankh.provider.ts"
+      },
+      {
+        "fromPath": "src/ankh.provider.ts",
         "toPath": "src/registry/permissions.ts",
         "sourcePath": "src/ankh.provider.ts"
       },
@@ -2632,8 +2662,23 @@
       },
       {
         "fromPath": "src/provider.test.ts",
+        "toPath": "package.json",
+        "sourcePath": "src/provider.test.ts"
+      },
+      {
+        "fromPath": "src/provider.test.ts",
         "toPath": "src/ankh.provider.ts",
         "sourcePath": "src/provider.test.ts"
+      },
+      {
+        "fromPath": "src/provider.test.ts",
+        "toPath": "src/capabilities/index.ts",
+        "sourcePath": "src/provider.test.ts"
+      },
+      {
+        "fromPath": "src/capabilities/index.test.ts",
+        "toPath": "src/capabilities/index.ts",
+        "sourcePath": "src/capabilities/index.test.ts"
       },
       {
         "fromPath": "src/cli/index.ts",
@@ -3040,6 +3085,30 @@
         "toSymbol": "expect",
         "callExpression": "expect",
         "sourcePath": "src/provider.test.ts"
+      },
+      {
+        "fromSymbol": "src/capabilities/index.test.ts",
+        "toSymbol": "describe",
+        "callExpression": "describe",
+        "sourcePath": "src/capabilities/index.test.ts"
+      },
+      {
+        "fromSymbol": "src/capabilities/index.test.ts",
+        "toSymbol": "test",
+        "callExpression": "test",
+        "sourcePath": "src/capabilities/index.test.ts"
+      },
+      {
+        "fromSymbol": "src/capabilities/index.test.ts",
+        "toSymbol": "expect",
+        "callExpression": "expect",
+        "sourcePath": "src/capabilities/index.test.ts"
+      },
+      {
+        "fromSymbol": "src/capabilities/index.test.ts",
+        "toSymbol": "isCapability",
+        "callExpression": "isCapability",
+        "sourcePath": "src/capabilities/index.test.ts"
       },
       {
         "fromSymbol": "src/expo/client.notifications.test.ts",

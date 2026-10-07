@@ -1,5 +1,11 @@
 # @ankhorage/permissions
 
+## 0.3.0
+
+### Minor Changes
+
+- 253d7f3: Publish canonical Capability descriptors for the Permissions Ankh provider.
+
 ## 0.2.64
 
 ### Patch Changes
