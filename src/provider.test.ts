@@ -36,10 +36,8 @@ describe('provider', () => {
       { path: ['manifest'], capability: 'permissions.manifest' },
     ]);
 
-    expect(
-      provider.commands.every(({ capability }) =>
-        CAPABILITIES.some((catalogCapability) => catalogCapability.id === capability),
-      ),
-    ).toBeTrue();
+    expect([...provider.commands.map(({ capability }) => capability)].sort()).toEqual(
+      [...CAPABILITIES.map(({ id }) => id)].sort(),
+    );
   });
 });
