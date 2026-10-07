@@ -213,7 +213,7 @@
       <div class="summary">
         <div><strong>35</strong><span class="muted">public exports</span></div>
         <div><strong>1</strong><span class="muted">components</span></div>
-        <div><strong>34</strong><span class="muted">modules</span></div>
+        <div><strong>36</strong><span class="muted">modules</span></div>
         <div><strong>7</strong><span class="muted">entrypoints</span></div>
       </div>
       <h3>Entrypoints</h3>
@@ -269,11 +269,21 @@ it at the app root, and call `request()` only from an explicit user action.</p>
     <p class="muted">Referenced module</p>
     <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
     <p><strong>Exports:</strong> <span class="empty">None</span></p>
-  </article><article class="item" data-search="src/ankh.provider.ts src/registry/permissions.ts default">
+  </article><article class="item" data-search="src/ankh.provider.ts src/capabilities/index.ts src/registry/permissions.ts default">
     <h3>src/ankh.provider.ts</h3>
     <p class="muted">Referenced module</p>
-    <p><strong>Dependencies:</strong> <code>src/registry/permissions.ts</code></p>
+    <p><strong>Dependencies:</strong> <code>src/capabilities/index.ts</code>, <code>src/registry/permissions.ts</code></p>
     <p><strong>Exports:</strong> <code>default</code></p>
+  </article><article class="item" data-search="src/capabilities/index.test.ts src/capabilities/index.ts">
+    <h3>src/capabilities/index.test.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <code>src/capabilities/index.ts</code></p>
+    <p><strong>Exports:</strong> <span class="empty">None</span></p>
+  </article><article class="item" data-search="src/capabilities/index.ts CAPABILITIES">
+    <h3>src/capabilities/index.ts</h3>
+    <p class="muted">Referenced module</p>
+    <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
+    <p><strong>Exports:</strong> <code>CAPABILITIES</code></p>
   </article><article class="item" data-search="src/cli/index.ts default">
     <h3>src/cli/index.ts</h3>
     <p class="muted">Referenced module</p>
@@ -369,10 +379,10 @@ it at the app root, and call `request()` only from an explicit user action.</p>
     <p class="muted">Configured entrypoint</p>
     <p><strong>Dependencies:</strong> <span class="empty">None</span></p>
     <p><strong>Exports:</strong> <code>permissionsPackageMetadata</code></p>
-  </article><article class="item" data-search="src/provider.test.ts src/ankh.provider.ts">
+  </article><article class="item" data-search="src/provider.test.ts src/ankh.provider.ts src/capabilities/index.ts">
     <h3>src/provider.test.ts</h3>
     <p class="muted">Referenced module</p>
-    <p><strong>Dependencies:</strong> <code>src/ankh.provider.ts</code></p>
+    <p><strong>Dependencies:</strong> <code>src/ankh.provider.ts</code>, <code>src/capabilities/index.ts</code></p>
     <p><strong>Exports:</strong> <span class="empty">None</span></p>
   </article><article class="item" data-search="src/react/index.test.ts src/react/index.tsx">
     <h3>src/react/index.test.ts</h3>
@@ -1440,7 +1450,13 @@ import browser, Expo, or React Native permission APIs.</p>
   package__ankhorage_permissions -.-&gt; module_package_json
   module_src_ankh_provider_ts[&quot;src/ankh.provider.ts&quot;]
   package__ankhorage_permissions -.-&gt; module_src_ankh_provider_ts
+  module_src_ankh_provider_ts --&gt; module_src_capabilities_index_ts
   module_src_ankh_provider_ts --&gt; module_src_registry_permissions_ts
+  module_src_capabilities_index_test_ts[&quot;src/capabilities/index.test.ts&quot;]
+  package__ankhorage_permissions -.-&gt; module_src_capabilities_index_test_ts
+  module_src_capabilities_index_test_ts --&gt; module_src_capabilities_index_ts
+  module_src_capabilities_index_ts[&quot;src/capabilities/index.ts&quot;]
+  package__ankhorage_permissions -.-&gt; module_src_capabilities_index_ts
   module_src_cli_index_ts[&quot;src/cli/index.ts&quot;]
   package__ankhorage_permissions -.-&gt; module_src_cli_index_ts
   module_src_client_types_ts[&quot;src/client/types.ts&quot;]
@@ -1528,6 +1544,7 @@ import browser, Expo, or React Native permission APIs.</p>
   module_src_provider_test_ts[&quot;src/provider.test.ts&quot;]
   package__ankhorage_permissions -.-&gt; module_src_provider_test_ts
   module_src_provider_test_ts --&gt; module_src_ankh_provider_ts
+  module_src_provider_test_ts --&gt; module_src_capabilities_index_ts
   module_src_react_index_test_ts[&quot;src/react/index.test.ts&quot;]
   package__ankhorage_permissions -.-&gt; module_src_react_index_test_ts
   module_src_react_index_test_ts --&gt; module_src_react_index_tsx
@@ -1597,7 +1614,13 @@ import browser, Expo, or React Native permission APIs.</p>
   package__ankhorage_permissions -.-&gt; module_package_json
   module_src_ankh_provider_ts[&quot;src/ankh.provider.ts&quot;]
   package__ankhorage_permissions -.-&gt; module_src_ankh_provider_ts
+  module_src_ankh_provider_ts --&gt; module_src_capabilities_index_ts
   module_src_ankh_provider_ts --&gt; module_src_registry_permissions_ts
+  module_src_capabilities_index_test_ts[&quot;src/capabilities/index.test.ts&quot;]
+  package__ankhorage_permissions -.-&gt; module_src_capabilities_index_test_ts
+  module_src_capabilities_index_test_ts --&gt; module_src_capabilities_index_ts
+  module_src_capabilities_index_ts[&quot;src/capabilities/index.ts&quot;]
+  package__ankhorage_permissions -.-&gt; module_src_capabilities_index_ts
   module_src_cli_index_ts[&quot;src/cli/index.ts&quot;]
   package__ankhorage_permissions -.-&gt; module_src_cli_index_ts
   module_src_client_types_ts[&quot;src/client/types.ts&quot;]
@@ -1685,6 +1708,7 @@ import browser, Expo, or React Native permission APIs.</p>
   module_src_provider_test_ts[&quot;src/provider.test.ts&quot;]
   package__ankhorage_permissions -.-&gt; module_src_provider_test_ts
   module_src_provider_test_ts --&gt; module_src_ankh_provider_ts
+  module_src_provider_test_ts --&gt; module_src_capabilities_index_ts
   module_src_react_index_test_ts[&quot;src/react/index.test.ts&quot;]
   package__ankhorage_permissions -.-&gt; module_src_react_index_test_ts
   module_src_react_index_test_ts --&gt; module_src_react_index_tsx
@@ -1739,6 +1763,8 @@ import browser, Expo, or React Native permission APIs.</p>
     <div class="mermaid">graph LR
   module_package_json[&quot;package.json&quot;]
   module_src_ankh_provider_ts[&quot;src/ankh.provider.ts&quot;]
+  module_src_capabilities_index_test_ts[&quot;src/capabilities/index.test.ts&quot;]
+  module_src_capabilities_index_ts[&quot;src/capabilities/index.ts&quot;]
   module_src_cli_index_ts[&quot;src/cli/index.ts&quot;]
   module_src_client_types_ts[&quot;src/client/types.ts&quot;]
   module_src_expo_adapters_camera_ts[&quot;src/expo/adapters/camera.ts&quot;]
@@ -1771,7 +1797,9 @@ import browser, Expo, or React Native permission APIs.</p>
   module_src_web_index_test_ts[&quot;src/web/index.test.ts&quot;]
   module_src_web_index_ts[&quot;src/web/index.ts&quot;]
   module_src_web_permissionStates_ts[&quot;src/web/permissionStates.ts&quot;]
+  module_src_ankh_provider_ts --&gt; module_src_capabilities_index_ts
   module_src_ankh_provider_ts --&gt; module_src_registry_permissions_ts
+  module_src_capabilities_index_test_ts --&gt; module_src_capabilities_index_ts
   module_src_client_types_ts --&gt; module_src_registry_permissions_ts
   module_src_client_types_ts --&gt; module_src_state_permissionState_ts
   module_src_expo_adapters_camera_ts --&gt; module_src_expo_adapters_permissionResponse_ts
@@ -1823,6 +1851,7 @@ import browser, Expo, or React Native permission APIs.</p>
   module_src_manager_createPermissionManager_ts --&gt; module_src_registry_permissions_ts
   module_src_manager_createPermissionManager_ts --&gt; module_src_state_permissionState_ts
   module_src_provider_test_ts --&gt; module_src_ankh_provider_ts
+  module_src_provider_test_ts --&gt; module_src_capabilities_index_ts
   module_src_react_index_test_ts --&gt; module_src_react_index_tsx
   module_src_react_index_tsx --&gt; module_src_client_types_ts
   module_src_react_index_tsx --&gt; module_src_manager_createPermissionManager_ts
@@ -1854,6 +1883,8 @@ import browser, Expo, or React Native permission APIs.</p>
       <pre>graph LR
   module_package_json[&quot;package.json&quot;]
   module_src_ankh_provider_ts[&quot;src/ankh.provider.ts&quot;]
+  module_src_capabilities_index_test_ts[&quot;src/capabilities/index.test.ts&quot;]
+  module_src_capabilities_index_ts[&quot;src/capabilities/index.ts&quot;]
   module_src_cli_index_ts[&quot;src/cli/index.ts&quot;]
   module_src_client_types_ts[&quot;src/client/types.ts&quot;]
   module_src_expo_adapters_camera_ts[&quot;src/expo/adapters/camera.ts&quot;]
@@ -1886,7 +1917,9 @@ import browser, Expo, or React Native permission APIs.</p>
   module_src_web_index_test_ts[&quot;src/web/index.test.ts&quot;]
   module_src_web_index_ts[&quot;src/web/index.ts&quot;]
   module_src_web_permissionStates_ts[&quot;src/web/permissionStates.ts&quot;]
+  module_src_ankh_provider_ts --&gt; module_src_capabilities_index_ts
   module_src_ankh_provider_ts --&gt; module_src_registry_permissions_ts
+  module_src_capabilities_index_test_ts --&gt; module_src_capabilities_index_ts
   module_src_client_types_ts --&gt; module_src_registry_permissions_ts
   module_src_client_types_ts --&gt; module_src_state_permissionState_ts
   module_src_expo_adapters_camera_ts --&gt; module_src_expo_adapters_permissionResponse_ts
@@ -1938,6 +1971,7 @@ import browser, Expo, or React Native permission APIs.</p>
   module_src_manager_createPermissionManager_ts --&gt; module_src_registry_permissions_ts
   module_src_manager_createPermissionManager_ts --&gt; module_src_state_permissionState_ts
   module_src_provider_test_ts --&gt; module_src_ankh_provider_ts
+  module_src_provider_test_ts --&gt; module_src_capabilities_index_ts
   module_src_react_index_test_ts --&gt; module_src_react_index_tsx
   module_src_react_index_tsx --&gt; module_src_client_types_ts
   module_src_react_index_tsx --&gt; module_src_manager_createPermissionManager_ts
@@ -1971,6 +2005,8 @@ import browser, Expo, or React Native permission APIs.</p>
     <div class="mermaid">graph LR
   module_package_json[&quot;package.json&quot;]
   module_src_ankh_provider_ts[&quot;src/ankh.provider.ts&quot;]
+  module_src_capabilities_index_test_ts[&quot;src/capabilities/index.test.ts&quot;]
+  module_src_capabilities_index_ts[&quot;src/capabilities/index.ts&quot;]
   module_src_cli_index_ts[&quot;src/cli/index.ts&quot;]
   module_src_client_types_ts[&quot;src/client/types.ts&quot;]
   module_src_expo_adapters_camera_ts[&quot;src/expo/adapters/camera.ts&quot;]
@@ -2117,6 +2153,8 @@ import browser, Expo, or React Native permission APIs.</p>
       <pre>graph LR
   module_package_json[&quot;package.json&quot;]
   module_src_ankh_provider_ts[&quot;src/ankh.provider.ts&quot;]
+  module_src_capabilities_index_test_ts[&quot;src/capabilities/index.test.ts&quot;]
+  module_src_capabilities_index_ts[&quot;src/capabilities/index.ts&quot;]
   module_src_cli_index_ts[&quot;src/cli/index.ts&quot;]
   module_src_client_types_ts[&quot;src/client/types.ts&quot;]
   module_src_expo_adapters_camera_ts[&quot;src/expo/adapters/camera.ts&quot;]
