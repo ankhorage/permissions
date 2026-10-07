@@ -1,4 +1,4 @@
-import type { Capability } from '@ankhorage/contracts';
+import type { Capability } from '@ankhorage/contracts/capabilities';
 
 /*** Define the executable permission operations published by this package. */
 export const CAPABILITIES = [
