@@ -34,7 +34,10 @@
     "typescript",
     "web"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "@ankhorage/ankh": "^0.12.0",
+    "@ankhorage/contracts": "^24.1.0"
+  },
   "peerDependencies": {
     "react": ">=18.2.0 || >=19.0.0"
   },
@@ -42,10 +45,66 @@
     "category": "permissions",
     "provider": "./dist/cli/index.js",
     "capabilities": [
-      "permissions.inspect",
-      "permissions.check",
-      "permissions.request",
-      "permissions.manifest"
+      {
+        "id": "permissions.inspect",
+        "owner": "@ankhorage/permissions",
+        "access": [
+          "invoke"
+        ],
+        "binding": {
+          "kind": "action",
+          "bindableAs": [
+            "target"
+          ]
+        },
+        "label": "Inspect permissions",
+        "description": "List known permission identifiers and registry metadata."
+      },
+      {
+        "id": "permissions.check",
+        "owner": "@ankhorage/permissions",
+        "access": [
+          "invoke"
+        ],
+        "binding": {
+          "kind": "action",
+          "bindableAs": [
+            "target"
+          ]
+        },
+        "label": "Check permission",
+        "description": "Check a permission state through a host-provided permission client."
+      },
+      {
+        "id": "permissions.request",
+        "owner": "@ankhorage/permissions",
+        "access": [
+          "invoke"
+        ],
+        "binding": {
+          "kind": "action",
+          "bindableAs": [
+            "target"
+          ]
+        },
+        "label": "Request permission",
+        "description": "Request a permission through a host-provided permission client."
+      },
+      {
+        "id": "permissions.manifest",
+        "owner": "@ankhorage/permissions",
+        "access": [
+          "invoke"
+        ],
+        "binding": {
+          "kind": "action",
+          "bindableAs": [
+            "target"
+          ]
+        },
+        "label": "Inspect permission manifest",
+        "description": "Show native and web manifest metadata required by registered permissions."
+      }
     ]
   },
   "files": [
@@ -68,6 +127,11 @@
       "types": "./dist/cli/index.d.ts",
       "import": "./dist/cli/index.js",
       "default": "./dist/cli/index.js"
+    },
+    "./capabilities": {
+      "types": "./dist/capabilities/index.d.ts",
+      "import": "./dist/capabilities/index.js",
+      "default": "./dist/capabilities/index.js"
     },
     "./react": {
       "react-native": "./dist/react/index.js",
