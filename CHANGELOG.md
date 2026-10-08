@@ -1,5 +1,11 @@
 # @ankhorage/permissions
 
+## 0.3.1
+
+### Patch Changes
+
+- 8ddec16: Update dependencies: `@ankhorage/contracts`.
+
 ## 0.3.0
 
 ### Minor Changes
