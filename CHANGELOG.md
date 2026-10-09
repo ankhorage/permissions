@@ -1,5 +1,11 @@
 # @ankhorage/permissions
 
+## 0.3.4
+
+### Patch Changes
+
+- efc9906: Update dependencies: `@ankhorage/ankh`.
+
 ## 0.3.3
 
 ### Patch Changes
