@@ -35,7 +35,7 @@
     "web"
   ],
   "dependencies": {
-    "@ankhorage/ankh": "^0.13.0",
+    "@ankhorage/ankh": "^0.13.1",
     "@ankhorage/contracts": "^24.2.1"
   },
   "peerDependencies": {
@@ -200,7 +200,7 @@
     "knip:check": "ankhorage-knip"
   },
   "devDependencies": {
-    "@ankhorage/devtools": "^2.3.14",
+    "@ankhorage/devtools": "^2.3.17",
     "@ankhorage/paradox": "^0.3.1",
     "@types/bun": "^1.4.2",
     "@types/node": "^26.6.5",
