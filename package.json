@@ -36,7 +36,7 @@
   ],
   "dependencies": {
     "@ankhorage/ankh": "^0.13.1",
-    "@ankhorage/contracts": "^24.2.1"
+    "@ankhorage/contracts": "^26.0.0"
   },
   "peerDependencies": {
     "react": ">=18.2.0 || >=19.0.0"
@@ -200,6 +200,7 @@
     "knip:check": "ankhorage-knip"
   },
   "devDependencies": {
+    "@ankhorage/capability": "^0.2.1",
     "@ankhorage/devtools": "^2.3.18",
     "@ankhorage/paradox": "^0.3.1",
     "@types/bun": "^1.4.2",
