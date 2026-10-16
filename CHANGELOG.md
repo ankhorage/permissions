@@ -1,5 +1,11 @@
 # @ankhorage/permissions
 
+## 0.3.6
+
+### Patch Changes
+
+- 1a2a1e1: Migrate permission capability declarations and validation to the released Contracts 26 and Capability APIs.
+
 ## 0.3.5
 
 ### Patch Changes
