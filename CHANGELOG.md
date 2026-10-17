@@ -1,5 +1,11 @@
 # @ankhorage/permissions
 
+## 0.3.7
+
+### Patch Changes
+
+- 5d1345d: Update dependencies: `@ankhorage/ankh`.
+
 ## 0.3.6
 
 ### Patch Changes
