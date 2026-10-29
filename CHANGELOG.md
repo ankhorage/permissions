@@ -1,5 +1,11 @@
 # @ankhorage/permissions
 
+## 0.3.11
+
+### Patch Changes
+
+- 501aaae: Update dependencies: `@ankhorage/ankh`, `@ankhorage/devtools`.
+
 ## 0.3.10
 
 ### Patch Changes
