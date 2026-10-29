@@ -36,7 +36,7 @@
   ],
   "dependencies": {
     "@ankhorage/ankh": "^0.13.3",
-    "@ankhorage/contracts": "^26.2.2"
+    "@ankhorage/contracts": "^26.3.0"
   },
   "peerDependencies": {
     "react": ">=18.2.0 || >=19.0.0"
@@ -202,7 +202,7 @@
   "devDependencies": {
     "@ankhorage/capability": "^0.2.2",
     "@ankhorage/devtools": "^2.3.34",
-    "@ankhorage/paradox": "^0.3.5",
+    "@ankhorage/paradox": "^0.3.6",
     "@types/bun": "^1.4.2",
     "@types/node": "^26.6.6",
     "@types/react": "^19.3.0",
