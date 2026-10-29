@@ -1,5 +1,11 @@
 # @ankhorage/permissions
 
+## 0.3.12
+
+### Patch Changes
+
+- d174e21: Update dependencies: `@ankhorage/contracts`, `@ankhorage/paradox`.
+
 ## 0.3.11
 
 ### Patch Changes
