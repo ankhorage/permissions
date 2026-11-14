@@ -3,7 +3,7 @@
 
 # PERMISSIONS
 
-![license: MIT](././paradox/badges/license.svg) ![npm: v0.3.19](././paradox/badges/npm.svg) ![runtime: bun](././paradox/badges/runtime.svg) ![typescript: strict](././paradox/badges/typescript.svg) ![eslint: checked](././paradox/badges/eslint.svg) ![prettier: checked](././paradox/badges/prettier.svg) ![build: checked](././paradox/badges/build.svg) ![tests: checked](././paradox/badges/tests.svg) ![paradox: canonical](././paradox/badges/docs.svg)
+![license: MIT](././paradox/badges/license.svg) ![npm: v0.3.20](././paradox/badges/npm.svg) ![runtime: bun](././paradox/badges/runtime.svg) ![typescript: strict](././paradox/badges/typescript.svg) ![eslint: checked](././paradox/badges/eslint.svg) ![prettier: checked](././paradox/badges/prettier.svg) ![build: checked](././paradox/badges/build.svg) ![tests: checked](././paradox/badges/tests.svg) ![paradox: canonical](././paradox/badges/docs.svg)
 
 Cross-platform permission registry and runtime helpers for Expo, React Native, and React Native Web apps, with unified request/check APIs for camera, media, location, notifications, microphone, and other web/native capabilities.
 
@@ -41,22 +41,9 @@ export default function BasicPermissionsExample() {
 
 This package contains 1 additional example. See the generated documentation for the complete set.
 
-## Generated documentation
+## Documentation
 
-- [Interactive documentation app](././paradox/index.html)
-- [Public API reference](././paradox/exports.md)
-- [Component registry](././paradox/components.md)
-- [Architecture overview](././paradox/diagrams/architecture-overview.mmd)
-- [Module relationships](././paradox/diagrams/module-relationships.mmd)
-- [Export graph](././paradox/diagrams/export-graph.mmd)
-- [assertKnownPermission sequence](././paradox/diagrams/sequences/assert-known-permission.mmd)
-- [createFakePermissionClient sequence](././paradox/diagrams/sequences/create-fake-permission-client.mmd)
-- [createWebPermissionClient sequence](././paradox/diagrams/sequences/create-web-permission-client.mmd)
-- [getPermissionDefinition sequence](././paradox/diagrams/sequences/get-permission-definition.mmd)
-- [normalizePermissionState sequence](././paradox/diagrams/sequences/normalize-permission-state.mmd)
-- [PermissionsProvider sequence](././paradox/diagrams/sequences/permissions-provider.mmd)
-- [usePermission sequence](././paradox/diagrams/sequences/use-permission.mmd)
-- [usePermissions sequence](././paradox/diagrams/sequences/use-permissions.mmd)
+Open `./paradox/index.html` locally in your browser to browse the complete documentation.
 
 ## Public API
 
@@ -184,3 +171,14 @@ Related types: `PermissionsProviderProps`
 </details>
 
 </details>
+
+## Contributors
+
+<!-- readme: contributors -start -->
+<!-- readme: contributors -end -->
+
+## Donation
+
+If this project is useful to you, you can support its continued development.
+
+[Support @ankhorage](https://github.com/sponsors/ankhorage)

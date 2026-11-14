@@ -2,8 +2,10 @@
   "packageName": "PERMISSIONS",
   "packageId": "@ankhorage/permissions",
   "description": "Cross-platform permission registry and runtime helpers for Expo, React Native, and React Native Web apps, with unified request/check APIs for camera, media, location, notifications, microphone, and other web/native capabilities.",
-  "collaborators": null,
-  "donation": null,
+  "collaborators": true,
+  "donation": {
+    "account": "ankhorage"
+  },
   "badges": [
     {
       "id": "license",
@@ -14,7 +16,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v0.3.19",
+      "value": "v0.3.20",
       "color": "cb3837"
     },
     {
