@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "kind": "library",
+  "title": "Ankhorage Permissions",
+  "summary": "Provides a platform-neutral permission registry and request/check helpers for Expo, React Native, React Native Web, and test environments.",
+  "purpose": "Give applications a single typed boundary for declaring, checking, and requesting supported device and browser permissions without coupling their core code to a platform SDK.",
+  "domain": "cross-platform application permissions",
+  "responsibilities": [
+    "Define the supported permission identifiers, states, and platform-neutral registry metadata.",
+    "Expose permission-manager, React, Expo, web, CLI, testing, and capability entrypoints.",
+    "Translate host-provided permission responses into consistent permission states."
+  ],
+  "boundaries": [
+    "Does not directly select, install, or configure a browser, Expo, or React Native permission provider.",
+    "Does not determine product authorization policy after a platform permission is granted.",
+    "Does not persist application permission decisions or user data."
+  ],
+  "audience": [
+    "Application authors supporting browser, Expo, React Native, or test permission flows.",
+    "Adapter authors that provide platform-specific permission clients."
+  ],
+  "useCases": [
+    "Check or request camera, microphone, media-library, location, notification, or clipboard access.",
+    "Render consistent permission state in React applications.",
+    "Inspect supported permissions and required manifest metadata through the package capability provider."
+  ],
+  "architecture": {
+    "role": "Reusable cross-platform permission boundary with platform adapters at explicit Expo and web entrypoints.",
+    "invariants": [
+      "The canonical permission registry remains platform-neutral.",
+      "Platform-specific APIs are isolated behind explicit client and adapter boundaries.",
+      "Consumers use published package entrypoints and declared dependencies."
+    ]
+  },
+  "constraints": {
+    "limitations": [
+      "Permission availability and final grant decisions remain controlled by the host platform and user.",
+      "Only permissions represented by the package registry can be checked or requested through its typed APIs."
+    ]
+  }
+}
