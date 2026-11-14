@@ -1,5 +1,11 @@
 # @ankhorage/permissions
 
+## 0.3.22
+
+### Patch Changes
+
+- 8e71e63: Add canonical repository metadata for package discovery and documentation.
+
 ## 0.3.21
 
 ### Patch Changes
