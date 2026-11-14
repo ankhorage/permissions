@@ -1,5 +1,11 @@
 # @ankhorage/permissions
 
+## 0.3.18
+
+### Patch Changes
+
+- 6236680: Update dependencies: `@ankhorage/contracts`.
+
 ## 0.3.17
 
 ### Patch Changes
