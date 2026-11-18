@@ -1,7 +1,8 @@
 {
   "packageName": "PERMISSIONS",
   "packageId": "@ankhorage/permissions",
-  "description": "Cross-platform permission registry and runtime helpers for Expo, React Native, and React Native Web apps, with unified request/check APIs for camera, media, location, notifications, microphone, and other web/native capabilities.",
+  "description": "Provides a platform-neutral permission registry and request/check helpers for Expo, React Native, React Native Web, and test environments.",
+  "purpose": "Give applications a single typed boundary for declaring, checking, and requesting supported device and browser permissions without coupling their core code to a platform SDK.",
   "collaborators": true,
   "donation": {
     "account": "ankhorage"
@@ -16,7 +17,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v0.3.22",
+      "value": "v0.3.23",
       "color": "cb3837"
     },
     {
