@@ -1,5 +1,11 @@
 # @ankhorage/permissions
 
+## 0.3.24
+
+### Patch Changes
+
+- 04b1c87: Update dependencies: `@ankhorage/ankh`, `@ankhorage/devtools`.
+
 ## 0.3.23
 
 ### Patch Changes

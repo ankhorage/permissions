@@ -3,6 +3,7 @@
   "packageId": "@ankhorage/permissions",
   "description": "Provides a platform-neutral permission registry and request/check helpers for Expo, React Native, React Native Web, and test environments.",
   "purpose": "Give applications a single typed boundary for declaring, checking, and requesting supported device and browser permissions without coupling their core code to a platform SDK.",
+  "productDocumentation": null,
   "collaborators": true,
   "donation": {
     "account": "ankhorage"
@@ -17,7 +18,7 @@
     {
       "id": "npm",
       "label": "npm",
-      "value": "v0.3.23",
+      "value": "v0.3.24",
       "color": "cb3837"
     },
     {
@@ -53,8 +54,8 @@
     {
       "id": "tests",
       "label": "tests",
-      "value": "checked",
-      "color": "0a7f3f"
+      "value": "configured",
+      "color": "6f42c1"
     },
     {
       "id": "docs",
