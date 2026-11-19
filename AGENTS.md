@@ -6,7 +6,38 @@
 
 Package: `@ankhorage/permissions`
 
-Cross-platform permission registry and runtime helpers for Expo, React Native, and React Native Web apps, with unified request/check APIs for camera, media, location, notifications, microphone, and other web/native capabilities.
+Title: Ankhorage Permissions
+
+Provides a platform-neutral permission registry and request/check helpers for Expo, React Native, React Native Web, and test environments.
+
+Purpose: Give applications a single typed boundary for declaring, checking, and requesting supported device and browser permissions without coupling their core code to a platform SDK.
+
+Audience:
+
+- Application authors supporting browser, Expo, React Native, or test permission flows.
+- Adapter authors that provide platform-specific permission clients.
+
+## Scope and boundaries
+
+Responsibilities:
+
+- Define the supported permission identifiers, states, and platform-neutral registry metadata.
+- Expose permission-manager, React, Expo, web, CLI, testing, and capability entrypoints.
+- Translate host-provided permission responses into consistent permission states.
+
+Boundaries:
+
+- Does not directly select, install, or configure a browser, Expo, or React Native permission provider.
+- Does not determine product authorization policy after a platform permission is granted.
+- Does not persist application permission decisions or user data.
+
+Architecture role: Reusable cross-platform permission boundary with platform adapters at explicit Expo and web entrypoints.
+
+Architectural invariants:
+
+- The canonical permission registry remains platform-neutral.
+- Platform-specific APIs are isolated behind explicit client and adapter boundaries.
+- Consumers use published package entrypoints and declared dependencies.
 
 ## Current architecture only
 
@@ -64,6 +95,26 @@ Paradox `/*** ... */` comments in `src` and leading `@usage` comments in real
 `examples/<example>/...` source files, plus any repository-owned manual documentation outside the
 generated output. The managed release workflow runs `bun run docs` after the package version bump
 and commits the regenerated artifacts in the release commit.
+
+## GitHub task lifecycle and workspace cleanup
+
+- **Start.** Treat each issue implementation, PR implementation, review, and change request (CR)
+  as an independent task. Fetch the current remote default branch and read the applicable issue,
+  PR, HEAD, review feedback, and CI state. Use a fresh, uniquely named task checkout or worktree.
+  Concurrent tasks must have distinct writable checkout, temporary, build, and cache paths.
+- **CRs.** Fetch and check out the current remote PR branch in the new workspace. Preserve PR
+  history and scope. Push corrections to the existing PR branch.
+- **Delivery.** Run applicable checks. Commit and push all intended changes, then verify that
+  GitHub has the intended commit on the correct remote branch. Report the exact HEAD, checks, CI,
+  findings, and blockers. Report acceptance that was not run as unverified. Read-only reviews hand
+  off their findings without creating a commit. Merge requires explicit authorization.
+- **Cleanup.** After handoff, resolve every candidate path and remove only task-owned directories
+  whose resolved paths are strictly under the resolved system path for `/tmp` (`/private/tmp` on
+  macOS). Refuse candidates that resolve outside that boundary, including through a symlink. Use
+  Git-aware removal for worktrees. Preserve workspaces outside the boundary, shared directories,
+  other tasks' directories, uncommitted changes, and unpushed commits. If blocked, persist
+  recoverable work first and document what must be retained. Report whether cleanup succeeded, was
+  skipped, or was blocked.
 
 ## Pull requests
 
