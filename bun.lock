@@ -918,8 +918,6 @@
 
     "eslint-plugin-react/minimatch/brace-expansion": ["brace-expansion@1.1.15", "", { "dependencies": { "balanced-match": "^1.0.0", "concat-map": "0.0.1" } }, "sha512-EwOCDEex4quD37XhqM3omwtMoJjr//isUZz1JopUNWms+4Z2ViyM/k1YIRePpoVNnQhENnxtFjLaxNHrT7xIUg=="],
 
-    "@ankhorage/devtools/@ankhorage/utility/@ankhorage/contracts/@ankhorage/color-theory": ["@ankhorage/color-theory@0.3.3", "", { "dependencies": { "culori": "^4.0.2" } }, "sha512-t3Vxwp53Hdxf6pkzUMcW/K7xh8axcgL4d5hqAWSMGPlOTiZJ1rzIraFH0e5AaeiCip7zmCbz+tOv7dCSQh3i6Q=="],
-
     "eslint-plugin-import/minimatch/brace-expansion/balanced-match": ["balanced-match@1.0.2", "", {}, "sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw=="],
 
     "eslint-plugin-react/minimatch/brace-expansion/balanced-match": ["balanced-match@1.0.2", "", {}, "sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw=="],
