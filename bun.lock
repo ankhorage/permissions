@@ -6,7 +6,7 @@
       "name": "@ankhorage/permissions",
       "dependencies": {
         "@ankhorage/ankh": "^0.13.7",
-        "@ankhorage/contracts": "^26.16.0",
+        "@ankhorage/contracts": "^26.17.0",
       },
       "devDependencies": {
         "@ankhorage/capability": "^0.2.3",
